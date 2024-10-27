@@ -42,7 +42,7 @@ const donorSchema = new mongoose.Schema({
         required: [true, "Please enter your Weight!"],
         trim:true
     },
-    bloodGroup: {
+    blood_group: {
         type: String,
         required: [true, "Please enter your Blood Group!"],
     },
@@ -62,8 +62,8 @@ const donorSchema = new mongoose.Schema({
         required: [true, "Please enter your City!"],
         trim:true
     },
-    lastTimeDonate: {
-        type: Date,
+    last_time_donation_date: {
+        type: String,
         required: [true, "Please enter your Last Time Donation Date!"],
     },
     photo: {//is ki detail nichy di hai

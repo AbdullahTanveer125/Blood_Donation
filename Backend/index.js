@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+const donor_router=require("./Work/Routes/donorRoutes.js");
+
+
 
 const cors=require("cors");//different URL pr route krny mey help krta hai
 const connectDB=require("./Work/DB/database.js");
@@ -17,9 +20,11 @@ dotenv.config();
 
 
 
-
 app.use(express.json());// Middleware to parse JSON data
 app.use(cors());
+
+//to use router
+app.use(donor_router);   
 
 
 // Routes
