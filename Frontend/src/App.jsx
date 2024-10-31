@@ -8,6 +8,7 @@ import Footer1 from './Components/Footer1.jsx'
 import Footer2 from './Components/Footer2.jsx'
 import Card1 from './Components/Card1.jsx'
 import Home from './Pages/Home.jsx'
+import SignUp from './Components/SignUp.jsx'
 
 function App() {
 
@@ -24,7 +25,10 @@ function App() {
       <Footer1 />
       <Footer2 /> */}
     
-    <Home />
+    {/* <Home /> */}
+
+        <SignUp />
+
     
     </>
   )

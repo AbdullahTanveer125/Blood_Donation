@@ -1,14 +1,9 @@
 const mongoose = require("mongoose");
 
 const donorSchema = new mongoose.Schema({
-    firstname: {
+    name: {
         type: String,
         required: [true, "Please enter your first name!"],
-        trim:true//extra spaces remove if before and after the string have extra spaces
-    },
-    lastname: {
-        type: String,
-        required: [true, "Please enter your last name!"],
         trim:true//extra spaces remove if before and after the string have extra spaces
     },
     username: {

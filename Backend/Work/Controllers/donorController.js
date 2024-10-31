@@ -24,14 +24,12 @@ async function testController(req, res) {
 // hai or image ko hm "req.files" sy get kry gy
 const donor_signUp = async (req, res) => {
     try {
-        const { firstname, lastname, username, email, password, gender, age, weight, blood_group, phone, address, city, last_time_donation_date } = req.fields;
+        const { name, username, email, password, gender, age, weight, blood_group, phone, address, city, last_time_donation_date } = req.fields;
         const { photo } = req.files;
         //validation
         switch (true) {
-            case !firstname:
-                return res.status(500).send({ error: "First Name is Required" });
-            case !lastname:
-                return res.status(500).send({ error: "Last Name is Required" });
+            case !name:
+                return res.status(500).send({ error: "Name is Required" });
             case !username:
                 return res.status(500).send({ error: "User Name is Required" });
             case !email:
@@ -64,7 +62,7 @@ const donor_signUp = async (req, res) => {
         if (existingDonor) {
             res.status(200).send({
                 success: false,
-                message: "Already exist, please login",
+                message: "You are already exist, please login",
             })
         }
 
@@ -99,11 +97,10 @@ const donor_signUp = async (req, res) => {
         console.log("*****************************************************")
 
 
-        const fullname = firstname + " " + lastname
+        // const fullname = firstname + " " + lastname
 
         SignUp_donor = {
-            firstname,
-            lastname,
+            name,
             // fullname,
             password: hashedPassword,
             username,
