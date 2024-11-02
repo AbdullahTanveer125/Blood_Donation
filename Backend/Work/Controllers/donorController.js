@@ -78,20 +78,22 @@ const donor_signUp = async (req, res) => {
         const hashedPassword = await hashPassword(password);
 
         // Function to convert a string in "MM/DD/YYYY" format to a Date object
-        function string_Into_Date(dateString) {
-            const [month, day, year] = dateString.split('/');
-            return new Date(year, month - 1, day); // Month is 0-indexed in JavaScript Date
-        }
+        // function string_Into_Date(dateString) {
+        //     const [month, day, year] = dateString.split('/');
+        //     return new Date(year, month - 1, day); // Month is 0-indexed in JavaScript Date
+        // }
 
         // Convert and assign
-        const real_date = string_Into_Date(last_time_donation_date);
+        // const real_date = string_Into_Date(last_time_donation_date);
 
         // // function string into "Date Object"
         // function string_Into_Date(dateString) {
         //     const [month, day, year] = dateString.split('/');
         //     return new Date(`${year}-${month}-${day}`);
         // }
+        
         // const real_date = string_Into_Date(last_time_donation_date)
+        const real_date = last_time_donation_date
         console.log("*****************************************************")
         console.log("real date:", real_date)
         console.log("*****************************************************")
