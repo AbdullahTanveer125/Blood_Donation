@@ -28,13 +28,13 @@ const {
 
 
 // test || GET 
-donor_router.get("/test", testController);
+donor_router.get("/donor-test", testController);
 
 // donor sign-up
-donor_router.post("/signup", express_formidable(), donor_signUp);
+donor_router.post("/donor-signup", express_formidable(), donor_signUp);
 
 // Login donor
-donor_router.post("/login",  donor_login);
+donor_router.post("/donor-login",  donor_login);
 
 
 

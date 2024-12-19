@@ -1,4 +1,4 @@
-const donor_model = require("../Models-Schema/donorSchema")
+const recipient_model = require("../Models-Schema/recipientSchema")
 const { hashPassword, comparePassword } = require("../Middleware/hash_password");
 
 
@@ -13,7 +13,7 @@ const JWT=require("jsonwebtoken");
 
 async function testController(req, res) {
     res.send({
-        message: "We are in << Donor >> test function !!"
+        message: "We are in << Recipient >> test function !!"
     })
 }
 
@@ -22,9 +22,9 @@ async function testController(req, res) {
 // ********************************************************************************
 //jb hm image ko receive kr rahy ho to phir data "req.fields" mey receive hota 
 // hai or image ko hm "req.files" sy get kry gy
-const donor_signUp = async (req, res) => {
+const recipient_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, gender, age, weight, blood_group, phone, address, city, last_time_donation_date } = req.fields;
+        const { name, username, email, password, gender, age, weight, phone, address, city, last_time_donation_date } = req.fields;
         const { photo } = req.files;
         //validation
         switch (true) {
@@ -42,8 +42,6 @@ const donor_signUp = async (req, res) => {
                 return res.status(500).send({ error: "Age is Required" });
             case !weight:
                 return res.status(500).send({ error: "weight is Required" });
-            case !blood_group:
-                return res.status(500).send({ error: "Blood Group is Required" });
             case !phone:
                 return res.status(500).send({ error: "phone is Required" });
             case !address:
@@ -56,17 +54,17 @@ const donor_signUp = async (req, res) => {
                 return res.status(500).send({ error: "photo is Required and should be less then 1MB" });
         }
 
-        // check existing Donor
-        const existingDonor = await donor_model.findOne({ email })
+        // check existing recipient
+        const existingrecipient = await recipient_model.findOne({ email })
 
-        if (existingDonor) {
+        if (existingrecipient) {
             res.status(200).send({
                 success: false,
                 message: "You are already exist, please login",
             })
         }
 
-        const existingUsername = await donor_model.findOne({ username })
+        const existingUsername = await recipient_model.findOne({ username })
         if (existingUsername) {
             res.status(200).send({
                 success: false,
@@ -101,7 +99,7 @@ const donor_signUp = async (req, res) => {
 
         // const fullname = firstname + " " + lastname
 
-        SignUp_donor = {
+        SignUp_recipient = {
             name,
             // fullname,
             password: hashedPassword,
@@ -110,7 +108,6 @@ const donor_signUp = async (req, res) => {
             gender,
             age,
             weight,
-            blood_group,
             phone,
             address,
             city,
@@ -118,32 +115,32 @@ const donor_signUp = async (req, res) => {
         }
 
 
-        const DONOR = new donor_model(SignUp_donor);
+        const RECIPIENT = new recipient_model(SignUp_recipient);
 
 
-        // const DONOR = new donorModel({ ...req.fields, slug: slugify(firstname) });
+        // const RECIPIENT = new recipientModel({ ...req.fields, slug: slugify(firstname) });
 
         if (photo) {
-            DONOR.photo.data = fs.readFileSync(photo.path);
-            DONOR.photo.contentType = photo.type;
+            RECIPIENT.photo.data = fs.readFileSync(photo.path);
+            RECIPIENT.photo.contentType = photo.type;
         }
-        await DONOR.save();
-        // const DONOR = await productModel.create({ ...req.fields, slug: slugify(name) });
+        await RECIPIENT.save();
+        // const RECIPIENT = await productModel.create({ ...req.fields, slug: slugify(name) });
         // if (photo) {
-        //     DONOR.photo.data = fs.readFileSync(photo.path);
-        //     DONOR.photo.contentType = photo.type;
+        //     RECIPIENT.photo.data = fs.readFileSync(photo.path);
+        //     RECIPIENT.photo.contentType = photo.type;
         // }
-        // await DONOR.save();
+        // await RECIPIENT.save();
         res.status(201).send({
             success: true,
-            message: "Donor Sign-Up Successfully!",
-            DONOR,
+            message: "Recipient Sign-Up Successfully!",
+            RECIPIENT,
         });
     } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Error in Sign-Up Donor",
+            message: "Error in Sign-Up Recipient",
             error,
         });
     }
@@ -152,7 +149,7 @@ const donor_signUp = async (req, res) => {
 
 
 
-async function donor_login(req, res) {
+async function recipient_login(req, res) {
     try {
         const { email, password } = req.body;
 
@@ -165,15 +162,15 @@ async function donor_login(req, res) {
         }
 
         // check existing user
-        const donor = await donor_model.findOne({ email }, {photo: 0});
-        if (!donor) {
+        const recipient = await recipient_model.findOne({ email }, {photo: 0});
+        if (!recipient) {
             return res.status(404).send({
                 success: false,
                 message: "Email is not register, Please Sign-Up",
             })
         }
         
-        const match = await comparePassword(password, donor.password);
+        const match = await comparePassword(password, recipient.password);
 
         if (!match) {
             return res.status(200).send({
@@ -183,21 +180,21 @@ async function donor_login(req, res) {
         }
 
         // token
-        // const token = await JWT.sign({ _id: donor._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
-        const token = await JWT.sign({ _id: donor._id }, "abdullah", { expiresIn: "7d" });
+        // const token = await JWT.sign({ _id: recipient._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+        const token = await JWT.sign({ _id: recipient._id }, "abdullah", { expiresIn: "7d" });
 
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
-            donor,
+            recipient,
             token,
         })
 
     } catch (error) {
-        console.log("***** Error in Donor_Login_Controller ********", error);
+        console.log("***** Error in recipient_Login_Controller ********", error);
         res.status(500).send({
             success: false,
-            message: "Error in Donor Login",
+            message: "Error in recipient Login",
             error
         })
     }
@@ -237,4 +234,4 @@ async function donor_login(req, res) {
 
 
 //export All functions from "Controller"
-module.exports = { testController, donor_signUp, donor_login }
+module.exports = { testController, recipient_signUp, recipient_login }

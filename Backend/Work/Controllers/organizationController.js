@@ -1,4 +1,5 @@
-const donor_model = require("../Models-Schema/donorSchema")
+// const organization_model = require("../Models-Schema/organizaionSchema")
+const organization_model = require("../Models-Schema/organizationSchema")
 const { hashPassword, comparePassword } = require("../Middleware/hash_password");
 
 
@@ -13,7 +14,7 @@ const JWT=require("jsonwebtoken");
 
 async function testController(req, res) {
     res.send({
-        message: "We are in << Donor >> test function !!"
+        message: "We are in << Organizaion >> test function !!"
     })
 }
 
@@ -22,9 +23,9 @@ async function testController(req, res) {
 // ********************************************************************************
 //jb hm image ko receive kr rahy ho to phir data "req.fields" mey receive hota 
 // hai or image ko hm "req.files" sy get kry gy
-const donor_signUp = async (req, res) => {
+const organization_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, gender, age, weight, blood_group, phone, address, city, last_time_donation_date } = req.fields;
+        const { name, username, email, password, gender, age, weight, phone, address, city, last_time_donation_date } = req.fields;
         const { photo } = req.files;
         //validation
         switch (true) {
@@ -42,8 +43,6 @@ const donor_signUp = async (req, res) => {
                 return res.status(500).send({ error: "Age is Required" });
             case !weight:
                 return res.status(500).send({ error: "weight is Required" });
-            case !blood_group:
-                return res.status(500).send({ error: "Blood Group is Required" });
             case !phone:
                 return res.status(500).send({ error: "phone is Required" });
             case !address:
@@ -56,17 +55,17 @@ const donor_signUp = async (req, res) => {
                 return res.status(500).send({ error: "photo is Required and should be less then 1MB" });
         }
 
-        // check existing Donor
-        const existingDonor = await donor_model.findOne({ email })
+        // check existing organizaion
+        const existingorganization = await organization_model.findOne({ email })
 
-        if (existingDonor) {
+        if (existingorganization) {
             res.status(200).send({
                 success: false,
                 message: "You are already exist, please login",
             })
         }
 
-        const existingUsername = await donor_model.findOne({ username })
+        const existingUsername = await organization_model.findOne({ username })
         if (existingUsername) {
             res.status(200).send({
                 success: false,
@@ -101,7 +100,7 @@ const donor_signUp = async (req, res) => {
 
         // const fullname = firstname + " " + lastname
 
-        SignUp_donor = {
+        SignUp_organization = {
             name,
             // fullname,
             password: hashedPassword,
@@ -110,7 +109,6 @@ const donor_signUp = async (req, res) => {
             gender,
             age,
             weight,
-            blood_group,
             phone,
             address,
             city,
@@ -118,32 +116,32 @@ const donor_signUp = async (req, res) => {
         }
 
 
-        const DONOR = new donor_model(SignUp_donor);
+        const ORGANIZATION = new organization_model(SignUp_organization);
 
 
-        // const DONOR = new donorModel({ ...req.fields, slug: slugify(firstname) });
+        // const ORGANIZATION = new organizaionModel({ ...req.fields, slug: slugify(firstname) });
 
         if (photo) {
-            DONOR.photo.data = fs.readFileSync(photo.path);
-            DONOR.photo.contentType = photo.type;
+            ORGANIZATION.photo.data = fs.readFileSync(photo.path);
+            ORGANIZATION.photo.contentType = photo.type;
         }
-        await DONOR.save();
-        // const DONOR = await productModel.create({ ...req.fields, slug: slugify(name) });
+        await ORGANIZATION.save();
+        // const ORGANIZATION = await productModel.create({ ...req.fields, slug: slugify(name) });
         // if (photo) {
-        //     DONOR.photo.data = fs.readFileSync(photo.path);
-        //     DONOR.photo.contentType = photo.type;
+        //     ORGANIZATION.photo.data = fs.readFileSync(photo.path);
+        //     ORGANIZATION.photo.contentType = photo.type;
         // }
-        // await DONOR.save();
+        // await ORGANIZATION.save();
         res.status(201).send({
             success: true,
-            message: "Donor Sign-Up Successfully!",
-            DONOR,
+            message: "Organization Sign-Up Successfully!",
+            ORGANIZATION,
         });
     } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Error in Sign-Up Donor",
+            message: "Error in Sign-Up organization",
             error,
         });
     }
@@ -152,7 +150,7 @@ const donor_signUp = async (req, res) => {
 
 
 
-async function donor_login(req, res) {
+async function organization_login(req, res) {
     try {
         const { email, password } = req.body;
 
@@ -165,15 +163,15 @@ async function donor_login(req, res) {
         }
 
         // check existing user
-        const donor = await donor_model.findOne({ email }, {photo: 0});
-        if (!donor) {
+        const organization = await organization_model.findOne({ email }, {photo: 0});
+        if (!organization) {
             return res.status(404).send({
                 success: false,
                 message: "Email is not register, Please Sign-Up",
             })
         }
         
-        const match = await comparePassword(password, donor.password);
+        const match = await comparePassword(password, organization.password);
 
         if (!match) {
             return res.status(200).send({
@@ -183,21 +181,21 @@ async function donor_login(req, res) {
         }
 
         // token
-        // const token = await JWT.sign({ _id: donor._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
-        const token = await JWT.sign({ _id: donor._id }, "abdullah", { expiresIn: "7d" });
+        // const token = await JWT.sign({ _id: organization._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+        const token = await JWT.sign({ _id: organization._id }, "abdullah", { expiresIn: "7d" });
 
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
-            donor,
+            organization,
             token,
         })
 
     } catch (error) {
-        console.log("***** Error in Donor_Login_Controller ********", error);
+        console.log("***** Error in organization_Login_Controller ********", error);
         res.status(500).send({
             success: false,
-            message: "Error in Donor Login",
+            message: "Error in organization Login",
             error
         })
     }
@@ -237,4 +235,4 @@ async function donor_login(req, res) {
 
 
 //export All functions from "Controller"
-module.exports = { testController, donor_signUp, donor_login }
+module.exports = { testController, organization_signUp, organization_login }
