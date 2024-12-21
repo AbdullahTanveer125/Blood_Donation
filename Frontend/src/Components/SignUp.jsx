@@ -72,7 +72,7 @@ function SignUp() {
         console.log(formData)//here
 
         try {
-            const res = await axios.post(`http://localhost:5000/signup`, formData);
+            const res = await axios.post(`http://localhost:5000/donor-signup`, formData);
 
             console.log("*********************************************");
             console.log("**res", res, "**res.data", res.data, "**res.data.success", res.data.success)
@@ -100,29 +100,38 @@ function SignUp() {
 
     return (
         <div>
+            <div className='m-12'>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, libero odio odit dolores expedita saepe magnam consequatur id nostrum labore a ipsum iste quasi at possimus, accusantium culpa mollitia! Placeat!
+            </div>
+
+            <div className="bg-slate-200 hero min-h-screen">
+                ggggggggggg
+                <div className='m-12'>AAAAAAsdjkkkkkkkkkkk
+                    <p>asddddddddd</p>qqqq
+                </div>
 
 
-            <div className="bg-red-700 hero min-h-screen">
-                <div className="bg-slate-400 hero-content flex-col lg:flex-row-reverse">
-                    <div className="w-[90%] md:w-[80%] lg:w-[35%] text-center bg-slate-600 lg:text-left">
+                <div className=" hero-content flex-col lg:flex-row-reverse">
+
+                    <div className="w-[90%] md:w-[80%] lg:w-[35%] text-center lg:text-left">
 
                         <div className='text-center'
                         // className='bg-teal-200' style={{ borderRadius: "25% 25% 0% 71% / 0% 0% 25% 68%", border: "5px solid #1a73e8" }}
                         >
 
                             {/* <h1 className="text-5xl font-bold text-center">Register Now!</h1> */}
-                            <img src="/image2.png" alt="" className='h-96 lg:h-auto mx-auto' />
+                            <img src="/donor register image.png" alt="" className='h-96 lg:h-auto mx-auto' />
                         </div>
 
-                        <p className="py-6">
-                            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                            quasi. In deleniti eaque aut repudiandae et a id nisi.
-                        </p>
                     </div>
 
-                    <div className="w-[90%] md:w-[80%] lg:w-[60%] card bg-base-100 shrink-0 shadow-2xl flex items-center bg-green-200">
+                    <div className="bg-slate-300 w-[90%] md:w-[80%] lg:w-[60%] card shrink-0 shadow-2xl flex items-center"
+                    style={{
+                        boxShadow: "0 0 36px 2px #074799",
+                      }}
+                    >
                         <form onSubmit={handleSubmit} encType="multipart/form-data"
-                            className="bg-zinc-500 card-body grid grid-cols-1 md:grid-cols-2 gap-4">
+                            className=" card-body grid grid-cols-1 md:grid-cols-2 gap-4">
 
 
                             <div className="flex flex-col gap-1">
@@ -370,15 +379,26 @@ function SignUp() {
                                 </div>
                             </div>
 
-                            <div className="mt-6 w-[90%] bg-yellow-700 text-center">
-                                <button type="submit" className="btn w-[50%] font-bold text-3xl btn-primary hover:bg-blue-700 hover:text-white">Register</button>
+                            <div className="mt-6 w-[90%]  text-center">
+                                <button type="submit" className="bg-[#24599e] border-0 text-white btn w-[50%] font-bold text-2xl hover:bg-[#888b8e] hover:text-black"
+                                style={{
+                                    boxShadow: "0 0 16px 2px #074799",
+                                  }}
+                                >Register</button>
                             </div>
                         </form>
 
                     </div>
                 </div>
+                ggggggggggg
             </div>
 
+            <hr />
+            <div>
+                AAAAAAAAAAA
+
+                
+            </div>
 
 
         </div>

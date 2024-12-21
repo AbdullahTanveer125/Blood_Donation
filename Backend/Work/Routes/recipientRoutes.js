@@ -15,7 +15,7 @@ const express_formidable=require("express-formidable")
 const {
     testController,
     recipient_signUp,
-    recipient_login
+    recipient_login,
 }=require("../Controllers/recipientController")
 
 
@@ -34,8 +34,7 @@ recipient_router.get("/recipient-test", testController);
 recipient_router.post("/recipient-signup", express_formidable(), recipient_signUp);
 
 // Login recipient
-recipient_router.post("/recipient-login",  recipient_login);
-
+recipient_router.post("/recipient-login", recipient_login);
 
 
 
