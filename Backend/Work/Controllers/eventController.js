@@ -1,4 +1,4 @@
-const bloodRequest_model = require("../Models-Schema/bloodRequestSchema")
+const event_model = require("../Models-Schema/eventSchema")
 
 const JWT = require("jsonwebtoken");
 
@@ -9,14 +9,14 @@ const JWT = require("jsonwebtoken");
 
 async function testController(req, res) {
     res.send({
-        message: "We are in << Blood Request >> test function !!"
+        message: "We are in << Event >> test function !!"
     })
 }
 
 
-const add_bloodRequest = async (req, res) => {
+const add_event = async (req, res) => {
     try {
-        const { name, email, phone, blood_group, address, city, comment, priority, blood_need_date } = req.body;
+        const { name, organization_name, email, phone, time, location, city, description, date } = req.body;
 
         console.log("***req.body:***", req.body)
         //validation
@@ -27,18 +27,18 @@ const add_bloodRequest = async (req, res) => {
                 return res.status(500).send({ error: "Email is Required" });
             case !phone:
                 return res.status(500).send({ error: "phone is Required" });
-            case !blood_group:
-                return res.status(500).send({ error: "blood_group is Required" });
-            case !address:
-                return res.status(500).send({ error: "Address is Required" });
+            case !organization_name:
+                return res.status(500).send({ error: "organization_name is Required" });
+            case !time:
+                return res.status(500).send({ error: "time is Required" });
+            case !location:
+                return res.status(500).send({ error: "location is Required" });
             case !city:
                 return res.status(500).send({ error: "City is Required" });
-            case !comment:
-                return res.status(500).send({ error: "comment is Required" });
-            case !priority:
-                return res.status(500).send({ error: "priority is Required" });
-            case !blood_need_date:
-                return res.status(500).send({ error: "Last Time Donation Date is Required" });
+            case !description:
+                return res.status(500).send({ error: "description is Required" });
+            case !date:
+                return res.status(500).send({ error: "date is Required" });
         }
 
 
@@ -58,42 +58,43 @@ const add_bloodRequest = async (req, res) => {
         // }
 
         // const real_date = string_Into_Date(last_time_donation_date)
-        const real_date = blood_need_date
+        const real_date = date
         console.log("*****************************************************")
         console.log("real date:", real_date)
         console.log("*****************************************************")
 
 
         // const fullname = firstname + " " + lastname
-
-        const Blood_Request = {
+        // name, organization_name, email, phone, location, city, description, date
+        const EVENT = {
             name,
+            organization_name,
             email,
             phone,
-            blood_group,
-            address,
+            time,
+            location,
             city,
-            comment,
-            priority,
-            blood_need_date,
+            description,
+            date,
         }
 
-        const result = await bloodRequest_model.create(Blood_Request);
+        const result = await event_model.create(EVENT);
         console.log(result);
 
 
         res.status(200).send({
             success: true,
-            message: "Add New Blood Request Successfully!!",
-            Blood_Request,
+            message: "Add New Event Successfully!!",
+            EVENT,
         })
+
 
 
     } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Error in Add Blood Request",
+            message: "Error in Add Event",
             error,
         });
     }
@@ -101,13 +102,13 @@ const add_bloodRequest = async (req, res) => {
 
 
 // get-all-blood-request
-const get_all_blood_request = async (req, res) => {
+const get_all_events = async (req, res) => {
     try {
-        const All_Blood_Requests = await bloodRequest_model.find({}).limit(10).sort({ createdAt: -1 });
+        const All_Events = await event_model.find({}).limit(10).sort({ createdAt: -1 });
         res.status(200).send({
             success: true,
-            message: "ALL Blood Request",
-            All_Blood_Requests,
+            message: "get ALL Events",
+            All_Events,
         });
     } catch (error) {
         console.log(error);
@@ -120,58 +121,58 @@ const get_all_blood_request = async (req, res) => {
 };
 
 
-// get single blood-request
-const get_Single_blood_request = async (req, res) => {
+// // get single event
+const get_single_event = async (req, res) => {
     try {
-        const Blood_Request = await bloodRequest_model.findById(req.params.blood_request_id);
+        const Single_Event = await event_model.findById(req.params.event_id);
         res.status(200).send({
             success: true,
-            message: "get Single blood request",
-            Blood_Request,
+            message: "get Single event",
+            Single_Event,
         });
     } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Error while getting single product",
+            message: "Error while getting single Event",
             error,
         });
     }
 };
 
 
-//delete controller
-const delete_blood_request = async (req, res) => {
+// //delete controller
+const delete_event = async (req, res) => {
     try {
-        await bloodRequest_model.findByIdAndDelete(req.params.blood_request_id);
+        await event_model.findByIdAndDelete(req.params.event_id);
         res.status(200).send({
             success: true,
-            message: "Blood Request is Deleted successfully!",
+            message: "Event is Deleted successfully!",
         });
     } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Error while deleting blood request",
+            message: "Error while deleting Event",
             error,
         });
     }
 };
 
 
-// DELETE all blood requests
-const delete_all_blood_requests= async (req, res) => {
+// DELETE all events
+const delete_all_events= async (req, res) => {
     try {
-        const result = await bloodRequest_model.deleteMany({});
+        const result = await event_model.deleteMany({});
         return res.status(200).json({
             success: true,
-            message: "All blood requests have been successfully deleted.",
+            message: "All Events have been successfully deleted.",
             deletedCount: result.deletedCount,
         });
     } catch (error) {
-        console.error("Error deleting blood requests:", error);
+        console.error("Error deleting all events:", error);
         return res.status(500).json({
-            message: "An error occurred while deleting blood requests.",
+            message: "An error occurred while deleting all events.",
             error: error.message,
         });
     }
@@ -197,5 +198,8 @@ const delete_all_blood_requests= async (req, res) => {
 
 
 
+
+
+
 //export All functions from "Controller"
-module.exports = { testController, add_bloodRequest, get_all_blood_request, get_Single_blood_request, delete_blood_request, delete_all_blood_requests }
+module.exports = { testController, add_event, get_all_events, get_single_event, delete_event, delete_all_events }

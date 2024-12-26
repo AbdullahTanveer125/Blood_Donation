@@ -5,6 +5,8 @@ const donor_router=require("./Work/Routes/donorRoutes.js");
 const recipient_router=require("./Work/Routes/recipientRoutes.js");
 const organization_router=require("./Work/Routes/organizationRoutes.js");
 const bloodRequest_router=require("./Work/Routes/bloodRequestRoutes.js");
+const event_router=require("./Work/Routes/eventRoutes.js");
+const feedback_router=require("./Work/Routes/feedbackRoutes.js");
 
 
 
@@ -32,6 +34,8 @@ app.use(donor_router);
 app.use(recipient_router); 
 app.use(organization_router);
 app.use(bloodRequest_router); 
+app.use(event_router); 
+app.use(feedback_router); 
 
 
 // Routes

@@ -41,13 +41,8 @@ const bloodRequestSchema = new mongoose.Schema({
     priority: {
         type: String,
         required: [true, "Please enter your Priority!"],
-        default: 'Normal', // Default priority is 'Normal'
-        enum: ['Normal', 'Urgent'], // Valid priority levels
-    },
-    status: {
-        type: String,
-        default: 'Pending', // Default status is 'Pending'
-        enum: ['Pending', 'Completed'], // Valid statuses
+        default: 'high', // Default priority is 'Normal'
+        enum: ['high', 'low'], // Valid priority levels
     },
     blood_need_date: {
         type: String,
