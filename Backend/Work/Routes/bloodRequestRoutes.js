@@ -15,7 +15,8 @@ const {
     get_all_blood_request,
     get_Single_blood_request,
     delete_blood_request,
-    delete_all_blood_requests
+    delete_all_blood_requests,
+    search_blood_requests
 }=require("../Controllers/bloodRequestController")
 
 
@@ -45,6 +46,8 @@ bloodRequest_router.delete("/delete-blood-request/:blood_request_id", delete_blo
 // delete All Blood Requests
 bloodRequest_router.delete("/delete-all-blood-requests", delete_all_blood_requests);
 
+// search Blood Requests
+bloodRequest_router.post("/search-blood-requests", search_blood_requests);
 
 
 module.exports=bloodRequest_router;

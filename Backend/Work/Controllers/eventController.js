@@ -121,7 +121,7 @@ const get_all_events = async (req, res) => {
 };
 
 
-// // get single event
+// get single event
 const get_single_event = async (req, res) => {
     try {
         const Single_Event = await event_model.findById(req.params.event_id);

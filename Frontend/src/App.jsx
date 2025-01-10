@@ -16,6 +16,10 @@ import Event from "./Components/Event.jsx";
 import All_Events from "./Components/All_Events.jsx";
 import Add_Feedback from "./Components/Add_Feedback_Form.jsx";
 import All_Feedbacks from "./Components/All_Feedbacks.jsx";
+import Search_Blood_Request from "./Components/Search_Blood_Request.jsx";
+import Chat from "./Pages/Chat/Chat.jsx";
+import Donor_Login from "./Components/Donor_Login.jsx";
+import Recipient_Login from "./Components/Recipient_Login.jsx";
 
 
 
@@ -25,11 +29,17 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Event />} />
-        <Route path="/add_blood_Request" element={<BloodRequest />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/donor-login" element={<Donor_Login />} />
+        <Route path="/recipient-login" element={<Recipient_Login />} />
+        {/* <Route path="/add_blood_Request" element={<BloodRequest />} />
         <Route path="/all_blood_requests" element={<All_Blood_Requests />} />
         <Route path="/all_events" element={<All_Events />} />
         <Route path="/add_feedback" element={<Add_Feedback />} />
-        <Route path="/all_feedbacks" element={<All_Feedbacks />} />
+        <Route path="/all_feedbacks" element={<All_Feedbacks />} /> */}
+
+
+        <Route path="/search_blood_Requests" element={<Search_Blood_Request />} />
       </Routes>
       {/* <Navbar />
       <Hero1 />
@@ -38,14 +48,14 @@ function App() {
       <Card1 />
       <Footer1 />
       <Footer2 /> */}
-    
-    {/* <Home /> */}
 
-        {/* <SignUp /> */}
-        {/* <BloodRequest /> */}
-        {/* <All_Blood_Requests /> */}
+      {/* <Home /> */}
 
-    
+      {/* <SignUp /> */}
+      {/* <BloodRequest /> */}
+      {/* <All_Blood_Requests /> */}
+
+
     </>
   )
 }

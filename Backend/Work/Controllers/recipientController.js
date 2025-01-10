@@ -183,10 +183,13 @@ async function recipient_login(req, res) {
         // const token = await JWT.sign({ _id: recipient._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: recipient._id }, "abdullah", { expiresIn: "7d" });
 
+        
+        const send_recipient = await recipient_model.findOne({email}, {photo:0,password:0});
+
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
-            recipient,
+            send_recipient,
             token,
         })
 
@@ -199,6 +202,31 @@ async function recipient_login(req, res) {
         })
     }
 }
+
+
+
+// get recipient
+const get_recipient = async (req, res) => {
+    try {
+        const recipient = await recipient_model.findById(req.params.recipient_id).select('-photo -password');
+        res.status(200).send({
+            success: true,
+            message: "get recipient",
+            recipient,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error while getting recipient",
+            error,
+        });
+    }
+};
+
+
+
+
 
 
 
@@ -230,4 +258,4 @@ async function recipient_login(req, res) {
 
 
 //export All functions from "Controller"
-module.exports = { testController, recipient_signUp, recipient_login }
+module.exports = { testController, recipient_signUp, recipient_login, get_recipient }

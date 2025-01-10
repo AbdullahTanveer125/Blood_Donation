@@ -179,6 +179,32 @@ const delete_all_blood_requests= async (req, res) => {
 
 
 
+// Search blood requests
+const search_blood_requests= async (req, res) => {
+    const { blood_type, address } = req.body;
+    console.log("blood_type, address:",blood_type, address)
+
+    try {
+        const filter = {};
+        
+        // Dynamically add filters based on request body
+        if (blood_type) {
+            filter.blood_group = blood_type;
+        }
+        if (address) {
+            filter.address = address
+            // filter.address = { $regex: address, $options: 'i' }; // Case-insensitive search
+        }
+
+        console.log("Filter=",filter)
+
+        const results = await bloodRequest_model.find(filter);
+        console.log("result=",results)
+        res.status(200).json(results);
+    } catch (err) {
+        res.status(500).json({ error: 'An error occurred while searching.' });
+    }
+}
 
 
 
@@ -198,4 +224,4 @@ const delete_all_blood_requests= async (req, res) => {
 
 
 //export All functions from "Controller"
-module.exports = { testController, add_bloodRequest, get_all_blood_request, get_Single_blood_request, delete_blood_request, delete_all_blood_requests }
+module.exports = { testController, add_bloodRequest, get_all_blood_request, get_Single_blood_request, delete_blood_request, delete_all_blood_requests, search_blood_requests }

@@ -7,6 +7,8 @@ const organization_router=require("./Work/Routes/organizationRoutes.js");
 const bloodRequest_router=require("./Work/Routes/bloodRequestRoutes.js");
 const event_router=require("./Work/Routes/eventRoutes.js");
 const feedback_router=require("./Work/Routes/feedbackRoutes.js");
+const conversation_router=require("./Work/Routes/conversationRoutes.js");
+const message_router=require("./Work/Routes/messageRoutes.js");
 
 
 
@@ -36,6 +38,8 @@ app.use(organization_router);
 app.use(bloodRequest_router); 
 app.use(event_router); 
 app.use(feedback_router); 
+app.use(conversation_router); 
+app.use(message_router); 
 
 
 // Routes

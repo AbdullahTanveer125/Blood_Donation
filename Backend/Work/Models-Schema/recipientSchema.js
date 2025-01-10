@@ -61,6 +61,14 @@ const recipientSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter your Last Time Donation Date!"],
     },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+    designation: {
+        type: String,
+        default: "recipient",
+    },
     photo: {//is ki detail nichy di hai
         data: Buffer,
         contentType: String,

@@ -15,9 +15,28 @@ import { FaPerson } from "react-icons/fa6";
 
 
 
+import { useAuth } from "../context/auth";
+
 
 
 function Event() {
+
+
+    const [auth] = useAuth(); // Access the auth state
+
+    if (!auth || !auth.user) {
+        console.error("Auth or user is not available");
+        return <div>Please log in to access this page.</div>;
+    }
+
+
+
+    console.log("************AAAAAAAAAAAAAAAAA*********************************")
+    console.log(auth)
+    // get user from auth
+    const { user } = auth;
+    console.log("*************AAAAAAAAAAAA********************************")
+    console.log("user from auth", user._id, user.name, user)
 
     const [name, setName] = useState("");
     const [organization_name, setOrganization_name] = useState("");
@@ -97,7 +116,7 @@ function Event() {
             if (res && res.data.success) {
                 toast.success(res.data && res.data.success);//  line:35
                 // toast.success(res.data.success && res.data);//  line:36
-                
+
                 navigate("/all_events");
             } else {
                 toast.error(res.data);
@@ -120,7 +139,7 @@ function Event() {
 
     return (
         <div>
-
+            {/* {user._id} */}
 
             <div className='bg-orange-600 flex flex-col justify-center items-center'>
 
@@ -237,7 +256,7 @@ function Event() {
 
 
 
-                        
+
 
                         <div className="flex flex-col gap-1">
                             <label htmlFor="location" className="text-sm font-medium text-gray-700">Location</label>
@@ -277,7 +296,7 @@ function Event() {
 
 
 
-                        
+
 
 
 

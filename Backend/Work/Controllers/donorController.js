@@ -186,10 +186,12 @@ async function donor_login(req, res) {
         // const token = await JWT.sign({ _id: donor._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: donor._id }, "abdullah", { expiresIn: "7d" });
 
+        const send_donor = await donor_model.findOne({ email }, {photo: 0, password:0});
+        
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
-            donor,
+            send_donor,
             token,
         })
 
@@ -204,6 +206,24 @@ async function donor_login(req, res) {
 }
 
 
+// get donor
+const get_donor = async (req, res) => {
+    try {
+        const donor = await donor_model.findById(req.params.donor_id).select('-photo -password');
+        res.status(200).send({
+            success: true,
+            message: "get Donor",
+            donor,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error while getting Donor",
+            error,
+        });
+    }
+};
 
 
 
@@ -237,4 +257,4 @@ async function donor_login(req, res) {
 
 
 //export All functions from "Controller"
-module.exports = { testController, donor_signUp, donor_login }
+module.exports = { testController, donor_signUp, donor_login, get_donor }
