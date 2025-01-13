@@ -9,7 +9,7 @@ import Message from "../../Components/Messsage/Message.jsx";
 import { useContext, useEffect, useRef, useState } from "react";
 // import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-// import { io } from "socket.io-client";
+import { io } from "socket.io-client";
 import Conversation from "../../Components/Conversation/Conversation";
 import Online_user from "../../Components/Online_user/Online_user";
 
@@ -23,6 +23,7 @@ import { useAuth } from "../../context/auth.jsx";
 
 function Chat() {
 
+
     const [auth] = useAuth(); // Access the auth state
     // get user from auth
     const {user}= auth;
@@ -32,44 +33,50 @@ function Chat() {
 
 
 
+    console.log("$$$$$$$", user._id,"$$$$$$$$$$")
 
     const [conversations, setConversations] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
-    // const [arrivalMessage, setArrivalMessage] = useState(null);
-    // const [onlineUsers, setOnlineUsers] = useState([]);
-    // const socket = useRef();
+    const [arrivalMessage, setArrivalMessage] = useState(null);
+    const [onlineUsers, setOnlineUsers] = useState([]);
+    const socket = useRef();
 
     // const { user } = useContext(AuthContext);
     
     const scrollRef = useRef();//when new message is send then automatically scroll to last message
 
-    // useEffect(() => {
-    //   socket.current = io("ws://localhost:8900");
-    //   socket.current.on("getMessage", (data) => {
-    //     setArrivalMessage({
-    //       sender: data.senderId,
-    //       text: data.text,
-    //       createdAt: Date.now(),
-    //     });
-    //   });
-    // }, []);
+    useEffect(() => {
+      socket.current = io("ws://localhost:8900");//socket server URL
+      
+      console.log("****** socket.current *******");
+      console.log(socket.current);
+      console.log("****** socket.current *******");
 
-    // useEffect(() => {
-    //   arrivalMessage &&
-    //     currentChat?.members.includes(arrivalMessage.sender) &&
-    //     setMessages((prev) => [...prev, arrivalMessage]);
-    // }, [arrivalMessage, currentChat]);
+      socket.current.on("getMessage", (data) => {
+        setArrivalMessage({
+          sender: data.senderId,
+          text: data.text,
+          createdAt: Date.now(),
+        });
+      });
+    }, []);
 
-    // useEffect(() => {
-    //   socket.current.emit("addUser", user._id);
-    //   socket.current.on("getUsers", (users) => {
-    //     setOnlineUsers(
-    //       user.followings.filter((f) => users.some((u) => u.userId === f))
-    //     );
-    //   });
-    // }, [user]);
+    useEffect(() => {
+      arrivalMessage &&
+        currentChat?.members.includes(arrivalMessage.sender) &&
+        setMessages((prev) => [...prev, arrivalMessage]);
+    }, [arrivalMessage, currentChat]);
+
+    useEffect(() => {
+      socket.current.emit("addUser", user._id);
+      socket.current.on("getUsers", (users) => {
+        setOnlineUsers(
+          user.friends.filter((f) => users.some((u) => u.userId === f))
+        );
+      });
+    }, [user]);
 
     useEffect(() => {
         const getConversations = async () => {
@@ -187,7 +194,7 @@ function Chat() {
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
                         <Online_user
-                            // onlineUsers={onlineUsers}
+                            onlineUsers={onlineUsers}
                             currentId={user._id}
                             setCurrentChat={setCurrentChat}
                         />

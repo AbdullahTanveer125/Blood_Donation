@@ -1,9 +1,9 @@
-const express=require("express")
+const express = require("express")
 
 //router object
-const recipient_router=express.Router();
+const recipient_router = express.Router();
 
-const express_formidable=require("express-formidable")
+const express_formidable = require("express-formidable")
 
 
 
@@ -16,8 +16,11 @@ const {
     testController,
     recipient_signUp,
     recipient_login,
-    get_recipient
-}=require("../Controllers/recipientController")
+    get_recipient,
+    follow_to_user,
+    get_friends,
+    unfollow_to_user
+} = require("../Controllers/recipientController")
 
 
 
@@ -41,10 +44,20 @@ recipient_router.post("/recipient-login", recipient_login);
 recipient_router.get("/get-recipient/:recipient_id", get_recipient);
 
 
+//follow a other user
+recipient_router.put("/:id/follow", follow_to_user);
+
+
+//get friends
+recipient_router.get("/friends/:userId", get_friends);
+
+
+
+//unfollow a user
+recipient_router.put("/:id/unfollow", unfollow_to_user)
 
 
 
 
 
-
-module.exports=recipient_router;
+module.exports = recipient_router;

@@ -4,24 +4,24 @@ const recipientSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Please enter your first name!"],
-        trim:true//extra spaces remove if before and after the string have extra spaces
+        trim: true//extra spaces remove if before and after the string have extra spaces
     },
     username: {
         type: String,
         required: [true, "Please enter your user name!"],
         unique: true,
-        trim:true
+        trim: true
     },
     email: {
         type: String,
         required: [true, "Please enter your email!"],
         unique: true,
-        trim:true
+        trim: true
     },
     password: {
         type: String,
         required: [true, "Please enter your password!"],
-        trim:true
+        trim: true
     },
     gender: {
         type: String,
@@ -30,12 +30,12 @@ const recipientSchema = new mongoose.Schema({
     age: {
         type: Number,
         required: [true, "Please enter your Age!"],
-        trim:true
+        trim: true
     },
     weight: {
         type: Number,
         required: [true, "Please enter your Weight!"],
-        trim:true
+        trim: true
     },
     // blood_group: {
     //     type: String,
@@ -45,17 +45,17 @@ const recipientSchema = new mongoose.Schema({
         type: Number,
         required: [true, "Please enter your phone number!"],
         unique: true,
-        trim:true
+        trim: true
     },
     address: {
         type: String,
         required: [true, "Please enter your Address!"],
-        trim:true
+        trim: true
     },
     city: {
         type: String,
         required: [true, "Please enter your City!"],
-        trim:true
+        trim: true
     },
     last_time_donation_date: {
         type: String,
@@ -68,6 +68,20 @@ const recipientSchema = new mongoose.Schema({
     designation: {
         type: String,
         default: "recipient",
+    },
+    // followers (mtlb jo aap ko follow kry)
+    followers: {
+        type: Array,
+        default: [],
+    },
+    // followings (mtlb jisy hm follow kry)
+    followings: {
+        type: Array,
+        default: [],
+    },
+    friends: {
+        type: Array,
+        default: [],
     },
     photo: {//is ki detail nichy di hai
         data: Buffer,
