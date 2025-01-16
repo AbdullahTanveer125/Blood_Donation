@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from 'react'
 import './App.css'
 import Navbar from './Components/Navbar.jsx'
-import Hero1 from './Components/Hero1.jsx'
-import Hero2 from './Components/Hero2.jsx'
+import Hero1 from './Components/Hero1/Hero1.jsx'
+import Hero2 from './Components/Hero2/Hero2.jsx'
 import Slider1 from './Components/Slider1.jsx'
 import Footer1 from './Components/Footer1.jsx'
 import Footer2 from './Components/Footer2.jsx'
@@ -20,6 +20,10 @@ import Search_Blood_Request from "./Components/Search_Blood_Request.jsx";
 import Chat from "./Pages/Chat/Chat.jsx";
 import Donor_Login from "./Components/Donor_Login.jsx";
 import Recipient_Login from "./Components/Recipient_Login.jsx";
+import Home_Page_2 from "./Pages/Home_Page_2/Home_Page_2.jsx";
+import Home_1 from "./Pages/Home_1/Home_1.jsx";
+import Frequently_Ask_Questions from "./Components/Frequently_Ask_Questions/Frequently_Ask_Questions.jsx";
+import Parent_of_Card from "./Components/Card1/Parent_of _Card.jsx";
 
 
 
@@ -28,8 +32,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Event />} />
-        <Route path="/chat" element={<Chat />} />
+        <Route path="/" element={<Home_1 />} />
+        <Route path="/home2" element={<Home_Page_2 />} />
+        <Route path="/card" element={<Parent_of_Card />} />
+        <Route path="/frequently_ask_questions" element={<Frequently_Ask_Questions />} />
+        {/* <Route path="/chat" element={<Chat />} /> */}
         <Route path="/donor-login" element={<Donor_Login />} />
         <Route path="/recipient-login" element={<Recipient_Login />} />
         {/* <Route path="/add_blood_Request" element={<BloodRequest />} />

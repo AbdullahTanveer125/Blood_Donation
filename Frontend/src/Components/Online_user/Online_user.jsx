@@ -8,8 +8,11 @@ import image from "../../../public/image2.png"
 
 function Online_user({ onlineUsers, currentId, setCurrentChat }) {
 
+    console.log("********************************************")
+    console.log("***************** Online_user Component*************")
+    console.log("********************************************")
     
-        console.log("$$$$$$$", currentId,"$$$$$$$$$$")
+        console.log("$$$$$$$", currentId,"$$$$$$$$$$", onlineUsers, "$$$$$$$$$$", setCurrentChat)
 
 
     const [friends, setFriends] = useState([]);
@@ -20,6 +23,7 @@ function Online_user({ onlineUsers, currentId, setCurrentChat }) {
     useEffect(() => {
         const getFriends = async () => {
             const res = await axios.get("http://localhost:5000/friends/" + currentId);
+            console.log("*** res.data ***", res.data)
             setFriends(res.data);
         };
 
@@ -82,7 +86,7 @@ function Online_user({ onlineUsers, currentId, setCurrentChat }) {
     };
 
     return (
-        <div className="chatOnline">
+        <div className="chatOnline">CCCCCCCCCC
             {onlineFriends.map((o) => (
                 <div className="chatOnlineFriend" onClick={() => handleClick(o)}>
                     <div className="chatOnlineImgContainer">

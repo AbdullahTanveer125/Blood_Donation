@@ -1,4 +1,5 @@
 import React from 'react'
+import image1 from "../../../public/Home1.jpg"
 
 function Hero2() {
     return (
@@ -6,12 +7,13 @@ function Hero2() {
 
 
             <div
-                className="hero min-h-screen"
+                className="hero  bg-orange-500 min-h-[550px]"
                 style={{
-                    backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-                }}>
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content px-16 py-7 bg-black bg-opacity-40 text-neutral-content text-center">
+                    backgroundImage: "url('../../../public/Home1.jpg')",
+                }}
+                >
+                <div className="hero-overlay bg-opacity-10"></div>
+                <div className="hero-content px-16 py-7 bg-black bg-opacity-70 text-neutral-content text-center">
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
                         <p className="mb-5">

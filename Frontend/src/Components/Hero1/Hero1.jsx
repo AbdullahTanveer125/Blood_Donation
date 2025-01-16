@@ -1,14 +1,15 @@
 import React from 'react'
+import image1 from "../../../public/about.jpg"
 
 function Hero() {
     return (
         <div>
 
-            <div className="hero min-h-screen bg-slate-300">
-                <div className="hero-content flex-col lg:flex-row-reverse">
+            <div className="hero min-h-[400px] bg-slate-200">
+                <div className="px-[70px] w-[100%] h-[100vh] hero-content flex-col lg:flex-row-reverse">
                     <img
-                        src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-                        className="max-w-sm rounded-lg shadow-2xl" />
+                        src={image1}
+                        className="mt-[-80px]  rounded-lg shadow-2xl w-[60%] h-[500px]" />
                     <div>
                         <h1 className="text-5xl font-bold">Box Office News!</h1>
                         <p className="py-6">
