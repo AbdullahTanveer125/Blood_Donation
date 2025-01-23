@@ -1,4 +1,4 @@
-const bloodRequest_model = require("../Models-Schema/bloodRequestSchema")
+const bloodRequest_model = require("../Models-Schema/blood_Request_Schema")
 
 const JWT = require("jsonwebtoken");
 
@@ -16,27 +16,27 @@ async function testController(req, res) {
 
 const add_bloodRequest = async (req, res) => {
     try {
-        const { name, email, phone, blood_group, address, city, comment, priority, blood_need_date } = req.body;
+        const { patient_name, blood_group, location, urgency, phone, comment, blood_need_date } = req.body;
+
+        const recipient_id=req.params.recipient_id;
 
         console.log("***req.body:***", req.body)
         //validation
         switch (true) {
-            case !name:
-                return res.status(500).send({ error: "Name is Required" });
-            case !email:
-                return res.status(500).send({ error: "Email is Required" });
-            case !phone:
-                return res.status(500).send({ error: "phone is Required" });
+            case !patient_name:
+                return res.status(500).send({ error: "patient_name is Required" });
             case !blood_group:
                 return res.status(500).send({ error: "blood_group is Required" });
-            case !address:
-                return res.status(500).send({ error: "Address is Required" });
-            case !city:
-                return res.status(500).send({ error: "City is Required" });
+            case !location:
+                return res.status(500).send({ error: "location is Required" });
+            case !blood_group:
+                return res.status(500).send({ error: "blood_group is Required" });
+            case !urgency:
+                return res.status(500).send({ error: "urgency is Required" });
+            case !phone:
+                return res.status(500).send({ error: "phone is Required" });
             case !comment:
                 return res.status(500).send({ error: "comment is Required" });
-            case !priority:
-                return res.status(500).send({ error: "priority is Required" });
             case !blood_need_date:
                 return res.status(500).send({ error: "Last Time Donation Date is Required" });
         }
@@ -65,16 +65,15 @@ const add_bloodRequest = async (req, res) => {
 
 
         // const fullname = firstname + " " + lastname
-
+        
         const Blood_Request = {
-            name,
-            email,
-            phone,
+            recipient_id,
+            patient_name,
             blood_group,
-            address,
-            city,
+            location,
+            urgency,
+            phone,
             comment,
-            priority,
             blood_need_date,
         }
 
@@ -85,7 +84,7 @@ const add_bloodRequest = async (req, res) => {
         res.status(200).send({
             success: true,
             message: "Add New Blood Request Successfully!!",
-            Blood_Request,
+            result,
         })
 
 
@@ -100,7 +99,7 @@ const add_bloodRequest = async (req, res) => {
 };
 
 
-// get-all-blood-request
+// // get-all-blood-request
 const get_all_blood_request = async (req, res) => {
     try {
         const All_Blood_Requests = await bloodRequest_model.find({}).limit(10).sort({ createdAt: -1 });
@@ -120,13 +119,13 @@ const get_all_blood_request = async (req, res) => {
 };
 
 
-// get single blood-request
-const get_Single_blood_request = async (req, res) => {
+// get blood Request of specific / particular recipient
+const get_specific_blood_request = async (req, res) => {
     try {
-        const Blood_Request = await bloodRequest_model.findById(req.params.blood_request_id);
+        const Blood_Request = await bloodRequest_model.find({ recipient_id: req.params.recipient_id });
         res.status(200).send({
             success: true,
-            message: "get Single blood request",
+            message: "get specific blood request",
             Blood_Request,
         });
     } catch (error) {
@@ -140,7 +139,7 @@ const get_Single_blood_request = async (req, res) => {
 };
 
 
-//delete controller
+// //delete controller
 const delete_blood_request = async (req, res) => {
     try {
         await bloodRequest_model.findByIdAndDelete(req.params.blood_request_id);
@@ -159,7 +158,7 @@ const delete_blood_request = async (req, res) => {
 };
 
 
-// DELETE all blood requests
+// // DELETE all blood requests
 const delete_all_blood_requests= async (req, res) => {
     try {
         const result = await bloodRequest_model.deleteMany({});
@@ -179,10 +178,10 @@ const delete_all_blood_requests= async (req, res) => {
 
 
 
-// Search blood requests
+// // Search blood requests
 const search_blood_requests= async (req, res) => {
-    const { blood_type, address } = req.body;
-    console.log("blood_type, address:",blood_type, address)
+    const { blood_type, location } = req.body;
+    console.log("blood_type, location:",blood_type, location)
 
     try {
         const filter = {};
@@ -191,15 +190,21 @@ const search_blood_requests= async (req, res) => {
         if (blood_type) {
             filter.blood_group = blood_type;
         }
-        if (address) {
-            filter.address = address
-            // filter.address = { $regex: address, $options: 'i' }; // Case-insensitive search
+        if (location) {
+            filter.location = location
+            // filter.location = { $regex: location, $options: 'i' }; // Case-insensitive search
         }
 
         console.log("Filter=",filter)
 
         const results = await bloodRequest_model.find(filter);
         console.log("result=",results)
+
+        // Check if any results are found
+        if (results.length === 0) {
+            return res.status(404).json({ message: "No blood requests found matching the criteria." });
+        }
+
         res.status(200).json(results);
     } catch (err) {
         res.status(500).json({ error: 'An error occurred while searching.' });
@@ -223,5 +228,6 @@ const search_blood_requests= async (req, res) => {
 
 
 
-//export All functions from "Controller"
-module.exports = { testController, add_bloodRequest, get_all_blood_request, get_Single_blood_request, delete_blood_request, delete_all_blood_requests, search_blood_requests }
+// //export All functions from "Controller"
+module.exports = { testController, add_bloodRequest, get_all_blood_request, get_specific_blood_request, delete_blood_request, delete_all_blood_requests, search_blood_requests 
+}

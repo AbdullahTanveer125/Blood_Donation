@@ -17,9 +17,9 @@ const {
     recipient_signUp,
     recipient_login,
     get_recipient,
-    follow_to_user,
-    get_friends,
-    unfollow_to_user
+    // follow_to_user,
+    // get_friends,
+    // unfollow_to_user
 } = require("../Controllers/recipientController")
 
 
@@ -31,30 +31,30 @@ const {
 
 
 
-// test || GET 
+// // test || GET 
 recipient_router.get("/recipient-test", testController);
 
-// recipient sign-up
-recipient_router.post("/recipient-signup", express_formidable(), recipient_signUp);
+// // recipient sign-up
+recipient_router.post("/signup", express_formidable(), recipient_signUp);
 
-// Login recipient
-recipient_router.post("/recipient-login", recipient_login);
+// // Login recipient
+recipient_router.post("/login", recipient_login);
 
-// get recipient
-recipient_router.get("/get-recipient/:recipient_id", get_recipient);
-
-
-//follow a other user
-recipient_router.put("/:id/follow", follow_to_user);
+// // get recipient
+recipient_router.get("/get-recipient/:user_id", get_recipient);
 
 
-//get friends
-recipient_router.get("/friends/:userId", get_friends);
+// //follow a other user
+// recipient_router.put("/:id/follow", follow_to_user);
+
+
+// //get friends
+// recipient_router.get("/friends/:userId", get_friends);
 
 
 
-//unfollow a user
-recipient_router.put("/:id/unfollow", unfollow_to_user)
+// //unfollow a user
+// recipient_router.put("/:id/unfollow", unfollow_to_user)
 
 
 

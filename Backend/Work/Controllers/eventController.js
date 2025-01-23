@@ -1,4 +1,4 @@
-const event_model = require("../Models-Schema/eventSchema")
+const event_model = require("../Models-Schema/event_Schema")
 
 const JWT = require("jsonwebtoken");
 
@@ -14,17 +14,20 @@ async function testController(req, res) {
 }
 
 
+//Add new event
 const add_event = async (req, res) => {
     try {
-        const { name, organization_name, email, phone, time, location, city, description, date } = req.body;
+        
+        const { name, organization_name, phone, time, location, description, date } = req.body;
+
+        const organization_id=req.params.organization_id;
 
         console.log("***req.body:***", req.body)
+
         //validation
         switch (true) {
             case !name:
                 return res.status(500).send({ error: "Name is Required" });
-            case !email:
-                return res.status(500).send({ error: "Email is Required" });
             case !phone:
                 return res.status(500).send({ error: "phone is Required" });
             case !organization_name:
@@ -33,9 +36,7 @@ const add_event = async (req, res) => {
                 return res.status(500).send({ error: "time is Required" });
             case !location:
                 return res.status(500).send({ error: "location is Required" });
-            case !city:
-                return res.status(500).send({ error: "City is Required" });
-            case !description:
+           case !description:
                 return res.status(500).send({ error: "description is Required" });
             case !date:
                 return res.status(500).send({ error: "date is Required" });
@@ -63,17 +64,14 @@ const add_event = async (req, res) => {
         console.log("real date:", real_date)
         console.log("*****************************************************")
 
-
-        // const fullname = firstname + " " + lastname
-        // name, organization_name, email, phone, location, city, description, date
+        
         const EVENT = {
+            organization_id,
             name,
             organization_name,
-            email,
             phone,
             time,
             location,
-            city,
             description,
             date,
         }
@@ -144,10 +142,12 @@ const get_single_event = async (req, res) => {
 // //delete controller
 const delete_event = async (req, res) => {
     try {
-        await event_model.findByIdAndDelete(req.params.event_id);
+         const result = await event_model.deleteOne({ _id: req.params.event_id });
+
         res.status(200).send({
             success: true,
             message: "Event is Deleted successfully!",
+            deletedCount: result.deletedCount,
         });
     } catch (error) {
         console.log(error);

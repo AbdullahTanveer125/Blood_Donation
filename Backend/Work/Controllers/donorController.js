@@ -1,4 +1,5 @@
-const donor_model = require("../Models-Schema/donorSchema")
+const donor_model = require("../Models-Schema/donor_schema")
+const user_model = require("../Models-Schema/user_schema")
 const { hashPassword, comparePassword } = require("../Middleware/hash_password");
 
 
@@ -19,13 +20,20 @@ async function testController(req, res) {
 
 
 
-// ********************************************************************************
-//jb hm image ko receive kr rahy ho to phir data "req.fields" mey receive hota 
-// hai or image ko hm "req.files" sy get kry gy
+// // ********************************************************************************
+// //jb hm image ko receive kr rahy ho to phir data "req.fields" mey receive hota 
+// // hai or image ko hm "req.files" sy get kry gy
 const donor_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, gender, age, weight, blood_group, phone, address, city, last_time_donation_date } = req.fields;
-        const { photo } = req.files;
+        const { name, username, email, password, phone, gender, age, weight, blood_group, address, city, last_time_donation_date, nearest_hospital } = req.fields;
+        const { profile_photo } = req.files;
+
+
+        console.log("Incoming request data:", req.fields);
+        console.log("user name>>>>>>>>", username);
+
+
+
         //validation
         switch (true) {
             case !name:
@@ -36,6 +44,8 @@ const donor_signUp = async (req, res) => {
                 return res.status(500).send({ error: "Email is Required" });
             case !password:
                 return res.status(500).send({ error: "Password is Required" });
+            case !phone:
+                return res.status(500).send({ error: "phone is Required" });
             case !gender:
                 return res.status(500).send({ error: "Gender is Required" });
             case !age:
@@ -44,20 +54,25 @@ const donor_signUp = async (req, res) => {
                 return res.status(500).send({ error: "weight is Required" });
             case !blood_group:
                 return res.status(500).send({ error: "Blood Group is Required" });
-            case !phone:
-                return res.status(500).send({ error: "phone is Required" });
             case !address:
                 return res.status(500).send({ error: "Address is Required" });
             case !city:
                 return res.status(500).send({ error: "City is Required" });
             case !last_time_donation_date:
                 return res.status(500).send({ error: "Last Time Donation Date is Required" });
-            case photo && photo.size > 1000000:
-                return res.status(500).send({ error: "photo is Required and should be less then 1MB" });
+            case !nearest_hospital:
+                return res.status(500).send({ error: "nearest_hospital is Required" });
+            case profile_photo && profile_photo.size > 1000000:
+                return res.status(500).send({ error: "profile_photo is Required and should be less then 1MB" });
         }
 
+        if (!username) {
+            return res.status(400).json({ success: false, error: "Username is required and cannot be null." });
+        }
+
+
         // check existing Donor
-        const existingDonor = await donor_model.findOne({ email })
+        const existingDonor = await user_model.findOne({ email })
 
         if (existingDonor) {
             res.status(200).send({
@@ -66,7 +81,7 @@ const donor_signUp = async (req, res) => {
             })
         }
 
-        const existingUsername = await donor_model.findOne({ username })
+        const existingUsername = await user_model.findOne({ username })
         if (existingUsername) {
             res.status(200).send({
                 success: false,
@@ -91,7 +106,7 @@ const donor_signUp = async (req, res) => {
         //     const [month, day, year] = dateString.split('/');
         //     return new Date(`${year}-${month}-${day}`);
         // }
-        
+
         // const real_date = string_Into_Date(last_time_donation_date)
         const real_date = last_time_donation_date
         console.log("*****************************************************")
@@ -101,43 +116,74 @@ const donor_signUp = async (req, res) => {
 
         // const fullname = firstname + " " + lastname
 
-        SignUp_donor = {
+        data_for_user_collection = {
             name,
-            // fullname,
-            password: hashedPassword,
             username,
             email,
+            password: hashedPassword,
+            phone,
+        }
+
+        console.log("*****************************************************")
+        console.log("usernameMMMMMMMMMM:", username)
+        console.log("*****************************************************")
+
+        // await user_model.deleteMany({ username: null });
+
+
+        const USER = new user_model(data_for_user_collection);
+
+
+        // const USER = new user_Model({ ...req.fields, slug: slugify(firstname) });
+
+        if (profile_photo) {
+            USER.profile_photo.data = fs.readFileSync(profile_photo.path);
+            USER.profile_photo.contentType = profile_photo.type;
+        }
+        await USER.save();
+        // const USER = await productModel.create({ ...req.fields, slug: slugify(name) });
+        // if (profile_photo) {
+        //     USER.profile_photo.data = fs.readFileSync(profile_photo.path);
+        //     USER.profile_photo.contentType = profile_photo.type;
+        // }
+        // await USER.save();
+
+
+        console.log("*****************************************************")
+        console.log("usernameLLLLLLLLLLLLL:", username)
+        console.log("*****************************************************")
+
+        console.log("*******************USER************************************")
+        // console.log(USER)
+        console.log("USER>>>>>>MMM>>>>:", USER.username)
+        console.log("**********************SSSS*USER********************************")
+        
+        const userId = USER._id
+        console.log("userId>>>>AAAAAA>>>>:", userId)
+
+        data_for_donor_collection = {
+            userId,
             gender,
             age,
             weight,
             blood_group,
-            phone,
             address,
-            city,
-            last_time_donation_date: real_date,
+            city, last_time_donation_date,
+            nearest_hospital,
         }
+        
+        console.log("data_for_donor_collection:", data_for_donor_collection)
 
+        const donor_response = await donor_model.create(data_for_donor_collection);
+        
+        
+        console.log("DDDDDDDDDDDD:", userId)
 
-        const DONOR = new donor_model(SignUp_donor);
-
-
-        // const DONOR = new donorModel({ ...req.fields, slug: slugify(firstname) });
-
-        if (photo) {
-            DONOR.photo.data = fs.readFileSync(photo.path);
-            DONOR.photo.contentType = photo.type;
-        }
-        await DONOR.save();
-        // const DONOR = await productModel.create({ ...req.fields, slug: slugify(name) });
-        // if (photo) {
-        //     DONOR.photo.data = fs.readFileSync(photo.path);
-        //     DONOR.photo.contentType = photo.type;
-        // }
-        // await DONOR.save();
         res.status(201).send({
             success: true,
             message: "Donor Sign-Up Successfully!",
-            DONOR,
+            USER,
+            donor_response
         });
     } catch (error) {
         console.log(error);
@@ -165,14 +211,14 @@ async function donor_login(req, res) {
         }
 
         // check existing user
-        const donor = await donor_model.findOne({ email }, {photo: 0});
+        const donor = await user_model.findOne({ email }, {photo: 0});
         if (!donor) {
             return res.status(404).send({
                 success: false,
                 message: "Email is not register, Please Sign-Up",
             })
         }
-        
+
         const match = await comparePassword(password, donor.password);
 
         if (!match) {
@@ -186,8 +232,8 @@ async function donor_login(req, res) {
         // const token = await JWT.sign({ _id: donor._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: donor._id }, "abdullah", { expiresIn: "7d" });
 
-        const send_donor = await donor_model.findOne({ email }, {photo: 0, password:0});
-        
+        const send_donor = await user_model.findOne({ email }, {profile_photo: 0, password:0});
+
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
@@ -206,14 +252,22 @@ async function donor_login(req, res) {
 }
 
 
-// get donor
+// // get donor
 const get_donor = async (req, res) => {
     try {
-        const donor = await donor_model.findById(req.params.donor_id).select('-photo -password');
+        const user = await user_model.findById(req.params.user_id).select('-profile_photo -password');
+        
+        const donor = await donor_model.findOne({userId:user._id});
+
+        // const DONOR = { user + donor };
+        // const DONOR = Object.assign({}, user, donor);
+
         res.status(200).send({
             success: true,
             message: "get Donor",
+            user,
             donor,
+            // DONOR,
         });
     } catch (error) {
         console.log(error);
@@ -256,5 +310,7 @@ const get_donor = async (req, res) => {
 
 
 
-//export All functions from "Controller"
-module.exports = { testController, donor_signUp, donor_login, get_donor }
+// //export All functions from "Controller"
+module.exports = {
+    testController, donor_signUp, donor_login, get_donor
+}

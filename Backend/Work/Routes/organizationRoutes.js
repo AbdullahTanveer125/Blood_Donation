@@ -15,7 +15,8 @@ const express_formidable=require("express-formidable")
 const {
     testController,
     organization_signUp,
-    organization_login
+    organization_login,
+    // get_organization
 }=require("../Controllers/organizationController")
 
 
@@ -31,11 +32,13 @@ const {
 organization_router.get("/organization-test", testController);
 
 // organization sign-up
-organization_router.post("/organization-signup", express_formidable(), organization_signUp);
+organization_router.post("/signup", express_formidable(), organization_signUp);
 
 // Login organization
-organization_router.post("/organization-login",  organization_login);
+organization_router.post("/login",  organization_login);
 
+// get organization
+// organization_router.post("/get-single",  get_organization);
 
 
 

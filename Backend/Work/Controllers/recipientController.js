@@ -1,4 +1,5 @@
-const recipient_model = require("../Models-Schema/recipientSchema")
+const recipient_model = require("../Models-Schema/recipient_schema")
+const user_model = require("../Models-Schema/user_schema")
 const { hashPassword, comparePassword } = require("../Middleware/hash_password");
 
 
@@ -19,13 +20,13 @@ async function testController(req, res) {
 
 
 
-// ********************************************************************************
-//jb hm image ko receive kr rahy ho to phir data "req.fields" mey receive hota 
-// hai or image ko hm "req.files" sy get kry gy
+// // ********************************************************************************
+// //jb hm image ko receive kr rahy ho to phir data "req.fields" mey receive hota 
+// // hai or image ko hm "req.files" sy get kry gy
 const recipient_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, gender, age, weight, phone, address, city, last_time_donation_date } = req.fields;
-        const { photo } = req.files;
+        const { name, username, email, password, phone, gender, age } = req.fields;
+        const { profile_photo } = req.files;
         //validation
         switch (true) {
             case !name:
@@ -36,26 +37,19 @@ const recipient_signUp = async (req, res) => {
                 return res.status(500).send({ error: "Email is Required" });
             case !password:
                 return res.status(500).send({ error: "Password is Required" });
+            case !phone:
+                return res.status(500).send({ error: "phone is Required" });
+
             case !gender:
                 return res.status(500).send({ error: "Gender is Required" });
             case !age:
                 return res.status(500).send({ error: "Age is Required" });
-            case !weight:
-                return res.status(500).send({ error: "weight is Required" });
-            case !phone:
-                return res.status(500).send({ error: "phone is Required" });
-            case !address:
-                return res.status(500).send({ error: "Address is Required" });
-            case !city:
-                return res.status(500).send({ error: "City is Required" });
-            case !last_time_donation_date:
-                return res.status(500).send({ error: "Last Time Donation Date is Required" });
-            case photo && photo.size > 1000000:
-                return res.status(500).send({ error: "photo is Required and should be less then 1MB" });
+            case profile_photo && profile_photo.size > 1000000:
+                return res.status(500).send({ error: "profile_photo is Required and should be less then 1MB" });
         }
 
         // check existing recipient
-        const existingrecipient = await recipient_model.findOne({ email })
+        const existingrecipient = await user_model.findOne({ email })
 
         if (existingrecipient) {
             res.status(200).send({
@@ -64,7 +58,7 @@ const recipient_signUp = async (req, res) => {
             })
         }
 
-        const existingUsername = await recipient_model.findOne({ username })
+        const existingUsername = await user_model.findOne({ username })
         if (existingUsername) {
             res.status(200).send({
                 success: false,
@@ -90,52 +84,56 @@ const recipient_signUp = async (req, res) => {
         //     return new Date(`${year}-${month}-${day}`);
         // }
 
-        // const real_date = string_Into_Date(last_time_donation_date)
-        const real_date = last_time_donation_date
-        console.log("*****************************************************")
-        console.log("real date:", real_date)
-        console.log("*****************************************************")
-
-
-        // const fullname = firstname + " " + lastname
-
-        SignUp_recipient = {
+        data_for_user_collection = {
             name,
-            // fullname,
-            password: hashedPassword,
             username,
             email,
+            password: hashedPassword,
+            phone,
+        }
+
+
+        const USER = new user_model(data_for_user_collection);
+
+
+        // const USER = new userModel({ ...req.fields, slug: slugify(firstname) });
+
+        if (profile_photo) {
+            USER.profile_photo.data = fs.readFileSync(profile_photo.path);
+            USER.profile_photo.contentType = profile_photo.type;
+        }
+        await USER.save();
+        // const USER = await productModel.create({ ...req.fields, slug: slugify(name) });
+        // if (profile_photo) {
+        //     USER.profile_photo.data = fs.readFileSync(profile_photo.path);
+        //     USER.profile_photo.contentType = profile_photo.type;
+        // }
+        // await USER.save();
+
+
+        const userId = USER._id
+        console.log("userId>>>>AAAAAA>>>>:", userId)
+
+        data_for_recipient_collection = {
+            userId,
             gender,
             age,
-            weight,
-            phone,
-            address,
-            city,
-            last_time_donation_date: real_date,
         }
 
+        console.log("data_for_recipient_collection:", data_for_recipient_collection)
 
-        const RECIPIENT = new recipient_model(SignUp_recipient);
+        const recipient_response = await recipient_model.create(data_for_recipient_collection);
 
 
-        // const RECIPIENT = new recipientModel({ ...req.fields, slug: slugify(firstname) });
+        console.log("DDDDDDDDDDDD:", userId)
 
-        if (photo) {
-            RECIPIENT.photo.data = fs.readFileSync(photo.path);
-            RECIPIENT.photo.contentType = photo.type;
-        }
-        await RECIPIENT.save();
-        // const RECIPIENT = await productModel.create({ ...req.fields, slug: slugify(name) });
-        // if (photo) {
-        //     RECIPIENT.photo.data = fs.readFileSync(photo.path);
-        //     RECIPIENT.photo.contentType = photo.type;
-        // }
-        // await RECIPIENT.save();
         res.status(201).send({
             success: true,
-            message: "Recipient Sign-Up Successfully!",
-            RECIPIENT,
+            message: "recipient Sign-Up Successfully!",
+            USER,
+            recipient_response
         });
+
     } catch (error) {
         console.log(error);
         res.status(500).send({
@@ -150,10 +148,7 @@ const recipient_signUp = async (req, res) => {
 
 
 async function recipient_login(req, res) {
-
-    console.log("AAAAAAAAAa Recipient login endpoint hit");
     try {
-        console.log("BBBBBBBBBBb Recipient login endpoint hit");
         const { email, password } = req.body;
 
         // validation
@@ -165,7 +160,7 @@ async function recipient_login(req, res) {
         }
 
         // check existing user
-        const recipient = await recipient_model.findOne({ email }, { photo: 0 });
+        const recipient = await user_model.findOne({ email }, { photo: 0 });
         if (!recipient) {
             return res.status(404).send({
                 success: false,
@@ -186,8 +181,7 @@ async function recipient_login(req, res) {
         // const token = await JWT.sign({ _id: recipient._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: recipient._id }, "abdullah", { expiresIn: "7d" });
 
-
-        const send_recipient = await recipient_model.findOne({ email }, { photo: 0, password: 0 });
+        const send_recipient = await user_model.findOne({ email }, { profile_photo: 0, password: 0 });
 
         res.status(200).send({
             success: true,
@@ -204,18 +198,27 @@ async function recipient_login(req, res) {
             error
         })
     }
+
 }
 
 
 
-// get recipient
+// // get recipient
 const get_recipient = async (req, res) => {
     try {
-        const recipient = await recipient_model.findById(req.params.recipient_id).select('-photo -password');
+        const user = await user_model.findById(req.params.user_id).select('-profile_photo -password');
+
+        const recipient = await recipient_model.findOne({ userId: user._id });
+
+        // const recipient = { user + recipient };
+        // const recipient = Object.assign({}, user, recipient);
+
         res.status(200).send({
             success: true,
             message: "get recipient",
+            user,
             recipient,
+            // recipient,
         });
     } catch (error) {
         console.log(error);
@@ -229,114 +232,117 @@ const get_recipient = async (req, res) => {
 
 
 
-//follow a user
-// mery khayal sy "req.params.id" mey friend ki id dy gy
-// or "req.body.userId" mey currentUser (login user) ki id dy gy
+// //follow a user
+// // mery khayal sy "req.params.id" mey friend ki id dy gy
+// // or "req.body.userId" mey currentUser (login user) ki id dy gy
 
-// followers (mtlb jo aap ko follow kry)
-// followings (mtlb jisy hm follow kry)
-const follow_to_user = async (req, res) => {
-    if (req.body.userId !== req.params.id) {
-        try {
-            const user = await recipient_model.findById(req.params.id);
-            const currentUser = await recipient_model.findById(req.body.userId);
-            if (!user.followers.includes(req.body.userId)) {
-                await user.updateOne({ $push: { followers: req.body.userId } });
-                await currentUser.updateOne({ $push: { followings: req.params.id } });
-                await user.updateOne({ $push: { friends: req.body.userId } });
-                await currentUser.updateOne({ $push: { friends: req.params.id } });
-                res.status(200).json("user has been followed");
-            } else {
-                res.status(403).json("you allready follow this user");
-            }
-        } catch (err) {
-            res.status(500).json(err);
-        }
-    } else {
-        res.status(403).json("you cant follow yourself");
-    }
+// // followers (mtlb jo aap ko follow kry)
+// // followings (mtlb jisy hm follow kry)
+// const follow_to_user = async (req, res) => {
+//     if (req.body.userId !== req.params.id) {
+//         try {
+//             const user = await recipient_model.findById(req.params.id);
+//             const currentUser = await recipient_model.findById(req.body.userId);
+//             if (!user.followers.includes(req.body.userId)) {
+//                 await user.updateOne({ $push: { followers: req.body.userId } });
+//                 await currentUser.updateOne({ $push: { followings: req.params.id } });
+//                 await user.updateOne({ $push: { friends: req.body.userId } });
+//                 await currentUser.updateOne({ $push: { friends: req.params.id } });
+//                 res.status(200).json("user has been followed");
+//             } else {
+//                 res.status(403).json("you allready follow this user");
+//             }
+//         } catch (err) {
+//             res.status(500).json(err);
+//         }
+//     } else {
+//         res.status(403).json("you cant follow yourself");
+//     }
+// }
+
+
+// const get_friends = async (req, res) => {
+//     try {
+//         const user = await recipient_model.findById(req.params.userId);
+
+
+//         // Log the user and friends field to debug
+//         console.log("User:", user);
+//         console.log("Friends:", user?.friends);
+
+//         if (!user || !user.friends || !Array.isArray(user.friends)) {
+//             return res.status(404).json({ message: "User or friends not found." });
+//         }
+
+
+//         const friends = await Promise.all(
+//             user.friends.map((friendId) => {
+//                 return recipient_model.findById(friendId);
+//             })
+//         );
+//         let friendList = [];
+//         friends.map((friend) => {
+//             const { _id, username, profilePicture } = friend;
+//             friendList.push({ _id, username, profilePicture });
+//         });
+//         res.status(200).json(friendList)
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// }
+
+
+
+// //unfollow a user
+// const unfollow_to_user = async (req, res) => {
+//     if (req.body.userId !== req.params.id) {
+//         try {
+//             const user = await recipient_model.findById(req.params.id);
+//             const currentUser = await recipient_model.findById(req.body.userId);
+//             if (user.followers.includes(req.body.userId)) {
+//                 await user.updateOne({ $pull: { followers: req.body.userId } });
+//                 await currentUser.updateOne({ $pull: { followings: req.params.id } });
+//                 res.status(200).json("user has been unfollowed");
+//             } else {
+//                 res.status(403).json("you dont follow this user");
+//             }
+//         } catch (err) {
+//             res.status(500).json(err);
+//         }
+//     } else {
+//         res.status(403).json("you cant unfollow yourself");
+//     }
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //export All functions from "Controller"
+module.exports = {
+    testController, recipient_signUp, recipient_login, get_recipient,
+    //    follow_to_user, get_friends, unfollow_to_user
 }
-
-
-const get_friends = async (req, res) => {
-    try {
-        const user = await recipient_model.findById(req.params.userId);
-
-
-        // Log the user and friends field to debug
-        console.log("User:", user);
-        console.log("Friends:", user?.friends);
-
-        if (!user || !user.friends || !Array.isArray(user.friends)) {
-            return res.status(404).json({ message: "User or friends not found." });
-        }
-
-
-        const friends = await Promise.all(
-            user.friends.map((friendId) => {
-                return recipient_model.findById(friendId);
-            })
-        );
-        let friendList = [];
-        friends.map((friend) => {
-            const { _id, username, profilePicture } = friend;
-            friendList.push({ _id, username, profilePicture });
-        });
-        res.status(200).json(friendList)
-    } catch (err) {
-        res.status(500).json(err);
-    }
-}
-
-
-
-//unfollow a user
-const unfollow_to_user = async (req, res) => {
-    if (req.body.userId !== req.params.id) {
-        try {
-            const user = await recipient_model.findById(req.params.id);
-            const currentUser = await recipient_model.findById(req.body.userId);
-            if (user.followers.includes(req.body.userId)) {
-                await user.updateOne({ $pull: { followers: req.body.userId } });
-                await currentUser.updateOne({ $pull: { followings: req.params.id } });
-                res.status(200).json("user has been unfollowed");
-            } else {
-                res.status(403).json("you dont follow this user");
-            }
-        } catch (err) {
-            res.status(500).json(err);
-        }
-    } else {
-        res.status(403).json("you cant unfollow yourself");
-    }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//export All functions from "Controller"
-module.exports = { testController, recipient_signUp, recipient_login, get_recipient, follow_to_user, get_friends, unfollow_to_user }

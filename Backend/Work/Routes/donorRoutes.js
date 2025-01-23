@@ -32,13 +32,13 @@ const {
 donor_router.get("/donor-test", testController);
 
 // donor sign-up
-donor_router.post("/donor-signup", express_formidable(), donor_signUp);
+donor_router.post("/signup", express_formidable(), donor_signUp);
 
-// Login donor
-donor_router.post("/donor-login",  donor_login);
+// // Login donor
+donor_router.post("/login",  donor_login);
 
-// get donor
-donor_router.get("/get-donor/:donor_id",  get_donor);
+// // get donor
+donor_router.get("/get-donor/:user_id",  get_donor);
 
 
 

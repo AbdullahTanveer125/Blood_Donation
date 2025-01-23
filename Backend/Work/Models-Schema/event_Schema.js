@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
-const eventSchema = new mongoose.Schema({
+const event_Schema = new mongoose.Schema({
+    organization_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Organization",
+        required: true
+    },
     name: {
         type: String,
         required: [true, "Please enter Event's Name!"],
@@ -24,12 +29,7 @@ const eventSchema = new mongoose.Schema({
         required: [true, "Please enter Event's location!"],
         trim: true,
     },
-    city: {
-        type: String,
-        required: [true, "Please enter your Event's city!"],
-        trim: true,
-    },
-    phone: {
+    phone: {// event ko manage krny waly ka number
         type: Number,
         required: [true, "Please enter your phone Number!"],
         trim: true,
@@ -38,16 +38,6 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter description!"],
         trim: true,
-    },
-    email: {
-        type: String,
-        required: [true, "Please enter your email!"],
-        unique: true,
-        trim:true
-    },
-    photo: {
-        data: Buffer,
-        contentType: String,
     }
 },
     { timestamps: true }
@@ -61,7 +51,7 @@ const eventSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("event", eventSchema);
+module.exports = mongoose.model("event", event_Schema);
 
 
 

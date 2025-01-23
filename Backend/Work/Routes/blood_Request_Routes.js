@@ -13,11 +13,11 @@ const {
     testController,
     add_bloodRequest,
     get_all_blood_request,
-    get_Single_blood_request,
+    get_specific_blood_request,
     delete_blood_request,
     delete_all_blood_requests,
     search_blood_requests
-}=require("../Controllers/bloodRequestController")
+}=require("../Controllers/blood_Request_Controller")
 
 
 
@@ -29,24 +29,24 @@ const {
 
 
 // test || GET 
-bloodRequest_router.get("/bloodRequest-test", testController);
+bloodRequest_router.get("/test", testController);
 
 // Add bloodRequest
-bloodRequest_router.post("/add-bloodRequest",  add_bloodRequest);
+bloodRequest_router.post("/add-new/:recipient_id",  add_bloodRequest);
 
-// get all_blood_request
+// // get all_blood_request
 bloodRequest_router.get("/get-all-blood-request", get_all_blood_request);
 
-// get single blood Request
-bloodRequest_router.get("/get-blood-request/:blood_request_id", get_Single_blood_request);
+// get blood Request of specific / particular recipient
+bloodRequest_router.get("/get-specific-blood-request/:recipient_id", get_specific_blood_request);
 
-// delete Blood Request
+// // delete Blood Request
 bloodRequest_router.delete("/delete-blood-request/:blood_request_id", delete_blood_request);
 
-// delete All Blood Requests
+// // delete All Blood Requests
 bloodRequest_router.delete("/delete-all-blood-requests", delete_all_blood_requests);
 
-// search Blood Requests
+// // search Blood Requests
 bloodRequest_router.post("/search-blood-requests", search_blood_requests);
 
 

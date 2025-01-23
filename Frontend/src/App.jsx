@@ -24,6 +24,7 @@ import Home_Page_2 from "./Pages/Home_Page_2/Home_Page_2.jsx";
 import Home_1 from "./Pages/Home_1/Home_1.jsx";
 import Frequently_Ask_Questions from "./Components/Frequently_Ask_Questions/Frequently_Ask_Questions.jsx";
 import Parent_of_Card from "./Components/Card1/Parent_of _Card.jsx";
+import User_Navbar from "./Components/User_Navbar/User_Navbar.jsx";
 
 
 
@@ -33,6 +34,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home_1 />} />
+        <Route path="/user_navbar" element={<User_Navbar />} />
         <Route path="/home2" element={<Home_Page_2 />} />
         <Route path="/card" element={<Parent_of_Card />} />
         <Route path="/frequently_ask_questions" element={<Frequently_Ask_Questions />} />
