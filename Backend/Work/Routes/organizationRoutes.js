@@ -16,7 +16,8 @@ const {
     testController,
     organization_signUp,
     organization_login,
-    // get_organization
+    // get_organization,
+    get_photo
 }=require("../Controllers/organizationController")
 
 
@@ -39,6 +40,10 @@ organization_router.post("/login",  organization_login);
 
 // get organization
 // organization_router.post("/get-single",  get_organization);
+
+
+// get organization
+organization_router.get("/photo/:user_id",  get_photo);
 
 
 

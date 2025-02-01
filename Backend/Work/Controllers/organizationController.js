@@ -29,6 +29,8 @@ const organization_signUp = async (req, res) => {
     try {
         const { name, username, email, password, phone, website_url, location } = req.fields;
         const { profile_photo } = req.files;
+
+
         //validation
         switch (true) {
             case !name:
@@ -48,6 +50,8 @@ const organization_signUp = async (req, res) => {
             case profile_photo && profile_photo.size > 1000000:
                 return res.status(500).send({ error: "profile_photo is Required and should be less then 1MB" });
         }
+
+        console.log("profile_photo", profile_photo)
 
         // check existing organizaion
         const existingorganization = await user_model.findOne({ email })
@@ -181,12 +185,19 @@ async function organization_login(req, res) {
         // const token = await JWT.sign({ _id: organization._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: organization._id }, "abdullah", { expiresIn: "7d" });
 
-        const send_organization = await user_model.findOne({ email }, { profile_photo: 0, password: 0 });
+        const send_user = await user_model.findOne({ email }, { profile_photo: 0, password: 0 });
+
+        const userId = send_user._id;
+
+        const send_organization = await organization_model.findOne({ userId });
+        const person = send_organization.person;
 
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
+            send_user,
             send_organization,
+            person,
             token,
         })
 
@@ -202,6 +213,28 @@ async function organization_login(req, res) {
 
 
 
+// get photo
+const get_photo = async (req, res) => {
+    try {
+        const organization_photo = await user_model.findById(req.params.user_id).select('profile_photo');
+
+        console.log("organization_photo:", organization_photo)
+
+        res.status(200).send({
+            success: true,
+            message: "get organization photo",
+            organization_photo,
+            // user,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error while getting organization",
+            error,
+        });
+    }
+};
 
 
 
@@ -236,4 +269,4 @@ async function organization_login(req, res) {
 
 
 //export All functions from "Controller"
-module.exports = { testController, organization_signUp, organization_login }
+module.exports = { testController, organization_signUp, organization_login, get_photo }

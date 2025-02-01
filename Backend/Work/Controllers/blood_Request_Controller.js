@@ -122,7 +122,8 @@ const get_all_blood_request = async (req, res) => {
 // get blood Request of specific / particular recipient
 const get_specific_blood_request = async (req, res) => {
     try {
-        const Blood_Request = await bloodRequest_model.find({ recipient_id: req.params.recipient_id });
+        const Blood_Request = await bloodRequest_model.find({ recipient_id: req.params.recipient_id }).sort({ createdAt: -1 }); // Sorting by createdAt in descending order (recent first)
+
         res.status(200).send({
             success: true,
             message: "get specific blood request",
@@ -132,7 +133,7 @@ const get_specific_blood_request = async (req, res) => {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Error while getting single product",
+            message: "Error while getting blood requests of specific recipient",
             error,
         });
     }

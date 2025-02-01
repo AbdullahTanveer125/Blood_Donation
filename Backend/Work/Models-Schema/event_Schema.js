@@ -38,7 +38,11 @@ const event_Schema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter description!"],
         trim: true,
-    }
+    },
+    organization_photo: {
+        data: Buffer,
+        contentType: String,
+    },
 },
     { timestamps: true }
 );

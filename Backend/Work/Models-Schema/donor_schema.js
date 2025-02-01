@@ -33,19 +33,14 @@ const donorSchema = new mongoose.Schema(
             required: [true, "Please enter your Address!"],
             trim: true
         },
-        city: {
-            type: String,
-            required: [true, "Please enter your City!"],
-            trim: true
-        },
         nearest_hospital: {
             type: String,
             required: [true, "Please enter your City!"],
             trim: true
         },
         last_time_donation_date: {
-            type: String,
-            required: [true, "Please enter your Last Time Donation Date!"],
+            type: String, 
+            default: null 
         },
         availability: { 
             type: Boolean, 
@@ -53,6 +48,10 @@ const donorSchema = new mongoose.Schema(
         },
         rating: {
             type: Number,
+        },
+        person: { 
+            type: String, 
+            default: "donor" 
         },
     },
     { timestamps: true }

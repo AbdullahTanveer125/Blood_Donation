@@ -22,6 +22,10 @@ const organizationSchema = new mongoose.Schema(
         //     data: Buffer,
         //     contentType: String,
         // },
+        person: { 
+            type: String, 
+            default: "organization" 
+        },
     },
     { timestamps: true }
 );

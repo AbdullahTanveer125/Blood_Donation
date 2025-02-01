@@ -25,7 +25,7 @@ async function testController(req, res) {
 // // hai or image ko hm "req.files" sy get kry gy
 const recipient_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, phone, gender, age } = req.fields;
+        const { name, username, email, password, phone, gender, age, address } = req.fields;
         const { profile_photo } = req.files;
         //validation
         switch (true) {
@@ -44,6 +44,8 @@ const recipient_signUp = async (req, res) => {
                 return res.status(500).send({ error: "Gender is Required" });
             case !age:
                 return res.status(500).send({ error: "Age is Required" });
+            case !address:
+                return res.status(500).send({ error: "address is Required" });
             case profile_photo && profile_photo.size > 1000000:
                 return res.status(500).send({ error: "profile_photo is Required and should be less then 1MB" });
         }
@@ -118,6 +120,7 @@ const recipient_signUp = async (req, res) => {
             userId,
             gender,
             age,
+            address
         }
 
         console.log("data_for_recipient_collection:", data_for_recipient_collection)
@@ -181,12 +184,19 @@ async function recipient_login(req, res) {
         // const token = await JWT.sign({ _id: recipient._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: recipient._id }, "abdullah", { expiresIn: "7d" });
 
-        const send_recipient = await user_model.findOne({ email }, { profile_photo: 0, password: 0 });
+        const send_user = await user_model.findOne({ email }, { profile_photo: 0, password: 0 });
+
+        const userId = send_user._id;
+
+        const send_recipient = await recipient_model.findOne({ userId });
+        const person=send_recipient.person;
 
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
             send_recipient,
+            send_user,
+            person,
             token,
         })
 

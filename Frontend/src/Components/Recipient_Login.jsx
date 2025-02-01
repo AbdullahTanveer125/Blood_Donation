@@ -63,7 +63,7 @@ function Recipient_Login() {
       //   email: email,
       //   password,
       // });
-      const res = await axios.post(`http://localhost:5000/recipient-login`, {
+      const res = await axios.post(`http://localhost:5000/recipient/login`, {
         email: email,
         password,
       });

@@ -4,6 +4,7 @@ const express=require("express")
 const event_router=express.Router();
 
 
+const express_formidable=require("express-formidable")
 
 
 
@@ -13,6 +14,7 @@ const {
     testController,
     add_event,
     get_all_events,
+    get_specific_event,
     get_single_event,
     delete_event,
     delete_all_events
@@ -31,7 +33,10 @@ const {
 event_router.get("/event-test", testController);
 
 // Add event
-event_router.post("/add-new/:organization_id",  add_event);
+event_router.post("/add-new/:organization_id", express_formidable(), add_event);
+
+// get events of specific / particular organization
+event_router.get("/get-specific-event/:organization_id", get_specific_event);
 
 // get all_event
 event_router.get("/get-all", get_all_events);

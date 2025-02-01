@@ -25,7 +25,7 @@ async function testController(req, res) {
 // // hai or image ko hm "req.files" sy get kry gy
 const donor_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, phone, gender, age, weight, blood_group, address, city, last_time_donation_date, nearest_hospital } = req.fields;
+        const { name, username, email, password, phone, gender, age, weight, blood_group, address, last_time_donation_date, nearest_hospital } = req.fields;
         const { profile_photo } = req.files;
 
 
@@ -56,8 +56,6 @@ const donor_signUp = async (req, res) => {
                 return res.status(500).send({ error: "Blood Group is Required" });
             case !address:
                 return res.status(500).send({ error: "Address is Required" });
-            case !city:
-                return res.status(500).send({ error: "City is Required" });
             case !last_time_donation_date:
                 return res.status(500).send({ error: "Last Time Donation Date is Required" });
             case !nearest_hospital:
@@ -168,7 +166,7 @@ const donor_signUp = async (req, res) => {
             weight,
             blood_group,
             address,
-            city, last_time_donation_date,
+            last_time_donation_date,
             nearest_hospital,
         }
         
@@ -232,12 +230,19 @@ async function donor_login(req, res) {
         // const token = await JWT.sign({ _id: donor._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: donor._id }, "abdullah", { expiresIn: "7d" });
 
-        const send_donor = await user_model.findOne({ email }, {profile_photo: 0, password:0});
+        const send_user = await user_model.findOne({ email }, {profile_photo: 0, password:0});
+
+        const userId=send_user._id;
+
+        const send_donor = await donor_model.findOne({ userId });
+        const person=send_donor.person;
 
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
+            send_user,
             send_donor,
+            person,
             token,
         })
 

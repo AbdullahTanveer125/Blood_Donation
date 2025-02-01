@@ -11,10 +11,19 @@ const recipientSchema = new mongoose.Schema(
             type: String,
             required: [true, "Please enter your gender!"],
         },
+        address: {
+            type: String,
+            required: [true, "Please enter your address!"],
+            trim: true
+        },
         age: {
             type: Number,
             required: [true, "Please enter your Age!"],
             trim: true
+        },
+        person: { 
+            type: String, 
+            default: "recipient" 
         },
 
     },

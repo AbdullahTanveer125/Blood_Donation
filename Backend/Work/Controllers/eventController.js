@@ -2,6 +2,7 @@ const event_model = require("../Models-Schema/event_Schema")
 
 const JWT = require("jsonwebtoken");
 
+const fs = require("fs");
 
 
 
@@ -17,12 +18,21 @@ async function testController(req, res) {
 //Add new event
 const add_event = async (req, res) => {
     try {
-        
-        const { name, organization_name, phone, time, location, description, date } = req.body;
+        console.log("Incoming req.fields:", req.fields);
 
-        const organization_id=req.params.organization_id;
+        const { name, organization_name, phone, time, location, description, date } = req.fields;
+        // console.log("Incoming req.fields:", req.files);
+        const { organization_photo } = req.files;
 
-        console.log("***req.body:***", req.body)
+        // console.log("Incoming request data:", req.fields);
+
+        const organization_id = req.params.organization_id;
+
+        // console.log("***req.body:***", req.body)
+        console.log("*****************************************************")
+        console.log("date:", date)
+        // console.log("organization_photo:", organization_photo)
+        console.log("*****************************************************")
 
         //validation
         switch (true) {
@@ -36,10 +46,12 @@ const add_event = async (req, res) => {
                 return res.status(500).send({ error: "time is Required" });
             case !location:
                 return res.status(500).send({ error: "location is Required" });
-           case !description:
+            case !description:
                 return res.status(500).send({ error: "description is Required" });
             case !date:
                 return res.status(500).send({ error: "date is Required" });
+            case organization_photo && organization_photo.size > 1000000:
+                return res.status(500).send({ error: "organization_photo is Required and should be less then 1MB" });
         }
 
 
@@ -64,8 +76,8 @@ const add_event = async (req, res) => {
         console.log("real date:", real_date)
         console.log("*****************************************************")
 
-        
-        const EVENT = {
+
+        const EVENT_DATA = {
             organization_id,
             name,
             organization_name,
@@ -76,14 +88,33 @@ const add_event = async (req, res) => {
             date,
         }
 
-        const result = await event_model.create(EVENT);
+        const EVENT = new event_model(EVENT_DATA);
+
+
+        // const EVENT = new event_model({ ...req.fields, slug: slugify(firstname) });
+
+        if (organization_photo) {
+            EVENT.organization_photo.data = fs.readFileSync(organization_photo.path);
+            EVENT.organization_photo.contentType = organization_photo.type;
+        }
+        
+        const result = await EVENT.save();
+        // const EVENT = await productModel.create({ ...req.fields, slug: slugify(name) });
+        // if (organization_photo) {
+        //     EVENT.organization_photo.data = fs.readFileSync(organization_photo.path);
+        //     EVENT.organization_photo.contentType = organization_photo.type;
+        // }
+        // await EVENT.save();
+
+
+        // const result = await event_model.create(EVENT);
         console.log(result);
 
 
         res.status(200).send({
             success: true,
             message: "Add New Event Successfully!!",
-            EVENT,
+            result,
         })
 
 
@@ -97,6 +128,32 @@ const add_event = async (req, res) => {
         });
     }
 };
+
+
+
+
+// get events of specific / particular organization
+const get_specific_event = async (req, res) => {
+    try {
+        const EVENT = await event_model.find({ organization_id: req.params.organization_id }).sort({ createdAt: -1 }); // Sorting by createdAt in descending order (recent first)
+
+        res.status(200).send({
+            success: true,
+            message: "get event of specific organization",
+            EVENT,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error while getting event of specific organization",
+            error,
+        });
+    }
+};
+
+
+
 
 
 // get-all-blood-request
@@ -142,7 +199,7 @@ const get_single_event = async (req, res) => {
 // //delete controller
 const delete_event = async (req, res) => {
     try {
-         const result = await event_model.deleteOne({ _id: req.params.event_id });
+        const result = await event_model.deleteOne({ _id: req.params.event_id });
 
         res.status(200).send({
             success: true,
@@ -161,7 +218,7 @@ const delete_event = async (req, res) => {
 
 
 // DELETE all events
-const delete_all_events= async (req, res) => {
+const delete_all_events = async (req, res) => {
     try {
         const result = await event_model.deleteMany({});
         return res.status(200).json({
@@ -202,4 +259,4 @@ const delete_all_events= async (req, res) => {
 
 
 //export All functions from "Controller"
-module.exports = { testController, add_event, get_all_events, get_single_event, delete_event, delete_all_events }
+module.exports = { testController, add_event, get_specific_event, get_all_events, get_single_event, delete_event, delete_all_events }
