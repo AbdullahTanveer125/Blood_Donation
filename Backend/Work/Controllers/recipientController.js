@@ -25,7 +25,7 @@ async function testController(req, res) {
 // // hai or image ko hm "req.files" sy get kry gy
 const recipient_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, phone, gender, age, address } = req.fields;
+        const { name, username, email, password, phone, gender, age, address, person } = req.fields;
         const { profile_photo } = req.files;
         //validation
         switch (true) {
@@ -39,13 +39,14 @@ const recipient_signUp = async (req, res) => {
                 return res.status(500).send({ error: "Password is Required" });
             case !phone:
                 return res.status(500).send({ error: "phone is Required" });
-
             case !gender:
                 return res.status(500).send({ error: "Gender is Required" });
             case !age:
                 return res.status(500).send({ error: "Age is Required" });
             case !address:
                 return res.status(500).send({ error: "address is Required" });
+            case !person:
+                return res.status(500).send({ error: "person is Required in sign-up" });
             case profile_photo && profile_photo.size > 1000000:
                 return res.status(500).send({ error: "profile_photo is Required and should be less then 1MB" });
         }
@@ -92,6 +93,7 @@ const recipient_signUp = async (req, res) => {
             email,
             password: hashedPassword,
             phone,
+            person
         }
 
 
@@ -189,7 +191,7 @@ async function recipient_login(req, res) {
         const userId = send_user._id;
 
         const send_recipient = await recipient_model.findOne({ userId });
-        const person=send_recipient.person;
+        const person = send_recipient.person;
 
         res.status(200).send({
             success: true,

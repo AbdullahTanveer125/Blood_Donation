@@ -56,6 +56,7 @@ function Organization_Signup() {
         formData.append("email", email);
         formData.append("username", username);
         formData.append("password", password);
+        formData.append("person", "organization");
         // formData.append("profile_photo", profile_photo);
         if (profile_photo) {
             formData.append("profile_photo", profile_photo);

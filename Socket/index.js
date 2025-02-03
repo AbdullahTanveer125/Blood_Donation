@@ -19,9 +19,12 @@ const getUser = (userId) => {
     return users.find((user) => user.userId === userId);
 };
 
+// hr dfa socket ki id change hoti hai jb b page refresh hota hai
 io.on("connection", (socket) => {
     //when ceonnect
     console.log("a user connected.");
+
+    io.emit("welcom","this is my socket server!")//send message to client
 
     //take userId and socketId from user
     socket.on("addUser", (userId) => {
@@ -38,7 +41,7 @@ io.on("connection", (socket) => {
         });
     });
 
-    //when disconnect
+    // when disconnect
     socket.on("disconnect", () => {
         console.log("a user disconnected!");
         removeUser(socket.id);

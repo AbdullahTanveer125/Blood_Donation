@@ -17,7 +17,7 @@ import Event from "./Components/Event.jsx";
 import Add_Feedback from "./Components/Add_Feedback_Form.jsx";
 import All_Feedbacks from "./Components/All_Feedbacks.jsx";
 import Search_Blood_Request from "./Components/Search_Blood_Request.jsx";
-import Chat from "./Pages/Chat/Chat.jsx";
+
 // import Recipient_Login from "./Components/Recipient_Login.jsx";
 import Home_Page_2 from "./Pages/Home_Page_2/Home_Page_2.jsx";
 import Home_1 from "./Pages/Home_1/Home_1.jsx";
@@ -34,6 +34,7 @@ import Recipient_login from "./Components/Recipient_login/Recipient_login.jsx";
 import Blood_Requests_of_recipient from "./Components/Blood_Requests_of_recipient/Blood_Requests_of_recipient.jsx";
 import Add_New_Event from "./Components/Add_New_Event/Add_New_Event.jsx";
 import Events_of_Organization from "./Components/Events_of_Organization/Events_of_Organization.jsx";
+import Messanger from "./Pages/Messanger/Messanger.jsx";
 
 
 
@@ -62,6 +63,9 @@ function App() {
         <Route path="/all_events" element={<Events_of_Organization />} />
         <Route path="/add_feedback" element={<Add_Feedback />} />
         {/* <Route path="/all_feedbacks" element={<All_Feedbacks />} /> */}
+
+        
+        <Route path="/messanger" element={<Messanger />} />
 
 
         <Route path="/search_blood_Requests" element={<Search_Blood_Request />} />

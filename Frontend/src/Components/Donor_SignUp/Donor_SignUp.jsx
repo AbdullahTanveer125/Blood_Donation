@@ -58,6 +58,7 @@ function Donor_SignUp() {
         formData.append("email", email);
         formData.append("username", username);
         formData.append("password", password);
+        formData.append("person", "donor");
         // formData.append("profile_photo", profile_photo);
         if (profile_photo) {
             formData.append("profile_photo", profile_photo);

@@ -28,18 +28,22 @@
 
 // 10) feedback ko add krny wala form recipient k login hony k baad jb recipient donor ki profile pr review dy ga mtlb k login (auth) sy recipient ki _id mil jay gi or jb recipient donor ko search kr k donor ki profile dekhny k liye hm API k zrye sy donor ki information get kry gy phir waha sy donor ki _id b mil jay gi   lykin ye smj ni lg rahi k recipient kb or kis base pr feedback dy ga
 
+// 11) jo user schema mey get_friends, followers or followings wali fields mey abi mein ny values khud postman sy insert ki hai lykin ye baad mey khud hi values ko frontend sy API k zrye sy insert krwani hai. is mey krna ye hai k jb donor or recipient aik dosry sy chat krna chahty hai to pehly koi aik dosry ko follow wali APi k zrye sy friends bny gy mtlb un dono id friends wali array mey store ho gi (video time=1:45).    mery khayal sy abi ye solution dmaag mey aa raha hai k krna ye chahiye k jb b koi user kisi dosry user sy chat krny k liye button pr click kry ga to massenger wala page or friends wali API call kr k un ko friends wali array mey store krwa do lykin aik issue ye hai k agr dosry user ki id pehly sy hi friends wali array mey ho gi to is trha dobara id store ho jay gi to is k liye koi condition sooch kr lgaa lena.    baki koi or solution dekh lo.
+
+
 
 const express = require('express');
 const app = express();
 
+const user_router=require("./Work/Routes/userRoutes.js");
 const donor_router=require("./Work/Routes/donorRoutes.js");
 const recipient_router=require("./Work/Routes/recipientRoutes.js");
 const organization_router=require("./Work/Routes/organizationRoutes.js");
 const bloodRequest_router=require("./Work/Routes/blood_Request_Routes.js");
 const event_router=require("./Work/Routes/eventRoutes.js");
 const feedback_router=require("./Work/Routes/feedbackRoutes.js");
-// const conversation_router=require("./Work/Routes/conversationRoutes.js");
-// const message_router=require("./Work/Routes/messageRoutes.js");
+const conversation_router=require("./Work/Routes/conversationRoutes.js");
+const message_router=require("./Work/Routes/messageRoutes.js");
 
 
 
@@ -70,14 +74,15 @@ app.use(cors({
 
 
 //to use router
+app.use("/user",user_router);   
 app.use("/donor",donor_router);   
 app.use("/recipient",recipient_router); 
 app.use("/organization",organization_router);
 app.use("/bloodRequest", bloodRequest_router); 
 app.use("/event", event_router); 
 app.use("/feedback", feedback_router); 
-// app.use(conversation_router); 
-// app.use(message_router); 
+app.use(conversation_router); 
+app.use(message_router); 
 
 
 // Routes

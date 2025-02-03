@@ -5,7 +5,7 @@ const { hashPassword, comparePassword } = require("../Middleware/hash_password")
 
 
 const fs = require("fs");
-const JWT=require("jsonwebtoken");
+const JWT = require("jsonwebtoken");
 
 
 
@@ -25,7 +25,7 @@ async function testController(req, res) {
 // // hai or image ko hm "req.files" sy get kry gy
 const donor_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, phone, gender, age, weight, blood_group, address, last_time_donation_date, nearest_hospital } = req.fields;
+        const { name, username, email, password, phone, gender, age, weight, blood_group, address, last_time_donation_date, nearest_hospital, person } = req.fields;
         const { profile_photo } = req.files;
 
 
@@ -60,6 +60,8 @@ const donor_signUp = async (req, res) => {
                 return res.status(500).send({ error: "Last Time Donation Date is Required" });
             case !nearest_hospital:
                 return res.status(500).send({ error: "nearest_hospital is Required" });
+            case !person:
+                return res.status(500).send({ error: "person is Required in sign-up" });
             case profile_photo && profile_photo.size > 1000000:
                 return res.status(500).send({ error: "profile_photo is Required and should be less then 1MB" });
         }
@@ -120,6 +122,7 @@ const donor_signUp = async (req, res) => {
             email,
             password: hashedPassword,
             phone,
+            person
         }
 
         console.log("*****************************************************")
@@ -155,7 +158,7 @@ const donor_signUp = async (req, res) => {
         // console.log(USER)
         console.log("USER>>>>>>MMM>>>>:", USER.username)
         console.log("**********************SSSS*USER********************************")
-        
+
         const userId = USER._id
         console.log("userId>>>>AAAAAA>>>>:", userId)
 
@@ -169,12 +172,12 @@ const donor_signUp = async (req, res) => {
             last_time_donation_date,
             nearest_hospital,
         }
-        
+
         console.log("data_for_donor_collection:", data_for_donor_collection)
 
         const donor_response = await donor_model.create(data_for_donor_collection);
-        
-        
+
+
         console.log("DDDDDDDDDDDD:", userId)
 
         res.status(201).send({
@@ -209,7 +212,7 @@ async function donor_login(req, res) {
         }
 
         // check existing user
-        const donor = await user_model.findOne({ email }, {photo: 0});
+        const donor = await user_model.findOne({ email }, { photo: 0 });
         if (!donor) {
             return res.status(404).send({
                 success: false,
@@ -230,12 +233,12 @@ async function donor_login(req, res) {
         // const token = await JWT.sign({ _id: donor._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: donor._id }, "abdullah", { expiresIn: "7d" });
 
-        const send_user = await user_model.findOne({ email }, {profile_photo: 0, password:0});
+        const send_user = await user_model.findOne({ email }, { profile_photo: 0, password: 0 });
 
-        const userId=send_user._id;
+        const userId = send_user._id;
 
         const send_donor = await donor_model.findOne({ userId });
-        const person=send_donor.person;
+        const person = send_donor.person;
 
         res.status(200).send({
             success: true,
@@ -261,8 +264,8 @@ async function donor_login(req, res) {
 const get_donor = async (req, res) => {
     try {
         const user = await user_model.findById(req.params.user_id).select('-profile_photo -password');
-        
-        const donor = await donor_model.findOne({userId:user._id});
+
+        const donor = await donor_model.findOne({ userId: user._id });
 
         // const DONOR = { user + donor };
         // const DONOR = Object.assign({}, user, donor);

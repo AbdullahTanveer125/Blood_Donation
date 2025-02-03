@@ -45,6 +45,18 @@ const userSchema = new mongoose.Schema(
             type: Array,
             default: [],
         },
+        followers: {// jo hmy follow kry
+          type: Array,
+          default: [],
+        },
+        followings: {// jisy hm follow kry
+          type: Array,
+          default: [],
+        },
+        person: { 
+            type: String, 
+            required: [true, "person value is require to sign-up"],
+        },
         profile_photo: {//is ki detail nichy di hai
             data: Buffer,
             contentType: String,

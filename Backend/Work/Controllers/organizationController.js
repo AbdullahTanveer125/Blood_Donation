@@ -27,7 +27,7 @@ async function testController(req, res) {
 // hai or image ko hm "req.files" sy get kry gy
 const organization_signUp = async (req, res) => {
     try {
-        const { name, username, email, password, phone, website_url, location } = req.fields;
+        const { name, username, email, password, phone, website_url, location , person } = req.fields;
         const { profile_photo } = req.files;
 
 
@@ -46,7 +46,9 @@ const organization_signUp = async (req, res) => {
             case !website_url:
                 return res.status(500).send({ error: "website_url is Required" });
             case !location:
-                return res.status(500).send({ error: "location is Required" });
+                return res.status(500).send({ error: "website_url is Required" });
+            case !person:
+                return res.status(500).send({ error: "person is Required in sign-up" });
             case profile_photo && profile_photo.size > 1000000:
                 return res.status(500).send({ error: "profile_photo is Required and should be less then 1MB" });
         }
@@ -97,6 +99,7 @@ const organization_signUp = async (req, res) => {
             phone,
             website_url,
             location,
+            person
         }
 
         const USER = new user_model(data_for_user_collection);
