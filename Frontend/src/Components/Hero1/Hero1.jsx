@@ -1,5 +1,5 @@
 import React from 'react'
-import image1 from "../../../public/about.jpg"
+import image1 from "../../../public/Home3.jpg"
 
 function Hero() {
     return (

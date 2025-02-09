@@ -35,20 +35,25 @@ import Blood_Requests_of_recipient from "./Components/Blood_Requests_of_recipien
 import Add_New_Event from "./Components/Add_New_Event/Add_New_Event.jsx";
 import Events_of_Organization from "./Components/Events_of_Organization/Events_of_Organization.jsx";
 import Messanger from "./Pages/Messanger/Messanger.jsx";
+import Landing_Navbar from "./Components/Landing_Navbar/Landing_Navbar.jsx";
+import Landing from "./Pages/Landing.jsx";
+import Event_card from "./Components/Event_card/Event_card.jsx";
 
-
+//#EE8A9E  (light color)
+//#B01030  (dark color)
 
 function App() {
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home_1 />} />
+      <Route path="/" element={<Landing />} />
+        <Route path="/home1" element={<Home_1 />} />
+        <Route path="/home2" element={<Home_Page_2 />} />
         <Route path="/user_navbar" element={<User_Navbar />} />
         <Route path="/donor_signup" element={<Donor_SignUp />} />
         <Route path="/recipient_signup" element={<Recipient_Signup />} />
         <Route path="/organization_signup" element={<Organization_Signup />} />
-        <Route path="/home2" element={<Home_Page_2 />} />
         <Route path="/card" element={<Parent_of_Card />} />
         <Route path="/frequently_ask_questions" element={<Frequently_Ask_Questions />} />
         {/* <Route path="/chat" element={<Chat />} /> */}
@@ -62,7 +67,8 @@ function App() {
         <Route path="/add_new_event" element={<Add_New_Event />} />
         <Route path="/all_events" element={<Events_of_Organization />} />
         <Route path="/add_feedback" element={<Add_Feedback />} />
-        {/* <Route path="/all_feedbacks" element={<All_Feedbacks />} /> */}
+        <Route path="/all_feedbacks" element={<All_Feedbacks />} />
+        <Route path="/event_card" element={<Event_card />} />
 
         
         <Route path="/messanger" element={<Messanger />} />

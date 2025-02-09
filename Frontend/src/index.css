@@ -8,5 +8,20 @@
 
 
 body {
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Add animation styles below Tailwind directives */
+@keyframes moveX {
+  0% {
+    transform: translateX(-100%);
   }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-move-x {
+  animation: moveX 15s linear infinite alternate;
+}

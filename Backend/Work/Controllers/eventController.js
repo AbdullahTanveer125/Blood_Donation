@@ -97,7 +97,7 @@ const add_event = async (req, res) => {
             EVENT.organization_photo.data = fs.readFileSync(organization_photo.path);
             EVENT.organization_photo.contentType = organization_photo.type;
         }
-        
+
         const result = await EVENT.save();
         // const EVENT = await productModel.create({ ...req.fields, slug: slugify(name) });
         // if (organization_photo) {
@@ -137,10 +137,26 @@ const get_specific_event = async (req, res) => {
     try {
         const EVENT = await event_model.find({ organization_id: req.params.organization_id }).sort({ createdAt: -1 }); // Sorting by createdAt in descending order (recent first)
 
+
+        //mongoDB store image in buffer for but when image get in frontend then image is display in buffer form. So, need to convert "Buffer to toString('base64')" to display image. but good approach is convert image form from "Buffer to toString('base64')" in backend and then send to frontend 
+
+        // Modify events to encode images as Base64
+        const modifiedEvents = EVENT.map(event => {
+            if (event.organization_photo && event.organization_photo.data) {
+                return {
+                    ...event._doc, // Spread existing event fields
+                    organization_photo: `data:${event.organization_photo.contentType};base64,${event.organization_photo.data.toString("base64")}`
+                };
+            }
+            return event;
+        });
+
+
         res.status(200).send({
             success: true,
             message: "get event of specific organization",
             EVENT,
+            modifiedEvents
         });
     } catch (error) {
         console.log(error);
@@ -159,7 +175,21 @@ const get_specific_event = async (req, res) => {
 // get-all-blood-request
 const get_all_events = async (req, res) => {
     try {
-        const All_Events = await event_model.find({}).limit(10).sort({ createdAt: -1 });
+        const Events = await event_model.find({}).sort({ createdAt: -1 });
+
+        // Modify events to encode images as Base64
+        const All_Events = Events.map(event => {
+            if (event.organization_photo && event.organization_photo.data) {
+                return {
+                    ...event._doc, // Spread existing event fields
+                    organization_photo: `data:${event.organization_photo.contentType};base64,${event.organization_photo.data.toString("base64")}`
+                };
+            }
+            return event;
+        });
+
+
+
         res.status(200).send({
             success: true,
             message: "get ALL Events",

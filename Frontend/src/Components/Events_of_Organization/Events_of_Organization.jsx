@@ -3,6 +3,10 @@ import axios from 'axios';
 
 import { useAuth } from "../../context/auth";
 
+import image111 from "../../../public/Home2.jpg"
+
+import { Buffer } from "buffer";//mongoDB store image in buffer for but when image get in frontend then image is display in buffer form. So, need to convert "Buffer to toString('base64')" to display image. but good approach is convert image form from "Buffer to toString('base64')" in backend and then send to frontend 
+
 
 function Events_of_Organization() {
 
@@ -46,10 +50,11 @@ function Events_of_Organization() {
                 console.log("********* res.data ********")
                 console.log(res.data)
                 console.log(res.data.EVENT)
+                console.log("organization._id=", organization._id)
                 console.log("********* res.data ********")
 
 
-                setArray_of_events(res.data.EVENT);
+                setArray_of_events(res.data.modifiedEvents);
             } catch (err) {
                 setError("Failed to fetch blood requests.");
             }
@@ -81,7 +86,7 @@ function Events_of_Organization() {
         }
     };
 
-
+    console.log("Array of Events=", array_of_events)
 
 
 
@@ -103,18 +108,17 @@ function Events_of_Organization() {
 
                     <div className="card bg-base-100 w-96 shadow-xl">
                         <figure>
-                            <img
-                                src={`data:${request.organization_photo.contentType};base64,${btoa(
-                                    String.fromCharCode(...new Uint8Array(request.organization_photo.data.data))
-                                )}`}
+                            <img className='h-14 w-36'
+                                // src={`data:${request.organization_photo.contentType};base64,${Buffer.from(request.organization_photo.data.data).toString("base64")}`}
+
+                                src={request.organization_photo}
                                 alt="Organization Photo"
+                            // height="300"
+                            // width={"350px"}
                             />
 
-
-                            {/* <img
-                                src={request.organization_photo}
-                                alt="Shoes" /> */}
                         </figure>
+
                         {/* <div>{request.organization_photo}</div> */}
                         <div className="card-body">
                             <h1 className="text-4xl text-center bg-slate-400">{request.organization_name}</h1>
@@ -142,68 +146,6 @@ function Events_of_Organization() {
                         </div>
                     </div>
 
-
-                    // <div className="max-w-sm mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
-                    //     <div className="p-5">
-                    //         {/* Blood Group */}
-                    //         <div className="flex justify-between items-center mb-10 gap-10">
-                    //             <h2 className="text-xl font-semibold text-blue-600">
-                    //                 {request.blood_group} Needed!
-                    //             </h2>
-                    //             <span
-                    //                 className={`${request.urgency === "high"
-                    //                     ? "badge badge-error"
-                    //                     : "badge badge-warning"
-                    //                     }`}
-                    //             >
-                    //                 {request.urgency}
-                    //                 {/* <div className="badge badge-error gap-2">
-                    //                 {request.urgency} request.urgency
-                    //             </div> */}
-                    //             </span>
-
-                    //         </div>
-
-                    //         {/* Patient Details */}
-                    //         <p className="text-gray-700 text-sm mb-3">
-                    //             <span className="font-semibold">Patient Name:</span> {request.patient_name}
-                    //         </p>
-
-                    //         {/* Hospital Information */}
-                    //         <p className="text-gray-700 text-sm mb-3">
-                    //             <span className="font-semibold">Hospital:</span> {request.location}
-                    //         </p>
-
-                    //         {/* Contact Information */}
-                    //         <p className="text-gray-700 text-sm mb-3">
-                    //             <span className="font-semibold">Contact:</span> {request.phone}
-                    //         </p>
-
-                    //         {/* Blood need date Information */}
-                    //         <p className="text-gray-700 text-sm mb-3">
-                    //             <span className="font-semibold">Blood need date:</span> {request.blood_need_date}
-                    //         </p>
-
-                    //         {/* Comment Information */}
-                    //         <p className="text-gray-700 text-sm mb-3 w-40 break-words">
-                    //             <span className="font-semibold">Comment:</span> <div className='bg-slate-200 w-[100%] p-2 text-justify'>{request.comment}</div>
-                    //         </p>
-
-
-                    //         {/* Call to Action */}
-                    //         <button className="w-full bg-red-600 text-white font-semibold py-2 px-4 mt-3 rounded-lg hover:bg-red-700 transition duration-300">
-                    //             Donate Now
-                    //         </button>
-
-                    //         <button
-                    //             className="btn btn-danger mt-4"
-                    //             onClick={() => deleteEvent(request._id)}
-                    //         >
-                    //             Delete Request
-                    //         </button>
-
-                    //     </div>
-                    // </div>
                 ))}
             </div>
 

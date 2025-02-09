@@ -90,7 +90,8 @@ function All_Feedbacks() {
 
     return (
         <div>
-            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            
+            <img src="" alt="AAAAA" />
 
             <div className="card bg-base-100 w-96 shadow-xl">
                 <div className="card-body">

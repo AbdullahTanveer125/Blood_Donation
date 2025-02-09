@@ -6,6 +6,7 @@ import Slider1 from '../../Components/Slider1.jsx'
 import Footer1 from '../../Components/Footer1.jsx'
 import Footer2 from '../../Components/Footer2.jsx'
 import Card1 from '../../Components/Card1.jsx'
+import Landing_Navbar from '../../Components/Landing_Navbar/Landing_Navbar.jsx'
 
 
 
@@ -14,7 +15,7 @@ function Home_Page_2() {
     return (
         <div className='bg-teal-600'>
 
-            <Navbar />
+            <Landing_Navbar />
             {/* <Hero1 /> */}
             <Hero2 />
             <Slider1 />
