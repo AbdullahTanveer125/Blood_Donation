@@ -57,6 +57,10 @@ const userSchema = new mongoose.Schema(
             type: String, 
             required: [true, "person value is require to sign-up"],
         },
+        our_feedback: { 
+            type: String, 
+            default: [],
+        },
         profile_photo: {//is ki detail nichy di hai
             data: Buffer,
             contentType: String,

@@ -38,6 +38,7 @@ import Messanger from "./Pages/Messanger/Messanger.jsx";
 import Landing_Navbar from "./Components/Landing_Navbar/Landing_Navbar.jsx";
 import Landing from "./Pages/Landing.jsx";
 import Event_card from "./Components/Event_card/Event_card.jsx";
+import Testmonials_Feedbacks_of_us from "./Components/Our_Feedback_Testmonials/Our_Feedback_Testmonials.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color)
@@ -69,6 +70,8 @@ function App() {
         <Route path="/add_feedback" element={<Add_Feedback />} />
         <Route path="/all_feedbacks" element={<All_Feedbacks />} />
         <Route path="/event_card" element={<Event_card />} />
+        
+        <Route path="/our_feedback_card" element={<Testmonials_Feedbacks_of_us />} />
 
         
         <Route path="/messanger" element={<Messanger />} />

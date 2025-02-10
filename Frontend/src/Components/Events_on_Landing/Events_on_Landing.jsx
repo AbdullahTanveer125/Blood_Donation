@@ -39,28 +39,50 @@ function Events_on_Landing() {
 
 
     return (
-        <div>
+        <div className='w-full'>
 
-            <div className="px-16 relative w-full pt-16 overflow-hidden justify-center">
+            <div className=" px-16 relative w-100% pt-16 overflow-hidden justify-center">
+
+{/* Left Gradient Overlay */}
+<div className="ml-[-40px] absolute left-10 top-0 h-full w-[500px] bg-gradient-to-r from-slate-400 via-transparent to-transparent opacity-50 pointer-events-none"></div>
+
+
                 <h1 className="text-4xl mb-6 font-bold text-center">
                     <span className="text-[#B01030]">All Events</span> of Organizations
                 </h1>
 
                 {/* Carousel Wrapper with Animation */}
-                <div className=" overflow-hidden max-w-full ">
+                <div className=" pb-20 overflow-hidden max-w-full ">
+
+
+                    {/* Left Gradient Overlay */}
+                    {/* <div className="absolute left-10 top-0 h-full w-[500px] bg-gradient-to-r from-slate-400 via-transparent to-transparent opacity-50 pointer-events-none"></div> */}
+
+
                     <div
                         className="flex gap-4 transition-transform duration-500 ease-in-out"
                         style={{
                             transform: `translateX(-${currentIndex * 33.33}%)`, // Moves slides based on index
                         }}
                     >
+
+
+
+
                         {events.map((event, index) => (
+
                             <div key={event._id} className="w-[33.33%] flex-shrink-0">
+
                                 <Event_card event={event} />
+
                             </div>
                         ))}
+
                     </div>
+                    {/* Right Gradient Overlay */}
+                    <div className="absolute right-0 top-0 h-full w-[500px] bg-gradient-to-l from-slate-400 via-transparent to-transparent opacity-50 pointer-events-none"></div>
                 </div>
+
 
                 {/* Navigation Arrows */}
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
