@@ -165,7 +165,7 @@ async function recipient_login(req, res) {
         }
 
         // check existing user
-        const recipient = await user_model.findOne({ email }, { photo: 0 });
+        const recipient = await user_model.findOne({ email }, { profile_photo: 0 });
         if (!recipient) {
             return res.status(404).send({
                 success: false,

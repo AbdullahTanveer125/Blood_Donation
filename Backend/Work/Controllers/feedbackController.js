@@ -23,13 +23,23 @@ const add_feedback = async (req, res) => {
         const donor_id = req.params.donor_id;
         const recipient_id = req.params.recipient_id;
 
+        // console.log("donor_id=",donor_id)
+        // console.log("recipient_id=",recipient_id)
 
         const DONOR = await donor_model.findById(donor_id)
         const RECIPIENT = await recipient_model.findById(recipient_id)
 
+        // console.log("DONOR=", DONOR)
+        // console.log("RECIPIENT=", RECIPIENT)
+
+
         
-        const donor_user = await user_model.findById(DONOR.userId)
-        const recipient_user = await user_model.findById(RECIPIENT.userId)
+        const donor_user = await user_model.findById(DONOR.userId).select("-profile_photo -password");
+        const recipient_user = await user_model.findById(RECIPIENT.userId).select("-profile_photo -password");
+
+
+        console.log("donor_user=", donor_user)
+        console.log("recipient_user=", recipient_user)
 
         const donor_username= donor_user.username;
         const recipient_username= recipient_user.username;

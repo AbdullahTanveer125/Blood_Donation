@@ -21,11 +21,11 @@ import Search_Blood_Request from "./Components/Search_Blood_Request.jsx";
 // import Recipient_Login from "./Components/Recipient_Login.jsx";
 import Home_Page_2 from "./Pages/Home_Page_2/Home_Page_2.jsx";
 import Home_1 from "./Pages/Home_1/Home_1.jsx";
-import Frequently_Ask_Questions from "./Components/Frequently_Ask_Questions/Frequently_Ask_Questions.jsx";
+import Frequently_Ask_Questions from "./Components/Landing_page_components/Frequently_Ask_Questions/Frequently_Ask_Questions.jsx";
 import Parent_of_Card from "./Components/Card1/Parent_of _Card.jsx";
 import User_Navbar from "./Components/User_Navbar/User_Navbar.jsx";
-import Donor_SignUp from "./Components/Donor_SignUp/Donor_SignUp.jsx";
-import Donor_Login from "./Components/Donor_Login/Donor_Login.jsx";
+import Donor_SignUp from "./Components/Donor_components/D_SignUp/D_SignUp.jsx";
+import Donor_Login from "./Components/Donor_components/D_Login/D_Login.jsx";
 import Recipient_Signup from "./Components/Recipient_Signup/Recipient_Signup.jsx";
 import Organization_Signup from "./Components/Organization_Signup/Organization_Signup.jsx";
 import Organization_Login from "./Components/Organization_Login/Organization_Login.jsx";
@@ -35,10 +35,13 @@ import Blood_Requests_of_recipient from "./Components/Blood_Requests_of_recipien
 import Add_New_Event from "./Components/Add_New_Event/Add_New_Event.jsx";
 import Events_of_Organization from "./Components/Events_of_Organization/Events_of_Organization.jsx";
 import Messanger from "./Pages/Messanger/Messanger.jsx";
-import Landing_Navbar from "./Components/Landing_Navbar/Landing_Navbar.jsx";
+import Landing_Navbar from "./Components/Landing_page_components/Landing_Navbar/Landing_Navbar.jsx";
 import Landing from "./Pages/Landing.jsx";
 import Event_card from "./Components/Event_card/Event_card.jsx";
-import Testmonials_Feedbacks_of_us from "./Components/Our_Feedback_Testmonials/Our_Feedback_Testmonials.jsx";
+import Testmonials_Feedbacks_of_us from "./Components/Landing_page_components/Our_Feedback_Testmonials/Our_Feedback_Testmonials.jsx";
+import Donor_landing_page from "./Pages/Donor_landing_page.jsx";
+import Login_as_a from "./Pages/Login_as_a/Login_as_a.jsx";
+import Feedback_Review_2 from "./Components/Feedback_Review_2/Feedback_Review_2.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color)
@@ -78,6 +81,20 @@ function App() {
 
 
         <Route path="/search_blood_Requests" element={<Search_Blood_Request />} />
+
+
+
+
+
+        <Route path="/donor" element={<Donor_landing_page />} />
+        
+        <Route path="/login_as_a" element={<Login_as_a />} />
+        <Route path="/Feedback_Review_2" element={<Feedback_Review_2 />} />
+
+
+
+
+
       </Routes>
       {/* <Navbar />
       <Hero1 />

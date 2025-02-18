@@ -167,7 +167,7 @@ async function organization_login(req, res) {
         }
 
         // check existing user
-        const organization = await user_model.findOne({ email }, { photo: 0 });
+        const organization = await user_model.findOne({ email }, { profile_photo: 0 });
         if (!organization) {
             return res.status(404).send({
                 success: false,

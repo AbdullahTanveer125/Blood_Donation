@@ -212,7 +212,9 @@ async function donor_login(req, res) {
         }
 
         // check existing user
-        const donor = await user_model.findOne({ email }, { photo: 0 });
+        const donor = await user_model.findOne({ email }, { profile_photo: 0 });
+        // console.log("Donor=", donor)
+
         if (!donor) {
             return res.status(404).send({
                 success: false,
@@ -233,7 +235,19 @@ async function donor_login(req, res) {
         // const token = await JWT.sign({ _id: donor._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: donor._id }, "abdullah", { expiresIn: "7d" });
 
-        const send_user = await user_model.findOne({ email }, { profile_photo: 0, password: 0 });
+        const send_user = await user_model.findOne({ email }, { password: 0 });
+
+        // Modify events to encode images as Base64
+        // Copy send_user object
+        const updated_send_user = { ...send_user };
+
+        // Check if profile_photo exists and has data
+        if (send_user.profile_photo && send_user.profile_photo.data) {
+            updated_send_user.profile_photo = `data:${send_user.profile_photo.contentType};base64,${send_user.profile_photo.data.toString("base64")}`;
+        }
+
+        // console.log("updated_send_user=", updated_send_user);
+
 
         const userId = send_user._id;
 

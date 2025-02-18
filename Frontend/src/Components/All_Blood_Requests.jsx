@@ -12,7 +12,7 @@ function All_Blood_Requests() {
         try {
             // console.log("** Before Hit API **")
             // console.log("res=", res)
-            const res = await axios.get(`http://localhost:5000/get-all-blood-request`);
+            const res = await axios.get(`http://localhost:5000/bloodRequest/get-all-blood-request`);
             console.log("** After Hit API **")
             console.log("res=", res.data.All_Blood_Requests)
 
