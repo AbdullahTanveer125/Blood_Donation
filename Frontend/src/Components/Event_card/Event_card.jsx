@@ -34,7 +34,7 @@ function Event_card({ event }) {
 
     return (
         <div>
-            <div className=" max-h-[600px] card border-2 border-gray-400 max-w-96 shadow-xl">
+            <div className=" max-h-[600px] card border-2 border-gray-400 max-w-full shadow-xl">
                 <figure className='h-[200px]'>
                     <img className='h-[200px] w-full'
                         src={event.organization_photo ? event.organization_photo : image111}

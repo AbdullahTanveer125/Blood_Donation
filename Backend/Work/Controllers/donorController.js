@@ -303,6 +303,59 @@ const get_donor = async (req, res) => {
 
 
 
+// // get all donors
+const get_all_donor = async (req, res) => {
+    try {
+
+        const Donors = await donor_model.find({ availability: true }).sort({ createdAt: -1 });
+
+
+        const donor_User_Ids = Donors.map(donor => donor.userId); // Extract userId values
+
+        // Find users whose _id is in the donorUserIds array
+        const Users = await user_model.find({ _id: { $in: donor_User_Ids } }).sort({ createdAt: -1 });
+
+
+        const mergedData = Users.map(user => {
+            const donor = Donors.find(d => d.userId.toString() === user._id.toString());
+            return {
+                ...user.toObject(),  // Convert Mongoose document to plain object
+                donorDetails: donor ? donor.toObject() : null,  // Attach donor details if found
+            };
+        });
+
+        // console.log(mergedData);
+
+        // Modify Users to encode images as Base64
+        const All_Donors = mergedData.map(event => {
+            if (event.profile_photo && event.profile_photo.data) {
+                return {
+                    ...event, // Spread existing event fields
+                    profile_photo: `data:${event.profile_photo.contentType};base64,${event.profile_photo.data.toString("base64")}`
+                };
+            }
+            return event;
+        });
+
+        console.log("All_Donors=", All_Donors[0].username);
+        console.log("All_Donors=", All_Donors[0].donorDetails.gender);
+
+        res.status(200).send({
+            success: true,
+            message: "get All Donors",
+            Total_users: All_Donors.length,
+            All_Donors,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Erorr in getting All_Users",
+            error: error,
+        });
+    }
+};
+
 
 
 
@@ -334,5 +387,5 @@ const get_donor = async (req, res) => {
 
 // //export All functions from "Controller"
 module.exports = {
-    testController, donor_signUp, donor_login, get_donor
+    testController, donor_signUp, donor_login, get_donor, get_all_donor
 }

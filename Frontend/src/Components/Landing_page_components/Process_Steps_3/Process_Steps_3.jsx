@@ -23,7 +23,7 @@ function Process_Steps_3() {
                                 clipRule="evenodd" />
                         </svg>
                     </div>
-                    <div className="timeline-end timeline-box">First Macintosh computer</div>
+                    <div className="timeline-end timeline-box bg-gray-200">First Macintosh computer</div>
                     <hr />
                 </li>
                 <li>
@@ -41,7 +41,7 @@ function Process_Steps_3() {
                                 clipRule="evenodd" />
                         </svg>
                     </div>
-                    <div className="timeline-end timeline-box">iMac</div>
+                    <div className="timeline-end timeline-box bg-gray-200">iMac</div>
                     <hr />
                 </li>
                 <li>
@@ -59,7 +59,7 @@ function Process_Steps_3() {
                                 clipRule="evenodd" />
                         </svg>
                     </div>
-                    <div className="timeline-end timeline-box">iPod</div>
+                    <div className="timeline-end timeline-box bg-gray-200">iPod</div>
                     <hr />
                 </li>
                 <li>
@@ -77,7 +77,7 @@ function Process_Steps_3() {
                                 clipRule="evenodd" />
                         </svg>
                     </div>
-                    <div className="timeline-end timeline-box">iPhone</div>
+                    <div className="timeline-end timeline-box bg-gray-200">iPhone</div>
                     <hr />
                 </li>
                 <li>
@@ -95,7 +95,7 @@ function Process_Steps_3() {
                                 clipRule="evenodd" />
                         </svg>
                     </div>
-                    <div className="timeline-end timeline-box">Apple Watch</div>
+                    <div className="timeline-end timeline-box bg-gray-200">Apple Watch</div>
                 </li>
             </ul>
 

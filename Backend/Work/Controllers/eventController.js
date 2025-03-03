@@ -199,7 +199,7 @@ const get_all_events = async (req, res) => {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Erorr in getting All_Blood_Requests",
+            message: "Erorr in getting All_Events",
             error: error,
         });
     }

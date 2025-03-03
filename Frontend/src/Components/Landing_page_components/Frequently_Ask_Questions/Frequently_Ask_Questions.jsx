@@ -2,31 +2,40 @@ import React from 'react'
 
 function Frequently_Ask_Questions() {
     return (
-        <div>
+        <div className='flex flex-col justify-center items-center mt-[10%] ml-[10%] w-[80%] gap-5 mb-64'>
 
-            <h1 className='font-extrabold text-3xl text-center  underline'><span className='text-[#B01030]'>Frequently</span> Ask Questions</h1>
+            <h1 className="text-4xl font-bold text-center ">
+               <span className='text-[#820000]'>Frequently</span>  Asked Questions
+            </h1>
 
-            <div className="border-b border-b-slate-400 collapse collapse-arrow bg-base-200">
+            <div className=''>
+                <p className="pb-10 max-w-[100%] text-center mx-auto font-nunito font-semibold text-md">
+                    Find answers to common questions about blood donation
+                    <br />and how you can help.
+                </p>
+            </div>
+
+            <div className="shadow-lg shadow-gray-100 collapse collapse-arrow  ">
                 <input type="radio" name="my-accordion-2" defaultChecked />
                 <div className="collapse-title font-extrabold">Click to open this one and close others</div>
-                <div className="border-b border-b-black collapse-content text-[#B01030]">
-                    <p>hello</p>
+                <div className=" collapse-content text-gray-500 font-nunito">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, eveniet.</p>
                 </div>
             </div>
 
-            <div className="border-b border-b-slate-400 collapse collapse-arrow bg-base-200">
+            <div className="shadow-lg shadow-gray-100 collapse collapse-arrow ">
                 <input type="radio" name="my-accordion-2" />
                 <div className="collapse-title  font-extrabold ">Click to open this one and close others</div>
-                <div className="border-b border-b-black collapse-content text-[#B01030]">
-                    <p>hello</p>
+                <div className=" collapse-content text-gray-500 font-nunito">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error neque illo corporis nam officia, </p>
                 </div>
             </div>
 
-            <div className="border-b border-b-slate-400 collapse collapse-arrow bg-base-200">
+            <div className="shadow-lg shadow-gray-100 collapse collapse-arrow font-nunito">
                 <input type="radio" name="my-accordion-2" />
                 <div className="collapse-title font-extrabold ">Click to open this one and close others</div>
-                <div className="border-b border-b-black collapse-content text-[#B01030]">
-                    <p>hello</p>
+                <div className=" collapse-content text-gray-500">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, sunt placeat tempore itaque</p>
                 </div>
             </div>
 

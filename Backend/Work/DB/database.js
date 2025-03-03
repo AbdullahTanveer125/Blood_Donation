@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 // Method-1
 const connectDB=async function(){
-    mongoose.connect('mongodb://127.0.0.1:27017/Blood_Donation')//it return promise.we handle promise with "then()" and "catch()"
+    mongoose.connect('mongodb+srv://abdullahkhan1430789:fyp1234@fyp.k3cxs.mongodb.net/')//it return promise.we handle promise with "then()" and "catch()"
     .then(function () {
         console.log('Connected to MongoDB'.bgMagenta);
     })

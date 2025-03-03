@@ -2,7 +2,7 @@ import React from 'react'
 
 function Blood_donation_steps_2() {
     return (
-        <div className='pt-24 bg-lime-300'>
+        <div className='pt-24'>
 
             <h1 className='text-4xl font-bold text-center'>
                 <span className='text-[#B01030]'>Blood</span> Donation Process

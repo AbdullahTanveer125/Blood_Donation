@@ -42,9 +42,15 @@ import Testmonials_Feedbacks_of_us from "./Components/Landing_page_components/Ou
 import Donor_landing_page from "./Pages/Donor_landing_page.jsx";
 import Login_as_a from "./Pages/Login_as_a/Login_as_a.jsx";
 import Feedback_Review_2 from "./Components/Feedback_Review_2/Feedback_Review_2.jsx";
+import Event_Card_2 from "./Components/Event_Card_2/Event_Card_2.jsx";
+import Event_on_landing_2 from "./Components/Event_on_landing_2/Event_on_landing_2.jsx";
+import D_profile_card from "./Components/Recipient_Components/D_profile_card/D_profile_card.jsx";
+import D_all_donors from "./Components/Recipient_Components/D_all_donors/D_all_donors.jsx";
 
 //#EE8A9E  (light color)
-//#B01030  (dark color)
+//#B01030  (dark color) #1
+// #820000  (dark color) #2
+// #04214c  (navy blue)
 
 function App() {
 
@@ -85,11 +91,16 @@ function App() {
 
 
 
-
         <Route path="/donor" element={<Donor_landing_page />} />
+        <Route path="/D_profile_card" element={<D_all_donors />} />
         
         <Route path="/login_as_a" element={<Login_as_a />} />
         <Route path="/Feedback_Review_2" element={<Feedback_Review_2 />} />
+
+        
+        <Route path="/Event_Card_2" element={<Event_Card_2 />} />
+        
+        <Route path="/Event_on_landing_2" element={<Event_on_landing_2 />} />
 
 
 

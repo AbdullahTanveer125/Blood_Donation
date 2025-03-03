@@ -9,7 +9,7 @@ function D_feedback_card({ event }) {
             <div className='flex gap-5'>
                 <figure>
                     <img
-                        className='h-14 w-14 border-4 border-black rounded-full'
+                        className='h-14 w-14 border-2 border-black rounded-full'
                         src={event.profile_photo ? event.profile_photo : image11} alt="" />
                 </figure>
                 <div>

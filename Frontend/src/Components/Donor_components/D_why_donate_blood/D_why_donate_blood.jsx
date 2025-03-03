@@ -16,61 +16,61 @@ import Marquee from "react-fast-marquee";
 function D_why_donate_blood() {
     return (
 
-        <div className="max-w-[85%] mt-10 bg-slate-300 ">
-            <h1 className="text-4xl font-bold text-center mb-8 ">
-                <span className="text-[#B01030]">Why</span> Donate blood
+        <div className="ml-[3%] max-w-[95%] mt-10 ">
+            <h1 className="text-4xl font-bold text-center mb-5 ">
+                <span className="text-[#B01030]">Why</span> Donate blood ?
             </h1>
 
             <div className=''>
-                <p className="py-6 max-w-[60%] text-center mx-auto">
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                    quasi. In deleniti eaque aut repudiandae et a id nisi.
+                <p className="pb-10 max-w-[60%] text-center mx-auto">
+                    Every few seconds ,someone needs a blood transfusion. 
+                    <br/>Your one donation can save 3 lives.
                 </p>
             </div>
 
             <div className=" pb-14"> {/* Ensures no scrollbar */}
                 {/* Marquee Effect */}
-                <Marquee speed={40} gradient={false} pauseOnHover={true} className="w-fit">
+                <Marquee speed={80} gradient={false} pauseOnHover={true} className="w-fit">
 
 
 
-                    <div className="mt-7 p-5 gap-10 flex">
+                    <div className="mt-7 p-5 gap-14  flex">
 
                         <img
                             src={donation1}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
                         <img
                             src={donation2}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
                         <img
                             src={donation3}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
                         <img
                             src={donation4}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
                         <img
                             src={donation5}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
                         <img
                             src={donation6}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
                         <img
                             src={image1}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
                         <img
                             src={image2}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
                         <img
                             src={image3}
-                            className="w-[10%] h-[300px] border-2 border-black"
+                            className="w-[9%] h-[300px] rounded-2xl"
                         />
 
 

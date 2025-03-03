@@ -7,12 +7,12 @@ function Testmonials_Feedbacks_of_us({event}) {
 	return (
 
 
-		<div className='bg-gray-200 p-4 max-w-72 rounded-2xl'>
+		<div className='bg-gray-200 p-4 w-72 rounded-md shadow-md shadow-gray-600'>
 
 			<div className='flex gap-5'>
 				<figure>
 					<img
-						className='h-14 w-14 border-4 border-black rounded-full'
+						className='h-14 w-14 border-2 border-black rounded-full shadow-md shadow-gray-600'
 						src={event.profile_photo ? event.profile_photo : image11} alt="" />
 				</figure>
 				<div>
@@ -21,7 +21,7 @@ function Testmonials_Feedbacks_of_us({event}) {
 				</div>
 			</div>
 
-			<div className='pl-16 pt-4 font-sans'>
+			<div className='pl-16 pt-4 font-nunito italic'>
 			{event.our_feedback}
 			</div>
 

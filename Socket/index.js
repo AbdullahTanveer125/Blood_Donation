@@ -17,12 +17,16 @@ const removeUser = (socketId) => {
 
 const getUser = (userId) => {
     return users.find((user) => user.userId === userId);
+    
 };
+// console.log("*** Socket *** Users array=",users)
 
 // hr dfa socket ki id change hoti hai jb b page refresh hota hai
 io.on("connection", (socket) => {
     //when ceonnect
     console.log("a user connected.");
+    
+// console.log("*** Socket *** Users array=",users)
 
     io.emit("welcom","this is my socket server!")//send message to client
 

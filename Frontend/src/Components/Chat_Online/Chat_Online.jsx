@@ -15,6 +15,8 @@ function Chat_Online({ onlineUsers, currentId, setCurrentChat }) {
         const getFriends = async () => {
             const res = await axios.get("http://localhost:5000/user/friends/" + currentId);
             setFriends(res.data);
+            console.log("res >>>>>>>>>>>>> get friend in Chat_Online.jsx=",res)
+            console.log("get friend in Chat_Online.jsx=",friends)
         };
 
         getFriends();
@@ -22,7 +24,14 @@ function Chat_Online({ onlineUsers, currentId, setCurrentChat }) {
 
     useEffect(() => {
         setOnlineFriends(friends.filter((f) => onlineUsers.includes(f._id)));
+        // console.log("set online friend in Chat_Online.jsx=",onlineFriends)
     }, [friends, onlineUsers]);
+
+    
+    console.log("get friend in Chat_Online.jsx=",friends)
+    console.log("set online friend in Chat_Online.jsx=",onlineFriends)
+    console.log("get onlineUsers in Chat_Online.jsx=",onlineUsers)
+
 
     const handleClick = async (user) => {
         try {

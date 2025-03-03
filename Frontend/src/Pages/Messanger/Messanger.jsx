@@ -45,9 +45,14 @@ function Messanger() {
     // const [socket, setSocket] = useState("");
     const socket = useRef();
 
+
+    
+  
+    
     useEffect(() => {
         socket.current = io("ws://localhost:8900");
         socket.current.on("getMessage", (data) => {
+            console.log("** 22 Data ** =", data);
             setArrivalMessage({
                 sender: data.senderId,
                 text: data.text,
@@ -65,13 +70,18 @@ function Messanger() {
     useEffect(() => {
         socket.current.emit("addUser", user._id);
         socket.current.on("getUsers", (users) => {
-            // console.log("Me=", users)
+            console.log("<<< inside get online users from socket >>>=", users)
             setOnlineUsers(
                 user.friends.filter((f) => users.some((u) => u.userId === f))
             );
         });
     }, [user]);
-
+    console.log("*******************************************")
+    console.log("*******************************************")
+    console.log("<<< outside get online users from socket >>>=", onlineUsers)
+    console.log("*******************************************")
+    console.log("*******************************************")
+            
 
     // console.log("user from auth", user._id, user.name, loginPerson.person, loginPerson._id, user)
 

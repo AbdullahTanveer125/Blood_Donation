@@ -25,7 +25,9 @@ function Blood_donation_steps_1() {
                     <div className="timeline-start mb-10 md:text-end">
                         <time className="text-lg font-black text-[#B01030]">Step-1</time>
                         <div className="text-lg font-black">First Macintosh computer</div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <p className=' bg-gray-200 rounded-md p-3 shadow-md shadow-gray-300'>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        </p>
                     </div>
                     <hr />
                 </li>
@@ -46,7 +48,9 @@ function Blood_donation_steps_1() {
                     <div className="timeline-end md:mb-10">
                         <time className="text-lg font-black text-[#B01030]">Step-2</time>
                         <div className="text-lg font-black">iMac</div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <p className=' bg-gray-200 rounded-md p-3 shadow-md shadow-gray-300'>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        </p>
                     </div>
                     <hr />
                 </li>

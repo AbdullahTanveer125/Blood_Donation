@@ -16,7 +16,8 @@ const {
     testController,
     donor_signUp,
     donor_login,
-    get_donor
+    get_donor,
+    get_all_donor
 }=require("../Controllers/donorController")
 
 
@@ -39,6 +40,9 @@ donor_router.post("/login",  donor_login);
 
 // // get donor
 donor_router.get("/get-donor/:user_id",  get_donor);
+
+// // get all donor
+donor_router.get("/get-all-donor",  get_all_donor);
 
 
 

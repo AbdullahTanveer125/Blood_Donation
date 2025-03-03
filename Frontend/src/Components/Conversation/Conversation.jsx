@@ -18,7 +18,7 @@ function Conversation({ conversation, currentUser }) {
             try {
                 const res = await axios.get("http://localhost:5000/user/get-user/" + friendId);
                 setUser(res.data.user);
-                console.log("QQQQQQQQ=",res.data)
+                console.log("I think get friend user=",res.data)
             } catch (err) {
                 console.log(err);
             }

@@ -12,7 +12,7 @@ function Our_feedback_on_Landing() {
     useEffect(() => {
         const fetch_our_feedback = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/our_feedback/get-all"); // Your API route
+                const response = await axios.get("http://localhost:5000/user/get_our_feedback_user"); // Your API route
 
                 console.log("All our_feedback=", response)
                 setArray_of_our_feedback(response.data.All_our_feedbacks);
@@ -43,9 +43,7 @@ function Our_feedback_on_Landing() {
 
             <div className=" px-16 relative w-100% pt-16 overflow-hidden justify-center">
 
-                {/* Left Gradient Overlay */}
-                <div className="ml-[-40px] absolute left-10 top-0 h-full w-[500px] bg-gradient-to-r from-slate-400 via-transparent to-transparent opacity-50 pointer-events-none"></div>
-
+               
 
                 <h1 className="text-4xl mb-6 font-bold text-center">
                     <span className="text-[#B01030]">Testimonials</span> / FeedBacks
@@ -54,9 +52,6 @@ function Our_feedback_on_Landing() {
                 {/* Carousel Wrapper with Animation */}
                 <div className=" pb-20 overflow-hidden max-w-full ">
 
-
-                    {/* Left Gradient Overlay */}
-                    {/* <div className="absolute left-10 top-0 h-full w-[500px] bg-gradient-to-r from-slate-400 via-transparent to-transparent opacity-50 pointer-events-none"></div> */}
 
 
                     <div
@@ -71,7 +66,7 @@ function Our_feedback_on_Landing() {
 
                         {array_of_our_feedback.map((event, index) => (
 
-                            <div key={event._id} className="w-[33.33%] flex-shrink-0">
+                            <div key={event._id} className=" flex flex-row justify-center w-[33.33%] flex-shrink-0">
 
                                 <Our_Feedback_Testmonials event={event} />
 
@@ -79,8 +74,7 @@ function Our_feedback_on_Landing() {
                         ))}
 
                     </div>
-                    {/* Right Gradient Overlay */}
-                    <div className="absolute right-0 top-0 h-full w-[500px] bg-gradient-to-l from-slate-400 via-transparent to-transparent opacity-50 pointer-events-none"></div>
+
                 </div>
 
 

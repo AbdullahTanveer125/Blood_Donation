@@ -59,7 +59,7 @@ const userSchema = new mongoose.Schema(
         },
         our_feedback: { 
             type: String, 
-            default: [],
+            default: "",
         },
         profile_photo: {//is ki detail nichy di hai
             data: Buffer,
@@ -69,7 +69,7 @@ const userSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("user", userSchema);
 
 
 

@@ -6,7 +6,7 @@ function Donor_landing_page() {
   return (
     <div className='overflow-x-hidden'>
 
-        <Donor_navbar />
+        {/* <Donor_navbar /> */}
         <Donor_Hero_Section />
       
     </div>

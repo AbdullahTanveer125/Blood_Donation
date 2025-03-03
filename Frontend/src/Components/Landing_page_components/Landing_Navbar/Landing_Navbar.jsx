@@ -88,11 +88,21 @@ function Landing_Navbar() {
             <div className="px-5 navbar bg-[#EE8A9E] ">
                 <div className="w-[100%] flex justify-between navbar-start">
 
-                    <a className=" text-2xl font-bold cursor-pointer">BloodLife</a>
+                    <div className="flex flex-row justify-center items-center gap-4">
+                        <img src="/lifeline.png" alt=""
+                            className="w-[60px]"
+                        />
+                        <a className=" text-2xl font-bold cursor-pointer">BloodLife</a>
+
+                    </div>
+                    {/* <img src="/lifeline.png" alt=""
+                        className="w-[60px]"
+                    />
+                    <a className=" text-2xl font-bold cursor-pointer">BloodLife</a> */}
 
 
                     {/*---------------- Navbar for small devices --------------- */}
-                    <div className="dropdown lg:hidden">
+                    <div className="dropdown lg:hidden ">
 
 
                         <div className="flex flex-col items-center justify-between relative m-5">
@@ -108,8 +118,9 @@ function Landing_Navbar() {
 
                             {/* Menu Overlay */}
                             <div
-                                className={`fixed inset-0  bg-opacity-100 flex flex-col items-center justify-between   transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'
+                                className={`bg-gray-100 z-10 fixed inset-0  bg-opacity-100 flex flex-col items-center justify-between   transition-transform duration-300 ${menuOpen ? 'translate-x-0' : 'translate-x-full'
                                     }`}
+
                             >
 
                                 <div className="w-[100%] flex justify-between border-b-4  border-b-[#B01030] bg-[#EE8A9E] px-10 py-5 ">
@@ -158,7 +169,7 @@ function Landing_Navbar() {
                                 </div>
 
 
-                                <div className="w-[100%] border-t-4  border-t-[#B01030] p-5 flex flex-col items-center justify-between gap-2 bg-slate-200">
+                                <div className="w-[100%] border-t-4  border-t-[#B01030] p-5 flex flex-col items-center justify-between gap-2 bg-slate-400">
 
 
                                     <button className=" border border-black px-4 py-2 w-[50%]">Log in</button>
