@@ -2,6 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 import Marquee from "react-fast-marquee";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaPhone } from "react-icons/fa";
+import { MdDateRange } from "react-icons/md";
+import { MdBloodtype } from "react-icons/md";
 
 function Blood_Request_on_Donor() {
 
@@ -40,8 +44,8 @@ function Blood_Request_on_Donor() {
 
     return (
 
-        <div className="text-center mt-10 bg-slate-300">
-            <h1 className="text-4xl font-bold text-center mb-8 bg-slate-500">
+        <div className="text-center mt-10 ">
+            <h1 className="text-4xl font-bold text-center mb-8 ">
                 <span className="text-[#B01030]">Blood</span> Requests
             </h1>
 
@@ -51,10 +55,10 @@ function Blood_Request_on_Donor() {
                 <Marquee speed={40} gradient={false} pauseOnHover={true} className="w-fit">
                     {array_of_all_blood_requests.map((request, index) => (
 
-                        <div className="indicator bg-yellow-600 mx-5 p-1 gap-10 mt-10">
+                        <div className="w-[300px] indicator mx-5 p-1 gap-10 mt-10">
 
-                            <span className={`indicator-item badge badge-secondary ${request.urgency == "high" ? "bg-red-700" :
-                                request.urgency == "low" ? "bg-yellow-500 text-black" :
+                            <span className={`py-2 indicator-item badge badge-secondary ${request.urgency == "high" ? "bg-red-700 border-red-700" :
+                                request.urgency == "low" ? "bg-green-600 border-green-600" :
                                     "bg-green-500"}`}>{request.urgency}</span>
                             {/* <div className="bg-base-300 grid h-32 w-32 place-items-center">content</div> */}
                             <div
@@ -63,32 +67,63 @@ function Blood_Request_on_Donor() {
                             >
 
 
-                                <div className='flex gap-2 text-lg mb-2'>
-                                    <h3 className=" font-semibold">Patient:</h3>
-                                    <p className=''>{request.patient_name}</p>
+
+                                {/* ********************************************
+                ********************************************
+                ********************************************
+                ******************************************** */}
+
+
+                                <div className='flex flex-row gap-4 items-center mb-5'>
+                                    <div>
+                                        <img
+                                            src="./user.jpg"
+                                            alt=""
+                                            className='w-12 rounded-full'
+                                        />
+                                    </div>
+                                    <div>
+                                        <p>User Name</p>
+                                        <p className='text-xs text-gray-500'>some text</p>
+                                    </div>
+
+                                </div>
+
+                                <div className='flex flex-col gap-2'>
+                                    <div className='flex flex-row items-center gap-2 font-nunito text-gray-500 text-sm'>
+                                        <FaLocationDot size={13} /> Jinnah Hospital
+                                    </div>
+                                    <div className='flex flex-row items-center gap-2 font-nunito  text-gray-500  text-sm'>
+                                        <FaPhone size={10} /> 0309-9014620
+                                    </div>
+                                </div>
+
+                                <div className='my-2 flex flex-row items-center gap-6 text-gray-500 font-nunito text-sm'>
+                                    <div className='flex flex-row items-center gap-2'>
+                                        <MdDateRange /> feb 10, 2015
+                                    </div>
+
+                                    <div className='flex flex-row items-center gap-2'>
+                                        <MdBloodtype /> A+
+                                    </div>
+                                    {/* <div className='flex flex-row items-center gap-2'>
+                                        time
+                                    </div> */}
+                                </div>
+
+                                <div className='font-nunito text-justify mt-7 mb-14 '>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum modi quia ullam, fugiat sunt dolor!
+                                </div>
+
+                                <div className='mb- mx- flex flex-row justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md'>
+                                    Donate
                                 </div>
 
 
-                                <p className="text-sm text-gray-700">
-                                    <strong>Blood Group:</strong> {request.blood_group}
-                                </p>
-                                <p className="text-sm text-gray-700">
-                                    <strong>Phone:</strong> {request.phone}
-                                </p>
-
-                                <p className="text-sm text-gray-700">
-                                    <strong>Location:</strong> {request.location}
-                                </p>
-                                <p className="text-sm text-gray-700">
-                                    <strong>Blood need date:</strong>{" "}
-                                    {new Date(request.blood_need_date).toLocaleDateString()}
-                                </p>
-                                <p className="text-sm text-gray-700">
-                                    <strong>Comment:</strong> {request.comment}
-                                </p>
-
-
-
+                                {/* ********************************************
+                ********************************************
+                ********************************************
+                ******************************************** */}
                             </div>
                         </div>
 
@@ -97,7 +132,7 @@ function Blood_Request_on_Donor() {
                 </Marquee>
             </div>
 
-            <button className="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 transition duration-200 mt-4">
+            <button className="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 transition duration-200 mt-14">
                 See All Blood Requests
             </button>
         </div>

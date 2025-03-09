@@ -45,7 +45,7 @@ function Events_on_Landing({number_of_event_display}) {
             <div className=" px-16 relative w-[100%] pt-16 overflow-hidden justify-center">
 
 
-                <h1 className="text-4xl mb-6 font-bold text-center">
+                <h1 className="text-4xl mb-20 font-bold text-center">
                     <span className="text-[#B01030]">All Events</span> of Organizations
                 </h1>
 
@@ -68,7 +68,7 @@ function Events_on_Landing({number_of_event_display}) {
 
                         {events.map((event, index) => (
 
-                            <div key={event._id} className=" px-20 w-[100%] flex-shrink-0">
+                            <div key={event._id} className="px-20 w-[100%] flex-shrink-0">
 
                                 <Event_Card_2 event={event} />
 

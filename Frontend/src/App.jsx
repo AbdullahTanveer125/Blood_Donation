@@ -27,8 +27,8 @@ import User_Navbar from "./Components/User_Navbar/User_Navbar.jsx";
 import Donor_SignUp from "./Components/Donor_components/D_SignUp/D_SignUp.jsx";
 import Donor_Login from "./Components/Donor_components/D_Login/D_Login.jsx";
 import Recipient_Signup from "./Components/Recipient_Signup/Recipient_Signup.jsx";
-import Organization_Signup from "./Components/Organization_Signup/Organization_Signup.jsx";
-import Organization_Login from "./Components/Organization_Login/Organization_Login.jsx";
+import Organization_Signup from "./Components/Organization_component/Organization_Signup/Organization_Signup.jsx";
+import Organization_Login from "./Components/Organization_component/Organization_Login/Organization_Login.jsx";
 import Add_New_Blood_Request from "./Components/Add_New_Blood_Request/Add_New_Blood_Request.jsx";
 import Recipient_login from "./Components/Recipient_login/Recipient_login.jsx";
 import Blood_Requests_of_recipient from "./Components/Blood_Requests_of_recipient/Blood_Requests_of_recipient.jsx";
@@ -46,6 +46,8 @@ import Event_Card_2 from "./Components/Event_Card_2/Event_Card_2.jsx";
 import Event_on_landing_2 from "./Components/Event_on_landing_2/Event_on_landing_2.jsx";
 import D_profile_card from "./Components/Recipient_Components/D_profile_card/D_profile_card.jsx";
 import D_all_donors from "./Components/Recipient_Components/D_all_donors/D_all_donors.jsx";
+import O_profile from "./Components/Organization_component/O_profile/O_profile.jsx";
+import Oraganization_Landing from "./Pages/Oraganization_Landing.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -103,6 +105,7 @@ function App() {
         <Route path="/Event_on_landing_2" element={<Event_on_landing_2 />} />
 
 
+        <Route path="/organization" element={<Oraganization_Landing />} />
 
 
 

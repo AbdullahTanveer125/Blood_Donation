@@ -25,7 +25,7 @@ function Blood_donation_steps_1() {
                     <div className="timeline-start mb-10 md:text-end">
                         <time className="text-lg font-black text-[#B01030]">Step-1</time>
                         <div className="text-lg font-black">First Macintosh computer</div>
-                        <p className=' bg-gray-200 rounded-md p-3 shadow-md shadow-gray-300'>
+                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300 font-nunito'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
                         </p>
                     </div>
@@ -48,7 +48,7 @@ function Blood_donation_steps_1() {
                     <div className="timeline-end md:mb-10">
                         <time className="text-lg font-black text-[#B01030]">Step-2</time>
                         <div className="text-lg font-black">iMac</div>
-                        <p className=' bg-gray-200 rounded-md p-3 shadow-md shadow-gray-300'>
+                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
                         </p>
                     </div>
@@ -71,7 +71,9 @@ function Blood_donation_steps_1() {
                     <div className="timeline-start mb-10 md:text-end">
                         <time className="text-lg font-black text-[#B01030]">Step-3</time>
                         <div className="text-lg font-black">iPod</div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        </p>
                     </div>
                     <hr />
                 </li>
@@ -92,7 +94,9 @@ function Blood_donation_steps_1() {
                     <div className="timeline-end md:mb-10">
                         <time className="text-lg font-black text-[#B01030]">Step-4</time>
                         <div className="text-lg font-black">iPhone</div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        </p>
                     </div>
                     <hr />
                 </li>
@@ -113,7 +117,9 @@ function Blood_donation_steps_1() {
                     <div className="timeline-start mb-10 md:text-end">
                         <time className="text-lg font-black text-[#B01030]">Step-5</time>
                         <div className="text-lg font-black">Apple Watch</div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        </p>
                     </div>
                 </li>
             </ul>

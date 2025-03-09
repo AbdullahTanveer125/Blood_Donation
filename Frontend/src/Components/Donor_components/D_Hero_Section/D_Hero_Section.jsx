@@ -23,6 +23,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
+import D_profile from '../D_profile/D_profile'
 
 
 
@@ -46,12 +47,12 @@ function Donor_Hero_Section() {
 
                 <div>
 
-                    <h2 className="text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-gray-400 p-6 pb-3 shadow-md shadow-gray-400">
+                    <h2 className="text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-gray-200 p-6 pb-3">
                         <FaHouseDamage size={20} /> Dashboard
                     </h2>
-                    <ul className="space-y-3 p-6">
+                    <ul className="space-y-6 p-6">
                         <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaSearch size={15} /> Search Blood Request
+                            <FaSearch size={15} /> Search
                         </li>
 
                         <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
@@ -63,7 +64,7 @@ function Donor_Hero_Section() {
                         </li>
 
                         <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaSearch size={15} /> Search Events
+                            <FaSearch size={15} /> Events
                         </li>
 
                         <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
@@ -73,24 +74,29 @@ function Donor_Hero_Section() {
                         <li className="hover:text-gray-300 cursor-pointer text-sm pt-5"
                             onClick={handleLogout}
                         >
-                            <div className=' flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-lg'>
+                            {/* <div className=' flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-lg'>
                                 <IoIosLogOut size={20} /> Logout
-                            </div>
+                            </div> */}
                         </li>
                     </ul>
 
                 </div>
 
-                <div className='flex flex-col items-center pb-8'>
+                <div className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-md'>
+                    <IoIosLogOut size={20} /> Logout
+                </div>
+                {/* <div className='flex flex-col items-center pb-8'>
                     <img src="./lifeline.png" alt="" className='w-20' />
                     <p>Blood_Linked_In</p>
-                </div>
+                </div> */}
             </aside>
 
             {/* Main Content - Scrollable */}
-            <main className="ml-[17.3%] w-[83%] px-6 ">
+            <main className="ml-[17.3%] w-[83%] ">
 
-                <Hero2 />
+                <D_profile />
+                {/* <Hero2 /> */}
+                {/* <Blood_donation_steps_1 /> */}
                 {/* <Donor_Event_Section /> */}
                 {/* <Blood_Request_on_Donor /> */}
                 {/* <Blood_donation_steps_1 />
@@ -98,7 +104,7 @@ function Donor_Hero_Section() {
                 <Process_Steps_3 /> */}
                 {/* <Process_Steps /> */}
                 {/* <D_why_donate_blood /> */}
-                <D_feedback number_of_event_display={1} />
+                {/* <D_feedback number_of_event_display={1} /> */}
                 {/* <Feedback_Review_2 /> */}
 
 

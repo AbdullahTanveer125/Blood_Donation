@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-// import  from "react";
-import { FaPhoneAlt } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { MdBloodtype } from "react-icons/md";
@@ -8,9 +7,7 @@ import { FaPersonWalkingLuggage } from "react-icons/fa6";
 import { FaWeightScale } from "react-icons/fa6";
 import { PiHospitalDuotone } from "react-icons/pi";
 import { FaAddressBook } from "react-icons/fa6";
-
-function Hero2() {
-
+function D_profile() {
 
     const [isChecked, setIsChecked] = useState(false);
     const [counter, setCounter] = useState(59);
@@ -22,115 +19,121 @@ function Hero2() {
     };
 
 
+
+
     return (
-        <div className='flex flex-row p- rounded-lg pb-4 min-h-screen gap-4'>
-
-            <div className='border-gray-500 bg-white border-r-2 w-[25%] p-5 space-y-4 flex flex-col items-center justify-between'>
-
-                <div>
-
-                    <img src="./image.png" alt="" className='"w-20 h-52 rounded-full  ' />
-                    <p className='font-semibold text-center pt-5  mb-[-7px]'>Fatima Almas</p>
-                    <p className='text-gray-500 py-1 text-center rounded-lg text-sm'> Donor </p>
-                </div>
-
-                {/* <button className='bg-[#5c1212] text-white py-1 px-12 text-center rounded-lg'>Chat</button> */}
-                {/* <img src="./design1.png" alt="" className='w-28 opacity-50' /> */}
+        <div className=''>
 
 
-
+            {/* image element */}
+            <div class="bg-[url('/donor_background.png')] bg-cover bg-center h-[200px]">
             </div>
 
-            <div className="w-[55%] pt-5">
-                <div className='flex flex-row justify-between'>
 
-                    <div className=' space-y-4'>
-                        <p className='text-2xl'>User Details</p>
-                        {/* <p>Donor</p>
-                        <p>Male</p> */}
-
-                        <div>
-
-                            <p className='flex flex-row text-xs gap-3 font-thin italic'> <FaPhoneAlt /> 030929203031</p>
-                            <p className='flex flex-row text-xs gap-3 font-thin italic'> <MdEmail /> abbhai125420@gmail.com</p>
-                            <p className='text-xs font-thin italic bg-[#5c1212] text-white  inline-block py-1 px-4 rounded-lg'>Male</p>
-
-                        </div>
-
-                    </div>
+            {/* profile photo section */}
+            <div className='flex flex-row items-center ml-8 justify-between pr-5'>
+                <div className='flex flex-row items-center gap-8 mt-[-80px]'>
 
                     <div>
-                        <img src="./gold.png" alt="" className='w-6' />
+                        <img
+                            src="./fatima.png"
+                            alt=""
+                            className='h-48 border-8 border-white rounded-full'
+                        />
+                    </div>
+                    <div>
+                        <div className='h-20'></div>
+                        <div>
+                            <p className='text-xl font-bold'>User Name</p>
+                            <p className='font-nunito  text-sm text-gray-600'>Donor</p>
+                            <div className='flex flex-row items-center gap-6'>
+                                <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-600'> <FaPhone size={10} /> 0309-9014620</p>
+                                <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-600'><MdEmail /> abbhai125420@gmail.com</p>
+                                <p className='flex flex-row items-center gap-3 font-nunito text-xs text-gray-600'>write some other </p>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
 
-                <div className='mt-32 space-y-3 py-5 px-20 bg-gray-00 shadow-g shadow-gray-200 rounded-xl  bg-cover bg-center'
+                <div className=''>
+                    <div className='flex flex-col justify-end items-center gap-3 font-nunito text-sm'>
+
+                        <input
+                            type="checkbox"
+                            className="toggle toggle-info"
+                            checked={isChecked}
+                            onChange={handleToggle}
+                        />
+                        <p>Toggle is {isChecked ? "ON (true)" : "OFF (false)"}</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            {/* information section */}
+            <div className='h-[320px] bg-gray-00 flex flex-row justify-between pt-10'>
+                <div className='w-[20%] flex flex-row justify-center items-center'>
+                    <img
+                        src="./blood2.png"
+                        alt=""
+                        className='w-32 h-40 opacity-'
+                    />
+                </div>
+
+                <div className='bg-slate-00 flex flex-col justify-center space-y-3 border-l-8 border-gray-200 pl-6 w-[500px] font-nunito text-sm'
                 >
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaRegUser /> Full Name
                         </p>
-                        <p className=' italic font-sans'>Abdullah Tanveer</p>
+                        <p className=' italic'>Abdullah Tanveer</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <MdBloodtype /> Blood Group
                         </p>
-                        <p className=' italic font-sans'>A+</p>
+                        <p className=' italic'>A+</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaPersonWalkingLuggage /> Age
                         </p>
-                        <p className=' italic font-sans'>52</p>
+                        <p className=' italic '>52</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaWeightScale /> Weight
                         </p>
-                        <p className=' italic font-sans'>87</p>
+                        <p className=' italic'>87</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <PiHospitalDuotone /> Narest hospital
                         </p>
-                        <p className=' italic font-sans'>Jinnah</p>
+                        <p className=' italic'>Jinnah</p>
                     </div>
 
                     <div className=''>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaAddressBook /> Address
                         </p>
-                        <p className='pl-20 italic font-sans'>Lorem ipsum dolor sit amet consec tetur adipisng elit</p>
+                        <p className='pl-20 italic'>
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, aperiam. Temporibus reiciendis repellat quaerat quos voluptas.
+                        </p>
                     </div>
 
 
                 </div>
-            </div>
 
-            <div className="flex flex-col justify-between w-[20%]  pt-5">
-
-                <div className='flex flex-col items-center gap-3'>
-
-                    <input
-                        type="checkbox"
-                        className="toggle toggle-info"
-                        checked={isChecked}
-                        onChange={handleToggle}
-                    />
-                    <p>Toggle is {isChecked ? "ON (true)" : "OFF (false)"}</p>
-
-                </div>
-
-                <div className='p-2 pb-10'>
-
-
-                    <div className="grid grid-flow-col gap-2 text-center auto-cols-max">
+                <div className='flex flex-row items-end pr-3'>
+                    <div className="grid grid-flow-col gap-2 text-center auto-cols-max font-nunito">
                         <div className="flex flex-col items-center p-2 bg-neutral rounded-box text-neutral-content text-xs">
                             <span className="countdown font-mono text-sm">
                                 <span style={{ "--value": 15 }}></span>
@@ -157,15 +160,14 @@ function Hero2() {
                             sec
                         </div>
                     </div>
-
-
                 </div>
             </div>
 
+            {/* image element */}
+            {/* image element */}
 
-
-        </div >
+        </div>
     )
 }
 
-export default Hero2
+export default D_profile
