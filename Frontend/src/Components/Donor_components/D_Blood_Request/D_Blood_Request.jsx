@@ -7,6 +7,9 @@ import { FaPhone } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { MdBloodtype } from "react-icons/md";
 
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 function Blood_Request_on_Donor() {
 
     const [array_of_all_blood_requests, setArray_of_all_blood_requests] = useState([]);
@@ -40,7 +43,8 @@ function Blood_Request_on_Donor() {
     }, [])
 
 
-
+    
+    
 
     return (
 
@@ -115,10 +119,23 @@ function Blood_Request_on_Donor() {
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum modi quia ullam, fugiat sunt dolor!
                                 </div>
 
-                                <div className='mb- mx- flex flex-row justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md'>
+                                {/* <div className='mb- mx- flex flex-row justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md'
+                                onClick={() => go_to_specific_blood_request(request)}
+                                >
                                     Donate
-                                </div>
+                                </div> */}
 
+                                {/* 💡 Can I send data through a <Link> like props instead of state?
+
+❌ Short answer: No, <Link> cannot pass props directly like a component.
+Props are only passed between parent and child components, not through routing (<Link>). */}
+                                <Link
+                                    to="/specific_blood_request"
+                                    state={request}
+                                    className="mb-4 mx-2 flex flex-row justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md cursor-pointer"
+                                >
+                                    Donate
+                                </Link>
 
                                 {/* ********************************************
                 ********************************************

@@ -176,7 +176,7 @@ async function recipient_login(req, res) {
         const match = await comparePassword(password, recipient.password);
 
         if (!match) {
-            return res.status(200).send({
+            return res.status(500).send({
                 success: false,
                 message: "Invalid Password",
             })

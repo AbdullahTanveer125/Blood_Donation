@@ -7,6 +7,7 @@ import { FaPersonWalkingLuggage } from "react-icons/fa6";
 import { FaWeightScale } from "react-icons/fa6";
 import { PiHospitalDuotone } from "react-icons/pi";
 import { FaAddressBook } from "react-icons/fa6";
+import Blood_Request_on_Donor from '../D_Blood_Request/D_Blood_Request';
 function D_profile() {
 
     const [isChecked, setIsChecked] = useState(false);
@@ -165,6 +166,8 @@ function D_profile() {
 
             {/* image element */}
             {/* image element */}
+            
+            <Blood_Request_on_Donor />
 
         </div>
     )

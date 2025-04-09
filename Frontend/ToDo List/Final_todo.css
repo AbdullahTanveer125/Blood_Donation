@@ -1,0 +1,185 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+.todo_parent{
+    background-color: rgb(43, 70, 61);
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+.todo_section{
+    background-color: rgb(255, 255, 255);
+    /* margin-top: 70px; */
+    padding: 30px;
+    text-align: center;
+}
+.img{
+    height: 100px;
+}
+.write_item_container{
+    /* background-color: rgb(145, 208, 113); */
+    /* box-sizing: content-box; */
+    padding: 5px 10px;
+    margin: 0px 0px 0px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.write_item_secion{
+    background-color: rgb(182, 184, 181);
+    /* box-sizing: content-box; */
+    padding: 5px 10px;
+    margin: 0px 0px 50px 0px;
+}
+.write_item_container input{
+    /* box-sizing: content-box; */
+    border: none;
+    background: transparent;
+}
+.filter_container{
+    /* border: solid; */
+    /* box-sizing: content-box; */
+    /* align-self: flex-start; */
+    padding: 0px;
+    width: 107px;
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+.filter_show{
+    /* box-sizing: content-box; */
+    background-color: rgb(114, 124, 129);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-self: flex-start;
+    padding: 5px;
+}
+.filter_option_show{
+    margin-top: 1px;
+    background-color: rgb(114, 124, 129);
+    width: 100%;
+    /* display: none; */
+}
+.filter_option_show p{
+    padding: 5px 0px;
+}
+.filter_option_show p:hover{
+    background-color: rgb(0, 64, 100);
+    color: rgb(154, 201, 205);
+    cursor: pointer;
+}
+.filter_hide{
+    display: none;
+}
+.each_item{
+    background-color: rgb(0, 64, 100);
+    color: rgb(154, 201, 205);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 4px 10px;
+    margin: 10px 0px;
+}
+/* .each_item:hover{
+    background-color: rgb(154, 201, 205);
+    color: rgb(0, 64, 100);
+} */
+.tick_delete_icon_parent{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 5px;
+}
+.click:active{
+    transform: translateX(30%);
+    opacity: 0;
+    transition: all 0.7s;
+}
+.icons{
+    cursor: pointer;
+}
+.tick_icon{
+    background-color: rgb(154, 201, 205);
+    color: rgb(0, 64, 100);
+    padding: 3px;
+}
+.tick_icon:hover{
+    background-color: rgb(0, 255, 157);
+    color: black;
+}
+.tick_icon:active{
+    background-color: rgb(9, 47, 50);
+}
+.complete_task{
+    text-decoration: line-through;
+}
+
+.plus_icon:active{
+    color: rgb(30, 255, 0);
+}
+.delete_icon{
+    background-color: rgb(154, 201, 205);
+    color: rgb(0, 64, 100);
+    padding: 3px;
+}
+.delete_icon:hover{
+    background-color: red;
+}
+.delete_icon:active{
+    background-color: rgb(154, 201, 205);
+}
+.btn{
+    text-transform: capitalize;
+    background-color: crimson;
+    color: antiquewhite;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-style: none;
+}
+.btn:hover{
+    cursor: pointer;
+}
+.btn:active{
+    transition: all 0.5s;
+    background-color: rgb(4, 196, 249);
+}
+.abdullah{
+    text-decoration: line-through rgb(1, 60, 144) 3px;
+    opacity: 0.5;
+}
+
+@media (max-width:480px) {
+    .todo_section{
+        padding: 10px;
+    }
+    .write_item_container{
+        padding: 5px 0px;
+    }
+}
+@media (max-width:380px) {
+    .todo_section{
+        padding: 15px;
+    }
+    .write_item_container{
+        margin: 0px 0px 0px 0px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 0px;
+    }
+    .write_item_secion{
+        background-color: rgb(182, 184, 181);
+        /* box-sizing: content-box; */
+        padding: 5px 10px;
+        margin: 0px 0px 10px 0px;
+    }
+    .filter_container{
+        margin-bottom: 50px;
+    }
+  }

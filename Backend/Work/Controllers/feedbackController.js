@@ -2,6 +2,7 @@ const feedback_model = require("../Models-Schema/feedback_Schema")
 const donor_model = require("../Models-Schema/donor_schema")
 const recipient_model = require("../Models-Schema/recipient_schema")
 const user_model = require("../Models-Schema/user_schema")
+const blood_request_model = require("../Models-Schema/blood_Request_Schema")
 
 const JWT = require("jsonwebtoken");
 
@@ -19,42 +20,71 @@ async function testController(req, res) {
 // Add new feedback
 const add_feedback = async (req, res) => {
     try {
-        const { comment, rating } = req.body;
-        const donor_id = req.params.donor_id;
         const recipient_id = req.params.recipient_id;
+        const blood_request_id = req.params.blood_request_id;
+        const { username, description, rating } = req.body;
 
-        // console.log("donor_id=",donor_id)
-        // console.log("recipient_id=",recipient_id)
+        console.log("blood request _id=", blood_request_id)
 
-        const DONOR = await donor_model.findById(donor_id)
-        const RECIPIENT = await recipient_model.findById(recipient_id)
+
+
+
+        const get_donor_user_id = await user_model.findOne({ username }).select('_id');
+
+        if (!get_donor_user_id) {
+            return res.status(404).json({ success: false, message: "Invalid username!" });
+        }
+
+
+        // console.log("get_donor_user_id._id=", get_donor_user_id._id)
+        user_id_of_donor = get_donor_user_id._id
+
+        const get_donor_id = await donor_model.findOne({ userId: user_id_of_donor }).select('_id');
+
+        console.log("get_donor_id=", get_donor_id)
+
+        donor_id = get_donor_id
+        donor_username = username
+
+
+        // By default, findByIdAndUpdate() returns the old document — the one before the update.
+
+        // If you want the updated document returned instead, you need to pass { new: true }
+        const updated_in_blood_request_model = await blood_request_model.findByIdAndUpdate(
+            blood_request_id,
+            {
+                donor_id: donor_id,
+                recipient_id: null
+            },
+            { new: true }
+        );
+
+        console.log("updated_in_blood_request_model=", updated_in_blood_request_model)
+
+        // console.log("Donor id=", donor_id)
+        // console.log("Donor username=", donor_username)
+
+
+        // const DONOR = await donor_model.findById(donor_id)
+        const RECIPIENT_userId = await recipient_model.findById(recipient_id).select('userId')
 
         // console.log("DONOR=", DONOR)
-        // console.log("RECIPIENT=", RECIPIENT)
+        // console.log("RECIPIENT_userId=", RECIPIENT_userId)
+        // console.log("RECIPIENT_userId=", RECIPIENT_userId.userId)
+        user_id_of_recipient = RECIPIENT_userId.userId;
 
 
-        
-        const donor_user = await user_model.findById(DONOR.userId).select("-profile_photo -password");
-        const recipient_user = await user_model.findById(RECIPIENT.userId).select("-profile_photo -password");
+        const get_object_of_recipient_username = await user_model.findById(user_id_of_recipient).select("username");
+
+        let recipient_username = get_object_of_recipient_username.username
 
 
-        console.log("donor_user=", donor_user)
-        console.log("recipient_user=", recipient_user)
-
-        const donor_username= donor_user.username;
-        const recipient_username= recipient_user.username;
-        // const donor_user = await donor_model.findOne({ DONOR.userId: user._id });
-
-
-
-        console.log("***donor_username:***", donor_username)
-        console.log("***recipient_username:***", recipient_username)
         //validation
         switch (true) {
-            case !comment:
-                return res.status(500).send({ error: "comment is Required" });
-            case !rating:
-                return res.status(500).send({ error: "rating is Required" });
+            case !description:
+                return res.status(500).send({ error: "description is Required" });
+            // case !rating:
+            // return res.status(500).send({ error: "rating is Required" });
         }
 
         const FEEDBACK = {
@@ -62,7 +92,7 @@ const add_feedback = async (req, res) => {
             recipient_id,
             donor_username,
             recipient_username,
-            comment,
+            description,
             rating
         }
 

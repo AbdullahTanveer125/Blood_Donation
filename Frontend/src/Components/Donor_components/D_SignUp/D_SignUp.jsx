@@ -108,75 +108,62 @@ function Donor_SignUp() {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, libero odio odit dolores expedita saepe magnam consequatur id nostrum labore a ipsum iste quasi at possimus, accusantium culpa mollitia! Placeat!
             </div>
 
-            <div className="bg-slate-200 hero min-h-screen">
-                ggggggggggg
-                <div className='m-12'>AAAAAAsdjkkkkkkkkkkk
-                    <p>asddddddddd</p>qqqq
-                </div>
+            <div className="hero min-h-screen flex flex-row">
 
 
-                <div className=" hero-content flex-col lg:flex-row-reverse">
 
-                    <div className="w-[90%] md:w-[80%] lg:w-[35%] text-center lg:text-left">
+                <div className=" p-3 w-full flex flex-row justify-between items-center mx-[5%]">
 
-                        <div className='text-center'
-                        // className='bg-teal-200' style={{ borderRadius: "25% 25% 0% 71% / 0% 0% 25% 68%", border: "5px solid #1a73e8" }}
-                        >
+                    <img src="/donor_signup.png" alt="" className='w-[30%] h-[30%]' />
 
-                            {/* <h1 className="text-5xl font-bold text-center">Register Now!</h1> */}
-                            <img src="/donor register image.png" alt="" className='h-96 lg:h-auto mx-auto' />
-                        </div>
 
-                    </div>
-
-                    <div className="bg-slate-300 w-[90%] md:w-[80%] lg:w-[60%] card shrink-0 shadow-2xl flex items-center"
-                        style={{
-                            boxShadow: "0 0 36px 2px #074799",
-                        }}
-                    >
+                    <div className="bg-slate-50 card shaow-2xl flex items-center">
                         <form onSubmit={handleSubmit} encType="multipart/form-data"
-                            className=" card-body grid grid-cols-1 md:grid-cols-2 gap-4">
+                            className=" card-body ">
 
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="name" className="text-sm font-medium text-gray-700">Name</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <FaUserAlt />
+                            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="name" className="text-sm font-medium text-gray-700">Name</label> */}
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <div className="">
+                                            <FaUserAlt />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            value={name}
+                                            onChange={function (e) { setName(e.target.value) }}
+                                            required
+                                            id="name"
+                                            className="grow"
+                                            placeholder="Name"
+                                        />
                                     </div>
-                                    <input
-                                        type="text"
-                                        value={name}
-                                        onChange={function (e) { setName(e.target.value) }}
-                                        required
-                                        id="name"
-                                        className="grow"
-                                        placeholder=""
-                                    />
                                 </div>
-                            </div>
 
 
 
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="gender" className="text-sm font-medium text-gray-700">Gender</label>
-                                <select
-                                    className="select select-bordered w-full max-w-xs"
-                                    value={gender}
-                                    onChange={(e) => {
-                                        setGender(e.target.value);
-                                        console.log(gender)
-                                    }}
-                                    required
-                                >
-                                    <option disabled selected></option>
-                                    <option>male</option>
-                                    <option>Female</option>
-                                </select>
-                            </div>
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="gender" className="text-sm font-medium text-gray-700">Gender</label> */}
+                                    <select
+                                        className="select select-bordered w-full max-w-xs"
+                                        value={gender}
+                                        onChange={(e) => {
+                                            setGender(e.target.value);
+                                            console.log(gender)
+                                        }}
+                                        required
+
+                                    >
+                                        <option value="" disabled>
+                                            Select Gender
+                                        </option>
+                                        <option>male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
 
 
-                            {/* <div className="flex flex-col gap-1">
+                                {/* <div className="flex flex-col gap-1">
                                 <label htmlFor="gender" className="text-sm font-medium text-gray-700">Gender</label>
                                 <select
                                     className="select select-bordered w-full max-w-xs"
@@ -191,211 +178,226 @@ function Donor_SignUp() {
 
                             </div> */}
 
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="age" className="text-sm font-medium text-gray-700">Age</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <FaPerson size={20} />
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="age" className="text-sm font-medium text-gray-700">Age</label> */}
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <div className="">
+                                            <FaPerson size={20} />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            value={age}
+                                            onChange={function (e) { setAge(e.target.value) }}
+                                            required
+                                            id="age"
+                                            className="grow"
+                                            placeholder="Age"
+                                        />
                                     </div>
-                                    <input
-                                        type="text"
-                                        value={age}
-                                        onChange={function (e) { setAge(e.target.value) }}
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="weight" className="text-sm font-medium text-gray-700">Weight</label> */}
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <div className="">
+                                            <GiWeight size={20} />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            value={weight}
+                                            onChange={function (e) { setWeight(e.target.value) }}
+                                            required
+                                            id="weight"
+                                            className="grow"
+                                            placeholder="Weight"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="bloodGroup" className="text-sm font-medium text-gray-700">Blood Group</label> */}
+                                    <select
+                                        className="select select-bordered w-full max-w-xs"
+                                        value={blood_group}
+                                        // onChange={(e) => setBlood_group(e.target.value) }
+                                        onChange={(e) => {
+                                            setBlood_group(e.target.value);
+                                            console.log(blood_group)
+                                        }}
                                         required
-                                        id="age"
-                                        className="grow"
-                                        placeholder=""
+                                    >
+
+                                        <option value="" disabled>
+                                            Blood Group
+                                        </option>
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>B+</option>
+                                        <option>B-</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+
+
+                                    </select>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone</label> */}
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <div className="">
+                                            <FaPhoneVolume />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            value={phone}
+                                            onChange={function (e) { setPhone(e.target.value) }}
+                                            required
+                                            id="phone"
+                                            className="grow"
+                                            placeholder="Phone"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="address" className="text-sm font-medium text-gray-700">Address</label> */}
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <div className="">
+                                            <FaRegAddressBook size={20} />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            value={address}
+                                            onChange={function (e) { setAddress(e.target.value) }}
+                                            required
+                                            id="address"
+                                            className="grow"
+                                            placeholder="Address"
+                                        />
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label> */}
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <div className="">
+                                            <MdEmail size={20} />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            value={email}
+                                            onChange={function (e) { setEmail(e.target.value) }}
+                                            required
+                                            id="email"
+                                            className="grow"
+                                            placeholder="Email"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="username" className="text-sm font-medium text-gray-700">Username</label> */}
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <div className="">
+                                            <FaUserAlt size={20} />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            value={username}
+                                            onChange={function (e) { setUsername(e.target.value) }}
+                                            required
+                                            id="username"
+                                            className="grow"
+                                            placeholder="User Name"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    {/* <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label> */}
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <div className="">
+                                            <FaKey size={20} />
+                                        </div>
+                                        <input
+                                            type="password"
+                                            value={password}
+                                            onChange={function (e) { setPassword(e.target.value) }}
+                                            required
+                                            id="password"
+                                            className="grow"
+                                            placeholder="Password"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="nearest_hospital" className="text-sm font-medium text-gray-700">Nearest hospital</label>
+                                    <select
+                                        className="select select-bordered w-full max-w-xs"
+                                        value={nearest_hospital}
+                                        onChange={(e) => setNearest_hospital(e.target.value)}
+                                        required
+                                        placeholder="kk"//not work
+                                    >
+                                        <option value="" disabled>
+
+                                        </option>
+                                        <option>Jinnah</option>
+                                        <option>Service</option>
+                                        <option>Childern</option>
+                                        <option>other</option>
+                                        <option>other</option>
+                                        <option>other</option>
+                                        <option>other</option>
+                                        <option>other</option>
+
+
+                                    </select>
+                                </div>
+
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="donationDate" className="text-sm font-medium text-gray-700">Last Time Donation Date (optional)</label>
+                                    <div className="input input-bordered flex items-center gap-2">
+                                        <input
+                                            type="date"
+                                            value={last_time_donation_date}
+                                            onChange={function (e) { setLast_time_donation_date(e.target.value) }}
+                                            required
+                                            id="donationDate"
+                                            className="grow"
+                                            placeholder="Last" />
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="profile_photo" className="text-sm font-medium text-gray-700">Profile photo</label>
+                                    <input
+                                        type="file"
+                                        // value={profile_photo}
+                                        onChange={function (e) { console.log(e.target.files); setProfile_photo(e.target.files[0]) }}// Use files[0] to get the first selected file
+                                        name="image"
+                                        accept="image/*"
+                                        placeholder="choose an image"
+                                        required
+                                        className="file-input file-input-bordered w-full max-w-xs"
                                     />
                                 </div>
+
+
+
                             </div>
 
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="weight" className="text-sm font-medium text-gray-700">Weight</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <GiWeight size={20} />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        value={weight}
-                                        onChange={function (e) { setWeight(e.target.value) }}
-                                        required
-                                        id="weight"
-                                        className="grow"
-                                        placeholder=""
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="bloodGroup" className="text-sm font-medium text-gray-700">Blood Group</label>
-                                <select
-                                    className="select select-bordered w-full max-w-xs"
-                                    value={blood_group}
-                                    // onChange={(e) => setBlood_group(e.target.value) }
-                                    onChange={(e) => {
-                                        setBlood_group(e.target.value);
-                                        console.log(blood_group)
-                                    }}
-                                    required
-                                >
-                                    <option disabled selected></option>
-                                    <option>A+</option>
-                                    <option>A-</option>
-                                    <option>B+</option>
-                                    <option>B-</option>
-                                    <option>O+</option>
-                                    <option>O-</option>
-                                    <option>AB+</option>
-                                    <option>AB-</option>
-
-
-                                </select>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <FaPhoneVolume />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        value={phone}
-                                        onChange={function (e) { setPhone(e.target.value) }}
-                                        required
-                                        id="phone"
-                                        className="grow"
-                                        placeholder=""
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="address" className="text-sm font-medium text-gray-700">Address</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <FaRegAddressBook size={20} />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        value={address}
-                                        onChange={function (e) { setAddress(e.target.value) }}
-                                        required
-                                        id="address"
-                                        className="grow"
-                                        placeholder=""
-                                    />
-                                </div>
-                            </div>
-
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="donationDate" className="text-sm font-medium text-gray-700">Last Time Donation Date (optional)</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <input
-                                        type="date"
-                                        value={last_time_donation_date}
-                                        onChange={function (e) { setLast_time_donation_date(e.target.value) }}
-                                        required
-                                        id="donationDate"
-                                        className="grow"
-                                        placeholder="" />
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="profile_photo" className="text-sm font-medium text-gray-700">Profile photo</label>
-                                <input
-                                    type="file"
-                                    // value={profile_photo}
-                                    onChange={function (e) { console.log(e.target.files); setProfile_photo(e.target.files[0]) }}// Use files[0] to get the first selected file
-                                    name="image"
-                                    accept="image/*"
-                                    placeholder="choose an image"
-                                    required
-                                    className="file-input file-input-bordered w-full max-w-xs"
-                                />
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="nearest_hospital" className="text-sm font-medium text-gray-700">Nearest hospital</label>
-                                <select
-                                    className="select select-bordered w-full max-w-xs"
-                                    value={nearest_hospital}
-                                    onChange={(e) => setNearest_hospital(e.target.value)}
-                                    required
-                                    placeholder="kk"//not work
-                                >
-                                    <option disabled selected></option>
-                                    <option>Jinnah</option>
-                                    <option>Service</option>
-                                    <option>Childern</option>
-                                    <option>other</option>
-                                    <option>other</option>
-                                    <option>other</option>
-                                    <option>other</option>
-                                    <option>other</option>
-
-
-                                </select>
-                            </div>
-
-
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <MdEmail size={20} />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        value={email}
-                                        onChange={function (e) { setEmail(e.target.value) }}
-                                        required
-                                        id="email"
-                                        className="grow"
-                                        placeholder=""
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="username" className="text-sm font-medium text-gray-700">Username</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <FaUserAlt size={20} />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        value={username}
-                                        onChange={function (e) { setUsername(e.target.value) }}
-                                        required
-                                        id="username"
-                                        className="grow"
-                                        placeholder=""
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <FaKey size={20} />
-                                    </div>
-                                    <input
-                                        type="password"
-                                        value={password}
-                                        onChange={function (e) { setPassword(e.target.value) }}
-                                        required
-                                        id="password"
-                                        className="grow"
-                                        placeholder=""
-                                    />
-                                </div>
-                            </div>
 
                             <div className="mt-6 w-[90%]  text-center">
                                 <button type="submit" className="bg-[#24599e] border-0 text-white btn w-[50%] font-bold text-2xl hover:bg-[#888b8e] hover:text-black"
@@ -407,8 +409,13 @@ function Donor_SignUp() {
                         </form>
 
                     </div>
+
+
+
+
+
                 </div>
-                ggggggggggg
+
             </div>
 
             <hr />

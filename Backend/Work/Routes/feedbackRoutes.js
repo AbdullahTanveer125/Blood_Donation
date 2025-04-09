@@ -32,7 +32,7 @@ const {
 feedback_router.get("/feedback-test", testController);
 
 // Add feedback
-feedback_router.post("/add/:donor_id/:recipient_id",  add_feedback);
+feedback_router.post("/add/:recipient_id/:blood_request_id",  add_feedback);
 
 // get all_feedbacks from donor_id 
 feedback_router.get("/get-all-donor-feedbacks/:donor_id", get_all_feedbacks_of_donor);

@@ -29,8 +29,8 @@ const donor_signUp = async (req, res) => {
         const { profile_photo } = req.files;
 
 
-        console.log("Incoming request data:", req.fields);
-        console.log("user name>>>>>>>>", username);
+        // console.log("Incoming request data:", req.fields);
+        // console.log("user name>>>>>>>>", username);
 
 
 
@@ -89,6 +89,14 @@ const donor_signUp = async (req, res) => {
             })
         }
 
+        const existing_phone = await user_model.findOne({ phone })
+        if (existing_phone) {
+            res.status(200).send({
+                success: false,
+                message: "Phone Number already exist, please edit your Phone Number!",
+            })
+        }
+
         // hashing Password
         const hashedPassword = await hashPassword(password);
 
@@ -108,10 +116,10 @@ const donor_signUp = async (req, res) => {
         // }
 
         // const real_date = string_Into_Date(last_time_donation_date)
-        const real_date = last_time_donation_date
-        console.log("*****************************************************")
-        console.log("real date:", real_date)
-        console.log("*****************************************************")
+        // const real_date = last_time_donation_date
+        // console.log("*****************************************************")
+        // console.log("real date:", real_date)
+        // console.log("*****************************************************")
 
 
         // const fullname = firstname + " " + lastname
@@ -125,9 +133,9 @@ const donor_signUp = async (req, res) => {
             person
         }
 
-        console.log("*****************************************************")
-        console.log("usernameMMMMMMMMMM:", username)
-        console.log("*****************************************************")
+        // console.log("*****************************************************")
+        // console.log("usernameMMMMMMMMMM:", username)
+        // console.log("*****************************************************")
 
         // await user_model.deleteMany({ username: null });
 
@@ -150,17 +158,17 @@ const donor_signUp = async (req, res) => {
         // await USER.save();
 
 
-        console.log("*****************************************************")
-        console.log("usernameLLLLLLLLLLLLL:", username)
-        console.log("*****************************************************")
+        // console.log("*****************************************************")
+        // console.log("usernameLLLLLLLLLLLLL:", username)
+        // console.log("*****************************************************")
 
-        console.log("*******************USER************************************")
+        // console.log("*******************USER************************************")
         // console.log(USER)
-        console.log("USER>>>>>>MMM>>>>:", USER.username)
-        console.log("**********************SSSS*USER********************************")
+        // console.log("USER>>>>>>MMM>>>>:", USER.username)
+        // console.log("**********************SSSS*USER********************************")
 
         const userId = USER._id
-        console.log("userId>>>>AAAAAA>>>>:", userId)
+        // console.log("userId>>>>AAAAAA>>>>:", userId)
 
         data_for_donor_collection = {
             userId,

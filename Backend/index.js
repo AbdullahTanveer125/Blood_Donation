@@ -44,6 +44,7 @@ const event_router=require("./Work/Routes/eventRoutes.js");
 const feedback_router=require("./Work/Routes/feedbackRoutes.js");
 const conversation_router=require("./Work/Routes/conversationRoutes.js");
 const message_router=require("./Work/Routes/messageRoutes.js");
+const notification_router=require("./Work/Routes/notificationRoutes.js");
 
 
 
@@ -83,6 +84,7 @@ app.use("/event", event_router);
 app.use("/feedback", feedback_router); 
 app.use(conversation_router); 
 app.use(message_router); 
+app.use("/notification", notification_router); 
 
 
 // Routes

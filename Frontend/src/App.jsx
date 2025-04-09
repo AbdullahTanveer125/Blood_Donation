@@ -1,6 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from 'react'
 import './App.css'
+import { useAuth } from "./context/auth.jsx";
+
+
 import Navbar from './Components/Navbar.jsx'
 import Hero1 from './Components/Hero1/Hero1.jsx'
 import Hero2 from './Components/Hero2/Hero2.jsx'
@@ -26,12 +29,12 @@ import Parent_of_Card from "./Components/Card1/Parent_of _Card.jsx";
 import User_Navbar from "./Components/User_Navbar/User_Navbar.jsx";
 import Donor_SignUp from "./Components/Donor_components/D_SignUp/D_SignUp.jsx";
 import Donor_Login from "./Components/Donor_components/D_Login/D_Login.jsx";
-import Recipient_Signup from "./Components/Recipient_Signup/Recipient_Signup.jsx";
+import Recipient_Signup from "./Components/Recipient_Components/Recipient_Signup/Recipient_Signup.jsx";
 import Organization_Signup from "./Components/Organization_component/Organization_Signup/Organization_Signup.jsx";
 import Organization_Login from "./Components/Organization_component/Organization_Login/Organization_Login.jsx";
 import Add_New_Blood_Request from "./Components/Add_New_Blood_Request/Add_New_Blood_Request.jsx";
-import Recipient_login from "./Components/Recipient_login/Recipient_login.jsx";
-import Blood_Requests_of_recipient from "./Components/Blood_Requests_of_recipient/Blood_Requests_of_recipient.jsx";
+import Recipient_login from "./Components/Recipient_Components/Recipient_login/Recipient_login.jsx";
+import Blood_Requests_of_recipient from "./Components/Recipient_Components/Its_all_Blood_Request/Its_all_Blood_Request.jsx";
 import Add_New_Event from "./Components/Add_New_Event/Add_New_Event.jsx";
 import Events_of_Organization from "./Components/Events_of_Organization/Events_of_Organization.jsx";
 import Messanger from "./Pages/Messanger/Messanger.jsx";
@@ -48,6 +51,11 @@ import D_profile_card from "./Components/Recipient_Components/D_profile_card/D_p
 import D_all_donors from "./Components/Recipient_Components/D_all_donors/D_all_donors.jsx";
 import O_profile from "./Components/Organization_component/O_profile/O_profile.jsx";
 import Oraganization_Landing from "./Pages/Oraganization_Landing.jsx";
+import Parent_of_gym from "../Gym/Parent_of_gym.jsx";
+import Final_todo from "../ToDo List/Final_todo.jsx";
+import Unauthorized_user from "./Pages/Unuthorized_user.jsx";
+import Specific_blood_request_on_donor from "./Components/Donor_components/D_Specific_blood_request/Specific_blood_request_on_donor.jsx";
+import Recipient_landing_page from "./Pages/Recipient_landing_page.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -56,35 +64,35 @@ import Oraganization_Landing from "./Pages/Oraganization_Landing.jsx";
 
 function App() {
 
+  const [auth] = useAuth();
+  const userRole = auth?.user?.person; // Get user role
+
   return (
     <>
-      <Routes>
-      <Route path="/" element={<Landing />} />
+      {/* <Routes>
+      
+        <Route path="/gym" element={<Parent_of_gym />} />
+        <Route path="/todo" element={<Final_todo />} />
         <Route path="/home1" element={<Home_1 />} />
         <Route path="/home2" element={<Home_Page_2 />} />
         <Route path="/user_navbar" element={<User_Navbar />} />
-        <Route path="/donor_signup" element={<Donor_SignUp />} />
-        <Route path="/recipient_signup" element={<Recipient_Signup />} />
-        <Route path="/organization_signup" element={<Organization_Signup />} />
+      
         <Route path="/card" element={<Parent_of_Card />} />
         <Route path="/frequently_ask_questions" element={<Frequently_Ask_Questions />} />
-        {/* <Route path="/chat" element={<Chat />} /> */}
-        <Route path="/donor_login" element={<Donor_Login />} />
-        <Route path="/recipient_login" element={<Recipient_login />} />
-        <Route path="/organization_login" element={<Organization_Login />} />
-        <Route path="/add_new_blood_Request" element={<Add_New_Blood_Request />} />
+      
+      
         <Route path="/all_blood_requests" element={<Blood_Requests_of_recipient />} />
 
+
         
-        <Route path="/add_new_event" element={<Add_New_Event />} />
         <Route path="/all_events" element={<Events_of_Organization />} />
         <Route path="/add_feedback" element={<Add_Feedback />} />
         <Route path="/all_feedbacks" element={<All_Feedbacks />} />
         <Route path="/event_card" element={<Event_card />} />
-        
+
         <Route path="/our_feedback_card" element={<Testmonials_Feedbacks_of_us />} />
 
-        
+
         <Route path="/messanger" element={<Messanger />} />
 
 
@@ -93,23 +101,22 @@ function App() {
 
 
 
-        <Route path="/donor" element={<Donor_landing_page />} />
-        <Route path="/D_profile_card" element={<D_all_donors />} />
         
+        <Route path="/D_profile_card" element={<D_all_donors />} />
+
         <Route path="/login_as_a" element={<Login_as_a />} />
         <Route path="/Feedback_Review_2" element={<Feedback_Review_2 />} />
 
-        
+
         <Route path="/Event_Card_2" element={<Event_Card_2 />} />
-        
+
         <Route path="/Event_on_landing_2" element={<Event_on_landing_2 />} />
 
 
-        <Route path="/organization" element={<Oraganization_Landing />} />
 
 
 
-      </Routes>
+      </Routes> */}
       {/* <Navbar />
       <Hero1 />
       <Hero2 />
@@ -123,6 +130,89 @@ function App() {
       {/* <SignUp /> */}
       {/* <BloodRequest /> */}
       {/* <All_Blood_Requests /> */}
+
+
+
+
+
+
+
+
+
+
+      <Routes>
+        {/* Public Routes (Available to Everyone) */}
+        <Route path="/" element={<Landing />} />
+        <Route path="/donor_signup" element={<Donor_SignUp />} />
+        <Route path="/recipient_signup" element={<Recipient_Signup />} />
+        <Route path="/organization_signup" element={<Organization_Signup />} />
+        <Route path="/donor_login" element={<Donor_Login />} />
+        <Route path="/recipient_login" element={<Recipient_login />} />
+        <Route path="/organization_login" element={<Organization_Login />} />
+
+
+
+
+        {/* Role-Based Routes */}
+
+        {userRole === "donor" && (
+          <>
+            <Route path="/donor" element={<Donor_landing_page />} />
+            <Route path="/specific_blood_request" element={<Specific_blood_request_on_donor />} />
+            
+
+            {/* Redirect if accessing unauthorized routes */}
+            <Route path="/*" element={<Unauthorized_user message="donor" />} /> 
+          </>
+        )}
+
+        {userRole === "recipient" && (
+          <>
+            <Route path="/recipient" element={<Recipient_landing_page />} />
+            <Route path="/add_new_blood_Request" element={<Add_New_Blood_Request />} />
+            <Route path="/all_blood_requests" element={<Blood_Requests_of_recipient />} />
+
+
+
+
+            {/* Redirect if accessing unauthorized routes */}
+            <Route path="/*" element={<Unauthorized_user message="recipient" />} />
+          </>
+        )}
+
+        {userRole === "organization" && (
+          <>
+            <Route path="/organization" element={<Oraganization_Landing />} />
+            <Route path="/add_new_event" element={<Add_New_Event />} />
+            
+            {/* Redirect if accessing unauthorized routes */}
+            <Route path="/*" element={<Unauthorized_user message="organization" />} />
+          </>
+        )}
+
+        {userRole === "admin" && (
+          <>
+            <Route path="/view_all_requests" element={<View_All_Requests />} />
+            <Route path="/view_all_events" element={<View_All_Events />} />
+            
+            
+            {/* Redirect if accessing unauthorized routes */}
+            <Route path="/*" element={<Unauthorized_user message="admin" />} />
+          </>
+        )}
+
+        {/* Unauthorized Route */}
+        <Route path="/unauthorized" element={<Unauthorized_user />} />
+
+
+
+      </Routes>
+
+
+
+
+
+
 
 
     </>

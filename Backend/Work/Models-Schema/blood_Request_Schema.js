@@ -6,6 +6,11 @@ const bloodRequestSchema = new mongoose.Schema({
         ref: "Recipient",
         required: true
     },
+    donor_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "donor",
+        default: null
+    },
     patient_name: {
         type: String,
         required: [true, "Please enter your first name!"],
