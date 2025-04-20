@@ -59,6 +59,7 @@ import Recipient_landing_page from "./Pages/Recipient_landing_page.jsx";
 import Blog_All from "./Components/Blog_All/Blog_All.jsx";
 import Blog_Single from "./Components/Blog_Single/Blog_Single.jsx";
 import About_Us from "./Components/About_Us/About_Us.jsx";
+import Signup_as_a from "./Pages/Signup_as_a/Signup_as_a.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -146,6 +147,8 @@ function App() {
       <Routes>
         {/* Public Routes (Available to Everyone) */}
         <Route path="/" element={<Landing />} />
+        <Route path="/signup_as_a" element={<Signup_as_a />} />
+        <Route path="/login_as_a" element={<Login_as_a />} />
         <Route path="/donor_signup" element={<Donor_SignUp />} />
         <Route path="/recipient_signup" element={<Recipient_Signup />} />
         <Route path="/organization_signup" element={<Organization_Signup />} />

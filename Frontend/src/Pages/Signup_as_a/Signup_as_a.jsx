@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-function Login_as_a() {
+function Signup_as_a() {
 
     const navigate = useNavigate();
 
@@ -14,13 +14,13 @@ function Login_as_a() {
         // Execute corresponding function
         if (selectedOption  === "option1") {
             console.log("Option 1 selected: Running Function 1");
-            navigate("/donor_login");
+            navigate("/donor_signup");
         } else if (selectedOption  === "option2") {
             console.log("Option 2 selected: Running Function 2");
-            navigate("/recipient_login");
+            navigate("/recipient_signup");
         } else if (selectedOption  === "option3") {
             console.log("Option 3 selected: Running Function 3");
-            navigate("/organization_login");
+            navigate("/organization_signup");
         }
     };
 
@@ -39,7 +39,7 @@ function Login_as_a() {
                 <div className="">
 
                     <div className="bg-white bg-opacity-10 backdrop-blur-lg border border-white border-opacity-20 p-8 rounded-lg shadow-lg w-96">
-                        <h2 className="text-2xl font-semibold text-white text-center mb-6">Login as a</h2>
+                        <h2 className="text-2xl font-semibold text-white text-center mb-6">Sign-up as a</h2>
 
                         {/* Radio Buttons */}
                         <div className="flex flex-col space-y-3">
@@ -96,4 +96,4 @@ function Login_as_a() {
     )
 }
 
-export default Login_as_a
+export default Signup_as_a
