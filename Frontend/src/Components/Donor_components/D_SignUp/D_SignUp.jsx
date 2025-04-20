@@ -12,6 +12,7 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { GiWeight } from "react-icons/gi";
 import { FaPerson } from "react-icons/fa6";
+import { IoArrowUndo } from "react-icons/io5";
 
 
 
@@ -103,10 +104,22 @@ function Donor_SignUp() {
 
 
     return (
-        <div>
-            <div className='m-12'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, libero odio odit dolores expedita saepe magnam consequatur id nostrum labore a ipsum iste quasi at possimus, accusantium culpa mollitia! Placeat!
+        <div className='font-nunito'>
+            <div className='my-10 text-justify  flex flex-col items-center justify-center'>
+                <p className='w-[70%]'>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, libero odio odit dolores expedita saepe magnam consequatur id nostrum labore a ipsum iste quasi at possimus, accusantium culpa mollitia! Placeat!
+                </p>
+                <button
+                    onClick={() => handleReadMore(blog)}
+                    className="mt-10 bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition flex flex-row justify-center items-center gap-3">
+                    <IoArrowUndo size={20} /> Back to Home
+                </button>
             </div>
+            {/* <button
+                onClick={() => handleReadMore(blog)}
+                className="ml-5 bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition flex flex-row justify-center items-center gap-3">
+                <IoArrowUndo size={20} /> Back to Home
+            </button> */}
 
             <div className="hero min-h-screen flex flex-row">
 
@@ -114,10 +127,10 @@ function Donor_SignUp() {
 
                 <div className=" p-3 w-full flex flex-row justify-between items-center mx-[5%]">
 
-                    <img src="/donor_signup.png" alt="" className='w-[30%] h-[30%]' />
+                    <img src="/signup.png" alt="" className='w-[30%] h-[10%]' />
 
 
-                    <div className="bg-slate-50 card shaow-2xl flex items-center">
+                    <div className="bg-slate-50 card shadow-2xl flex items-center">
                         <form onSubmit={handleSubmit} encType="multipart/form-data"
                             className=" card-body ">
 
@@ -399,11 +412,8 @@ function Donor_SignUp() {
                             </div>
 
 
-                            <div className="mt-6 w-[90%]  text-center">
-                                <button type="submit" className="bg-[#24599e] border-0 text-white btn w-[50%] font-bold text-2xl hover:bg-[#888b8e] hover:text-black"
-                                    style={{
-                                        boxShadow: "0 0 16px 2px #074799",
-                                    }}
+                            <div className="mt-20 w-[90%]  text-center">
+                                <button type="submit" className="bg-red-600 border-2 border-red-600 text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
                                 >Register</button>
                             </div>
                         </form>

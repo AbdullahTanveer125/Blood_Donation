@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Event_card from '../../Event_card/Event_card'
+// import Event_card from '../../Event_card__/Event_card'
 import axios from 'axios';
-import Event_Card_2 from '../../Event_Card_2/Event_Card_2';
+// import Event_Card from '../../E';
+// import Event_Card from '../../Event_Card/Event_Card';
+
+// import Event_Card from '../../';
 
 function Events_on_Landing({number_of_event_display}) {
 
@@ -70,7 +73,7 @@ function Events_on_Landing({number_of_event_display}) {
 
                             <div key={event._id} className="px-20 w-[100%] flex-shrink-0">
 
-                                <Event_Card_2 event={event} />
+                                <Event_Card event={event} />
 
                             </div>
                         ))}

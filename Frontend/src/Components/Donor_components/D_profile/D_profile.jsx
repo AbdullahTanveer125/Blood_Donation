@@ -46,11 +46,11 @@ function D_profile() {
                         <div className='h-20'></div>
                         <div>
                             <p className='text-xl font-bold'>User Name</p>
-                            <p className='font-nunito  text-sm text-gray-600'>Donor</p>
+                            <p className='font-nunito  text-sm text-gray-600 font-bold'>Donor</p>
                             <div className='flex flex-row items-center gap-6'>
-                                <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-600'> <FaPhone size={10} /> 0309-9014620</p>
-                                <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-600'><MdEmail /> abbhai125420@gmail.com</p>
-                                <p className='flex flex-row items-center gap-3 font-nunito text-xs text-gray-600'>write some other </p>
+                                <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-900'> <FaPhone size={10} /> 0309-9014620</p>
+                                <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-900'><MdEmail /> abbhai125420@gmail.com</p>
+                                
                             </div>
                         </div>
                     </div>
@@ -59,14 +59,15 @@ function D_profile() {
 
                 <div className=''>
                     <div className='flex flex-col justify-end items-center gap-3 font-nunito text-sm'>
-
+                    Availability
                         <input
                             type="checkbox"
-                            className="toggle toggle-info"
+                            className="toggle toggle-success"
                             checked={isChecked}
                             onChange={handleToggle}
                         />
-                        <p>Toggle is {isChecked ? "ON (true)" : "OFF (false)"}</p>
+                        {/* <input type="checkbox" className="toggle toggle-success" /> */}
+                        <p> {isChecked ? "" : ""}</p>
 
                     </div>
                 </div>
@@ -76,56 +77,56 @@ function D_profile() {
 
             {/* information section */}
             <div className='h-[320px] bg-gray-00 flex flex-row justify-between pt-10'>
-                <div className='w-[20%] flex flex-row justify-center items-center'>
-                    <img
+                <div className='w-[3%] flex flex-row justify-center items-center'>
+                    {/* <img
                         src="./blood2.png"
                         alt=""
                         className='w-32 h-40 opacity-'
-                    />
+                    /> */}
                 </div>
 
-                <div className='bg-slate-00 flex flex-col justify-center space-y-3 border-l-8 border-gray-200 pl-6 w-[500px] font-nunito text-sm'
+                <div className='bg-slate-00 flex flex-col justify-center space-y-3  pl-6 w-[500px] font-nunito text-sm'
                 >
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaRegUser /> Full Name
                         </p>
-                        <p className=' italic'>Abdullah Tanveer</p>
+                        <p className=' '>Abdullah Tanveer</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <MdBloodtype /> Blood Group
                         </p>
-                        <p className=' italic'>A+</p>
+                        <p className=' '>A+</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaPersonWalkingLuggage /> Age
                         </p>
-                        <p className=' italic '>52</p>
+                        <p className='  '>52</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaWeightScale /> Weight
                         </p>
-                        <p className=' italic'>87</p>
+                        <p className=' '>87</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
-                            <PiHospitalDuotone /> Narest hospital
+                            <PiHospitalDuotone /> Nearest hospital
                         </p>
-                        <p className=' italic'>Jinnah</p>
+                        <p className=' '>Jinnah</p>
                     </div>
 
-                    <div className=''>
+                    <div className=' flex flex-row justify-between items-start gap-4'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaAddressBook /> Address
                         </p>
-                        <p className='pl-20 italic'>
+                        <p className='pt- italic text-right w-80'>
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, aperiam. Temporibus reiciendis repellat quaerat quos voluptas.
                         </p>
                     </div>
@@ -167,7 +168,7 @@ function D_profile() {
             {/* image element */}
             {/* image element */}
             
-            <Blood_Request_on_Donor />
+            {/* <Blood_Request_on_Donor /> */}
 
         </div>
     )

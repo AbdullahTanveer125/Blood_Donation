@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 // import Event_card from '../../Event_card/Event_card'
 import axios from 'axios';
-import Event_Card_2 from '../Event_Card_2/Event_Card_2';
+import Event_Card from '../Event_card/Event_card';
+// import Event_Card_2 from '../Event_Card/Event_Card';
+// import Event_Card from '../Event_Card/Event_Card.jsx';
 
-function Event_on_landing_2() {
+function Event_Section() {
 
 
     const [events, setEvents] = useState([]); // Store events from MongoDB
@@ -44,8 +46,8 @@ function Event_on_landing_2() {
 
     return (
         <div>
-            <h1 className="text-4xl mt-24 mb-16 font-bold text-center">
-                <span className="text-[#B01030]">All Events</span> of Organizations
+            <h1 className="text-4xl mt-24 mb-10 font-bold text-center">
+                <span className="text-[#820000]">All Events</span> of Organizations
             </h1>
 
             <div className="carousel w-full mb-16">
@@ -56,7 +58,7 @@ function Event_on_landing_2() {
                     <div
                         key={index}
                         id={`slide${index}`}
-                        className="carousel-item relative w-full flex items-center"
+                        className=" carousel-item relative w-full flex items-center  pt-10"
                     >
                         {/* Left Button */}
                         <a
@@ -71,7 +73,7 @@ function Event_on_landing_2() {
                         <img src={image.url} alt={`Slide ${index}`} className="w-3/4" />
                     </div> */}
                         <div className='px-20'>
-                            <Event_Card_2 event={event} />
+                            <Event_Card event={event} />
                         </div>
 
                         {/* Right Button */}
@@ -88,4 +90,4 @@ function Event_on_landing_2() {
     )
 }
 
-export default Event_on_landing_2
+export default Event_Section

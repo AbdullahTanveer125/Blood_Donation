@@ -1,6 +1,5 @@
 import React from 'react'
-import Donor_Event_Section from '../D_Event_Section/D_Event_Section'
-import Events_on_Landing from '../../Landing_page_components/Events_on_Landing/Events_on_Landing'
+
 import Hero2 from '../../Hero2/Hero2'
 import All_Blood_Requests from '../../All_Blood_Requests'
 import Blood_Request_on_Donor from '../D_Blood_Request/D_Blood_Request'
@@ -24,6 +23,11 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
 import D_profile from '../D_profile/D_profile'
+import Donor_Process from '../D_Process_Steps/D_Process_Steps'
+import Footer1 from '../../Footer1'
+import Footer2 from '../../Footer2'
+import Footer from '../../Footer'
+import Event_Section from '../../Event_Section/Event_Section'
 
 
 
@@ -41,9 +45,9 @@ function Donor_Hero_Section() {
 
     return (
 
-        <div className="flex h-screen">
+        <div className="flex flex-col min-h-screen">
             {/* Sidebar - Fixed on the Left */}
-            <aside className=" w-[17%] h-screen bg-[#5c1212] text-white fixed flex flex-col justify-between">
+            <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between">
 
                 <div>
 
@@ -95,20 +99,33 @@ function Donor_Hero_Section() {
             <main className="ml-[17.3%] w-[83%] ">
 
                 <D_profile />
+                <Blood_Request_on_Donor />
+                <Donor_Process />
+                <Event_Section />
+                
                 {/* <Hero2 /> */}
                 {/* <Blood_donation_steps_1 /> */}
                 {/* <Donor_Event_Section /> */}
-                {/* <Blood_Request_on_Donor /> */}
+
                 {/* <Blood_donation_steps_1 />
                 <Blood_donation_steps_2 />
                 <Process_Steps_3 /> */}
                 {/* <Process_Steps /> */}
-                {/* <D_why_donate_blood /> */}
-                {/* <D_feedback number_of_event_display={1} /> */}
+                <D_why_donate_blood />
+                {/* <D_feedback number_of_event_display={2} /> */}
                 {/* <Feedback_Review_2 /> */}
+                <D_feedback />
+
+
+
 
 
             </main>
+
+            <div className="w-full mt-10 z-10">
+                <Footer1 />
+            </div>
+
         </div>
 
     )

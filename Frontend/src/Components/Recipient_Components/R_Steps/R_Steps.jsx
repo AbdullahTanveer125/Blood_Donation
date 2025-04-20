@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Donor_Process() {
+function R_Steps() {
     return (
         <div className=' pt-28 px-32'>
 
             <h1 className='text-4xl font-bold text-center'>
-                <span className='text-[#B01030]'>Blood</span> Donation Process
+                <span className='text-[#B01030]'>Process</span> to generate Blood Request
             </h1>
 
             <ul className="pt-20 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
@@ -130,4 +130,4 @@ function Donor_Process() {
     )
 }
 
-export default Donor_Process
+export default R_Steps

@@ -2,10 +2,10 @@ import React from 'react'
 
 function Footer1() {
     return (
-        <div>
+        <div className='font-nunito'>
 
-            <footer className="footer bg-base-200 text-base-content p-10">
-                <aside>
+            <footer className="flex flex-row justify-center gap-40 px-10 py-20 bg-gray-200 text-base-content ">
+                <aside className='space-y-6'>
                     <svg
                         width="50"
                         height="50"
@@ -23,25 +23,25 @@ function Footer1() {
                         Providing reliable tech since 1992
                     </p>
                 </aside>
-                <nav>
-                    <h6 className="footer-title">Services</h6>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                <nav className='flex flex-col space-y-2'>
+                    <h6 className="font-extrabold">Services</h6>
+                    <a className="link link-hover text-sm">Branding</a>
+                    <a className="link link-hover text-sm">Design</a>
+                    <a className="link link-hover text-sm">Marketing</a>
+                    <a className="link link-hover text-sm">Advertisement</a>
                 </nav>
-                <nav>
-                    <h6 className="footer-title">Company</h6>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
+                <nav className='flex flex-col space-y-2'>
+                    <h6 className="font-extrabold">Company</h6>
+                    <a className="link link-hover text-sm">About us</a>
+                    <a className="link link-hover text-sm">Contact</a>
+                    <a className="link link-hover text-sm">Jobs</a>
+                    <a className="link link-hover text-sm">Press kit</a>
                 </nav>
-                <nav>
-                    <h6 className="footer-title">Legal</h6>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                <nav className='flex flex-col space-y-2'>
+                    <h6 className="font-extrabold">Legal</h6>
+                    <a className="link link-hover text-sm">Terms of use</a>
+                    <a className="link link-hover text-sm">Privacy policy</a>
+                    <a className="link link-hover text-sm">Cookie policy</a>
                 </nav>
             </footer>
 

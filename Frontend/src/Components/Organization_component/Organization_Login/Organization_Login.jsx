@@ -9,13 +9,13 @@ import { useAuth } from "../../../context/auth";
 
 import { FaKey } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-
+import { FaCircleUser } from "react-icons/fa6";
 
 
 function Organization_Login() {
-  
 
-    
+
+
     // const {
     //   register,
     //   handleSubmit,
@@ -112,7 +112,7 @@ function Organization_Login() {
                 // console.log("**************Auth**********************")
 
 
-                
+
 
 
 
@@ -134,96 +134,62 @@ function Organization_Login() {
 
     return (
 
-        <div>
-            <div className='m-12'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, libero odio odit dolores expedita saepe magnam consequatur id nostrum labore a ipsum iste quasi at possimus, accusantium culpa mollitia! Placeat!
-            </div>
+        <div className="min-h-screen bg-[url('./Home1.jpg')] bg-cover bg-center bg-no-repeat flex flex-row justify-center items-center font-nunito">
 
-            <div className="bg-slate-200 hero min-h-screen">
-                ggggggggggg
-                <div className='m-12'>AAAAAAsdjkkkkkkkkkkk
-                    <p>asddddddddd</p>qqqq
-                </div>
+            {/* Black overlay */}
+            <div className="absolute inset-0 bg-black opacity-10 z-0"></div>
+
+            <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl shadow-2xl shadow-white p-8 w-full max-w-md"
+            >
+                <form onSubmit={handleSubmit} encType="multipart/form-data"
+                    className=" ">
+
+                    <div className='flex flex-row justify-center mb-5 text-2xl font-extrabold'>
+                        <h1 ><FaCircleUser size={40} color='#820000' /></h1>
+                    </div>
+
+                    <div className='space-y-7'>
+
+                        <div className="flex flex-col gap-1">
+                            {/* <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label> */}
+                            <div className="flex items-center gap-2 border-b border-white bg-white bg-opacity-5 backdrop-blur-sm px-2 py-1">
+                                {/* <div className="">
+                                                    <MdEmail size={20} />
+                                                </div> */}
+                                <input
+                                    type="text"
+                                    value={email}
+                                    onChange={function (e) { setEmail(e.target.value) }}
+                                    required
+                                    id="email"
+                                    className=" bg-transparent font-bold placeholder:font-bold  text-[#820000] placeholder-[#820000] focus:outline-none"
+                                    placeholder="Email"
+                                />
+                            </div>
+                        </div>
 
 
-                <div className=" hero-content flex-col lg:flex-row-reverse">
+                        <div className="flex items-center gap-2 border-b border-white bg-white bg-opacity-5 backdrop-blur-sm px-2 py-1">
 
-                    <div className="w-[90%] md:w-[80%] lg:w-[35%] text-center lg:text-left">
-
-                        <div className='text-center'
-                        // className='bg-teal-200' style={{ borderRadius: "25% 25% 0% 71% / 0% 0% 25% 68%", border: "5px solid #1a73e8" }}
-                        >
-
-                            {/* <h1 className="text-5xl font-bold text-center">Register Now!</h1> */}
-                            <img src="/donor register image.png" alt="" className='h-96 lg:h-auto mx-auto' />
+                            {/* <FaKey size={20} /> */}
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                id="password"
+                                className="bg-transparent font-bold placeholder:font-bold  text-[#820000] placeholder-[#820000] focus:outline-none w-full"
+                                placeholder="Password"
+                            />
                         </div>
 
                     </div>
 
-                    <div className="bg-slate-300 w-[90%] md:w-[80%] lg:w-[60%] card shrink-0 shadow-2xl flex items-center"
-                        style={{
-                            boxShadow: "0 0 36px 2px #074799",
-                        }}
-                    >
-                        <form onSubmit={handleSubmit} encType="multipart/form-data"
-                            className=" card-body grid grid-cols-1 md:grid-cols-2 gap-4">
-
-
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <MdEmail size={20} />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        value={email}
-                                        onChange={function (e) { setEmail(e.target.value) }}
-                                        required
-                                        id="email"
-                                        className="grow"
-                                        placeholder=""
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
-                                <div className="input input-bordered flex items-center gap-2">
-                                    <div className="">
-                                        <FaKey size={20} />
-                                    </div>
-                                    <input
-                                        type="password"
-                                        value={password}
-                                        onChange={function (e) { setPassword(e.target.value) }}
-                                        required
-                                        id="password"
-                                        className="grow"
-                                        placeholder=""
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="mt-6 w-[90%]  text-center">
-                                <button type="submit" className="bg-[#24599e] border-0 text-white btn w-[50%] font-bold text-2xl hover:bg-[#888b8e] hover:text-black"
-                                    style={{
-                                        boxShadow: "0 0 16px 2px #074799",
-                                    }}
-                                >Login</button>
-                            </div>
-                        </form>
-
+                    <div className="mt-6 ">
+                        <button type="submit" className="w-full bg-[#820000] border-2 border-[#820000] text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
+                        >Login</button>
                     </div>
-                </div>
-                ggggggggggg
-            </div>
-
-            <hr />
-            <div>
-                AAAAAAAAAAA
-
+                </form>
 
             </div>
 
@@ -232,10 +198,9 @@ function Organization_Login() {
 
 
 
-
     );
 
-    
+
 }
 
 export default Organization_Login

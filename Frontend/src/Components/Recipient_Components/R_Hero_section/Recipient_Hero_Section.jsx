@@ -13,6 +13,12 @@ import { AiOutlineMessage } from "react-icons/ai";
 
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
+import R_Profile from "../R_profile/R_profile";
+import R_Steps from "../R_Steps/R_Steps";
+import Blood_Requests_of_recipient from "../Its_all_Blood_Request/Its_all_Blood_Request";
+import Event_Section from "../../Event_Section/Event_Section";
+import Blog_Slider from "../../Blog_Slider/Blog_Slider";
+
 
 
 
@@ -183,14 +189,14 @@ function Recipient_Hero_Section() {
         // setFeedbackData({ id: '', username: '', description: '' });
     };
 
-    
+
 
 
     return (
 
         <div className="flex h-screen">
             {/* Sidebar - Fixed on the Left */}
-            <aside className=" w-[17%] h-screen bg-[#5c1212] text-white fixed flex flex-col justify-between">
+            <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between">
 
                 <div>
 
@@ -341,6 +347,17 @@ function Recipient_Hero_Section() {
 
 
 
+
+
+                <R_Profile />
+                <R_Steps />
+                <Blood_Requests_of_recipient />
+                
+                <Event_Section />
+                <Blog_Slider />
+                <R_Steps />
+
+                
             </main>
         </div>
 

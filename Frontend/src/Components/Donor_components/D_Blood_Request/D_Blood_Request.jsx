@@ -149,7 +149,7 @@ Props are only passed between parent and child components, not through routing (
                 </Marquee>
             </div>
 
-            <button className="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 transition duration-200 mt-14">
+            <button className="bg-[#820000] text-white font-semibold py-2 px-4 rounded hover:bg-red-700 transition duration-200 mt-20">
                 See All Blood Requests
             </button>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaRegUser } from "react-icons/fa";
 import { VscOrganization } from "react-icons/vsc";
-import life_image from "../../../../public/lifeline.png"
+// import life_image from "../../../public/lifeline.png"
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaUserShield } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
@@ -13,8 +13,8 @@ function Our_Score() {
         <div>
 
             <div className='my-10'>
-                <h1 className='mb-9 text-4xl font-bold text-center'>
-                    <span className=''>Our</span> Score
+                <h1 className='mb-9 text-4xl font-extrabold text-center'>
+                    <span className='text-[#820000]'>Our</span> Score
                 </h1>
 
                 <div className=' flex justify-center gap-20'>

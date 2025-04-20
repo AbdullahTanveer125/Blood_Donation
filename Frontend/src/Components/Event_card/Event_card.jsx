@@ -2,82 +2,49 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import image111 from "../../../public/Home2.jpg"
+import { IoLocationOutline } from "react-icons/io5";
+import { FaPhone } from "react-icons/fa6";
 
-function Event_card({ event }) {
+function Event_Card({event}) {
+    
+    
+    
+        return (
+            <div className='flex flex-row rounded  p-1'>
+                
+                <div className=' max-w-[30%]'>
+                    <img src="/Home2.jpg" alt="" className='h-full rounded-xl'/>
+                </div>
 
+                <div className='relative flex flex-col flex-grow bg-slate-100 p-4 shadow-lg rounded-lg pl-9'>
+                    
 
-
-
-    // const deleteEvent = async (id) => {
-    //     const confirmDelete = window.confirm("Are you sure you want to delete Blood Request?");
-    //     if (!confirmDelete) return;
-
-    //     try {
-    //         const res = await axios.delete(`http://localhost:5000/event/delete-single-event/${id}`);
-    //         if (res.data.success) {
-    //             // Filter out the deleted request from the state
-    //             setArray_of_events((prev) =>
-    //                 prev.filter((request) => request._id !== id)
-    //             );
-    //             alert("Request deleted successfully.");
-    //             console.log("setArray_of_events", setArray_of_events)
-    //         } else {
-    //             alert("Failed to delete the request.");
-    //         }
-    //     } catch (error) {
-    //         console.error("Error deleting request:", error);
-    //         alert("An error occurred while deleting the request.");
-    //     }
-    // };
-
-
-
-    return (
-        <div>
-            <div className=" max-h-[600px] card border-2 border-gray-400 max-w-full shadow-xl">
-                <figure className='h-[200px]'>
-                    <img className='h-[200px] w-full'
-                        src={event.organization_photo ? event.organization_photo : image111}
-                        alt="Organization Photo"
-                    // height={"400px"}
-                    // width={"350px"}
-                    />
-
-                </figure>
-
-                {/* <div>{request.organization_photo}</div> */}
-                <div className="p-2  card-body">
-                    <h1 className="text-2xl font-bold py-2 text-center bg-[#EE8A9E] bg-opacity-70">{event.organization_name}</h1>
-
-
-                    {/* <p><span className='font-bold'>Organzation Name:</span> {event.organization_name}</p> */}
-                    {/* <p><span className='font-bold'>Event Name:</span> {request.name}</p> */}
-
-                    <div className='pl-6'>
-                        <p><span className='font-bold'>Date:</span> {event.date} </p>
-                        <p><span className='font-bold'>Time:</span> {event.time} </p>
-                        <p><span className='font-bold'>Location:</span> {event.location} </p>
-                        <p><span className='font-bold'>Phone:</span> {event.phone} </p>
-                        <p className='font-bold'>Description:</p>
-                        <p className='pl-5'> {event.description} </p>
+                    <div className='flex flex-row gap-5  font-nunito font-medium text-sm text-gray-400 mb-'>
+                        <div>  {event.date} </div>
+                        <div>  {event.time} </div>
                     </div>
 
-                    {/* <div className=" card-actions justify-end ">
-                        <button className="px-4 py-2 mt-4 bg-[#B01030] text-white  rounded-lg"
-                        // onClick={() => deleteEvent(request._id)}
-                        >
-                            Delete Request
-                        </button>
+                    <div>
+                        <div className='text-xl font-bold my-2 text-gray-700'> {event.organization_name} </div>
+                        <div className=' mb-1'><span className='text-gray-400 text-sm font-sans flex flex-row items-center gap-2'><IoLocationOutline /> {event.location} </span></div>
+                        {/* <div>Location: <span className='text-gray-700 font-sans'> {event.location} </span></div> */}
+                        <div> <span className='text-gray-400 text-sm font-sans flex flex-row items-center gap-2'><FaPhone size={10}/> +92{event.phone} </span></div>
+                        {/* <div className='mt-2'>Description:</div> */}
+                        <div className='font-sans mt-5 mb-14'> {event.description} </div>
+                        
+                        
+                        <button className="mt-6 bg-[#820000] text-gray-50 px-6 py-2 absolute bottom-5 right-5 rounded-md shadow-md">Sign Up</button>
+                        
+                    </div>
 
-                         
-                    </div> */}
                 </div>
+    
+    
             </div>
+        )
+    
 
-
-
-        </div>
-    )
+    
 }
 
-export default Event_card
+export default Event_Card

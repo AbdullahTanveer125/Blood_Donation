@@ -6,9 +6,9 @@ import D_feedback_card from '../D_feedback_card/D_feedback_card';
 
 import { useAuth } from "../../../context/auth";
 import Feedback_Review_2 from '../../Feedback_Review_2/Feedback_Review_2';
-import Event_Card_2 from '../../Event_Card_2/Event_Card_2';
+import Event_Card_2 from '../../Event_Card/Event_Card';
 
-function D_feedback({ number_of_event_display }) {
+function D_feedback() {
 
 
     const [auth] = useAuth(); // Access the auth state
@@ -33,24 +33,10 @@ function D_feedback({ number_of_event_display }) {
     console.log("*************D_Feedback********************************")
     console.log("user from auth", user._id, user.name, donor.person, donor._id, user)
 
-const [events, setEvents] = useState([]); // Store events from MongoDB
+    const [events, setEvents] = useState([]); // Store events from MongoDB
     const [array_of_feedback, setArray_of_feedback] = useState([]); // Store feedbacks from MongoDB
-    const [currentIndex, setCurrentIndex] = useState(0); // Track which events are displayed
+    // const [currentIndex, setCurrentIndex] = useState(0); // Track which events are displayed
 
-    // Fetch events from MongoDB
-    useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                const response = await axios.get("http://localhost:5000/event/get-all"); // Your API route
-
-                console.log("All Events=", response)
-                setEvents(response.data.All_Events);
-            } catch (error) {
-                console.error("Error fetching events:", error);
-            }
-        };
-        fetchEvents();
-    }, []);
 
 
     // Fetch feedback from MongoDB
@@ -69,18 +55,18 @@ const [events, setEvents] = useState([]); // Store events from MongoDB
     }, []);
 
     // Handle Next Slide
-    const nextSlide = () => {
-        if (currentIndex + number_of_event_display < array_of_feedback.length) {
-            setCurrentIndex(currentIndex + number_of_event_display);
-        }
-    };
+    // const nextSlide = () => {
+    //     if (currentIndex + number_of_event_display < array_of_feedback.length) {
+    //         setCurrentIndex(currentIndex + number_of_event_display);
+    //     }
+    // };
 
     // Handle Previous Slide
-    const prevSlide = () => {
-        if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - number_of_event_display);
-        }
-    };
+    // const prevSlide = () => {
+    //     if (currentIndex > 0) {
+    //         setCurrentIndex(currentIndex - number_of_event_display);
+    //     }
+    // };
 
 
 
@@ -89,25 +75,59 @@ const [events, setEvents] = useState([]); // Store events from MongoDB
 
         <div className='w-full'>
 
-            <div className=" px-16 relative w-[100%] pt-16 overflow-hidden justify-center">
+            <div className=" px-16 relative w-[100%] pt-16 overflow-hidden justify-center ">
 
 
-                <h1 className="text-4xl mb-6 font-bold text-center">
-                    <span className="text-[#B01030]">All Events</span> of Organizations
+                <h1 className="text-4xl mb-16 font-bold text-center">
+                    <span className="text-[#820000]">Your</span> Feedbacks
                 </h1>
 
+
+
+
+                <div className="pb-20 max-w-full">
+
+                    <div className='flex'>
+                        {(array_of_feedback.slice(0, 3)).map((event, index) => (
+                            <div key={event._id} className=" px-2 w-[100%]">
+                                <D_feedback_card event={event} />
+                            </div>
+                        ))}
+
+
+                    </div>
+
+                    {/* Show All Button */}
+                    {array_of_feedback.length > 3 && (
+                        <div className="flex justify-center">
+                            <button
+                                onClick={() => navigate('/all-feedbacks')} // replace with your actual route
+                                className="bg-[#820000] text-white px-6 py-2 rounded hover:bg-[#9a4b4b] transition"
+                            >
+                                Show All
+                            </button>
+                        </div>
+                    )}
+
+                </div>
+
+
+
+
+
+
+
+
+
                 {/* Carousel Wrapper with Animation */}
-                <div className=" pb-20 overflow-hidden max-w-full ">
+                {/* <div className=" pb-20 overflow-hidden max-w-full ">
 
 
                  
 
 
                     <div
-                        className="flex gap-4 transition-transform duration-500 ease-in-out"
-                        style={{
-                            transform: `translateX(-${currentIndex * 100}%)`, // Moves slides based on index
-                        }}
+                        className=""
                     >
 
 
@@ -119,16 +139,18 @@ const [events, setEvents] = useState([]); // Store events from MongoDB
 
                                 <Feedback_Review_2 event={event} />
 
+
+
                             </div>
                         ))}
 
                     </div>
                     
-                </div>
+                </div> */}
 
 
                 {/* Navigation Arrows */}
-                <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                {/* <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <button
                         onClick={prevSlide}
                         className="btn btn-circle disabled:opacity-50"
@@ -143,7 +165,7 @@ const [events, setEvents] = useState([]); // Store events from MongoDB
                     >
                         ❯
                     </button>
-                </div>
+                </div> */}
             </div>
 
         </div>
