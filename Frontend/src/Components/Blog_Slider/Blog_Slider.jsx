@@ -41,7 +41,7 @@ function Blog_Slider() {
                                     <p className='font-nunito text-xs text-gray-500'>{blog.date}</p>
                                     <h2 className="card-title font-extrabold mb-2">{blog.title}</h2>
                                     <div className='text-justify flex flex-row items-start justify-start'>
-                                        <p className='font-thin w-[85%]'>{blog.desc}</p>
+                                        <p className='font-thin w-[85%]'>{blog.description}</p>
                                     </div>
                                 </div>
                                 <div className="card-actions justify-end">

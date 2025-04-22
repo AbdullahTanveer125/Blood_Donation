@@ -347,6 +347,7 @@ const get_all_donor = async (req, res) => {
 
         console.log("All_Donors=", All_Donors[0].username);
         console.log("All_Donors=", All_Donors[0].donorDetails.gender);
+        console.log("Array All_Donors=", All_Donors);
 
         res.status(200).send({
             success: true,

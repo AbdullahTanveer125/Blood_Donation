@@ -50,7 +50,7 @@ function Blood_Request_on_Donor() {
 
         <div className="text-center mt-10 ">
             <h1 className="text-4xl font-bold text-center mb-8 ">
-                <span className="text-[#B01030]">Blood</span> Requests
+                <span className="text-[#820000]">Blood</span> Requests
             </h1>
 
 
@@ -149,7 +149,7 @@ Props are only passed between parent and child components, not through routing (
                 </Marquee>
             </div>
 
-            <button className="bg-[#820000] text-white font-semibold py-2 px-4 rounded hover:bg-red-700 transition duration-200 mt-20">
+            <button className="border-2 border-[#820000] bg-[#820000] text-white font-semibold py-2 px-4 rounded hover:text-[#820000] hover:bg-white transition duration-200 mt-20">
                 See All Blood Requests
             </button>
         </div>

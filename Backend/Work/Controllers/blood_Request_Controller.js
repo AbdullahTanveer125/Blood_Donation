@@ -102,7 +102,7 @@ const add_bloodRequest = async (req, res) => {
 // // get-all-blood-request
 const get_all_blood_request = async (req, res) => {
     try {
-        const All_Blood_Requests = await bloodRequest_model.find({}).limit(10).sort({ createdAt: -1 });
+        const All_Blood_Requests = await bloodRequest_model.find({}).sort({ createdAt: -1 });
 
         console.log("All_Blood_Requests=", All_Blood_Requests)
         res.status(200).send({

@@ -4,7 +4,7 @@ function Footer2() {
     return (
         <div className='font-nunito'>
 
-            <footer className="bg-neutral text-gray-200 flex flex-row justify-around items-center py-7">
+            <footer className="bg-neutral text-gray-200 flex flex-row justify-center items-center gap-20 py-7">
                 <aside className="flex flex-row items-center gap-4">
                     <svg
                         width="36"

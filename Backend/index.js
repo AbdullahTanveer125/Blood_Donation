@@ -45,6 +45,7 @@ const feedback_router=require("./Work/Routes/feedbackRoutes.js");
 const conversation_router=require("./Work/Routes/conversationRoutes.js");
 const message_router=require("./Work/Routes/messageRoutes.js");
 const notification_router=require("./Work/Routes/notificationRoutes.js");
+const contact_us_router=require("./Work/Routes/contact_us_Routes.js");
 
 
 
@@ -85,6 +86,7 @@ app.use("/feedback", feedback_router);
 app.use(conversation_router); 
 app.use(message_router); 
 app.use("/notification", notification_router); 
+app.use(contact_us_router);
 
 
 // Routes

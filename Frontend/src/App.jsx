@@ -41,7 +41,7 @@ import Messanger from "./Pages/Messanger/Messanger.jsx";
 import Landing_Navbar from "./Components/Landing_page_components/Landing_Navbar/Landing_Navbar.jsx";
 import Landing from "./Pages/Landing.jsx";
 // import Event_card from "./Components/Event_card__/Event_card.jsx";
-import Testmonials_Feedbacks_of_us from "./Components/Landing_page_components/Our_Feedback_Testmonials/Our_Feedback_Testmonials.jsx";
+import Testmonials_Feedbacks_of_us from "./Components/Landing_page_components/Our_Feedback_Card/Our_Feedback_Card.jsx";
 import Donor_landing_page from "./Pages/Donor_landing_page.jsx";
 import Login_as_a from "./Pages/Login_as_a/Login_as_a.jsx";
 import Feedback_Review_2 from "./Components/Feedback_Review_2/Feedback_Review_2.jsx";
@@ -60,6 +60,11 @@ import Blog_All from "./Components/Blog_All/Blog_All.jsx";
 import Blog_Single from "./Components/Blog_Single/Blog_Single.jsx";
 import About_Us from "./Components/About_Us/About_Us.jsx";
 import Signup_as_a from "./Pages/Signup_as_a/Signup_as_a.jsx";
+import Contact_Us from "./Components/Contact_Us/Contact_Us.jsx";
+import Generate_Blood_Request from "./Components/Recipient_Components/Generate_Blood_Request/Generate_Blood_Request.jsx";
+import Generate_Event from "./Components/Organization_component/Generate_Event/Generate_Event.jsx";
+import All_Blood_Request from "./Components/All_Blood_Request/All_Blood_Request.jsx";
+import All_Donors from "./Components/All_Donors/All_Donors.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -158,6 +163,7 @@ function App() {
         <Route path="/all_blogs" element={<Blog_All />} />
         <Route path="/single_blog" element={<Blog_Single />} />
         <Route path="/about_us" element={<About_Us />} />
+        <Route path="/contact_us" element={<Contact_Us />} />
 
 
 
@@ -168,6 +174,8 @@ function App() {
           <>
             <Route path="/donor" element={<Donor_landing_page />} />
             <Route path="/specific_blood_request" element={<Specific_blood_request_on_donor />} />
+            
+            <Route path="/all_blood_request" element={<All_Blood_Request />} />
 
 
             {/* Redirect if accessing unauthorized routes */}
@@ -179,7 +187,12 @@ function App() {
           <>
             <Route path="/recipient" element={<Recipient_landing_page />} />
             <Route path="/add_new_blood_Request" element={<Add_New_Blood_Request />} />
+            <Route path="/generate_blood_request" element={<Generate_Blood_Request />} />
+            
             <Route path="/all_blood_requests" element={<Blood_Requests_of_recipient />} />
+
+            
+            <Route path="/all_donors" element={<All_Donors />} />
 
 
 
@@ -193,6 +206,7 @@ function App() {
           <>
             <Route path="/organization" element={<Oraganization_Landing />} />
             <Route path="/add_new_event" element={<Add_New_Event />} />
+            <Route path="/generate_event" element={<Generate_Event />} />
 
             {/* Redirect if accessing unauthorized routes */}
             <Route path="/*" element={<Unauthorized_user message="organization" />} />

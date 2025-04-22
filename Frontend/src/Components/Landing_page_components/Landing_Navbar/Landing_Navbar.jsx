@@ -123,7 +123,7 @@ function Landing_Navbar() {
 
                             >
 
-                                <div className="w-[100%] flex justify-between border-b-4  border-b-[#B01030] bg-[#EE8A9E] px-10 py-5 ">
+                                <div className="w-[100%] flex justify-between border-b-4  border-b-[#820000] bg-[#EE8A9E] px-10 py-5 ">
                                     <a className="text-black text-2xl font-bold cursor-pointer">BloodLife</a>
 
                                     {/* Close Icon */}
@@ -169,11 +169,11 @@ function Landing_Navbar() {
                                 </div>
 
 
-                                <div className="w-[100%] border-t-4  border-t-[#B01030] p-5 flex flex-col items-center justify-between gap-2 bg-slate-400">
+                                <div className="w-[100%] border-t-4  border-t-[#820000] p-5 flex flex-col items-center justify-between gap-2 bg-slate-400">
 
 
                                     <button className=" border border-black px-4 py-2 w-[50%]">Log in</button>
-                                    <button className="bg-[#B01030] text-gray-50 w-[50%]  px-6 py-3 ml-2">Sign Up</button>
+                                    <button className="bg-[#820000] border-2 border-[#820000] text-gray-50 hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition w-[50%]  px-6 py-3 ml-2">Sign Up</button>
 
                                 </div>
 
@@ -215,7 +215,7 @@ function Landing_Navbar() {
                                 {/* <button className=" text-red-700 btn btn-outline btn-accent px-4 py-0">Log in</button> */}
                             </li>
                             <li>
-                                <button className="bg-[#B01030] text-gray-50 px-6 py-3 ml-2">Sign Up</button>
+                                <button className="bg-[#820000] border-2 border-[#820000] text-gray-50 hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition px-6 py-3 ml-2">Sign Up</button>
                             </li>
 
 

@@ -6,7 +6,7 @@ import D_feedback_card from '../D_feedback_card/D_feedback_card';
 
 import { useAuth } from "../../../context/auth";
 import Feedback_Review_2 from '../../Feedback_Review_2/Feedback_Review_2';
-import Event_Card_2 from '../../Event_Card/Event_Card';
+
 
 function D_feedback() {
 
