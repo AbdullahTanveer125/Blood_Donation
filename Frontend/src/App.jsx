@@ -65,6 +65,8 @@ import Generate_Blood_Request from "./Components/Recipient_Components/Generate_B
 import Generate_Event from "./Components/Organization_component/Generate_Event/Generate_Event.jsx";
 import All_Blood_Request from "./Components/All_Blood_Request/All_Blood_Request.jsx";
 import All_Donors from "./Components/All_Donors/All_Donors.jsx";
+import All_Event from "./Components/All_Event/All_Event.jsx";
+import Specific_Recipient from "./Components/Specific_Recipient/Specific_Recipient.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -173,9 +175,14 @@ function App() {
         {userRole === "donor" && (
           <>
             <Route path="/donor" element={<Donor_landing_page />} />
-            <Route path="/specific_blood_request" element={<Specific_blood_request_on_donor />} />
             
             <Route path="/all_blood_request" element={<All_Blood_Request />} />
+            
+            <Route path="/specific_blood_request" element={<Specific_blood_request_on_donor />} />
+            
+            <Route path="/all_event" element={<All_Event />} />
+
+            <Route path="/specific_recipient" element={<Specific_Recipient />} />
 
 
             {/* Redirect if accessing unauthorized routes */}

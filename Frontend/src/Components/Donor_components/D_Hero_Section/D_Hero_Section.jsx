@@ -28,6 +28,7 @@ import Footer1 from '../../Footer1'
 import Footer2 from '../../Footer2'
 import Footer from '../../Footer'
 import Event_Section from '../../Event_Section/Event_Section'
+import D_Sidebar from '../D_Sidebar/D_Sidebar'
 
 
 
@@ -47,7 +48,11 @@ function Donor_Hero_Section() {
 
         <div className="flex flex-col min-h-screen">
             {/* Sidebar - Fixed on the Left */}
-            <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between">
+
+            <D_Sidebar />
+
+
+            {/* <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between">
 
                 <div>
 
@@ -75,13 +80,7 @@ function Donor_Hero_Section() {
                             <AiOutlineMessage size={15} /> Messages
                         </li>
 
-                        <li className="hover:text-gray-300 cursor-pointer text-sm pt-5"
-                            onClick={handleLogout}
-                        >
-                            {/* <div className=' flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-lg'>
-                                <IoIosLogOut size={20} /> Logout
-                            </div> */}
-                        </li>
+                        
                     </ul>
 
                 </div>
@@ -89,11 +88,8 @@ function Donor_Hero_Section() {
                 <div className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-md'>
                     <IoIosLogOut size={20} /> Logout
                 </div>
-                {/* <div className='flex flex-col items-center pb-8'>
-                    <img src="./lifeline.png" alt="" className='w-20' />
-                    <p>Blood_Linked_In</p>
-                </div> */}
-            </aside>
+                
+            </aside> */}
 
             {/* Main Content - Scrollable */}
             <main className="ml-[17.3%] w-[83%] ">
@@ -102,7 +98,7 @@ function Donor_Hero_Section() {
                 <Blood_Request_on_Donor />
                 <Donor_Process />
                 <Event_Section />
-                
+
                 {/* <Hero2 /> */}
                 {/* <Blood_donation_steps_1 /> */}
                 {/* <Donor_Event_Section /> */}

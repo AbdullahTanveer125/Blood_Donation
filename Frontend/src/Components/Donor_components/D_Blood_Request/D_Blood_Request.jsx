@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 
 function Blood_Request_on_Donor() {
 
+    const navigate = useNavigate();
+
     const [array_of_all_blood_requests, setArray_of_all_blood_requests] = useState([]);
 
 
@@ -43,8 +45,8 @@ function Blood_Request_on_Donor() {
     }, [])
 
 
-    
-    
+
+
 
     return (
 
@@ -149,7 +151,9 @@ Props are only passed between parent and child components, not through routing (
                 </Marquee>
             </div>
 
-            <button className="border-2 border-[#820000] bg-[#820000] text-white font-semibold py-2 px-4 rounded hover:text-[#820000] hover:bg-white transition duration-200 mt-20">
+            <button
+                onClick={() => navigate("/all_blood_request")}
+                className="border-2 border-[#820000] bg-[#820000] text-white font-semibold py-2 px-4 rounded hover:text-[#820000] hover:bg-white transition duration-200 mt-20">
                 See All Blood Requests
             </button>
         </div>

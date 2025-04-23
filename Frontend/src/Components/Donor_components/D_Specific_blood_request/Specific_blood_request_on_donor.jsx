@@ -19,6 +19,8 @@ function Specific_blood_request_on_donor() {
         return <div className="text-center mt-10 text-red-500">No request data found.</div>;
     }
 
+    console.log("State=",state)
+    
     const { patient_name, phone, email, location, blood_group, blood_need_date } = state;
 
     const notify_Recipient = async () => {
