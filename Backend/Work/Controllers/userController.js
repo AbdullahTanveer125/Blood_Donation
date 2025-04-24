@@ -47,6 +47,7 @@ const get_all_user = async (req, res) => {
             return event;
         });
 
+        console.log("KKKKKKKKK")
         res.status(200).send({
             success: true,
             message: "get All Users",

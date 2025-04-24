@@ -14,7 +14,10 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
 
-function D_Sidebar() {
+
+
+
+function O_Sidebar() {
 
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
@@ -72,8 +75,8 @@ function D_Sidebar() {
                             onClick={handleLogout}
                         >
                             {/* <div className=' flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-lg'>
-                                        <IoIosLogOut size={20} /> Logout
-                                    </div> */}
+                                                <IoIosLogOut size={20} /> Logout
+                                            </div> */}
                         </li>
                     </ul>
 
@@ -83,14 +86,14 @@ function D_Sidebar() {
                     <IoIosLogOut size={20} /> Logout
                 </div>
                 {/* <div className='flex flex-col items-center pb-8'>
-                            <img src="./lifeline.png" alt="" className='w-20' />
-                            <p>Blood_Linked_In</p>
-                        </div> */}
+                                    <img src="./lifeline.png" alt="" className='w-20' />
+                                    <p>Blood_Linked_In</p>
+                                </div> */}
             </aside>
+
 
         </div>
     )
 }
 
-export default D_Sidebar
-
+export default O_Sidebar

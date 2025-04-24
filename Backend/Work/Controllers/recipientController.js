@@ -218,10 +218,24 @@ async function recipient_login(req, res) {
 // // get recipient
 const get_recipient = async (req, res) => {
     try {
-        const user = await user_model.findById(req.params.user_id).select('-profile_photo -password');
+        const recipient = await recipient_model.findById(req.params.recipient_id);
 
-        const recipient = await recipient_model.findOne({ userId: user._id });
+        // console.log("recipient===", recipient)
+        const get_user = await user_model.findById(recipient.userId).select("-password");
 
+        // Modify Users to encode images as Base64
+
+        const user = (() => {
+            if (get_user.profile_photo && get_user.profile_photo.data) {
+                return {
+                    ...get_user._doc,
+                    profile_photo: `data:${get_user.profile_photo.contentType};base64,${get_user.profile_photo.data.toString("base64")}`
+                };
+            }
+            return get_user._doc || get_user; // fallback if _doc is not present
+        })();
+
+        // console.log("user===", user)
         // const recipient = { user + recipient };
         // const recipient = Object.assign({}, user, recipient);
 

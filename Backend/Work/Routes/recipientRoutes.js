@@ -41,7 +41,7 @@ recipient_router.post("/signup", express_formidable(), recipient_signUp);
 recipient_router.post("/login", recipient_login);
 
 // // get recipient
-recipient_router.get("/get-recipient/:user_id", get_recipient);
+recipient_router.get("/get-recipient/:recipient_id", get_recipient);
 
 
 // //follow a other user

@@ -486,11 +486,20 @@ function All_Blood_Request() {
     const handleSearch = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:5000/bloodRequest/get-all-blood-request`);
-            const all = res.data.All_Blood_Requests || [];
-            const filtered = all.filter(req =>
-                req.blood_group === blood_group && req.location === location
+            // const res = await axios.get(`http://localhost:5000/bloodRequest/get-all-blood-request`);
+            // const all = res.data.All_Blood_Requests || [];
+
+            // const filtered = all.filter(req =>
+            //     req.blood_group === blood_group && req.location === location
+            // );
+
+
+            const filtered = allRequests.filter(req =>
+                (blood_group === "" || req.blood_group === blood_group) &&
+                (location === "" || req.location === location)
             );
+
+
             setTimeout(() => {
                 setFilteredRequests(filtered); // set empty array if no match
                 setLoading(false);
@@ -508,19 +517,17 @@ function All_Blood_Request() {
         : allRequests.slice(0, visibleCount);
 
 
-
-
-    console.log("Blood group=", blood_group)
-    console.log("Location=", location)
-
-    const handleDonateClick = (e) => {
+    const handleDonateClick = (e, recipient_id) => {
         e.preventDefault(); // Prevent default link behavior
         const confirmDonate = window.confirm("Are you sure to donate blood?");
         if (confirmDonate) {
-            navigate("/specific_recipient");
+            navigate("/specific_recipient", { state: { recipient_id } });
         }
         // If "No", do nothing (alert automatically closes)
     };
+
+
+    console.log("Array of blood group=", allRequests)
 
 
     return (
@@ -635,7 +642,7 @@ function All_Blood_Request() {
                                     </div>
 
                                     <Link
-                                        onClick={handleDonateClick}
+                                        onClick={(e) => handleDonateClick(e, request.recipient_id)} // or whatever the recipient_id is
                                         className="flex justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md hover:bg-red-800 transition"
                                     >
                                         Donate

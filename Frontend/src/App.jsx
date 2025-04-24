@@ -65,8 +65,12 @@ import Generate_Blood_Request from "./Components/Recipient_Components/Generate_B
 import Generate_Event from "./Components/Organization_component/Generate_Event/Generate_Event.jsx";
 import All_Blood_Request from "./Components/All_Blood_Request/All_Blood_Request.jsx";
 import All_Donors from "./Components/All_Donors/All_Donors.jsx";
-import All_Event from "./Components/All_Event/All_Event.jsx";
 import Specific_Recipient from "./Components/Specific_Recipient/Specific_Recipient.jsx";
+import Specific_Donor from "./Components/Specific_Donor/Specific_Donor.jsx";
+import D_All_Event from "./Components/Donor_components/D_All_Event/D_All_Event.jsx";
+import R_All_Event from "./Components/Recipient_Components/R_All_Event/R_All_Event.jsx";
+import R_Blog from "./Components/Recipient_Components/R_Blog/R_Blog.jsx";
+import D_Blog from "./Components/Donor_components/D_Blog/D_Blog.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -180,10 +184,13 @@ function App() {
             
             <Route path="/specific_blood_request" element={<Specific_blood_request_on_donor />} />
             
-            <Route path="/all_event" element={<All_Event />} />
+            <Route path="/donor_all_event" element={<D_All_Event />} />
 
             <Route path="/specific_recipient" element={<Specific_Recipient />} />
+            
+            <Route path="/donor_blog" element={<D_Blog />} />
 
+            <Route path="/messanger" element={<Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
             <Route path="/*" element={<Unauthorized_user message="donor" />} />
@@ -200,9 +207,12 @@ function App() {
 
             
             <Route path="/all_donors" element={<All_Donors />} />
+            <Route path="/specific_donor" element={<Specific_Donor />} />
 
+            <Route path="/recipient_all_event" element={<R_All_Event />} />
+            <Route path="/recipient_blog" element={<R_Blog />} />
 
-
+            <Route path="/messanger" element={<Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
             <Route path="/*" element={<Unauthorized_user message="recipient" />} />

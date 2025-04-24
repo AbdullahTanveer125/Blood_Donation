@@ -14,7 +14,7 @@ const Blog_All = () => {
 
 
 	return (
-		<div className="flex flex-col font-nunito">
+		<div className="flex flex-col font-nunito ">
 			{/* Hero Section */}
 			<div className="relative h-[550px] w-full">
 				<img

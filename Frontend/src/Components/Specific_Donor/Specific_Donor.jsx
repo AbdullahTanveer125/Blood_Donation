@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-function Specific_Recipient() {
+function Specific_Donor() {
 
     const [user, setUser] = useState(null);
     const [recipient, setRecipient] = useState(null);
@@ -198,4 +198,4 @@ function Specific_Recipient() {
     )
 }
 
-export default Specific_Recipient
+export default Specific_Donor

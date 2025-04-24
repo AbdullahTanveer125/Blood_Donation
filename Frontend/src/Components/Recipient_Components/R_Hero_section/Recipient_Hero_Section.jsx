@@ -18,6 +18,7 @@ import R_Steps from "../R_Steps/R_Steps";
 import Blood_Requests_of_recipient from "../Its_all_Blood_Request/Its_all_Blood_Request";
 import Event_Section from "../../Event_Section/Event_Section";
 import Blog_Slider from "../../Blog_Slider/Blog_Slider";
+import R_Sidebar from "../R_Sidebar/R_Sidebar";
 
 
 
@@ -195,62 +196,8 @@ function Recipient_Hero_Section() {
     return (
 
         <div className="flex h-screen">
-            {/* Sidebar - Fixed on the Left */}
-            <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between">
-
-                <div>
-
-                    <h2 className="text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-gray-200 p-6 pb-3">
-                        <FaHouseDamage size={20} /> Dashboard
-                    </h2>
-                    <ul className="space-y-6 p-6">
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaSearch size={15} /> Search
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaHistory size={15} /> History
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <MdCastForEducation size={15} /> Blogs
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaSearch size={15} /> Events
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <AiOutlineMessage size={15} /> Messages
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm"
-                            onClick={toggleModal}
-                        >
-                            <AiOutlineMessage size={15} /> Notification
-                            <span className="text-xs px-1 rounded-full bg-green-300"
-                            >{notifications.length}</span>
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer text-sm pt-5"
-                            onClick={handleLogout}
-                        >
-                            {/* <div className=' flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-lg'>
-                                <IoIosLogOut size={20} /> Logout
-                            </div> */}
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-md'>
-                    <IoIosLogOut size={20} /> Logout
-                </div>
-                {/* <div className='flex flex-col items-center pb-8'>
-                    <img src="./lifeline.png" alt="" className='w-20' />
-                    <p>Blood_Linked_In</p>
-                </div> */}
-            </aside>
+            
+            <R_Sidebar />
 
             {/* Main Content - Scrollable */}
             <main className="ml-[17.3%] w-[83%] ">
@@ -260,92 +207,7 @@ function Recipient_Hero_Section() {
 
 
 
-                {/* Modal for Notifications */}
-                {isModalOpen && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                        <div className="bg-white rounded-lg p-6 w-[50%] h-[70%] overflow-y-auto">
-                            <h3 className="text-xl font-semibold mb-4 text-center text-red-600">
-                                Notifications
-                            </h3>
-                            {notifications.length > 0 ? (
-                                <ul>
-                                    {notifications.map((notification, index) => (
-                                        <li
-                                            key={index}
-                                            className="py-4 border-gray-500 border-b-2"
-                                        >
-                                            <div>{notification.donor_username}</div>
-                                            <p className="text-gray-400">{notification.message}</p>
-                                            <div className="text-gray-400 text-[9px]">
-                                                {new Date(notification.createdAt).toLocaleString()}
-                                            </div>
-
-                                            {/* Yes/No buttons */}
-                                            <div className="mt-2 flex gap-4">
-                                                <button
-                                                    onClick={() => handleYes(notification)}
-                                                    className="px-4 py-1 bg-green-500 text-white rounded"
-                                                >
-                                                    Yes
-                                                </button>
-                                                <button
-                                                    onClick={() => handleNo(notification)}
-                                                    className="px-4 py-1 bg-red-500 text-white rounded"
-                                                >
-                                                    No
-                                                </button>
-                                            </div>
-
-                                        </li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <p>No notifications available.</p>
-                            )}
-                            <button
-                                onClick={toggleModal} // Close the modal
-                                className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md w-full"
-                            >
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                )}
-
-
-
-                {showFeedbackForm && (
-                    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
-                        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg w-96">
-                            <h2 className="text-xl font-bold mb-4">Give Feedback to "{donor_username}"</h2>
-
-                            {/* <div className="mb-3">{donor_username}</div> */}
-                            <label className="block mb-2 text-gray-500">Feedback:</label>
-                            <textarea
-                                name="description"
-                                value={feedbackData.description}
-                                onChange={handleChange}
-                                className="w-full border border-gray-300 p-2 rounded mb-4"
-                                required
-                            />
-
-                            <div className="flex justify-end gap-4">
-                                <button
-                                    type="button"
-                                    onClick={() => setShowFeedbackForm(false)}
-                                    className="bg-gray-400 text-white px-4 py-2 rounded"
-                                >
-                                    Cancel
-                                </button>
-                                <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                )}
-
-
+                
 
 
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import D_Sidebar from '../Donor_components/D_Sidebar/D_Sidebar';
+import D_Sidebar from '../D_Sidebar/D_Sidebar';
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 
 
-function All_Event() {
+function D_All_Event() {
     const [events, setEvents] = useState([]);
     const [showAll, setShowAll] = useState(false);
 
@@ -80,4 +80,4 @@ function All_Event() {
     );
 }
 
-export default All_Event;
+export default D_All_Event;
