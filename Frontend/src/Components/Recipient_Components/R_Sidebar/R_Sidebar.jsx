@@ -224,6 +224,11 @@ function R_Sidebar() {
                             <AiOutlineMessage size={15} /> Messages
                         </li>
 
+                        <li
+                            onClick={() => navigate("/recipient_about_us")}  className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                            <AiOutlineMessage size={15} /> About Us
+                        </li>
+
                         <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm"
                             onClick={toggleModal}
                         >

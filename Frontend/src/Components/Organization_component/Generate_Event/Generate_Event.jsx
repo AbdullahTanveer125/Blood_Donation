@@ -30,6 +30,100 @@ import { useAuth } from "../../../context/auth";
 
 function Generate_Event() {
 
+    const [auth] = useAuth(); // Access the auth state
+    console.log("==== Auth ====", auth.organization._id)
+    const organization_id = auth.organization._id
+
+    const [event, setEvent] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchEvent = async () => {
+            try {
+                const response = await axios.get(
+                    `http://localhost:5000/event/get-specific-event/${organization_id}`
+                );
+
+                // if(response.data.success){
+                //     if(response.data.)
+                // }
+                setEvent(response.data.modifiedEvents);
+                console.log("== Event ==", response.data.modifiedEvents)
+            } catch (error) {
+                console.error("Error fetching event:", error);
+            } finally {
+                setLoading(false); // ✅ Important
+            }
+        };
+
+        fetchEvent();
+    }, [organization_id]);
+
+
+    // useEffect(() => {
+    //     const check_event = () => {
+    //         console.log("********************************")
+    //         console.log("********************************")
+
+    //         console.log("Event lenght=",event.length)
+    //         console.log("********************************")
+    //         console.log("********************************")
+    //         if (event && event.length === 1) {
+    //             return (
+    //                 <div className="min-h-screen flex flex-col justify-center items-center bg-[url('./bb.png')] bg-cover bg-center font-nunito">
+    //                     <div className="bg-white bg-opacity-80 p-8 rounded-lg shadow-md text-center">
+    //                         <h2 className="text-2xl font-bold text-[#820000] mb-4">You already generated the event.</h2>
+    //                         <p className="mb-6 text-gray-700">Only one event is allowed per organization.</p>
+    //                         <button
+    //                             onClick={() => navigate("/organization")}
+    //                             className="bg-[#820000] text-white px-6 py-2 rounded hover:bg-white hover:text-[#820000] border-2 border-[#820000] transition"
+    //                         >
+    //                             Return to Dashboard
+    //                         </button>
+    //                     </div>
+    //                 </div>
+    //             );
+    //         }
+    //     };
+
+    //     check_event();
+    // }, [organization_id]);
+
+    if (loading) {
+        return <div className="min-h-screen flex justify-center items-center">Loading...</div>;
+    }
+
+    if (event && event.length >= 1) {
+        return (
+            <div className="relative min-h-screen font-nunito">
+                {/* Blurred background */}
+                <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-0" />
+
+                {/* Message box */}
+                <div className="absolute inset-0 z-10 flex justify-center items-center">
+                    <div className="bg-white bg-opacity-90 p-8 rounded-lg shadow-xl max-w-lg w-full text-center">
+                        <h2 className="text-2xl font-bold text-[#820000] mb-4">You already generated the event.</h2>
+                        <p className="mb-6 text-gray-700">Only one event is allowed per organization.</p>
+                        <button
+                            onClick={() => navigate("/organization")}
+                            className="bg-[#820000] text-white px-6 py-2 rounded hover:bg-white hover:text-[#820000] border-2 border-[#820000] transition"
+                        >
+                            Return to Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+
+
+
+
+
+
     const [name, setName] = useState("");
     const [location, setLocation] = useState("");
     const [phone, setPhone] = useState("");
@@ -39,7 +133,7 @@ function Generate_Event() {
     const [organization_photo, setOrganization_photo] = useState(null);
 
 
-    const [auth] = useAuth(); // Access the auth state
+
 
     if (!auth || !auth.user) {
         console.error("Auth or user is not available");
@@ -53,12 +147,12 @@ function Generate_Event() {
         return <div>You are not organization! Please login as "organization" to access this page.</div>;
     }
 
-    console.log("************AAAAAAAAAAAAAAAAA*********************************")
-    console.log(auth)
+    // console.log("************AAAAAAAAAAAAAAAAA*********************************")
+    // console.log(auth)
     // get user from auth
     const { user, organization } = auth;
-    console.log("*************AAAAAAAAAAAA********************************")
-    console.log("user from auth", user._id, user.name, organization.person, organization._id, user)
+    // console.log("*************AAAAAAAAAAAA********************************")
+    // console.log("user from auth", user._id, user.name, organization.person, organization._id, user)
 
 
     // const get_organization_profile_photo = async () => {
@@ -87,12 +181,12 @@ function Generate_Event() {
                 const res = await axios.get(`http://localhost:5000/organization/photo/${user._id}`);
 
 
-                console.log("********* res.data vvvvvvvvvvvvv ********")
-                console.log(res.data)
-                console.log(res.data.organization_photo.profile_photo);
+                // console.log("********* res.data vvvvvvvvvvvvv ********")
+                // console.log(res.data)
+                // console.log(res.data.organization_photo.profile_photo);
                 setOrganization_photo(res.data.organization_photo.profile_photo);
                 // console.log("organization_photo:", organization_photo)
-                console.log("********* res.data vvvvvvvvvv ********")
+                // console.log("********* res.data vvvvvvvvvv ********")
 
 
                 // setBloodRequests(res.data.Blood_Request);
@@ -102,22 +196,22 @@ function Generate_Event() {
         };
 
 
-        console.log("Updated organization_photo:>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        // console.log("Updated organization_photo:>>>>>>>>>>>>>>>>>>>>>>>>>>");
         get_organization_profile_photo();
-        console.log("Updated organization_photo:>>>>>>>>>", organization_photo);
+        // console.log("Updated organization_photo:>>>>>>>>>", organization_photo);
     }, []);
 
 
     // Track when organization_photo updates
     useEffect(() => {
-        console.log("Updated organization_photo:", organization_photo);
+        // console.log("Updated organization_photo:", organization_photo);
         console.log("data type of organization_photo:", typeof (organization_photo));
     }, [organization_photo]); // Runs when state updates
 
 
 
 
-    const navigate = useNavigate();
+    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -257,7 +351,9 @@ function Generate_Event() {
     return (
         <div className="min-h-screen font-nunito bg-[url('./bb.png')] bg-cover bg-center">
             {/* Top-left button */}
-            <button className="absolute top-6 left-6 bg-[#820000] text-white border-2 border-[#820000] py-2 px-4 rounded hover:bg-white hover:text-[#820000] transition flex flex-row justify-center items-center gap-2">
+            <button
+                onClick={() => navigate("/organization")}
+                className="absolute top-6 left-6 bg-[#820000] text-white border-2 border-[#820000] py-2 px-4 rounded hover:bg-white hover:text-[#820000] transition flex flex-row justify-center items-center gap-2">
                 <HiMiniArrowLeftStartOnRectangle size={20} className='font-extrabold' /> Go Back
             </button>
 

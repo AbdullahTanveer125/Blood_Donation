@@ -38,37 +38,38 @@ function O_Sidebar() {
                 <div>
 
                     <h2
-                        onClick={() => navigate("/donor")}
+                        onClick={() => navigate("/organization")}
                         className="cursor-pointer text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-gray-200 p-6 pb-3">
                         <FaHouseDamage size={20} /> Dashboard
                     </h2>
                     <ul className="space-y-6 p-6">
                         <li
-                            onClick={() => navigate("/all_blood_request")}
+                            onClick={() => navigate("/generate_event")}
                             className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaSearch size={15} /> Blood Request
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaHistory size={15} /> History
+                            <FaSearch size={15} /> Generate Event
                         </li>
 
                         <li
-                            onClick={() => navigate("/donor_blog")}
+                            onClick={() => navigate("/organization_all_donors")} className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                            <FaHistory size={15} /> Donors
+                        </li>
+
+                        <li
+                            onClick={() => navigate("/organization_blog ")}
                             className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
                             <MdCastForEducation size={15} /> Blogs
                         </li>
 
                         <li
-                            onClick={() => navigate("/donor_all_event")}
+                            onClick={() => navigate("/organization_your_event")}
                             className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaSearch size={15} /> Events
+                            <FaSearch size={15} /> Your Event
                         </li>
 
                         <li
-                            onClick={() => navigate("/messanger")}
+                            onClick={() => navigate("/organization_about_us")}
                             className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <AiOutlineMessage size={15} /> Messages
+                            <FaSearch size={15} /> About Us
                         </li>
 
                         <li className="hover:text-gray-300 cursor-pointer text-sm pt-5"

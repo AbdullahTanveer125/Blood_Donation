@@ -71,6 +71,12 @@ import D_All_Event from "./Components/Donor_components/D_All_Event/D_All_Event.j
 import R_All_Event from "./Components/Recipient_Components/R_All_Event/R_All_Event.jsx";
 import R_Blog from "./Components/Recipient_Components/R_Blog/R_Blog.jsx";
 import D_Blog from "./Components/Donor_components/D_Blog/D_Blog.jsx";
+import O_All_Donors from "./Components/Organization_component/O_All_Donors/O_All_Donors.jsx";
+import O_Blog from "./Components/Organization_component/O_Blog/O_Blog.jsx";
+import O_About_us from "./Components/Organization_component/O_About_us/O_About_us.jsx";
+import R_About_us from "./Components/Recipient_Components/R_About_us/R_About_us.jsx";
+import D_About_us from "./Components/Donor_components/D_About_us/D_About_us.jsx";
+import O_Your_Event from "./Components/Organization_component/O_Your_Event/O_Your_Event.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -190,6 +196,8 @@ function App() {
             
             <Route path="/donor_blog" element={<D_Blog />} />
 
+            <Route path="/donor_about_us" element={<D_About_us />} />
+
             <Route path="/messanger" element={<Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
@@ -211,6 +219,8 @@ function App() {
 
             <Route path="/recipient_all_event" element={<R_All_Event />} />
             <Route path="/recipient_blog" element={<R_Blog />} />
+            
+            <Route path="/recipient_about_us" element={<R_About_us />} />
 
             <Route path="/messanger" element={<Messanger />} />
 
@@ -224,6 +234,14 @@ function App() {
             <Route path="/organization" element={<Oraganization_Landing />} />
             <Route path="/add_new_event" element={<Add_New_Event />} />
             <Route path="/generate_event" element={<Generate_Event />} />
+
+            <Route path="/organization_all_donors" element={<O_All_Donors />} />
+
+            <Route path="/organization_blog" element={<O_Blog />} />
+            
+            <Route path="/organization_about_us" element={<O_About_us />} />
+            
+            <Route path="/organization_your_event" element={<O_Your_Event />} />
 
             {/* Redirect if accessing unauthorized routes */}
             <Route path="/*" element={<Unauthorized_user message="organization" />} />
