@@ -20,8 +20,7 @@ import { IoIosLogOut } from "react-icons/io";
 // import { LuMessageSquareMore } from "react-icons/lu";  
 import { AiOutlineMessage } from "react-icons/ai";
 
-import { useAuth } from "../../../context/auth"; // Import the useAuth hook
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/auth"; 
 import D_profile from '../D_profile/D_profile'
 import Donor_Process from '../D_Process_Steps/D_Process_Steps'
 import Footer1 from '../../Footer1'
@@ -33,15 +32,6 @@ import D_Sidebar from '../D_Sidebar/D_Sidebar'
 
 
 function Donor_Hero_Section() {
-
-    const [auth, setAuth] = useAuth();
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        setAuth(null); // Clear auth state
-        localStorage.removeItem("auth"); // Remove auth from localStorage
-        navigate("/"); // Redirect to home page
-    };
 
 
     return (

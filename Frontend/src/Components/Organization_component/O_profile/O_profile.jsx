@@ -21,7 +21,7 @@ function O_profile() {
 
             <O_Sidebar />
 
-            <div className='w-[82%] ml-[17.3%]'>
+            <div className='w-[82.6%] ml-[17.3%] '>
 
                 <div class=" bg-[url('./organization1.png')] bg-cover bg-center h-60 flex flex-col justify-center items-center text-white pt-">
                     <p>Organization Name</p>

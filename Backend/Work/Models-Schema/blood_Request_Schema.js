@@ -44,6 +44,10 @@ const bloodRequestSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter Date!"],
     },
+    profile_photo: {
+        data: Buffer,          // 👈 important to store binary
+        contentType: String    // 👈 to know if it's PNG, JPG, etc.
+    }
     // profile_photo: {
     //     data: Buffer,
     //     contentType: String,

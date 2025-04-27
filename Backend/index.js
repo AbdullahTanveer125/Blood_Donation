@@ -35,6 +35,11 @@
 const express = require('express');
 const app = express();
 
+const cron = require("node-cron");
+const event_model = require("./Work/Models-Schema/event_Schema.js"); 
+
+
+
 const user_router=require("./Work/Routes/userRoutes.js");
 const donor_router=require("./Work/Routes/donorRoutes.js");
 const recipient_router=require("./Work/Routes/recipientRoutes.js");
@@ -105,6 +110,13 @@ app.use(contact_us_router);
 //   res.send("Route hit: Shukr hai");
 // });
 
+
+
+cron.schedule("* * * * *", async () => {
+  const now = new Date();
+  await event_model.deleteMany({ eventDateTime: { $lt: now } });
+  console.log("Old events cleaned up.");
+});
 
 
 

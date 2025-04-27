@@ -17,7 +17,7 @@ const event_Schema = new mongoose.Schema({
         trim: true,
     },
     date: {
-        type: String,
+        type: Date,
         required: [true, "Please enter Event's date!"],
     },
     time: {
@@ -43,6 +43,8 @@ const event_Schema = new mongoose.Schema({
         data: Buffer,
         contentType: String,
     },
+    eventDateTime: { type: Date, required: true }
+
 },
     { timestamps: true }
 );

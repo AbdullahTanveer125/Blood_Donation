@@ -36,7 +36,7 @@ function O_Your_Event() {
 
     console.log("== Event ==", event)
     return (
-        <div>
+        <div className='font-nunito'>
             <O_Sidebar />
 
             <div className='ml-[17.3%] w-[82%] '>
@@ -53,7 +53,7 @@ function O_Your_Event() {
                     {event ? (
                         <Single_Event_Details event={event[0]} />
                     ) : (
-                        <p className="text-center text-gray-500 text-lg">Loading event details...</p>
+                        <p className="text-center text-[#820000] text-2xl mt-20 font-extrabold">Loading event details...</p>
                     )}
                 </div>
 

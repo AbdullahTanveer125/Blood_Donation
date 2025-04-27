@@ -177,6 +177,8 @@ function App() {
         <Route path="/about_us" element={<About_Us />} />
         <Route path="/contact_us" element={<Contact_Us />} />
 
+        {/* Redirect if accessing unauthorized routes */}
+        <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
 
 
 
@@ -185,15 +187,15 @@ function App() {
         {userRole === "donor" && (
           <>
             <Route path="/donor" element={<Donor_landing_page />} />
-            
+
             <Route path="/all_blood_request" element={<All_Blood_Request />} />
-            
+
             <Route path="/specific_blood_request" element={<Specific_blood_request_on_donor />} />
-            
+
             <Route path="/donor_all_event" element={<D_All_Event />} />
 
             <Route path="/specific_recipient" element={<Specific_Recipient />} />
-            
+
             <Route path="/donor_blog" element={<D_Blog />} />
 
             <Route path="/donor_about_us" element={<D_About_us />} />
@@ -201,7 +203,8 @@ function App() {
             <Route path="/messanger" element={<Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
-            <Route path="/*" element={<Unauthorized_user message="donor" />} />
+            <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
+
           </>
         )}
 
@@ -210,22 +213,23 @@ function App() {
             <Route path="/recipient" element={<Recipient_landing_page />} />
             <Route path="/add_new_blood_Request" element={<Add_New_Blood_Request />} />
             <Route path="/generate_blood_request" element={<Generate_Blood_Request />} />
-            
+
             <Route path="/all_blood_requests" element={<Blood_Requests_of_recipient />} />
 
-            
+
             <Route path="/all_donors" element={<All_Donors />} />
             <Route path="/specific_donor" element={<Specific_Donor />} />
 
             <Route path="/recipient_all_event" element={<R_All_Event />} />
             <Route path="/recipient_blog" element={<R_Blog />} />
-            
+
             <Route path="/recipient_about_us" element={<R_About_us />} />
 
             <Route path="/messanger" element={<Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
-            <Route path="/*" element={<Unauthorized_user message="recipient" />} />
+            <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
+
           </>
         )}
 
@@ -238,13 +242,14 @@ function App() {
             <Route path="/organization_all_donors" element={<O_All_Donors />} />
 
             <Route path="/organization_blog" element={<O_Blog />} />
-            
+
             <Route path="/organization_about_us" element={<O_About_us />} />
-            
+
             <Route path="/organization_your_event" element={<O_Your_Event />} />
 
             {/* Redirect if accessing unauthorized routes */}
-            <Route path="/*" element={<Unauthorized_user message="organization" />} />
+            <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
+
           </>
         )}
 
@@ -255,7 +260,8 @@ function App() {
 
 
             {/* Redirect if accessing unauthorized routes */}
-            <Route path="/*" element={<Unauthorized_user message="admin" />} />
+            <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
+
           </>
         )}
 

@@ -1,15 +1,16 @@
 import React from 'react'
-import landing_image from '../../../public/landing.png'
+import landing_image from '../../../public/landing1.png'
 
 function Hero_3() {
     return (
         <div className='font-nunito'>
 
-            <div className="hero min-h-screen">
-                <div className="-mt-16 gap-32 hero-content flex-col lg:flex-row">
-                    <img
+            <div className="hero min-h-screen bg-[url('/l1.png')] bg bg-center">
+                <div className="gap-32 hero-content flex-col lg:flex-row">
+                    {/* <img
                         src={landing_image}
-                        className="max-w-sm rounded-lg " />
+                        className="max-w-sm rounded-lg " /> */}
+                    <div className='w-[90%]'></div>
                     <div>
                         <h1 className="text-5xl font-bold">
                             A <span className='text-[#820000]'> small drop of kindness </span> makes a big difference

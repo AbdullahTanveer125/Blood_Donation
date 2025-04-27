@@ -9,7 +9,7 @@ import { IoIosLogOut } from "react-icons/io";
 // import { LuMessageCircleMore } from "react-icons/lu";
 // import { LuMessageSquareMore } from "react-icons/lu";  
 import { AiOutlineMessage } from "react-icons/ai";
-
+import { LuLogOut } from "react-icons/lu";
 
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
@@ -72,19 +72,15 @@ function O_Sidebar() {
                             <FaSearch size={15} /> About Us
                         </li>
 
-                        <li className="hover:text-gray-300 cursor-pointer text-sm pt-5"
-                            onClick={handleLogout}
-                        >
-                            {/* <div className=' flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-lg'>
-                                                <IoIosLogOut size={20} /> Logout
-                                            </div> */}
-                        </li>
+                        
                     </ul>
 
                 </div>
 
-                <div className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-md'>
-                    <IoIosLogOut size={20} /> Logout
+                <div
+                    onClick={handleLogout}
+                    className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-white text-[#820000] hover:bg-slate-300 font-bold py-2 rounded-md cursor-pointer'>
+                    <LuLogOut size={20} /> Logout
                 </div>
                 {/* <div className='flex flex-col items-center pb-8'>
                                     <img src="./lifeline.png" alt="" className='w-20' />

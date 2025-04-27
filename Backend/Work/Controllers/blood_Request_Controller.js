@@ -1,4 +1,7 @@
+const { model } = require("mongoose");
 const bloodRequest_model = require("../Models-Schema/blood_Request_Schema")
+const recipient_model = require("../Models-Schema/recipient_schema")
+const user_model = require("../Models-Schema/user_schema")
 
 const JWT = require("jsonwebtoken");
 
@@ -18,7 +21,7 @@ const add_bloodRequest = async (req, res) => {
     try {
         const { patient_name, blood_group, location, urgency, phone, comment, blood_need_date } = req.body;
 
-        const recipient_id=req.params.recipient_id;
+        const recipient_id = req.params.recipient_id;
 
         console.log("***req.body:***", req.body)
         //validation
@@ -65,7 +68,13 @@ const add_bloodRequest = async (req, res) => {
 
 
         // const fullname = firstname + " " + lastname
-        
+
+        const recipient = await recipient_model.findById(recipient_id);
+
+        const profile_photo = await user_model.findById(recipient.userId).select('profile_photo');
+
+        // console.log("profile_photo==", profile_photo)
+
         const Blood_Request = {
             recipient_id,
             patient_name,
@@ -75,16 +84,30 @@ const add_bloodRequest = async (req, res) => {
             phone,
             comment,
             blood_need_date,
+            profile_photo: profile_photo?.profile_photo,
         }
 
-        const result = await bloodRequest_model.create(Blood_Request);
-        console.log(result);
+        // Now save it to your bloodRequest_model
+        const newBloodRequest = new bloodRequest_model(Blood_Request);
 
+        await newBloodRequest.save();
+        // const result = await bloodRequest_model.create(Blood_Request);
+        // console.log(result);
+
+        // const BLOOD_REQUEST = new event_model(Blood_Request);
+
+        // if (organization_photo) {
+        //     BLOOD_REQUEST.organization_photo.data = fs.readFileSync(organization_photo.path);
+        //     BLOOD_REQUEST.organization_photo.contentType = organization_photo.type;
+        // }
+
+        // const result = await BLOOD_REQUEST.save();
+        // console.log(result);
 
         res.status(200).send({
             success: true,
             message: "Add New Blood Request Successfully!!",
-            result,
+            newBloodRequest,
         })
 
 
@@ -102,9 +125,24 @@ const add_bloodRequest = async (req, res) => {
 // // get-all-blood-request
 const get_all_blood_request = async (req, res) => {
     try {
-        const All_Blood_Requests = await bloodRequest_model.find({}).sort({ createdAt: -1 });
+        const Blood_Requests = await bloodRequest_model.find({}).sort({ createdAt: -1 });
 
-        console.log("All_Blood_Requests=", All_Blood_Requests)
+
+
+        // Modify events to encode images as Base64
+        const All_Blood_Requests = Blood_Requests.map(event => {
+            if (event.profile_photo && event.profile_photo.data) {
+                return {
+                    ...event._doc, // Spread existing event fields
+                    profile_photo: `data:${event.profile_photo.contentType};base64,${event.profile_photo.data.toString("base64")}`
+                };
+            }
+            return event;
+        });
+
+
+
+        // console.log("All_Blood_Requests=", All_Blood_Requests)
         res.status(200).send({
             success: true,
             message: "ALL Blood Request",
@@ -162,7 +200,7 @@ const delete_blood_request = async (req, res) => {
 
 
 // // DELETE all blood requests
-const delete_all_blood_requests= async (req, res) => {
+const delete_all_blood_requests = async (req, res) => {
     try {
         const result = await bloodRequest_model.deleteMany({});
         return res.status(200).json({
@@ -182,13 +220,13 @@ const delete_all_blood_requests= async (req, res) => {
 
 
 // // Search blood requests
-const search_blood_requests= async (req, res) => {
+const search_blood_requests = async (req, res) => {
     const { blood_type, location } = req.body;
-    console.log("blood_type, location:",blood_type, location)
+    console.log("blood_type, location:", blood_type, location)
 
     try {
         const filter = {};
-        
+
         // Dynamically add filters based on request body
         if (blood_type) {
             filter.blood_group = blood_type;
@@ -198,10 +236,10 @@ const search_blood_requests= async (req, res) => {
             // filter.location = { $regex: location, $options: 'i' }; // Case-insensitive search
         }
 
-        console.log("Filter=",filter)
+        console.log("Filter=", filter)
 
         const results = await bloodRequest_model.find(filter);
-        console.log("result=",results)
+        console.log("result=", results)
 
         // Check if any results are found
         if (results.length === 0) {
@@ -232,5 +270,6 @@ const search_blood_requests= async (req, res) => {
 
 
 // //export All functions from "Controller"
-module.exports = { testController, add_bloodRequest, get_all_blood_request, get_specific_blood_request, delete_blood_request, delete_all_blood_requests, search_blood_requests 
+module.exports = {
+    testController, add_bloodRequest, get_all_blood_request, get_specific_blood_request, delete_blood_request, delete_all_blood_requests, search_blood_requests
 }

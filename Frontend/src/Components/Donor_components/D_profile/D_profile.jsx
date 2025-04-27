@@ -8,18 +8,42 @@ import { FaWeightScale } from "react-icons/fa6";
 import { PiHospitalDuotone } from "react-icons/pi";
 import { FaAddressBook } from "react-icons/fa6";
 import Blood_Request_on_Donor from '../D_Blood_Request/D_Blood_Request';
+
+import { useAuth } from "../../../context/auth";
+import user_image from "../../../../public/abdullah.png"
+
 function D_profile() {
+
+    const [auth] = useAuth();
+    // console.log("**** ss Auth ****",auth)
+
 
     const [isChecked, setIsChecked] = useState(false);
     const [counter, setCounter] = useState(59);
 
-    // const counter=59
+    // const user=auth.user
+    // const donor=auth.donor
+
+    // console.log(donor,"**** ss Auth ****",user)
 
     const handleToggle = () => {
         setIsChecked((prev) => !prev);
     };
 
+    // console.log("***** User Image *****",auth.user.profile_photo)
 
+    // Suppose 'image' is your received image object
+const image = auth.user.profile_photo;
+
+    // Step 1: Convert buffer data to a base64 string
+const base64String = btoa(
+    new Uint8Array(image.data.data)
+      .reduce((data, byte) => data + String.fromCharCode(byte), '')
+  );
+  
+  // Step 2: Create the Data URL
+  const imageUrl = `data:${image.contentType};base64,${base64String}`;
+  
 
 
     return (
@@ -37,7 +61,7 @@ function D_profile() {
 
                     <div>
                         <img
-                            src="./fatima.png"
+                            src={imageUrl || "/abdullah.png"}
                             alt=""
                             className='h-48 border-8 border-white rounded-full'
                         />
@@ -45,12 +69,12 @@ function D_profile() {
                     <div>
                         <div className='h-20'></div>
                         <div>
-                            <p className='text-xl font-bold'>User Name</p>
+                            <p className='text-xl font-bold'>{auth.user.username}</p>
                             <p className='font-nunito  text-sm text-gray-600 font-bold'>Donor</p>
                             <div className='flex flex-row items-center gap-6'>
-                                <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-900'> <FaPhone size={10} /> 0309-9014620</p>
-                                <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-900'><MdEmail /> abbhai125420@gmail.com</p>
-                                
+                                <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-900'> <FaPhone size={10} /> {auth.user.phone}</p>
+                                <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-900'><MdEmail /> {auth.user.email}</p>
+
                             </div>
                         </div>
                     </div>
@@ -59,7 +83,7 @@ function D_profile() {
 
                 <div className=''>
                     <div className='flex flex-col justify-end items-center gap-3 font-nunito text-sm'>
-                    Availability
+                        Availability
                         <input
                             type="checkbox"
                             className="toggle toggle-success"
@@ -91,35 +115,35 @@ function D_profile() {
                         <p className='flex flex-row gap-3 items-center'>
                             <FaRegUser /> Full Name
                         </p>
-                        <p className=' '>Abdullah Tanveer</p>
+                        <p className=' '>{auth.user.name}</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <MdBloodtype /> Blood Group
                         </p>
-                        <p className=' '>A+</p>
+                        <p className=' '>{auth.donor.blood_group}</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaPersonWalkingLuggage /> Age
                         </p>
-                        <p className='  '>52</p>
+                        <p className='  '>{auth.donor.age}</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaWeightScale /> Weight
                         </p>
-                        <p className=' '>87</p>
+                        <p className=' '>{auth.donor.weight}</p>
                     </div>
 
                     <div className='flex flex-row justify-between items-center'>
                         <p className='flex flex-row gap-3 items-center'>
                             <PiHospitalDuotone /> Nearest hospital
                         </p>
-                        <p className=' '>Jinnah</p>
+                        <p className=' '>{auth.donor.nearest_hospital}</p>
                     </div>
 
                     <div className=' flex flex-row justify-between items-start gap-4'>
@@ -127,7 +151,7 @@ function D_profile() {
                             <FaAddressBook /> Address
                         </p>
                         <p className='pt- italic text-right w-80'>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, aperiam. Temporibus reiciendis repellat quaerat quos voluptas.
+                            {auth.donor.address}
                         </p>
                     </div>
 
@@ -167,7 +191,7 @@ function D_profile() {
 
             {/* image element */}
             {/* image element */}
-            
+
             {/* <Blood_Request_on_Donor /> */}
 
         </div>

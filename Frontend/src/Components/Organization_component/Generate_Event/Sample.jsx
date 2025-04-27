@@ -7,7 +7,6 @@
 
 // lykin jb is file mey image ko axios.get k zrye sy hasil kiya hai to is ki form "buffer" hi mtlab k jis form mey mongoDB mey store hai lykin jb isi image ko formData k zrye sy backend mey send kro to image send mtlb backend mey req.files mey receive ni hoti. is k liye hm pehly get wali image ko "object" (file) ki form mey convert kry gy or is ka tarika given hai "handleSubmit" waly function mey
 
-import "./Generate_Event.css"
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
@@ -35,23 +34,10 @@ function Generate_Event() {
     console.log("==== Auth ====", auth.organization._id)
     const organization_id = auth.organization._id
 
-    const { user, organization } = auth;
-
     const [loading, setLoading] = useState(false);
     const [length, setLenght] = useState(0);
 
-    const [events, setEvents] = useState([]);
-
     const navigate = useNavigate();
-
-
-
-    const [name, setName] = useState("");
-    const [location, setLocation] = useState("");
-    const [phone, setPhone] = useState("");
-    const [time, setTime] = useState("");
-    const [date, setDate] = useState("");
-    const [description, setDescription] = useState("");
 
 
 
@@ -59,21 +45,81 @@ function Generate_Event() {
         return <div className="min-h-screen flex justify-center items-center">Loading...</div>;
     }
 
+    const [name, setName] = useState("");
+    const [location, setLocation] = useState("");
+    const [phone, setPhone] = useState("");
+    const [time, setTime] = useState("");
+    const [date, setDate] = useState("");
+    const [description, setDescription] = useState("");
+    const [organization_photo, setOrganization_photo] = useState(null);
+
+
+
+
+    const { user, organization } = auth;
 
     useEffect(() => {
-        const fetchEvents = async () => {
+        const fetchEvent = async () => {
+            setLoading(true); // ✅ add this line
             try {
-                const res = await axios.get(`http://localhost:5000/event/get-specific-event/${organization._id}`); // Adjust base URL if needed
-                setLenght(res.data.length_of_events)
-                // setEvents(res.data.All_Events);
-                // console.log(res)
-            } catch (err) {
-                console.error('Error fetching events:', err);
+                const response = await axios.get(
+                    `http://localhost:5000/event/get-specific-event/${organization_id}`
+                );
+
+                console.log("LLLLLLLLLLLLLLLLLLLL:", response.data.length_of_events);
+
+                setLenght(response.data.length_of_events)
+
+            } catch (error) {
+                console.error("Error fetching event:", error);
+            } finally {
+                setLoading(false); // ✅ Important
             }
         };
 
-        fetchEvents();
+        fetchEvent();
+    }, [organization_id]);
+
+
+
+
+    useEffect(() => {
+
+        const get_organization_profile_photo = async () => {
+            try {
+                const res = await axios.get(`http://localhost:5000/organization/photo/${user._id}`);
+
+
+                // console.log("********* res.data vvvvvvvvvvvvv ********")
+                // console.log(res.data)
+                // console.log(res.data.organization_photo.profile_photo);
+                setOrganization_photo(res.data.organization_photo.profile_photo);
+                // console.log("organization_photo:", organization_photo)
+                // console.log("********* res.data vvvvvvvvvv ********")
+
+
+                // setBloodRequests(res.data.Blood_Request);
+            } catch (err) {
+                setError("Failed to get organization profile_photo.");
+            }
+        };
+
+
+        // console.log("Updated organization_photo:>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        get_organization_profile_photo();
+        // console.log("Updated organization_photo:>>>>>>>>>", organization_photo);
     }, []);
+
+
+    // Track when organization_photo updates
+    useEffect(() => {
+        // console.log("Updated organization_photo:", organization_photo);
+        console.log("data type of organization_photo:", typeof (organization_photo));
+    }, [organization_photo]); // Runs when state updates
+
+
+
+
 
 
     async function handleSubmit(e) {
@@ -92,9 +138,65 @@ function Generate_Event() {
         formData.append("name", name);
         formData.append("location", location);
         formData.append("phone", phone);
-        formData.append("time", time);
-        formData.append("date", date);
+        // formData.append("time", time);
+        // formData.append("date", date);
         formData.append("description", description);
+
+        // Function to convert buffer data to a File object
+        function bufferToFile(bufferData, fileName = "image.jpg") {
+            // Convert Uint8Array to Blob
+            const blob = new Blob([new Uint8Array(bufferData.data)], { type: bufferData.contentType });
+
+            // Convert Blob to File
+            const file = new File([blob], fileName, { type: bufferData.contentType });
+
+            return file;
+        }
+
+        const convertedFile = bufferToFile(organization_photo, "uploaded_image.jpg");
+
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log("chect it:", convertedFile); // Now it behaves like a File object
+
+        setOrganization_photo(convertedFile)
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log("chect it organization_photo:", organization_photo);
+
+        // if (organization_photo) {
+        //     console.log("Before appending to FormData:", organization_photo);
+        // }
+
+        // formData.append("organization_photo", organization_photo);
+        if (organization_photo) {
+            // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            // console.log("organization_photo", organization_photo)
+            // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+            // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
+            formData.append("organization_photo", convertedFile);
+        }
+
+
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log(">>>>>>>>>>>>>>>>>> formData >>>>>>>>>>>>>>>>>>>>>")
+        // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        // console.log(formData)//here
+
+        // Ensure the file is properly appended
+        // if (organization_photo instanceof File) {
+        //     formData.append("organization_photo", organization_photo);
+        // } else {
+        //     console.warn("organization_photo is not a valid file:", organization_photo);
+        // }
+        // console.log(date);
 
         // When using FormData and logging it directly to the console, you might not see its content displayed clearly because FormData is a special type of object. Instead, you can iterate over its entries and log them to see the actual key-value pairs. Let's update your handleSubmit function to log the contents of the FormData properly.
 
@@ -154,41 +256,18 @@ function Generate_Event() {
 
 
 
-    console.log("====== LLLLLLL=========", length)
+
 
 
 
 
     return (
         <>
-            {length >= 1 ? (
-                <div className="bg-slate-300 flex flex-row items-center justify-center min-h-[100vh]">
-                    {/* <div className="flex items-center justify-center min-h-[40vh]">
-                        <div className="bg-gradient-to-r from-[#820000] to-[#c92a2a] text-white px-10 py-6 rounded-2xl shadow-2xl text-3xl font-extrabold animate-pulse animate-float">
-                            You already generated an event!
-                        </div>
-                    </div> */}
-
-                    <div className="flex items-center justify-center min-h-[40vh]">
-                        <div className="bg-gray-400 bg-gradient-to-r from-[#820000] to-[#c92a2a] backdrop-blur-md text-gray-200 px-14 py-10 rounded-2xl shadow-2xl text-4xl font-bold animate-float">
-                            🚀 You already generated an event!
-                        </div>
-                    </div>
-
-                    {/* <div className="flex items-center justify-center min-h-[40vh] animate-slideIn">
-                        <div className="bg-gradient-to-r from-[#820000] to-[#ff4d4d] text-white px-10 py-8 rounded-3xl shadow-2xl text-4xl font-extrabold tracking-wide animate-pulse">
-                            You already generated an event!
-                        </div>
-                    </div> */}
-                    <button
-                        onClick={() => navigate("/organization")}
-                        className="absolute top-6 left-6 bg-[#820000] text-white border-2 border-[#820000] py-2 px-4 rounded hover:bg-white hover:text-[#820000] transition flex flex-row justify-center items-center gap-2">
-                        <HiMiniArrowLeftStartOnRectangle size={20} className='font-extrabold' /> Go Back
-                    </button>
+            {length === 1 ? (
+                <div className="text-white text-center text-2xl font-semibold mt-20">
+                    You already generated an event.
                 </div>
-
             ) : (
-
 
                 <div className="min-h-screen font-nunito bg-[url('./bb.png')] bg-cover bg-center">
                     {/* Top-left button */}
@@ -242,17 +321,17 @@ function Generate_Event() {
 
                             {/* Time */}
                             {/* <div className="flex flex-col gap-2 col-span-1">
-                                        <label htmlFor="time" className="text-sm font-semibold">Time</label>
-                                        <input
-                                            type="text"
-                                            value={time}
-                                            onChange={(e) => setTime(e.target.value)}
-                                            required
-                                            id="time"
-                                            placeholder="2pm"
-                                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300  focus:outline-none"
-                                        />
-                                    </div> */}
+                        <label htmlFor="time" className="text-sm font-semibold">Time</label>
+                        <input
+                            type="text"
+                            value={time}
+                            onChange={(e) => setTime(e.target.value)}
+                            required
+                            id="time"
+                            placeholder="2pm"
+                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300  focus:outline-none"
+                        />
+                    </div> */}
 
 
                             {/* Time */}
@@ -327,10 +406,13 @@ function Generate_Event() {
 
                 </div>
 
+
+
             )}
         </>
     );
 
-}
 
-export default Generate_Event
+    export default Generate_Event;
+
+

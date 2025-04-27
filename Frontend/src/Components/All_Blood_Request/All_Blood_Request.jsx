@@ -469,11 +469,15 @@ function All_Blood_Request() {
     }, []);
 
     async function fetchRequests() {
+        setLoading(true)
         try {
             const res = await axios.get(`http://localhost:5000/bloodRequest/get-all-blood-request`);
+            console.log("Check==========",res.data.All_Blood_Request)
             setAllRequests(res.data.All_Blood_Requests || []);
         } catch (error) {
             console.error("Error fetching blood requests:", error);
+        } finally{
+            setLoading(false)
         }
     }
 
@@ -620,7 +624,7 @@ function All_Blood_Request() {
                                     </span>
 
                                     <div className='flex flex-row gap-4 items-center mb-5'>
-                                        <img src="./user.jpg" alt="" className='w-12 rounded-full' />
+                                        <img src={request.profile_photo || "/user.jpg"} alt="" className='w-12 rounded-full' />
                                         <div className='text-start'>
                                             <p className='font-bold'>{request.patient_name} </p>
                                             <p className='text-xs text-gray-500'>some text</p>

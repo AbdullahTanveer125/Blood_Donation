@@ -1,4 +1,6 @@
 const event_model = require("../Models-Schema/event_Schema")
+const organization_model = require("../Models-Schema/organization_schema")
+const user_model = require("../Models-Schema/user_schema")
 
 const JWT = require("jsonwebtoken");
 
@@ -20,9 +22,9 @@ const add_event = async (req, res) => {
     try {
         console.log("Incoming req.fields:", req.fields);
 
-        const { name, organization_name, phone, time, location, description, date } = req.fields;
+        const { name, organization_name, date, time, eventDateTime, location, description, phone } = req.fields;
         // console.log("Incoming req.fields:", req.files);
-        const { organization_photo } = req.files;
+        // const { organization_photo } = req.files;
 
         // console.log("Incoming request data:", req.fields);
 
@@ -30,7 +32,7 @@ const add_event = async (req, res) => {
 
         // console.log("***req.body:***", req.body)
         console.log("*****************************************************")
-        console.log("date:", date)
+        // console.log("date:", date)
         // console.log("organization_photo:", organization_photo)
         console.log("*****************************************************")
 
@@ -48,10 +50,13 @@ const add_event = async (req, res) => {
                 return res.status(500).send({ error: "location is Required" });
             case !description:
                 return res.status(500).send({ error: "description is Required" });
+            case !eventDateTime:
+                return res.status(500).send({ error: "eventDateTime is Required" });
+
             case !date:
                 return res.status(500).send({ error: "date is Required" });
-            case organization_photo && organization_photo.size > 1000000:
-                return res.status(500).send({ error: "organization_photo is Required and should be less then 1MB" });
+            // case organization_photo && organization_photo.size > 1000000:
+            //     return res.status(500).send({ error: "organization_photo is Required and should be less then 1MB" });
         }
 
 
@@ -71,11 +76,16 @@ const add_event = async (req, res) => {
         // }
 
         // const real_date = string_Into_Date(last_time_donation_date)
-        const real_date = date
-        console.log("*****************************************************")
-        console.log("real date:", real_date)
-        console.log("*****************************************************")
+        // const real_date = date
+        // console.log("*****************************************************")
+        // console.log("real date:", real_date)
+        // console.log("*****************************************************")
 
+        const organization = await organization_model.findById(organization_id);
+
+        const organization_photo = await user_model.findById(organization.userId).select('profile_photo');
+
+        // console.log("profile_photo==", organization_photo)
 
         const EVENT_DATA = {
             organization_id,
@@ -84,21 +94,23 @@ const add_event = async (req, res) => {
             phone,
             time,
             location,
+            eventDateTime: new Date(eventDateTime),
             description,
             date,
+            organization_photo: organization_photo?.profile_photo,
         }
 
         const EVENT = new event_model(EVENT_DATA);
 
-
+        await EVENT.save();
         // const EVENT = new event_model({ ...req.fields, slug: slugify(firstname) });
 
-        if (organization_photo) {
-            EVENT.organization_photo.data = fs.readFileSync(organization_photo.path);
-            EVENT.organization_photo.contentType = organization_photo.type;
-        }
+        // if (organization_photo) {
+        //     EVENT.organization_photo.data = fs.readFileSync(organization_photo.path);
+        //     EVENT.organization_photo.contentType = organization_photo.type;
+        // }
 
-        const result = await EVENT.save();
+        // const result = await EVENT.save();
         // const EVENT = await productModel.create({ ...req.fields, slug: slugify(name) });
         // if (organization_photo) {
         //     EVENT.organization_photo.data = fs.readFileSync(organization_photo.path);
@@ -108,13 +120,13 @@ const add_event = async (req, res) => {
 
 
         // const result = await event_model.create(EVENT);
-        console.log(result);
+        // console.log(result);
 
 
         res.status(200).send({
             success: true,
             message: "Add New Event Successfully!!",
-            result,
+            EVENT,
         })
 
 
@@ -151,12 +163,15 @@ const get_specific_event = async (req, res) => {
             return event;
         });
 
+        console.log("Event length=", modifiedEvents.length)
+        const length_of_events = modifiedEvents.length
 
         res.status(200).send({
             success: true,
             message: "get event of specific organization",
-            EVENT,
-            modifiedEvents
+            // EVENT,
+            modifiedEvents,
+            length_of_events
         });
     } catch (error) {
         console.log(error);
