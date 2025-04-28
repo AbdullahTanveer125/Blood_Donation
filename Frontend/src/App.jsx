@@ -77,6 +77,7 @@ import O_About_us from "./Components/Organization_component/O_About_us/O_About_u
 import R_About_us from "./Components/Recipient_Components/R_About_us/R_About_us.jsx";
 import D_About_us from "./Components/Donor_components/D_About_us/D_About_us.jsx";
 import O_Your_Event from "./Components/Organization_component/O_Your_Event/O_Your_Event.jsx";
+import D_History from "./Components/Donor_components/D_History/D_History.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -199,6 +200,8 @@ function App() {
             <Route path="/donor_blog" element={<D_Blog />} />
 
             <Route path="/donor_about_us" element={<D_About_us />} />
+            
+            <Route path="/donor_history" element={<D_History />} />
 
             <Route path="/messanger" element={<Messanger />} />
 

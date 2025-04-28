@@ -1,5 +1,4 @@
 import React from 'react'
-import D_Sidebar from '../Donor_components/D_Sidebar/D_Sidebar'
 import { FaPhone } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
@@ -12,6 +11,7 @@ import { FaAddressBook } from "react-icons/fa6";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import R_Sidebar from '../Recipient_Components/R_Sidebar/R_Sidebar';
 
 
 function Specific_Donor() {
@@ -19,36 +19,36 @@ function Specific_Donor() {
     const [user, setUser] = useState(null);
     const [recipient, setRecipient] = useState(null);
     const location = useLocation();
-    const { recipient_id } = location.state || {};
+    const donor = location.state || {};
 
-    const [loading, setLoading] = useState(true); // <-- loading state
-
-
-    console.log("Recipient ID:", recipient_id);
+    const [loading, setLoading] = useState(false); // <-- loading state
 
 
-    useEffect(() => {
-        get_recipient();
-    }, [recipient_id]);
+    // console.log("****** ddddd **** >>>>>>:", donor);
 
-    async function get_recipient() {
 
-        setLoading(true); // start loading
+    // useEffect(() => {
+    //     get_recipient();
+    // }, [recipient_id]);
 
-        try {
-            const res = await axios.get(`http://localhost:5000/recipient/get-recipient/${recipient_id}`);
+    // async function get_recipient() {
 
-            if (res.data.success) {
-                // console.log("== get recipient ==", res)
-                setUser(res.data.user);
-                setRecipient(res.data.recipient);
-            }
-        } catch (error) {
-            console.error("Error in specific recipient profile:", error);
-        } finally {
-            setLoading(false); // stop loading after try or catch
-        }
-    }
+    //     setLoading(true); // start loading
+
+    //     try {
+    //         const res = await axios.get(`http://localhost:5000/donor/get-donor/${donor_id}`);
+
+    //         if (res.data.success) {
+    //             // console.log("== get recipient ==", res)
+    //             setUser(res.data.user);
+    //             setRecipient(res.data.recipient);
+    //         }
+    //     } catch (error) {
+    //         console.error("Error in specific recipient profile:", error);
+    //     } finally {
+    //         setLoading(false); // stop loading after try or catch
+    //     }
+    // }
 
     if (loading) {
         return (
@@ -62,14 +62,14 @@ function Specific_Donor() {
         <div>
 
             <div>
-                <D_Sidebar />
+                <R_Sidebar />
             </div>
 
             <div className='font-nunito ml-[17.3%] w-[82%] pt-16 px-4 bg-gray-100 min-h-screen'>
 
 
                 <div className='text-center text-lg'>
-                    Contact or Chat this recipient to donate blood
+                    Contact or Chat this donor to donate blood
                 </div>
 
 
@@ -80,19 +80,19 @@ function Specific_Donor() {
                         {/* Header Section */}
                         <div className="flex items-center gap-6">
                             <img
-                                src={user?.profile_photo ? user.profile_photo : "/user.jpg"}
+                                src={donor?.profile_photo ? donor.profile_photo : "/user.jpg"}
                                 alt="Profile"
-                                className="h-32 w-32 rounded-full border-4 border-gray-600 shadow-md"
+                                className="h-32 w-32 rounded-full border-4 border-[#820000]"
                             />
                             <div>
-                                <h2 className="text-2xl font-extrabold">{user?.username}</h2>
-                                <p className="text-sm text-gray-600 font-semibold">recipient</p>
+                                <h2 className="text-2xl font-extrabold">{donor?.username}</h2>
+                                <p className="text-sm text-gray-600 font-semibold">donor</p>
                                 <div className="flex flex-col sm:flex-row sm:items-center gap-10 mt-2 text-sm text-gray-700">
                                     <div className="flex items-center gap-2">
-                                        <FaPhone size={12} /> {user?.phone}
+                                        <FaPhone size={12} /> {donor?.phone}
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <MdEmail size={12} /> {user?.email}
+                                        <MdEmail size={12} /> {donor?.email}
                                     </div>
                                 </div>
                             </div>
@@ -102,10 +102,39 @@ function Specific_Donor() {
                         <hr className="my-6 border-gray-300" />
 
                         {/* Information Section */}
-                        <div className=" flex flex-row justify-center items-center gap-32 ">
+                        <div className=" flex flex-col justify-center items-center gap-3 ">
+
+                            <div className='flex flex-row justify-between min-w-[40%]'>
+                                <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                    <FaRegUser /> Full Name
+                                </div>
+                                <div>{donor?.name}</div>
+                            </div>
+
+                            <div className='flex flex-row justify-between min-w-[40%]'>
+                                <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                    <MdBloodtype /> Gender
+                                </div>
+                                <div>{donor.donorDetails?.gender}</div>
+                            </div>
+
+                            <div className='flex flex-row justify-between min-w-[40%]'>
+                                <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                    <FaPersonWalkingLuggage /> Age
+                                </div>
+                                <div>{donor.donorDetails?.age}</div>
+                            </div>
+
+                            <div className='flex flex-row justify-between min-w-[40%]'>
+                                <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                    <FaAddressBook /> Address
+                                </div>
+                                <div>{donor.donorDetails?.address}</div>
+                            </div>
+
 
                             {/* left side */}
-                            <div className='space-y-3 flex flex-col justify-center'>
+                            {/* <div className='space-y-3 flex flex-col justify-center'>
                                 <span className="flex items-center gap-2 font-extrabold">
                                     <FaRegUser /> Full Name
                                 </span>
@@ -121,17 +150,17 @@ function Specific_Donor() {
                                 <span className="flex items-center gap-2 font-extrabold">
                                     <FaAddressBook /> Address
                                 </span>
-                            </div>
+                            </div> */}
 
                             {/* right side */}
-                            <div className='space-y-3 flex flex-col justify-center'>
-                                <div>{user?.name}</div>
-                                <div>{recipient?.gender}</div>
-                                <div>{recipient?.age}</div>
+                            {/* <div className='space-y-2 mt-2 flex flex-col justify-center'>
+                                <div>{donor?.name}</div>
+                                <div>{donor.donorDetails?.gender}</div>
+                                <div>{donor.donorDetails?.age}</div>
                                 <div className="text-justify italic w-3/4">
-                                    {recipient?.address}
+                                    {donor.donorDetails?.address}
                                 </div>
-                            </div>
+                            </div> */}
 
 
                             {/* <div className="flex flex-row bg-slate-400 justify-around">

@@ -196,40 +196,40 @@ function R_Sidebar() {
 
                     <h2
                         onClick={() => navigate("/recipient")}
-                        className="cursor-pointer text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-gray-200 p-6 pb-3">
+                        className="cursor-pointer text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-b-gray-200 p-6 pb-3  hover:bg-gray-100 hover:text-[#820000]">
                         <FaHouseDamage size={20} /> Dashboard
                     </h2>
-                    <ul className="space-y-6 p-6">
+                    <ul className="space-y-2">
                         <li
-                            onClick={() => navigate('/all_donors')} className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                            onClick={() => navigate('/all_donors')} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
                             <FaSearch size={15} /> Donors
                         </li>
 
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                        <li className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
                             <FaHistory size={15} /> History
                         </li>
 
                         <li
-                            onClick={() => navigate("/recipient_blog")} className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                            onClick={() => navigate("/recipient_blog")} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
                             <MdCastForEducation size={15} /> Blogs
                         </li>
 
                         <li
-                            onClick={() => navigate("/recipient_all_event")} className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                            onClick={() => navigate("/recipient_all_event")} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
                             <FaSearch size={15} /> Events
                         </li>
 
                         <li
-                            onClick={() => navigate("/messanger")}  className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                            onClick={() => navigate("/messanger")} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
                             <AiOutlineMessage size={15} /> Messages
                         </li>
 
                         <li
-                            onClick={() => navigate("/recipient_about_us")}  className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                            onClick={() => navigate("/recipient_about_us")} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
                             <AiOutlineMessage size={15} /> About Us
                         </li>
 
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm"
+                        <li className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]"
                             onClick={toggleModal}
                         >
                             <AiOutlineMessage size={15} /> Notification
@@ -237,18 +237,14 @@ function R_Sidebar() {
                             >{notifications.length}</span>
                         </li>
 
-                        <li className="hover:text-gray-300 cursor-pointer text-sm pt-5"
-                            onClick={handleLogout}
-                        >
-                            {/* <div className=' flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-lg'>
-                <IoIosLogOut size={20} /> Logout
-            </div> */}
-                        </li>
+
                     </ul>
 
                 </div>
 
-                <div className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-md'>
+                <div
+                    onClick={handleLogout}
+                    className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-white text-[#820000] hover:bg-slate-300 font-bold py-2 rounded-md cursor-pointer'>
                     <IoIosLogOut size={20} /> Logout
                 </div>
                 {/* <div className='flex flex-col items-center pb-8'>

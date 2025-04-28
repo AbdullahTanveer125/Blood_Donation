@@ -19,6 +19,7 @@ function Specific_Recipient() {
     const [user, setUser] = useState(null);
     const [recipient, setRecipient] = useState(null);
     const location = useLocation();
+
     const { recipient_id } = location.state || {};
 
     const [loading, setLoading] = useState(true); // <-- loading state
@@ -82,7 +83,7 @@ function Specific_Recipient() {
                             <img
                                 src={user?.profile_photo ? user.profile_photo : "/user.jpg"}
                                 alt="Profile"
-                                className="h-32 w-32 rounded-full border-4 border-gray-600 shadow-md"
+                                className="h-32 w-32 rounded-full border-4 border-[#820000] shadow-md"
                             />
                             <div>
                                 <h2 className="text-2xl font-extrabold">{user?.username}</h2>
@@ -102,10 +103,42 @@ function Specific_Recipient() {
                         <hr className="my-6 border-gray-300" />
 
                         {/* Information Section */}
-                        <div className=" flex flex-row justify-center items-center gap-32 ">
+                        <div className=" flex flex-row justify-center items-center ">
 
+                            {/* Information Section */}
+                            <div className=" flex flex-col justify-center items-center gap-3 min-w-[50%]">
+
+                                <div className='flex flex-row justify-between min-w-[100%]'>
+                                    <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                        <FaRegUser /> Full Name
+                                    </div>
+                                    <div>{user?.name}</div>
+                                </div>
+
+                                <div className='flex flex-row justify-between min-w-[100%]'>
+                                    <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                        <MdBloodtype /> Gender
+                                    </div>
+                                    <div>{recipient?.gender}</div>
+                                </div>
+
+                                <div className='flex flex-row justify-between min-w-[100%]'>
+                                    <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                        <FaPersonWalkingLuggage /> Age
+                                    </div>
+                                    <div>{recipient?.age}</div>
+                                </div>
+
+                                <div className='flex flex-row justify-between min-w-[100%]'>
+                                    <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                        <FaAddressBook /> Address
+                                    </div>
+                                    <div className='max-w-72'>{recipient?.address}</div>
+                                </div>
+
+                            </div>
                             {/* left side */}
-                            <div className='space-y-3 flex flex-col justify-center'>
+                            {/* <div className='space-y-3 flex flex-col justify-center'>
                                 <span className="flex items-center gap-2 font-extrabold">
                                     <FaRegUser /> Full Name
                                 </span>
@@ -121,17 +154,17 @@ function Specific_Recipient() {
                                 <span className="flex items-center gap-2 font-extrabold">
                                     <FaAddressBook /> Address
                                 </span>
-                            </div>
+                            </div> */}
 
                             {/* right side */}
-                            <div className='space-y-3 flex flex-col justify-center'>
+                            {/* <div className='space-y-3 flex flex-col justify-center'>
                                 <div>{user?.name}</div>
                                 <div>{recipient?.gender}</div>
                                 <div>{recipient?.age}</div>
                                 <div className="text-justify italic w-3/4">
                                     {recipient?.address}
                                 </div>
-                            </div>
+                            </div> */}
 
 
                             {/* <div className="flex flex-row bg-slate-400 justify-around">

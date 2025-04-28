@@ -255,6 +255,40 @@ const search_blood_requests = async (req, res) => {
 
 
 
+// get blood Request of donor / particular recipient
+const get_donor_blood_request = async (req, res) => {
+    try {
+        const get_Blood_Request = await bloodRequest_model.find({ donor_id: req.params.donor_id }).sort({ createdAt: -1 }); // Sorting by createdAt in descending order (recent first)
+
+
+        // Modify events to encode images as Base64
+        const Blood_Request = get_Blood_Request.map(event => {
+            if (event.profile_photo && event.profile_photo.data) {
+                return {
+                    ...event._doc, // Spread existing event fields
+                    profile_photo: `data:${event.profile_photo.contentType};base64,${event.profile_photo.data.toString("base64")}`
+                };
+            }
+            return event;
+        });
+
+
+
+        res.status(200).send({
+            success: true,
+            message: "get donor blood request",
+            Blood_Request,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error while getting blood requests of specific recipient",
+            error,
+        });
+    }
+};
+
 
 
 
@@ -271,5 +305,5 @@ const search_blood_requests = async (req, res) => {
 
 // //export All functions from "Controller"
 module.exports = {
-    testController, add_bloodRequest, get_all_blood_request, get_specific_blood_request, delete_blood_request, delete_all_blood_requests, search_blood_requests
+    testController, add_bloodRequest, get_all_blood_request, get_specific_blood_request, delete_blood_request, delete_all_blood_requests, search_blood_requests, get_donor_blood_request
 }

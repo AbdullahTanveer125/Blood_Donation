@@ -321,6 +321,8 @@ function All_Donors() {
                             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 px-6">
                                 {donorsToShow.map((donor, index) => (
                                     <div key={index} className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow">
+
+                                        {/* {console.log("************ DDonor **",donor)} */}
                                         <div className='flex flex-row gap-4 items-center mb-5'>
                                             <img
                                                 src={donor.profile_photo || "/fatima.png"}
@@ -344,7 +346,7 @@ function All_Donors() {
                                         </div>
 
                                         <Link
-                                            to="/specific_blood_request"
+                                            to="/specific_donor"
                                             state={donor}
                                             className="font-bold flex justify-center items-center gap-3 border-2 border-[#820000] bg-[#820000] text-white py-2 rounded-md hover:bg-white hover:text-[#820000] transition mt-10"
                                         >
