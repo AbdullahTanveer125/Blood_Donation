@@ -11,10 +11,12 @@ import { FaKey } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaCircleUser } from "react-icons/fa6";
 
+import { useNavigate } from 'react-router-dom';
 
 
 function Recipient_login() {
 
+    const navigate = useNavigate();
 
     // const {
     //   register,
@@ -108,7 +110,7 @@ function Recipient_login() {
                 // });
 
 
-                // navigate("/");
+                navigate("/recipient");
                 // navigate(location.state || "/");//is sy agr login ni hai to pehly login krwa kr phir usi page pr byj dy ga jisy access krna ho ga
                 // localStorage.setItem("auth", JSON.stringify(res.data))
 

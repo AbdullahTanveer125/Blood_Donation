@@ -78,6 +78,8 @@ import R_About_us from "./Components/Recipient_Components/R_About_us/R_About_us.
 import D_About_us from "./Components/Donor_components/D_About_us/D_About_us.jsx";
 import O_Your_Event from "./Components/Organization_component/O_Your_Event/O_Your_Event.jsx";
 import D_History from "./Components/Donor_components/D_History/D_History.jsx";
+import D_Specific_Organization from "./Components/Donor_components/D_Specific_Organization/D_Specific_Organization.jsx";
+import R_Specific_Organization from "./Components/Recipient_Components/R_Specific_Organization/R_Specific_Organization.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -196,6 +198,8 @@ function App() {
             <Route path="/donor_all_event" element={<D_All_Event />} />
 
             <Route path="/specific_recipient" element={<Specific_Recipient />} />
+            
+            <Route path="/specific_organization" element={<D_Specific_Organization />} />
 
             <Route path="/donor_blog" element={<D_Blog />} />
 
@@ -222,6 +226,8 @@ function App() {
 
             <Route path="/all_donors" element={<All_Donors />} />
             <Route path="/specific_donor" element={<Specific_Donor />} />
+            
+            <Route path="/recipient_specific_organization" element={<R_Specific_Organization />} />
 
             <Route path="/recipient_all_event" element={<R_All_Event />} />
             <Route path="/recipient_blog" element={<R_Blog />} />

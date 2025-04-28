@@ -216,6 +216,52 @@ async function organization_login(req, res) {
 
 
 
+// // get organization
+const get_organization = async (req, res) => {
+    try {
+        
+        const organization = await organization_model.findById(req.params.organization_id);
+
+        console.log("organization===", organization)
+        const get_user = await user_model.findById(organization.userId).select("-password");
+
+        
+        // console.log("id===", organization.userId)
+        // console.log("user===", get_user)
+        
+        
+        // Modify Users to encode images as Base64
+        const user = (() => {
+            if (get_user.profile_photo && get_user.profile_photo.data) {
+                return {
+                    ...get_user._doc,
+                    profile_photo: `data:${get_user.profile_photo.contentType};base64,${get_user.profile_photo.data.toString("base64")}`
+                };
+            }
+            return get_user._doc || get_user; // fallback if _doc is not present
+        })();
+
+        res.status(200).send({
+            success: true,
+            message: "get organization",
+            user,
+            organization,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: "Error while getting organization",
+            error,
+        });
+    }
+};
+
+
+
+
+
+
 // get photo
 const get_photo = async (req, res) => {
     try {
@@ -272,4 +318,4 @@ const get_photo = async (req, res) => {
 
 
 //export All functions from "Controller"
-module.exports = { testController, organization_signUp, organization_login, get_photo }
+module.exports = { testController, organization_signUp, organization_login, get_photo, get_organization }

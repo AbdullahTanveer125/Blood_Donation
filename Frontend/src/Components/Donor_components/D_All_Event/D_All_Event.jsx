@@ -3,11 +3,52 @@ import axios from 'axios';
 import D_Sidebar from '../D_Sidebar/D_Sidebar';
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
-
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function D_All_Event() {
+
+    const navigate = useNavigate();
+    
     const [events, setEvents] = useState([]);
     const [showAll, setShowAll] = useState(false);
+
+
+    // Your time formatter
+    function formatTime(timeString) {
+        const [hours, minutes] = timeString.split(':');
+        const date = new Date();
+        date.setHours(hours);
+        date.setMinutes(minutes);
+
+        return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+    }
+
+    // Your date formatter
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+
+        return `${day}/${month}/${year}`;
+    }
+
+    // Now apply to all events
+    const formattedEvents = events.map(event => {
+        return {
+            ...event,
+            display_time: formatTime(event.time),
+            display_date: formatDate(event.date),
+        };
+    });
+
+    console.log(formattedEvents);
+
+
+
+
+
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -24,8 +65,19 @@ function D_All_Event() {
     }, []);
 
 
-    const visibleEvents = showAll ? events : events.slice(0, 6);
+    const visibleEvents = showAll ? formattedEvents : formattedEvents.slice(0, 6);
 
+
+    const handle_see_profile_click = (e, organization_id) => {
+        e.preventDefault(); // Prevent default link behavior
+
+        navigate("/specific_organization", { state: { organization_id } });
+
+        // const confirmDonate = window.confirm("Are you sure to donate blood?");
+        // if (confirmDonate) {
+        // }
+        // If "No", do nothing (alert automatically closes)
+    };
 
     return (
         <div className='text-center font-nunito'>
@@ -44,14 +96,18 @@ function D_All_Event() {
                         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-16 px-28'>
                             {visibleEvents.map(event => (
                                 <div key={event._id} className='bg-white rounded-2xl shadow-md p-4'>
+
                                     <img
                                         src={event.organization_photo || './Home1.jpg'}
                                         alt='event'
                                         className='rounded-xl w-full h-48 object-cover mb-3'
                                     />
+
+                                    <div className='font-extrabold text-lg mb-4'>{event.name}</div>
                                     <div className='flex flex-row gap-7'>
-                                        <p className='text-sm text-gray-500'>{event.date}</p>
-                                        <p className='text-sm text-gray-500'>{event.eventDateTime}</p>
+
+                                        <p className='text-sm text-gray-500'>{event.display_date}</p>
+                                        <p className='text-sm text-gray-500'>{event.display_time}</p>
                                     </div>
                                     <div className='flex flex-col items-start my-5'>
                                         <h2 className='text-lg font-extrabold'>{event.organization_name}</h2>
@@ -63,9 +119,18 @@ function D_All_Event() {
                                         </p>
                                     </div>
                                     <p className='text-sm text-gray-700 mt-2 text-justify'>{event.description}</p>
-                                    <button className='mt-3 border-2 border-[#820000] bg-[#820000] hover:bg-white hover:text-[#820000] text-white px-4 py-1 rounded-lg'>
+
+                                    {/* <button className='mt-3 border-2 border-[#820000] bg-[#820000] hover:bg-white hover:text-[#820000] text-white px-4 py-1 rounded-lg'>
                                         See Profile
-                                    </button>
+                                    </button> */}
+
+
+                                    <Link
+                                        onClick={(e) => handle_see_profile_click(e, event.organization_id)} // or whatever the recipient_id is
+                                        className="mt-3 flex justify-center items-center gap-3 border-2 border-[#820000] bg-[#820000] text-white py-2 rounded-md  hover:bg-white hover:text-[#820000] transition font-bold"
+                                    >
+                                        See Profile
+                                    </Link>
                                 </div>
                             ))}
                         </div>
