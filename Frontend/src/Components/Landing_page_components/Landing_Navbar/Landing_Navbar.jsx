@@ -7,10 +7,11 @@ import { FiSun } from "react-icons/fi";
 // import Logout from "./Logout";
 // import { useAuth } from "../context/AuthProvider";
 
-
+import { useNavigate } from 'react-router-dom';
 
 function Landing_Navbar() {
 
+    const navigate = useNavigate();
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -51,6 +52,13 @@ function Landing_Navbar() {
     //   };
     // }, []);
 
+    const handle_signup = () => {
+        navigate("/signup_as_a");
+    };
+    
+    const handle_login = () => {
+        navigate("/login_as_a");
+    };
     const navItems = (
         <>
             <li>
@@ -173,7 +181,9 @@ function Landing_Navbar() {
 
 
                                     <button className=" border border-black px-4 py-2 w-[50%]">Log in</button>
-                                    <button className="bg-[#820000] border-2 border-[#820000] text-gray-50 hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition w-[50%]  px-6 py-3 ml-2">Sign Up</button>
+                                    <button
+                                        onClick={handle_signup}
+                                        className="bg-[#820000] border-2 border-[#820000] text-gray-50 hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition w-[50%]  px-6 py-3 ml-2">Sign Up</button>
 
                                 </div>
 
@@ -211,11 +221,15 @@ function Landing_Navbar() {
                                 <a>Support Us</a>
                             </li>
                             <li>
-                                <button className=" border border-black px-4 py-2">Log in</button>
+                                <button 
+                                onClick={handle_login}
+                                className=" border border-black px-4 py-2">Log in</button>
                                 {/* <button className=" text-red-700 btn btn-outline btn-accent px-4 py-0">Log in</button> */}
                             </li>
                             <li>
-                                <button className="bg-[#820000] border-2 border-[#820000] text-gray-50 hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition px-6 py-3 ml-2">Sign Up</button>
+                                <button
+                                    onClick={handle_signup}
+                                    className="bg-[#820000] border-2 border-[#820000] text-gray-50 hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition px-6 py-3 ml-2">Sign Up</button>
                             </li>
 
 

@@ -9,7 +9,9 @@ import { IoIosLogOut } from "react-icons/io";
 // import { LuMessageCircleMore } from "react-icons/lu";
 // import { LuMessageSquareMore } from "react-icons/lu";  
 import { AiOutlineMessage } from "react-icons/ai";
-
+import { BiCalendarEvent } from "react-icons/bi";
+import { RiTeamFill } from "react-icons/ri";
+import { BiSolidMessageDots } from "react-icons/bi";
 
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
@@ -61,19 +63,19 @@ function D_Sidebar() {
                         <li
                             onClick={() => navigate("/donor_all_event")}
                             className=" cursor-pointer flex flex-row items-center gap-3 text-sm  px-6 py-2 hover:bg-white hover:text-[#820000]">
-                            <FaSearch size={15} /> Events
+                            <BiCalendarEvent size={15} /> Events
                         </li>
 
                         <li
                             onClick={() => navigate("/messanger")}
                             className=" cursor-pointer flex flex-row items-center gap-3 text-sm  px-6 py-2 hover:bg-white hover:text-[#820000]">
-                            <AiOutlineMessage size={15} /> Messages
+                            <BiSolidMessageDots  size={15} /> Messages
                         </li>
 
                         <li
                             onClick={() => navigate("/donor_about_us")}
                             className=" cursor-pointer flex flex-row items-center gap-3 text-sm  px-6 py-2 hover:bg-white hover:text-[#820000]">
-                            <AiOutlineMessage size={15} /> About Us
+                            <RiTeamFill size={15} /> About Us
                         </li>
 
 

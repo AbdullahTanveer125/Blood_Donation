@@ -101,7 +101,7 @@ function Organization_Login() {
                 //   user: res.data.send_donor,
                 //   token: res.data.token,
                 // });
-                // navigate("/");
+                navigate("/organization");
                 // navigate(location.state || "/");//is sy agr login ni hai to pehly login krwa kr phir usi page pr byj dy ga jisy access krna ho ga
 
 

@@ -102,15 +102,17 @@ function Donor_Hero_Section() {
                 {/* <Feedback_Review_2 /> */}
                 <D_feedback />
 
-
+                <Footer1 />
+                <Footer2 />
 
 
 
             </main>
 
-            <div className="w-full mt-10 z-10">
+            {/* <div className="w-full mt-10 z-10">
                 <Footer1 />
-            </div>
+                <Footer2 />
+            </div> */}
 
         </div>
 

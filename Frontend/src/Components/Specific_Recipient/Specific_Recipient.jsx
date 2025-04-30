@@ -12,6 +12,7 @@ import { FaAddressBook } from "react-icons/fa6";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Specific_blood_request_on_donor from '../Donor_components/D_Specific_blood_request/Specific_blood_request_on_donor';
 
 
 function Specific_Recipient() {
@@ -20,12 +21,16 @@ function Specific_Recipient() {
     const [recipient, setRecipient] = useState(null);
     const location = useLocation();
 
-    const { recipient_id } = location.state || {};
+    console.log("Full location.state >>>", location.state);
+
+    const { recipient_id, blood_request } = location.state || {};
+    // const { request } = location.state || {};
 
     const [loading, setLoading] = useState(true); // <-- loading state
 
 
     console.log("Recipient ID:", recipient_id);
+    console.log("**** blood_request **** >>>>", blood_request)
 
 
     useEffect(() => {
@@ -223,8 +228,7 @@ function Specific_Recipient() {
 
 
                 </div>
-
-
+                <Specific_blood_request_on_donor  blood_request={blood_request}/>
             </div>
 
         </div>

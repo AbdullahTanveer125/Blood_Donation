@@ -472,11 +472,11 @@ function All_Blood_Request() {
         setLoading(true)
         try {
             const res = await axios.get(`http://localhost:5000/bloodRequest/get-all-blood-request`);
-            console.log("Check==========",res.data.All_Blood_Request)
+            console.log("Check==========", res.data.All_Blood_Request)
             setAllRequests(res.data.All_Blood_Requests || []);
         } catch (error) {
             console.error("Error fetching blood requests:", error);
-        } finally{
+        } finally {
             setLoading(false)
         }
     }
@@ -521,11 +521,18 @@ function All_Blood_Request() {
         : allRequests.slice(0, visibleCount);
 
 
-    const handleDonateClick = (e, recipient_id) => {
+    const handleDonateClick = (e, recipient_id, blood_request) => {
         e.preventDefault(); // Prevent default link behavior
+        
+        console.log("<<<<<<< blood_group >>>>>>",blood_request)
         const confirmDonate = window.confirm("Are you sure to donate blood?");
         if (confirmDonate) {
-            navigate("/specific_recipient", { state: { recipient_id } });
+            navigate("/specific_recipient", {
+                state: {
+                    recipient_id,
+                    blood_request,
+                }
+            });
         }
         // If "No", do nothing (alert automatically closes)
     };
@@ -646,7 +653,7 @@ function All_Blood_Request() {
                                     </div>
 
                                     <Link
-                                        onClick={(e) => handleDonateClick(e, request.recipient_id)} // or whatever the recipient_id is
+                                        onClick={(e) => handleDonateClick(e, request.recipient_id, request)} // or whatever the recipient_id is
                                         className="flex justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md hover:bg-red-800 transition"
                                     >
                                         Donate

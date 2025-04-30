@@ -267,7 +267,7 @@ function R_Sidebar() {
             {isModalOpen && (
                 <div className="z-10 fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white rounded-lg p-6 w-[50%] h-[70%] overflow-y-auto">
-                        <h3 className="text-xl font-semibold mb-4 text-center text-red-600">
+                        <h3 className="text-xl font-semibold mb-4 text-center text-[#820000]">
                             Notifications
                         </h3>
                         {notifications.length > 0 ? (
@@ -307,7 +307,7 @@ function R_Sidebar() {
                         )}
                         <button
                             onClick={toggleModal} // Close the modal
-                            className="mt-4 px-4 py-2 bg-red-600 text-white rounded-md w-full"
+                            className="mt-4 px-4 py-2 bg-[#820000] text-white rounded-md w-full"
                         >
                             Close
                         </button>

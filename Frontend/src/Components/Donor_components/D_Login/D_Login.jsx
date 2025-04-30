@@ -11,6 +11,7 @@ import { FaKey } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaCircleUser } from "react-icons/fa6";
 
+import { useNavigate } from 'react-router-dom';
 
 function Donor_Login() {
 
@@ -54,7 +55,7 @@ function Donor_Login() {
     const [password, setPassword] = useState("");
     const [auth, setAuth] = useAuth();
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const location = useLocation();
 
     async function handleSubmit(e) {
@@ -100,7 +101,7 @@ function Donor_Login() {
                 //   user: res.data.send_donor,
                 //   token: res.data.token,
                 // });
-                // navigate("/");
+                navigate("/donor");
                 // navigate(location.state || "/");//is sy agr login ni hai to pehly login krwa kr phir usi page pr byj dy ga jisy access krna ho ga
 
 
