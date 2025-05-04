@@ -80,6 +80,9 @@ import O_Your_Event from "./Components/Organization_component/O_Your_Event/O_You
 import D_History from "./Components/Donor_components/D_History/D_History.jsx";
 import D_Specific_Organization from "./Components/Donor_components/D_Specific_Organization/D_Specific_Organization.jsx";
 import R_Specific_Organization from "./Components/Recipient_Components/R_Specific_Organization/R_Specific_Organization.jsx";
+import Landing_Page11 from "./Pages/Landing_Page11.jsx";
+import D_Messanger from "./Components/Donor_components/D_Messanger.jsx";
+import R_Messanger from "./Components/Recipient_Components/R_Messanger.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -166,7 +169,8 @@ function App() {
 
       <Routes>
         {/* Public Routes (Available to Everyone) */}
-        <Route path="/" element={<Landing />} />
+        {/* <Route path="/" element={<Landing />} /> */}
+        <Route path="/" element={<Landing_Page11 />} />
         <Route path="/signup_as_a" element={<Signup_as_a />} />
         <Route path="/login_as_a" element={<Login_as_a />} />
         <Route path="/donor_signup" element={<Donor_SignUp />} />
@@ -207,7 +211,7 @@ function App() {
             
             <Route path="/donor_history" element={<D_History />} />
 
-            <Route path="/messanger" element={<Messanger />} />
+            <Route path="/messanger" element={<D_Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
             <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
@@ -234,7 +238,7 @@ function App() {
 
             <Route path="/recipient_about_us" element={<R_About_us />} />
 
-            <Route path="/messanger" element={<Messanger />} />
+            <Route path="/messanger" element={<R_Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
             <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />

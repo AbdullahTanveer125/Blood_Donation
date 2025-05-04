@@ -125,7 +125,12 @@ const add_bloodRequest = async (req, res) => {
 // // get-all-blood-request
 const get_all_blood_request = async (req, res) => {
     try {
-        const Blood_Requests = await bloodRequest_model.find({}).sort({ createdAt: -1 });
+        // const Blood_Requests = await bloodRequest_model.find({}).sort({ createdAt: -1 });
+
+        const Blood_Requests = await bloodRequest_model.find({
+            recipient_id: { $ne: null }
+        }).sort({ createdAt: -1 });
+
 
 
 
@@ -162,7 +167,19 @@ const get_all_blood_request = async (req, res) => {
 // get blood Request of specific / particular recipient
 const get_specific_blood_request = async (req, res) => {
     try {
-        const Blood_Request = await bloodRequest_model.find({ recipient_id: req.params.recipient_id }).sort({ createdAt: -1 }); // Sorting by createdAt in descending order (recent first)
+        const get_Blood_Request = await bloodRequest_model.find({ recipient_id: req.params.recipient_id }).sort({ createdAt: -1 }); // Sorting by createdAt in descending order (recent first)
+
+        // Modify events to encode images as Base64
+        const Blood_Request = get_Blood_Request.map(event => {
+            if (event.profile_photo && event.profile_photo.data) {
+                return {
+                    ...event._doc, // Spread existing event fields
+                    profile_photo: `data:${event.profile_photo.contentType};base64,${event.profile_photo.data.toString("base64")}`
+                };
+            }
+            return event;
+        });
+
 
         res.status(200).send({
             success: true,

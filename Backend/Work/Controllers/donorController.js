@@ -245,14 +245,26 @@ async function donor_login(req, res) {
 
         const send_user = await user_model.findOne({ email }, { password: 0 });
 
+        let updated_user;
+
+        if (send_user && send_user.profile_photo?.data) {
+            updated_user = {
+                ...send_user._doc,
+                profile_photo: `data:${send_user.profile_photo.contentType};base64,${send_user.profile_photo.data.toString("base64")}`
+            };
+        } else {
+            updated_user = send_user; // fallback if there's no photo
+        }
+
         // Modify events to encode images as Base64
         // Copy send_user object
-        const updated_send_user = { ...send_user };
+        // const updated_send_user = { ...send_user };
 
-        // Check if profile_photo exists and has data
-        if (send_user.profile_photo && send_user.profile_photo.data) {
-            updated_send_user.profile_photo = `data:${send_user.profile_photo.contentType};base64,${send_user.profile_photo.data.toString("base64")}`;
-        }
+
+        // // Check if profile_photo exists and has data
+        // if (send_user.profile_photo && send_user.profile_photo.data) {
+        //     updated_send_user.profile_photo = `data:${send_user.profile_photo.contentType};base64,${send_user.profile_photo.data.toString("base64")}`;
+        // }
 
         // console.log("updated_send_user=", updated_send_user);
 
@@ -265,10 +277,11 @@ async function donor_login(req, res) {
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
-            send_user,
+            // updated_user,
             send_donor,
             person,
             token,
+            send_user:updated_user,
         })
 
     } catch (error) {

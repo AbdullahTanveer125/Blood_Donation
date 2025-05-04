@@ -9,7 +9,14 @@ import { PiHospitalDuotone } from "react-icons/pi";
 import { FaAddressBook } from "react-icons/fa6";
 // import Blood_Request_on_Donor from '../D_Blood_Request/D_Blood_Request';
 
+import { useAuth } from "../../../context/auth";
+
+
 function R_Profile() {
+
+
+    const [auth] = useAuth();
+    // console.log("**** ss Auth ****",auth)
 
 
     return (
@@ -40,21 +47,21 @@ function R_Profile() {
                             <div className='flex flex-row items-center gap-6'>
                                 <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-900'> <FaPhone size={10} /> 0309-9014620</p>
                                 <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-900'><MdEmail /> abbhai125420@gmail.com</p>
-                                
+
                             </div>
                         </div>
                     </div>
 
                 </div>
 
-                
+
             </div>
 
 
 
             {/* information section */}
             <div className='h-[320px] bg-gray-00 flex flex-row justify-around items-center pt-6'>
-                
+
 
                 <div className='bg-slate-00 flex flex-col justify-center space-y-3  ml-36 w-[500px] font-nunito text-sm '
                 >
@@ -79,7 +86,7 @@ function R_Profile() {
                         <p className='  '>52</p>
                     </div>
 
-                    
+
                     <div className=' flex flex-row justify-between items-start gap-4'>
                         <p className='flex flex-row gap-3 items-center'>
                             <FaAddressBook /> Address
@@ -96,12 +103,12 @@ function R_Profile() {
                     aaaaa
                 </div>
 
-                
+
             </div>
 
             {/* image element */}
             {/* image element */}
-            
+
             {/* <Blood_Request_on_Donor /> */}
 
         </div>

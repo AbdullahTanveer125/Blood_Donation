@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import D_feedback_card from '../D_feedback_card/D_feedback_card';
 
+import { MdArrowForwardIos } from "react-icons/md";
 
 import { useAuth } from "../../../context/auth";
 import Feedback_Review_2 from '../../Feedback_Review_2/Feedback_Review_2';
@@ -73,14 +74,19 @@ function D_feedback() {
 
     return (
 
-        <div className='w-full'>
+        <div className='w-full font-nunito'>
 
             <div className=" px-16 relative w-[100%] pt-16 overflow-hidden justify-center ">
 
 
-                <h1 className="text-4xl mb-16 font-bold text-center">
-                    <span className="text-[#820000]">Your</span> Feedbacks
+                <h1 className="text-4xl mb-5 font-extrabold text-center">
+                    You <span className="text-red-600">Made an</span> Impact
                 </h1>
+                <div className='flex flex-row justify-center mb-14 text-sm'>
+                    <p>
+                        Real words from real lives you've touched through your donation.
+                    </p>
+                </div>
 
 
 
@@ -102,70 +108,15 @@ function D_feedback() {
                         <div className="flex justify-center">
                             <button
                                 onClick={() => navigate('/all-feedbacks')} // replace with your actual route
-                                className="bg-[#820000] text-white px-6 py-2 rounded hover:bg-[#9a4b4b] transition"
+                                className="bg-red-600 text-white px-6 py-2 hover:bg-white hover:text-red-600 border-2 border-red-600 transition flex flex-row justify-center items-center gap-3 rounded-full"
                             >
-                                Show All
+                                View All <MdArrowForwardIos />
                             </button>
                         </div>
                     )}
 
                 </div>
 
-
-
-
-
-
-
-
-
-                {/* Carousel Wrapper with Animation */}
-                {/* <div className=" pb-20 overflow-hidden max-w-full ">
-
-
-                 
-
-
-                    <div
-                        className=""
-                    >
-
-
-
-
-                        {array_of_feedback.map((event, index) => (
-
-                            <div key={event._id} className="bg-blue-400 flex flex-row justify-center items-center px-20 w-[100%] ">
-
-                                <Feedback_Review_2 event={event} />
-
-
-
-                            </div>
-                        ))}
-
-                    </div>
-                    
-                </div> */}
-
-
-                {/* Navigation Arrows */}
-                {/* <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-                    <button
-                        onClick={prevSlide}
-                        className="btn btn-circle disabled:opacity-50"
-                        disabled={currentIndex === 0}
-                    >
-                        ❮
-                    </button>
-                    <button
-                        onClick={nextSlide}
-                        className="btn btn-circle disabled:opacity-50"
-                        disabled={currentIndex + number_of_event_display >= array_of_feedback.length}
-                    >
-                        ❯
-                    </button>
-                </div> */}
             </div>
 
         </div>

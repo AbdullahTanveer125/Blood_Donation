@@ -40,21 +40,55 @@ function Event_Section() {
             setCurrentIndex(currentIndex - number_of_event_display);
         }
     };
+// console.log("KKKKKKKKKK=======",events)
+
+
+    // Your time formatter
+    function formatTime(timeString) {
+        const [hours, minutes] = timeString.split(':');
+        const date = new Date();
+        date.setHours(hours);
+        date.setMinutes(minutes);
+
+        return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+    }
+
+    // Your date formatter
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+    }
+    
+
+    // Now apply to all events
+    const formattedEvents = events.map(event => {
+        return {
+            ...event,
+            display_time: formatTime(event.time),
+            display_date: formatDate(event.date),
+        };
+    });
+
+    console.log(formattedEvents);
 
 
 
 
     return (
-        <div>
-            <h1 className="text-4xl mt-24 mb-10 font-bold text-center">
-                <span className="text-[#820000]">All Events</span> of Organizations
+        <div className='font-nunito px-40'>
+            <h1 className="text-4xl mt-24 mb-10 font-extrabold text-center">
+                <span className="text-red-600">Upcoming</span> Events
             </h1>
 
             <div className="carousel w-full mb-16">
 
 
 
-                {events.map((event, index) => (
+                {formattedEvents.map((event, index) => (
                     <div
                         key={index}
                         id={`slide${index}`}

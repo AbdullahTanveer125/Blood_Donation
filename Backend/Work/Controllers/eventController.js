@@ -224,7 +224,21 @@ const get_all_events = async (req, res) => {
 // get single event
 const get_single_event = async (req, res) => {
     try {
+
+        console.log("idd====", req.params.event_id)
         const Single_Event = await event_model.findById(req.params.event_id);
+
+        console.log("11 Single event ===", Single_Event)
+
+        if (Single_Event && Single_Event.organization_photo && Single_Event.organization_photo.data) {
+            Single_Event = {
+                ...Single_Event._doc,
+                organization_photo: `data:${Single_Event.organization_photo.contentType};base64,${Single_Event.organization_photo.data.toString("base64")}`
+            };
+        }
+
+        console.log("22 Single event ===", Single_Event)
+
         res.status(200).send({
             success: true,
             message: "get Single event",

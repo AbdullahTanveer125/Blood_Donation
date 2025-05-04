@@ -8,8 +8,9 @@ import { useAuth } from "../../../context/auth";
 
 
 import { FaKey } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 import { FaCircleUser } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
+import { ImKey } from "react-icons/im";
 
 import { useNavigate } from 'react-router-dom';
 
@@ -134,10 +135,10 @@ function Donor_Login() {
 
     return (
 
-        <div className="min-h-screen bg-[url('./Home1.jpg')] bg-cover bg-center bg-no-repeat flex flex-row justify-center items-center font-nunito">
+        <div className="min-h-screen bg-[url('./form_background.png')] bg-cover bg-center bg-no-repeat flex flex-row justify-center items-center font-nunito">
 
             {/* Black overlay */}
-            <div className="absolute inset-0 bg-black opacity-10 z-0"></div>
+            {/* <div className="absolute inset-0 bg-black opacity-10 z-0"></div> */}
 
             <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl shadow-2xl shadow-white p-8 w-full max-w-md"
             >
@@ -145,48 +146,54 @@ function Donor_Login() {
                     className=" ">
 
                     <div className='flex flex-row justify-center mb-5 text-2xl font-extrabold'>
-                        <h1 ><FaCircleUser size={40} color='#820000'/></h1>
+                        <h1 ><FaCircleUser size={40} color='white'/></h1>
+                    </div>
+
+                    <div className='text-center text-white mb-20'>
+                        <h1 className='text-2xl font-bold'>Welcome</h1>
+                        <p>Login to your account to continue</p>
                     </div>
 
                     <div className='space-y-7'>
 
                         <div className="flex flex-col gap-1">
                             {/* <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label> */}
-                            <div className="flex items-center gap-2 border-b border-white bg-white bg-opacity-5 backdrop-blur-sm px-2 py-1">
+                            <div className="flex items-center gap-2 border-b border-white bg-white px-5 py-3 rounded-full">
                                 {/* <div className="">
                                             <MdEmail size={20} />
                                         </div> */}
+                                <MdEmail size={20}/>
                                 <input
                                     type="text"
                                     value={email}
                                     onChange={function (e) { setEmail(e.target.value) }}
                                     required
                                     id="email"
-                                    className=" bg-transparent font-bold placeholder:font-bold  text-[#820000] placeholder-[#820000] focus:outline-none"
+                                    className=" font-bold placeholder:font-bold placeholder-gray-300 focus:outline-none"
                                     placeholder="Email"
                                 />
                             </div>
                         </div>
 
 
-                        <div className="flex items-center gap-2 border-b border-white bg-white bg-opacity-5 backdrop-blur-sm px-2 py-1">
+                        <div className="flex items-center gap-2 border-b border-white bg-white px-5 py-3 rounded-full">
 
-                            {/* <FaKey size={20} /> */}
+                            <ImKey size={20}/>
                             <input
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                                 id="password"
-                                className="bg-transparent font-bold placeholder:font-bold  text-[#820000] placeholder-[#820000] focus:outline-none w-full"
+                                className="bg-transparent font-bold placeholder:font-bold placeholder-gray-300 focus:outline-none w-full"
                                 placeholder="Password"
                             />
                         </div>
 
                     </div>
 
-                    <div className="mt-6 ">
-                        <button type="submit" className="w-full bg-[#820000] border-2 border-[#820000] text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
+                    <div className="mt-6 text-center">
+                        <button type="submit" className=" bg-[#820000] border-2 border-[#820000] text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
                         >Login</button>
                     </div>
                 </form>

@@ -3,7 +3,7 @@ import { FaRegComment } from "react-icons/fa6";
 
 function D_feedback_card({ event }) {
     return (
-        <div className=' flex gap-48 h-[400px] w-[100%] pb-20 rounded-lg'>
+        <div className='font-nunito flex gap-48 h-[400px] w-[100%] pb-20 rounded-lg'>
 
             {/* *********************************************************************************
             *********************************************************************************
@@ -11,7 +11,7 @@ function D_feedback_card({ event }) {
 
             <div className="indicator">
 
-                <span className="ml-7 w-9 h-9 border-[#820000] bg-[#820000] rounded-full indicator-item indicator-start badge badge-secondary font-extrabold p-1">
+                <span className="ml-7 w-9 h-9 border-red-600 bg-red-600 rounded-full indicator-item indicator-start badge badge-secondary font-extrabold p-1">
                     {/* <SiComma size={100}/> */}
                     <FaRegComment />
                 </span>
@@ -25,7 +25,7 @@ function D_feedback_card({ event }) {
 
                         <div className=' pt-4 h-[210px]'>
 
-                            <div className=' font-nunito italic'>
+                            <div className='  italic'>
                                 "{event.description}"
                             </div>
 
@@ -42,8 +42,8 @@ function D_feedback_card({ event }) {
                                 {/* src={event.profile_photo ? event.profile_photo : image11} alt="" /> */}
                             </figure>
                             <div className='w-[70%]'>
-                                <div className=' '>{event. recipient_username}</div>
-                                <p className='text-[#820000]'>Recipient</p>
+                                <div className='font-bold'>{event. recipient_username}</div>
+                                <p className='text-gray-600 text-xs'>Recipient</p>
                             </div>
                         </div>
 

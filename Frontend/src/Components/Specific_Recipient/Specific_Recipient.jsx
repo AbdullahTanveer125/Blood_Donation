@@ -23,26 +23,57 @@ function Specific_Recipient() {
 
     console.log("Full location.state >>>", location.state);
 
-    const { recipient_id, blood_request } = location.state || {};
-    // const { request } = location.state || {};
+    const { blood_request } = location.state || {};
+    const recipient_id=blood_request.recipient_id;
 
     const [loading, setLoading] = useState(true); // <-- loading state
 
 
-    console.log("Recipient ID:", recipient_id);
+    console.log("Recipient ID:", blood_request.recipient_id);
     console.log("**** blood_request **** >>>>", blood_request)
+
+
+    if (!recipient_id) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-red-50 to-red-100 font-nunito">
+                <div className="bg-white p-10 rounded-2xl shadow-xl border border-red-200 text-center animate-pulse-slow">
+                    <h1 className="text-4xl font-extrabold text-[#820000] mb-4">⚠️ Missing Recipient</h1>
+                    <p className="text-xl text-gray-700 mb-6">Please delete this blood request. The recipient ID was not provided.</p>
+                    <button
+                        className="px-6 py-2 bg-[#820000] text-white rounded-full font-bold shadow-md hover:bg-white hover:text-[#820000] border-2 border-[#820000] transition"
+                        onClick={() => window.history.back()}
+                    >
+                        Go Back
+                    </button>
+                </div>
+
+                <style>
+                    {`
+                @keyframes pulse-slow {
+                  0%, 100% { transform: scale(1); }
+                  50% { transform: scale(1.02); }
+                }
+                .animate-pulse-slow {
+                  animation: pulse-slow 3s ease-in-out infinite;
+                }
+              `}
+                </style>
+            </div>
+        );
+    }
 
 
     useEffect(() => {
         get_recipient();
-    }, [recipient_id]);
+    }, [blood_request]);
 
     async function get_recipient() {
 
         setLoading(true); // start loading
 
         try {
-            const res = await axios.get(`http://localhost:5000/recipient/get-recipient/${recipient_id}`);
+            console.log("When hit API",recipient_id)
+            const res = await axios.get(`http://localhost:5000/recipient/get-recipient/${blood_request.recipient_id}`);
 
             if (res.data.success) {
                 // console.log("== get recipient ==", res)
@@ -228,7 +259,7 @@ function Specific_Recipient() {
 
 
                 </div>
-                <Specific_blood_request_on_donor  blood_request={blood_request}/>
+                <Specific_blood_request_on_donor blood_request={blood_request} />
             </div>
 
         </div>

@@ -13,6 +13,7 @@ import Chat_Online from "../../Components/Chat_Online/Chat_Online";
 
 import axios from "axios";
 import { io } from "socket.io-client";
+import D_Sidebar from "../../Components/Donor_components/D_Sidebar/D_Sidebar";
 
 function Messanger() {
 
@@ -46,9 +47,9 @@ function Messanger() {
     const socket = useRef();
 
 
-    
-  
-    
+
+
+
     useEffect(() => {
         socket.current = io("ws://localhost:8900");
         socket.current.on("getMessage", (data) => {
@@ -81,7 +82,7 @@ function Messanger() {
     console.log("<<< outside get online users from socket >>>=", onlineUsers)
     console.log("*******************************************")
     console.log("*******************************************")
-            
+
 
     // console.log("user from auth", user._id, user.name, loginPerson.person, loginPerson._id, user)
 
@@ -223,10 +224,10 @@ function Messanger() {
 
 
     return (
-        <div className="messenger">
+        <div className="ml-[17%] messenger w-[82%] min-h-[100vh]">
 
-
-            <div className="chatMenu">
+            
+            <div className="chatMenu bg-gray-0">
                 <div className="chatMenuWrapper">
                     <input placeholder="Search for friends" className="chatMenuInput" />
 
@@ -240,7 +241,7 @@ function Messanger() {
 
 
 
-            <div className="chatBox">
+            <div className="chatBox bg-slate-50">
                 <div className="chatBoxWrapper">
 
                     {currentChat ? (
@@ -276,7 +277,7 @@ function Messanger() {
 
 
 
-            <div className="chatOnline">
+            <div className="chatOnline bg-slate-0">
                 <div className="chatOnlineWrapper">
                     {/* <Chat_Online /> */}
                     <Chat_Online onlineUsers={onlineUsers} currentId={user._id} setCurrentChat={setCurrentChat}

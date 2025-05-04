@@ -6,6 +6,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { MdBloodtype } from "react-icons/md";
+import { MdArrowOutward } from "react-icons/md";
 
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -50,9 +51,9 @@ function Blood_Request_on_Donor() {
 
     return (
 
-        <div className="text-center mt-10 ">
+        <div className="text-center mt-28 ">
             <h1 className="text-4xl font-bold text-center mb-8 ">
-                <span className="text-[#820000]">Blood</span> Requests
+                <span className="text-red-600">Blood</span> Requests
             </h1>
 
 
@@ -61,9 +62,9 @@ function Blood_Request_on_Donor() {
                 <Marquee speed={40} gradient={false} pauseOnHover={true} className="w-fit">
                     {array_of_all_blood_requests.map((request, index) => (
 
-                        <div className="w-[300px] indicator mx-5 p-1 gap-10 mt-10">
+                        <div className="w-[300px] indicator mx-10 p-1 gap-10 mt-10">
 
-                            <span className={`py-2 indicator-item badge badge-secondary ${request.urgency == "high" ? "bg-red-700 border-red-700" :
+                            <span className={`py-2 indicator-item badge badge-secondary ${request.urgency == "high" ? "bg-red-600 border-red-600" :
                                 request.urgency == "low" ? "bg-green-600 border-green-600" :
                                     "bg-green-500"}`}>{request.urgency}</span>
                             {/* <div className="bg-base-300 grid h-32 w-32 place-items-center">content</div> */}
@@ -121,7 +122,7 @@ function Blood_Request_on_Donor() {
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum modi quia ullam, fugiat sunt dolor!
                                 </div>
 
-                                {/* <div className='mb- mx- flex flex-row justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md'
+                                {/* <div className='mb- mx- flex flex-row justify-center items-center gap-3 bg-red-600 text-white py-2 rounded-md'
                                 onClick={() => go_to_specific_blood_request(request)}
                                 >
                                     Donate
@@ -134,9 +135,9 @@ Props are only passed between parent and child components, not through routing (
                                 <Link
                                     to="/specific_blood_request"
                                     state={request}
-                                    className="mb-4 mx-2 flex flex-row justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md cursor-pointer"
+                                    className="flex flex-row justify-end items-center gap-3 rounded-md cursor-pointer"
                                 >
-                                    Donate
+                                    <div className='border-2 border-red-600 bg-red-600 text-white  hover:text-red-600 hover:bg-white transition duration-200 px-6 py-2 rounded-full'>Donate</div>
                                 </Link>
 
                                 {/* ********************************************
@@ -151,11 +152,13 @@ Props are only passed between parent and child components, not through routing (
                 </Marquee>
             </div>
 
-            <button
-                onClick={() => navigate("/all_blood_request")}
-                className="border-2 border-[#820000] bg-[#820000] text-white font-semibold py-2 px-4 rounded hover:text-[#820000] hover:bg-white transition duration-200 mt-20">
-                See All Blood Requests
-            </button>
+            <div className='flex flex-row justify-center'>
+                <button
+                    onClick={() => navigate("/all_blood_request")}
+                    className="border-2 border-red-600 bg-red-600 text-white font-semibold py-2 px-4 rounded hover:text-red-600 hover:bg-white transition duration-200 mt-20 flex flex-row justify-center items-center gap-3">
+                    View All <MdArrowOutward />
+                </button>
+            </div>
         </div>
 
 

@@ -16,9 +16,9 @@ import Marquee from "react-fast-marquee";
 function D_why_donate_blood() {
     return (
 
-        <div className="ml-[3%] max-w-[95%] mt-10 ">
-            <h1 className="text-4xl font-bold text-center mb-5 ">
-                <span className="text-[#B01030]">Why</span> Donate blood ?
+        <div className="ml-[3%] max-w-[95%] mt-40 font-nunito">
+            <h1 className="text-4xl font-extrabold text-center mb-5 ">
+                <span className="text-red-600">Why</span> Donate blood ?
             </h1>
 
             <div className=''>

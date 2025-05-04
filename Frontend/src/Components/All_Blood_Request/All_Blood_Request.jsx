@@ -521,16 +521,16 @@ function All_Blood_Request() {
         : allRequests.slice(0, visibleCount);
 
 
-    const handleDonateClick = (e, recipient_id, blood_request) => {
+    const handleDonateClick = (e, blood_request) => {
         e.preventDefault(); // Prevent default link behavior
-        
-        console.log("<<<<<<< blood_group >>>>>>",blood_request)
+
         const confirmDonate = window.confirm("Are you sure to donate blood?");
         if (confirmDonate) {
+
+            console.log("<<<<<<< click on donate blood_group >>>>>>", blood_request)
             navigate("/specific_recipient", {
                 state: {
-                    recipient_id,
-                    blood_request,
+                    blood_request
                 }
             });
         }
@@ -653,7 +653,7 @@ function All_Blood_Request() {
                                     </div>
 
                                     <Link
-                                        onClick={(e) => handleDonateClick(e, request.recipient_id, request)} // or whatever the recipient_id is
+                                        onClick={(e) => handleDonateClick(e, request)} // or whatever the recipient_id is
                                         className="flex justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md hover:bg-red-800 transition"
                                     >
                                         Donate

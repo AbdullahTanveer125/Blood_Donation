@@ -220,7 +220,7 @@ const get_recipient = async (req, res) => {
     try {
         const recipient = await recipient_model.findById(req.params.recipient_id);
 
-        // console.log("recipient===", recipient)
+        // console.log("recipient===", req.params.recipient_id)
         const get_user = await user_model.findById(recipient.userId).select("-password");
 
         // Modify Users to encode images as Base64
