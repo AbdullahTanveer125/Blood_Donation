@@ -107,7 +107,7 @@ function Generate_Blood_Request() {
     return (
         <div className="min-h-screen font-nunito bg-[url('./bb.png')] bg-cover bg-center">
             {/* Top-left button */}
-            <button className="absolute top-6 left-6 bg-[#820000] text-white border-2 border-[#820000] py-2 px-4 rounded hover:bg-white hover:text-[#820000] transition flex flex-row justify-center items-center gap-2">
+            <button className="absolute top-6 left-6 bg-our_red text-white border-2 border-our_red py-2 px-4 rounded hover:bg-white hover:text-our_red transition flex flex-row justify-center items-center gap-2">
                 <HiMiniArrowLeftStartOnRectangle size={20} className='font-extrabold'/> Go Back
             </button>
 
@@ -123,7 +123,7 @@ function Generate_Blood_Request() {
                 <form
                     onSubmit={handleSubmit}
                     encType="multipart/form-data"
-                    className="bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-lg text-[#820000] grid grid-cols-1 md:grid-cols-2 gap-4"
+                    className="bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-lg text-our_red grid grid-cols-1 md:grid-cols-2 gap-4"
                 >
                     {/* Patient Name */}
                     <div className="flex flex-col gap-2 col-span-1">
@@ -135,7 +135,7 @@ function Generate_Blood_Request() {
                             required
                             id="patient_name"
                             placeholder="Ali ahmad"
-                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300 focus:outline-none"
+                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300 focus:outline-none"
                         />
                     </div>
 
@@ -143,7 +143,7 @@ function Generate_Blood_Request() {
                     <div className="flex flex-col gap-2 col-span-1">
                         <label htmlFor="bloodGroup" className="text-sm font-semibold">Blood Group</label>
                         <select
-                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] text-[#820000] placeholder-gray-300 focus:outline-none"
+                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red text-our_red placeholder-gray-300 focus:outline-none"
                             value={blood_group}
                             onChange={(e) => setBlood_group(e.target.value)}
                             required
@@ -165,7 +165,7 @@ function Generate_Blood_Request() {
                     <div className="flex flex-col gap-2 col-span-1">
                         <label htmlFor="location" className="text-sm font-semibold">Location</label>
                         <select
-                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] text-[#820000] placeholder-[#820000] focus:outline-none"
+                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red text-our_red placeholder-our_red focus:outline-none"
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
                             required
@@ -182,7 +182,7 @@ function Generate_Blood_Request() {
                     <div className="flex flex-col gap-2 col-span-1">
                         <label htmlFor="urgency" className="text-sm font-semibold">Urgency</label>
                         <select
-                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] text-[#820000] placeholder-[#820000] focus:outline-none"
+                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red text-our_red placeholder-our_red focus:outline-none"
                             value={urgency}
                             onChange={(e) => setUrgency(e.target.value)}
                             required
@@ -203,7 +203,7 @@ function Generate_Blood_Request() {
                             required
                             id="phone"
                             placeholder="03099014620"
-                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300 focus:outline-none"
+                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300 focus:outline-none"
                         />
                     </div>
 
@@ -216,7 +216,7 @@ function Generate_Blood_Request() {
                             onChange={(e) => setBlood_need_date(e.target.value)}
                             required
                             id="blood_need_date"
-                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] text-[#820000] placeholder-gray-300 focus:outline-none"
+                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red text-our_red placeholder-gray-300 focus:outline-none"
                         />
                     </div>
 
@@ -230,7 +230,7 @@ function Generate_Blood_Request() {
                             id="comment"
                             placeholder="Enter your message here"
                             rows={4}
-                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300 focus:outline-none resize-none"
+                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300 focus:outline-none resize-none"
                         ></textarea>
                     </div>
 
@@ -238,7 +238,7 @@ function Generate_Blood_Request() {
                     <div className="col-span-1 md:col-span-2">
                         <button
                             type="submit"
-                            className="w-full text-white bg-[#820000] hover:bg-white hover:text-[#820000] border border-[#820000] py-2 px-4 rounded font-bold transition"
+                            className="w-full text-white bg-our_red hover:bg-white hover:text-our_red border border-our_red py-2 px-4 rounded font-bold transition"
                         >
                             Create Blood Request
                         </button>

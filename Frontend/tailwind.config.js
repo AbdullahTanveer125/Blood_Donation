@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        our_red: '#820000', // or any color you want
+      },
       fontFamily: {
         nunito: ["Nunito", "sans-serif"],
       },

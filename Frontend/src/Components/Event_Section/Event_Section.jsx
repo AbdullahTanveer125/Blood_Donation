@@ -81,7 +81,7 @@ function Event_Section() {
     return (
         <div className='font-nunito px-40'>
             <h1 className="text-4xl mt-24 mb-10 font-extrabold text-center">
-                <span className="text-red-600">Upcoming</span> Events
+                <span className="text-our_red">Upcoming</span> Events
             </h1>
 
             <div className="carousel w-full mb-16">

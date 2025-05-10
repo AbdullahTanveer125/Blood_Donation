@@ -505,7 +505,7 @@ function Blood_Requests_of_recipient() {
     return (
         <div className="container mx-auto p-4">
             <h2 className="text-2xl font-semibold text-center mb-12">
-                <span className='text-[#820000]'>Your</span> Blood Requests
+                <span className='text-our_red'>Your</span> Blood Requests
             </h2>
 
             {error && <p className="text-center text-red-500">{error}</p>}
@@ -524,7 +524,7 @@ function Blood_Requests_of_recipient() {
                                 </h2>
                                 <span
                                     className={`${request.urgency === "high"
-                                        ? "text-white bg-[#820000] font-bold badge badge-error"
+                                        ? "text-white bg-our_red font-bold badge badge-error"
                                         : "badge badge-warning"
                                         }`}
                                 >
@@ -560,7 +560,7 @@ function Blood_Requests_of_recipient() {
                             </button> */}
 
                             <button
-                                className="w-full py-2 rounded-md bg-[#820000] text-white font-extrabold text-[16px] mt-4 border-2 border-[#820000] hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-extrabold"
+                                className="w-full py-2 rounded-md bg-our_red text-white font-extrabold text-[16px] mt-4 border-2 border-our_red hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-extrabold"
                                 onClick={() => deleteRequest(request._id)}
                             >
                                 Delete Request
@@ -574,7 +574,7 @@ function Blood_Requests_of_recipient() {
                 <div className="text-center mt-16">
                     <button
                         onClick={() => setShowAll(!showAll)}
-                        className="bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded   hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
+                        className="bg-our_red border-2 border-our_red text-white py-2 px-4 rounded   hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition"
                     >
                         {showAll ? "Show Less" : "Show All"}
                     </button>

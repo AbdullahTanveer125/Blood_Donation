@@ -5,7 +5,7 @@ function Frequently_Ask_Questions() {
         <div className='flex flex-col justify-center items-center mt-[10%] ml-[10%] w-[80%] gap-5 mb-64 font-nunito'>
 
             <h1 className="text-4xl font-bold text-center ">
-               <span className='text-[#820000]'>Frequently</span>  Asked Questions
+               <span className='text-our_red'>Frequently</span>  Asked Questions
             </h1>
 
             <div className=''>

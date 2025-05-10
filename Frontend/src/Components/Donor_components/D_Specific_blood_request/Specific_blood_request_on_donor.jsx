@@ -52,7 +52,7 @@ function Specific_blood_request_on_donor({ blood_request }) {
     return (
         <div className="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-6 border border-gray-200 mt-10">
             <h2 className="text-2xl font-semibold mb-4 text-center">
-                <span className='text-[#820000]'>Blood </span> Request Information</h2>
+                <span className='text-our_red'>Blood </span> Request Information</h2>
             <div className="space-y-2 text-gray-700">
                 <p><span className="font-medium">patient_name:</span> {patient_name}</p>
                 <p><span className="font-medium">Phone:</span> {phone}</p>
@@ -63,7 +63,7 @@ function Specific_blood_request_on_donor({ blood_request }) {
             </div>
 
             <button
-                className='border-2 border-[#820000] bg-[#820000] text-[white] hover:bg-white hover:text-[#820000] px-4 m-3'
+                className='border-2 border-our_red bg-our_red text-[white] hover:bg-white hover:text-our_red px-4 m-3'
                 onClick={() => notify_Recipient()}>
                 I Fulfilled the Request
             </button>

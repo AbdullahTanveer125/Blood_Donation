@@ -80,7 +80,7 @@ function D_feedback() {
 
 
                 <h1 className="text-4xl mb-5 font-extrabold text-center">
-                    You <span className="text-red-600">Made an</span> Impact
+                    You <span className="text-our_red">Made an</span> Impact
                 </h1>
                 <div className='flex flex-row justify-center mb-14 text-sm'>
                     <p>
@@ -108,7 +108,7 @@ function D_feedback() {
                         <div className="flex justify-center">
                             <button
                                 onClick={() => navigate('/all-feedbacks')} // replace with your actual route
-                                className="bg-red-600 text-white px-6 py-2 hover:bg-white hover:text-red-600 border-2 border-red-600 transition flex flex-row justify-center items-center gap-3 rounded-full"
+                                className="bg-our_red text-white px-6 py-2 hover:bg-white hover:text-our_red border-2 border-our_red transition flex flex-row justify-center items-center gap-3 rounded-full"
                             >
                                 View All <MdArrowForwardIos />
                             </button>

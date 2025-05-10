@@ -53,7 +53,7 @@ function O_Your_Event() {
                     {event ? (
                         <Single_Event_Details event={event[0]} />
                     ) : (
-                        <p className="text-center text-[#820000] text-2xl mt-20 font-extrabold">Loading event details...</p>
+                        <p className="text-center text-our_red text-2xl mt-20 font-extrabold">Loading event details...</p>
                     )}
                 </div>
 

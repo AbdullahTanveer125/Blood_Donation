@@ -37,10 +37,10 @@ function Specific_Recipient() {
         return (
             <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-red-50 to-red-100 font-nunito">
                 <div className="bg-white p-10 rounded-2xl shadow-xl border border-red-200 text-center animate-pulse-slow">
-                    <h1 className="text-4xl font-extrabold text-[#820000] mb-4">⚠️ Missing Recipient</h1>
+                    <h1 className="text-4xl font-extrabold text-our_red mb-4">⚠️ Missing Recipient</h1>
                     <p className="text-xl text-gray-700 mb-6">Please delete this blood request. The recipient ID was not provided.</p>
                     <button
-                        className="px-6 py-2 bg-[#820000] text-white rounded-full font-bold shadow-md hover:bg-white hover:text-[#820000] border-2 border-[#820000] transition"
+                        className="px-6 py-2 bg-our_red text-white rounded-full font-bold shadow-md hover:bg-white hover:text-our_red border-2 border-our_red transition"
                         onClick={() => window.history.back()}
                     >
                         Go Back
@@ -90,7 +90,7 @@ function Specific_Recipient() {
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-screen">
-                <div className="text-xl font-bold text-[#820000]">Loading recipient details...</div>
+                <div className="text-xl font-bold text-our_red">Loading recipient details...</div>
             </div>
         );
     }
@@ -119,7 +119,7 @@ function Specific_Recipient() {
                             <img
                                 src={user?.profile_photo ? user.profile_photo : "/user.jpg"}
                                 alt="Profile"
-                                className="h-32 w-32 rounded-full border-4 border-[#820000] shadow-md"
+                                className="h-32 w-32 rounded-full border-4 border-our_red shadow-md"
                             />
                             <div>
                                 <h2 className="text-2xl font-extrabold">{user?.username}</h2>
@@ -250,7 +250,7 @@ function Specific_Recipient() {
 
                     <div className="mt-6 flex justify-center">
                         <button
-                            className="border-2 border-[#820000] bg-[#820000] hover:bg-white hover:text-[#820000] text-white font-bold px-6 py-2 rounded-lg shadow-md transition"
+                            className="border-2 border-our_red bg-our_red hover:bg-white hover:text-our_red text-white font-bold px-6 py-2 rounded-lg shadow-md transition"
                             onClick={() => alert('Opening chat...')}
                         >
                             Chat

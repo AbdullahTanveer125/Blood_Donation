@@ -16,7 +16,8 @@ function R_Profile() {
 
 
     const [auth] = useAuth();
-    // console.log("**** ss Auth ****",auth)
+    console.log("**** ss Auth ****",auth)
+    const image = auth.user.profile_photo;
 
 
     return (
@@ -34,19 +35,19 @@ function R_Profile() {
 
                     <div>
                         <img
-                            src="./fatima.png"
+                            src={image || "/abdullah.png"}
                             alt=""
-                            className='h-48 border-8 border-white rounded-full'
+                            className='h-48 border-8 border-white rounded-full  w-full object-cover object-center'
                         />
                     </div>
                     <div>
                         <div className='h-20'></div>
                         <div>
-                            <p className='text-xl font-bold'>User Name</p>
+                            <p className='text-xl font-bold'>{auth.user.username}</p>
                             <p className='font-nunito  text-sm text-gray-600 font-bold'>Recipient</p>
                             <div className='flex flex-row items-center gap-6'>
-                                <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-900'> <FaPhone size={10} /> 0309-9014620</p>
-                                <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-900'><MdEmail /> abbhai125420@gmail.com</p>
+                                <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-900'> <FaPhone size={10} />+92 {auth.user.phone}</p>
+                                <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-900'><MdEmail /> {auth.user.email}</p>
 
                             </div>
                         </div>

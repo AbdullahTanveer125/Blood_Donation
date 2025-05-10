@@ -11,10 +11,11 @@ import { FaKey } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaCircleUser } from "react-icons/fa6";
 
+import { useNavigate } from 'react-router-dom';
 
 function Organization_Login() {
 
-
+    const navigate = useNavigate();
 
     // const {
     //   register,

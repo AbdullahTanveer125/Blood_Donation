@@ -131,7 +131,7 @@ function Our_feedback() {
 
 
                 <h1 className="text-4xl mb-16 font-bold text-center">
-                    <span className="text-[#820000]">Your</span> Feedbacks
+                    <span className="text-our_red">Your</span> Feedbacks
                 </h1>
 
 
@@ -154,7 +154,7 @@ function Our_feedback() {
                         <div className="flex justify-center">
                             <button
                                 onClick={() => navigate('/all-feedbacks')} // replace with your actual route
-                                className="bg-[#820000] text-white px-6 py-2 rounded hover:bg-[#9a4b4b] transition"
+                                className="bg-our_red text-white px-6 py-2 rounded hover:bg-[#9a4b4b] transition"
                             >
                                 Show All
                             </button>

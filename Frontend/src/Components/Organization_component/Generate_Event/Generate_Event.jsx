@@ -170,19 +170,19 @@ function Generate_Event() {
                     </div> */}
 
                     <div className="flex items-center justify-center min-h-[40vh]">
-                        <div className="bg-gray-400 bg-gradient-to-r from-[#820000] to-[#c92a2a] backdrop-blur-md text-gray-200 px-14 py-10 rounded-2xl shadow-2xl text-4xl font-bold animate-float">
+                        <div className="bg-gray-400 bg-gradient-to-r from-our_red to-[#c92a2a] backdrop-blur-md text-gray-200 px-14 py-10 rounded-2xl shadow-2xl text-4xl font-bold animate-float">
                             🚀 You already generated an event!
                         </div>
                     </div>
 
                     {/* <div className="flex items-center justify-center min-h-[40vh] animate-slideIn">
-                        <div className="bg-gradient-to-r from-[#820000] to-[#ff4d4d] text-white px-10 py-8 rounded-3xl shadow-2xl text-4xl font-extrabold tracking-wide animate-pulse">
+                        <div className="bg-gradient-to-r from-our_red to-[#ff4d4d] text-white px-10 py-8 rounded-3xl shadow-2xl text-4xl font-extrabold tracking-wide animate-pulse">
                             You already generated an event!
                         </div>
                     </div> */}
                     <button
                         onClick={() => navigate("/organization")}
-                        className="absolute top-6 left-6 bg-[#820000] text-white border-2 border-[#820000] py-2 px-4 rounded hover:bg-white hover:text-[#820000] transition flex flex-row justify-center items-center gap-2">
+                        className="absolute top-6 left-6 bg-our_red text-white border-2 border-our_red py-2 px-4 rounded hover:bg-white hover:text-our_red transition flex flex-row justify-center items-center gap-2">
                         <HiMiniArrowLeftStartOnRectangle size={20} className='font-extrabold' /> Go Back
                     </button>
                 </div>
@@ -194,7 +194,7 @@ function Generate_Event() {
                     {/* Top-left button */}
                     <button
                         onClick={() => navigate("/organization")}
-                        className="absolute top-6 left-6 bg-[#820000] text-white border-2 border-[#820000] py-2 px-4 rounded hover:bg-white hover:text-[#820000] transition flex flex-row justify-center items-center gap-2">
+                        className="absolute top-6 left-6 bg-our_red text-white border-2 border-our_red py-2 px-4 rounded hover:bg-white hover:text-our_red transition flex flex-row justify-center items-center gap-2">
                         <HiMiniArrowLeftStartOnRectangle size={20} className='font-extrabold' /> Go Back
                     </button>
 
@@ -210,7 +210,7 @@ function Generate_Event() {
                         <form
                             onSubmit={handleSubmit}
                             encType="multipart/form-data"
-                            className="bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-lg text-[#820000] grid grid-cols-1 md:grid-cols-2 gap-4"
+                            className="bg-white bg-opacity-20 backdrop-blur-md p-6 rounded-lg text-our_red grid grid-cols-1 md:grid-cols-2 gap-4"
                         >
                             {/* Event Name */}
                             <div className="flex flex-col gap-2 col-span-1">
@@ -222,7 +222,7 @@ function Generate_Event() {
                                     required
                                     id="name"
                                     placeholder="Donate Blood"
-                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300 focus:outline-none"
+                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300 focus:outline-none"
                                 />
                             </div>
 
@@ -236,7 +236,7 @@ function Generate_Event() {
                                     required
                                     id="phone"
                                     placeholder="03099014620"
-                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300  focus:outline-none"
+                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300  focus:outline-none"
                                 />
                             </div>
 
@@ -250,7 +250,7 @@ function Generate_Event() {
                                             required
                                             id="time"
                                             placeholder="2pm"
-                                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300  focus:outline-none"
+                                            className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300  focus:outline-none"
                                         />
                                     </div> */}
 
@@ -265,7 +265,7 @@ function Generate_Event() {
                                     required
                                     id="time"
                                     placeholder="2pm"
-                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300  focus:outline-none"
+                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300  focus:outline-none"
                                 />
                             </div>
 
@@ -280,7 +280,7 @@ function Generate_Event() {
                                     required
                                     id="location"
                                     placeholder="Edhi Center"
-                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300  focus:outline-none"
+                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300  focus:outline-none"
                                 />
                             </div>
 
@@ -293,7 +293,7 @@ function Generate_Event() {
                                     onChange={(e) => setDate(e.target.value)}
                                     required
                                     id="date"
-                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] text-[#820000] placeholder-[#820000] focus:outline-none"
+                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red text-our_red placeholder-our_red focus:outline-none"
                                 />
                             </div>
 
@@ -307,7 +307,7 @@ function Generate_Event() {
                                     id="description"
                                     placeholder="Describe your event"
                                     rows={4}
-                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-[#820000] placeholder-gray-300  focus:outline-none resize-none"
+                                    className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300  focus:outline-none resize-none"
                                 ></textarea>
                             </div>
 
@@ -317,7 +317,7 @@ function Generate_Event() {
                             <div className="col-span-1 md:col-span-2">
                                 <button
                                     type="submit"
-                                    className="w-full text-white bg-[#820000] hover:bg-white hover:text-[#820000] border border-[#820000] py-2 px-4 rounded font-bold transition"
+                                    className="w-full text-white bg-our_red hover:bg-white hover:text-our_red border border-our_red py-2 px-4 rounded font-bold transition"
                                 >
                                     Create Event
                                 </button>

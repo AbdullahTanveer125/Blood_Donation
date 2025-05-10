@@ -19,6 +19,8 @@ import Blood_Requests_of_recipient from "../Its_all_Blood_Request/Its_all_Blood_
 import Event_Section from "../../Event_Section/Event_Section";
 import Blog_Slider from "../../Blog_Slider/Blog_Slider";
 import R_Sidebar from "../R_Sidebar/R_Sidebar";
+import Footer1 from "../../Footer1";
+import Footer2 from "../../Footer2";
 
 
 
@@ -217,7 +219,9 @@ function Recipient_Hero_Section() {
                 
                 <Event_Section />
                 <Blog_Slider />
-                <R_Steps />
+                <Footer1 />
+                <Footer2 />
+                
 
                 
             </main>

@@ -56,7 +56,7 @@ function R_Specific_Organization() {
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-screen">
-                <div className="text-xl font-bold text-[#820000]">Loading recipient details...</div>
+                <div className="text-xl font-bold text-our_red">Loading recipient details...</div>
             </div>
         );
     }
@@ -86,7 +86,7 @@ function R_Specific_Organization() {
                             <img
                                 src={user?.profile_photo ? user.profile_photo : "/user.jpg"}
                                 alt="Profile"
-                                className="h-32 w-32 rounded-full border-4 border-[#820000] shadow-md"
+                                className="h-32 w-32 rounded-full border-4 border-our_red shadow-md"
                             />
                             <div>
                                 <h2 className="text-2xl font-extrabold">{user?.username}</h2>
@@ -140,7 +140,7 @@ function R_Specific_Organization() {
 
                     {/* <div className="mt-6 flex justify-center">
                         <button
-                            className="border-2 border-[#820000] bg-[#820000] hover:bg-white hover:text-[#820000] text-white font-bold px-6 py-2 rounded-lg shadow-md transition"
+                            className="border-2 border-our_red bg-our_red hover:bg-white hover:text-our_red text-white font-bold px-6 py-2 rounded-lg shadow-md transition"
                             onClick={() => alert('Opening chat...')}
                         >
                             Chat

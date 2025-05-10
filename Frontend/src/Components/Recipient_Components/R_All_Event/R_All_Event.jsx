@@ -116,7 +116,7 @@ function R_All_Event() {
 
                             <Link
                                 onClick={(e) => handle_see_profile_click(e, event.organization_id)} // or whatever the recipient_id is
-                                className="mt-3 flex justify-center items-center gap-3 border-2 border-[#820000] bg-[#820000] text-white py-2 rounded-md  hover:bg-white hover:text-[#820000] transition font-bold"
+                                className="mt-3 flex justify-center items-center gap-3 border-2 border-our_red bg-our_red text-white py-2 rounded-md  hover:bg-white hover:text-our_red transition font-bold"
                             >
                                 See Profile
                             </Link>
@@ -127,7 +127,7 @@ function R_All_Event() {
 
                 {!showAll && events.length > 6 && (
                     <button
-                        className='mt-16 border-2 border-[#820000] bg-[#820000] text-white hover:bg-white hover:text-[#820000]  px-6 py-2 rounded-full'
+                        className='mt-16 border-2 border-our_red bg-our_red text-white hover:bg-white hover:text-our_red  px-6 py-2 rounded-full'
                         onClick={() => setShowAll(true)}
                     >
                         See More

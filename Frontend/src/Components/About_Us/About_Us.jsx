@@ -53,7 +53,7 @@ function About_Us() {
                 {/* Our Mission */}
                 <div className='my-16'>
                     <h2 className="text-3xl font-extrabold mb-4">
-                        <span className='text-[#820000]'> Our </span> Mission
+                        <span className='text-our_red'> Our </span> Mission
                     </h2>
                     <p className="max-w-3xl mx-auto text-base text-justify">
                         Our mission is to create a reliable and compassionate community that supports life-saving donations with ease, trust, and speed.
@@ -82,23 +82,23 @@ function About_Us() {
                 {/* Meet Our Team */}
                 <div className='mt-28'>
                     <h2 className="text-3xl font-extrabold  mb-8">
-                        <span className='text-[#820000]'> Meet </span>  Our Team</h2>
+                        <span className='text-our_red'> Meet </span>  Our Team</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
                         {teamMembers.map((member, index) => (
                             <div key={index} className="bg-white rounded-xl shadow-lg p-6 space-y-4 text-left">
                                 <img src={member.image} alt={member.name} className="w-full h-56 object-cover rounded-lg" />
                                 <h3 className="text-xl font-bold">{member.name}</h3>
-                                <p className="text-sm font-semibold text-[#820000]">{member.role}</p>
+                                <p className="text-sm font-semibold text-our_red">{member.role}</p>
                                 <p className="text-gray-600 text-sm">{member.description}</p>
                                 <div className="flex gap-4 mt-2">
                                     <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                                        <FaLinkedin size={20} className="text-[#82000] hover:text-black" />
+                                        <FaLinkedin size={20} className="text-our_red hover:text-black" />
                                     </a>
                                     <a href={`mailto:${member.email}`}>
-                                        <FaEnvelope size={20} className="text-[#82000] hover:text-black" />
+                                        <FaEnvelope size={20} className="text-our_red hover:text-black" />
                                     </a>
                                     <a href={member.github} target="_blank" rel="noopener noreferrer">
-                                        <FaGithub size={20} className="text-[#82000] hover:text-black" />
+                                        <FaGithub size={20} className="text-our_red hover:text-black" />
                                     </a>
                                 </div>
                             </div>

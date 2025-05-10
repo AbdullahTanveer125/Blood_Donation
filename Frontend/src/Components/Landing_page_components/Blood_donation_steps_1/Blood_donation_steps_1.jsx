@@ -5,7 +5,7 @@ function Blood_donation_steps_1() {
         <div className=' pt-28 px-32 font-nunito'>
 
             <h1 className='text-4xl font-bold text-center '>
-                Your <span className='text-[#820000]'>Blood Donation</span>  Process
+                Your <span className='text-our_red'>Blood Donation</span>  Process
             </h1>
 
             <p className='text-center mt-4'>Follow this simple process to donate blood safely and make a real difference</p>
@@ -25,7 +25,7 @@ function Blood_donation_steps_1() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-[#B01030]">Step-1</time>
+                        <time className="text-lg font-black text-our_red">Step-1</time>
                         <div className="text-lg font-black">Sign Up</div>
                         <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300 '>
                             Create your donor account by logging in securely with basic details and selecting your blood group and location preferences.
@@ -48,7 +48,7 @@ function Blood_donation_steps_1() {
                         </svg>
                     </div>
                     <div className="timeline-end md:mb-10">
-                        <time className="text-lg font-black text-[#B01030]">Step-2</time>
+                        <time className="text-lg font-black text-our_red">Step-2</time>
                         <div className="text-lg font-black">Search Request</div>
                         <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300  '>
                             Browse real-time blood requests filtered by your blood type and the nearest hospital or recipient location around you.
@@ -71,7 +71,7 @@ function Blood_donation_steps_1() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-[#B01030]">Step-3</time>
+                        <time className="text-lg font-black text-our_red">Step-3</time>
                         <div className="text-lg font-black">View Matches</div>
                         <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300  '>
                             See a list of recipients who match your blood type and are urgently in need of blood in your area.
@@ -94,7 +94,7 @@ function Blood_donation_steps_1() {
                         </svg>
                     </div>
                     <div className="timeline-end md:mb-10">
-                        <time className="text-lg font-black text-[#B01030]">Step-4</time>
+                        <time className="text-lg font-black text-our_red">Step-4</time>
                         <div className="text-lg font-black">Connect</div>
                         <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300  '>
                             Contact the recipient directly using their phone number or start a secure in-site chat through our platform.
@@ -117,7 +117,7 @@ function Blood_donation_steps_1() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-[#B01030]">Step-5</time>
+                        <time className="text-lg font-black text-our_red">Step-5</time>
                         <div className="text-lg font-black">Donate Blood</div>
                         <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300  '>
                             Visit the specified hospital or donation point to give blood and make a life-saving difference in just one visit.

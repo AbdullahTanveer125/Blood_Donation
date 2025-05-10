@@ -18,7 +18,7 @@ function D_why_donate_blood() {
 
         <div className="ml-[3%] max-w-[95%] mt-40 font-nunito">
             <h1 className="text-4xl font-extrabold text-center mb-5 ">
-                <span className="text-red-600">Why</span> Donate blood ?
+                <span className="text-our_red">Why</span> Donate blood ?
             </h1>
 
             <div className=''>

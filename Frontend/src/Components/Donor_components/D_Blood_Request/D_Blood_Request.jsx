@@ -28,7 +28,7 @@ function Blood_Request_on_Donor() {
             console.log("res=", res.data.All_Blood_Requests)
 
             setArray_of_all_blood_requests(res.data.All_Blood_Requests)
-            console.log(array_of_all_blood_requests)
+            console.log("aaaaaaasssssss", array_of_all_blood_requests)
             // const array_of_users = res.data.data
             // console.log("array=", array_of_users)
 
@@ -46,6 +46,24 @@ function Blood_Request_on_Donor() {
     }, [])
 
 
+    const handleDonateClick = (e, blood_request) => {
+        e.preventDefault(); // Prevent default link behavior
+
+        const confirmDonate = window.confirm("Are you sure to donate blood?");
+        if (confirmDonate) {
+
+            console.log("<<<<<<< click on donate blood_group >>>>>>", blood_request)
+            navigate("/specific_recipient", {
+                state: {
+                    blood_request
+                }
+            });
+        }
+        // If "No", do nothing (alert automatically closes)
+    };
+
+
+
 
 
 
@@ -53,7 +71,7 @@ function Blood_Request_on_Donor() {
 
         <div className="text-center mt-28 ">
             <h1 className="text-4xl font-bold text-center mb-8 ">
-                <span className="text-red-600">Blood</span> Requests
+                <span className="text-our_red">Blood</span> Requests
             </h1>
 
 
@@ -84,13 +102,13 @@ function Blood_Request_on_Donor() {
                                 <div className='flex flex-row gap-4 items-center mb-5'>
                                     <div>
                                         <img
-                                            src="./user.jpg"
+                                            src={request.profile_photo ? request.profile_photo : "./user.jpg"}
                                             alt=""
                                             className='w-12 rounded-full'
                                         />
                                     </div>
                                     <div>
-                                        <p>User Name</p>
+                                        <p>{request.patient_name}</p>
                                         <p className='text-xs text-gray-500'>some text</p>
                                     </div>
 
@@ -98,20 +116,20 @@ function Blood_Request_on_Donor() {
 
                                 <div className='flex flex-col gap-2'>
                                     <div className='flex flex-row items-center gap-2 font-nunito text-gray-500 text-sm'>
-                                        <FaLocationDot size={13} /> Jinnah Hospital
+                                        <FaLocationDot size={13} /> {request.location}
                                     </div>
                                     <div className='flex flex-row items-center gap-2 font-nunito  text-gray-500  text-sm'>
-                                        <FaPhone size={10} /> 0309-9014620
+                                        <FaPhone size={10} /> +92 {request.phone}
                                     </div>
                                 </div>
 
                                 <div className='my-2 flex flex-row items-center gap-6 text-gray-500 font-nunito text-sm'>
                                     <div className='flex flex-row items-center gap-2'>
-                                        <MdDateRange /> feb 10, 2015
+                                        <MdDateRange /> {request.blood_need_date}
                                     </div>
 
                                     <div className='flex flex-row items-center gap-2'>
-                                        <MdBloodtype /> A+
+                                        <MdBloodtype /> {request.blood_group}
                                     </div>
                                     {/* <div className='flex flex-row items-center gap-2'>
                                         time
@@ -119,7 +137,7 @@ function Blood_Request_on_Donor() {
                                 </div>
 
                                 <div className='font-nunito text-justify mt-7 mb-14 '>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum modi quia ullam, fugiat sunt dolor!
+                                    {request.comment}
                                 </div>
 
                                 {/* <div className='mb- mx- flex flex-row justify-center items-center gap-3 bg-red-600 text-white py-2 rounded-md'
@@ -133,11 +151,10 @@ function Blood_Request_on_Donor() {
 ❌ Short answer: No, <Link> cannot pass props directly like a component.
 Props are only passed between parent and child components, not through routing (<Link>). */}
                                 <Link
-                                    to="/specific_blood_request"
-                                    state={request}
+                                    onClick={(e) => handleDonateClick(e, request)}
                                     className="flex flex-row justify-end items-center gap-3 rounded-md cursor-pointer"
                                 >
-                                    <div className='border-2 border-red-600 bg-red-600 text-white  hover:text-red-600 hover:bg-white transition duration-200 px-6 py-2 rounded-full'>Donate</div>
+                                    <div className='border-2 border-our_red bg-our_red text-white  hover:text-our_red hover:bg-white transition duration-200 px-6 py-2 rounded-full'>Donate</div>
                                 </Link>
 
                                 {/* ********************************************
@@ -155,7 +172,7 @@ Props are only passed between parent and child components, not through routing (
             <div className='flex flex-row justify-center'>
                 <button
                     onClick={() => navigate("/all_blood_request")}
-                    className="border-2 border-red-600 bg-red-600 text-white font-semibold py-2 px-4 rounded hover:text-red-600 hover:bg-white transition duration-200 mt-20 flex flex-row justify-center items-center gap-3">
+                    className="border-2 border-our_red bg-our_red text-white font-semibold py-2 px-4 rounded hover:text-our_red hover:bg-white transition duration-200 mt-20 flex flex-row justify-center items-center gap-3">
                     View All <MdArrowOutward />
                 </button>
             </div>

@@ -17,11 +17,10 @@ import O_Sidebar from '../O_Sidebar/O_Sidebar';
 
 function O_profile() {
     return (
-        <div className='font-nunito'>
+        <div className='font-nunito mb-40'>
 
-            <O_Sidebar />
 
-            <div className='w-[82.6%] ml-[17.3%] '>
+            <div className=''>
 
                 <div class=" bg-[url('./organization1.png')] bg-cover bg-center h-60 flex flex-col justify-center items-center text-white pt-">
                     <p>Organization Name</p>

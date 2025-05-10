@@ -11,7 +11,7 @@ function D_feedback_card({ event }) {
 
             <div className="indicator">
 
-                <span className="ml-7 w-9 h-9 border-red-600 bg-red-600 rounded-full indicator-item indicator-start badge badge-secondary font-extrabold p-1">
+                <span className="ml-7 w-9 h-9 border-our_red bg-our_red rounded-full indicator-item indicator-start badge badge-secondary font-extrabold p-1">
                     {/* <SiComma size={100}/> */}
                     <FaRegComment />
                 </span>

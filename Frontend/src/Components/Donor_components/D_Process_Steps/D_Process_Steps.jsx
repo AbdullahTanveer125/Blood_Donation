@@ -2,11 +2,14 @@ import React from 'react'
 
 function Donor_Process() {
     return (
-        <div className=' pt-28 px-32'>
 
-            <h1 className='text-4xl font-bold text-center'>
-                <span className='text-red-600'>Blood</span> Donation Process
+        <div className=' pt-28 px-32 font-nunito'>
+
+            <h1 className='text-4xl font-bold text-center '>
+                Your <span className='text-our_red'>Blood Donation</span>  Process
             </h1>
+
+            <p className='text-center mt-4'>Follow this simple process to donate blood safely and make a real difference</p>
 
             <ul className="pt-20 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
                 <li>
@@ -23,10 +26,10 @@ function Donor_Process() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-red-600">Step-1</time>
-                        <div className="text-lg font-black">First Macintosh computer</div>
-                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300 font-nunito'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <time className="text-lg font-black text-our_red">Step-1</time>
+                        <div className="text-lg font-black">Sign Up</div>
+                        <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300 '>
+                            Create your donor account by logging in securely with basic details and selecting your blood group and location preferences.
                         </p>
                     </div>
                     <hr />
@@ -46,10 +49,10 @@ function Donor_Process() {
                         </svg>
                     </div>
                     <div className="timeline-end md:mb-10">
-                        <time className="text-lg font-black text-red-600">Step-2</time>
-                        <div className="text-lg font-black">iMac</div>
-                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <time className="text-lg font-black text-our_red">Step-2</time>
+                        <div className="text-lg font-black">Search Request</div>
+                        <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300  '>
+                            Browse real-time blood requests filtered by your blood type and the nearest hospital or recipient location around you.
                         </p>
                     </div>
                     <hr />
@@ -69,10 +72,10 @@ function Donor_Process() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-red-600">Step-3</time>
-                        <div className="text-lg font-black">iPod</div>
-                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <time className="text-lg font-black text-our_red">Step-3</time>
+                        <div className="text-lg font-black">View Matches</div>
+                        <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300  '>
+                            See a list of recipients who match your blood type and are urgently in need of blood in your area.
                         </p>
                     </div>
                     <hr />
@@ -92,10 +95,10 @@ function Donor_Process() {
                         </svg>
                     </div>
                     <div className="timeline-end md:mb-10">
-                        <time className="text-lg font-black text-red-600">Step-4</time>
-                        <div className="text-lg font-black">iPhone</div>
-                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <time className="text-lg font-black text-our_red">Step-4</time>
+                        <div className="text-lg font-black">Connect</div>
+                        <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300  '>
+                            Contact the recipient directly using their phone number or start a secure in-site chat through our platform.
                         </p>
                     </div>
                     <hr />
@@ -115,10 +118,10 @@ function Donor_Process() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-red-600">Step-5</time>
-                        <div className="text-lg font-black">Apple Watch</div>
-                        <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
+                        <time className="text-lg font-black text-our_red">Step-5</time>
+                        <div className="text-lg font-black">Donate Blood</div>
+                        <p className=' bg-gray-100 rounded-md p-3 shadow-md shadow-gray-300  '>
+                            Visit the specified hospital or donation point to give blood and make a life-saving difference in just one visit.
                         </p>
                     </div>
                 </li>
@@ -127,6 +130,7 @@ function Donor_Process() {
 
 
         </div>
+
     )
 }
 

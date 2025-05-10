@@ -205,8 +205,10 @@ function R_Sidebar() {
                             <FaSearch size={15} /> Donors
                         </li>
 
-                        <li className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
-                            <FaHistory size={15} /> History
+                        <li
+                            onClick={() => navigate('/generate_blood_request')}
+                            className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            <FaHistory size={15} /> Generate Request
                         </li>
 
                         <li

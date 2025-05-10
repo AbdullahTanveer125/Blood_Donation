@@ -28,6 +28,7 @@ import Footer2 from '../../Footer2'
 import Footer from '../../Footer'
 import Event_Section from '../../Event_Section/Event_Section'
 import D_Sidebar from '../D_Sidebar/D_Sidebar'
+import Blog_Slider from '../../Blog_Slider/Blog_Slider'
 
 
 
@@ -42,51 +43,13 @@ function Donor_Hero_Section() {
             <D_Sidebar />
 
 
-            {/* <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between">
-
-                <div>
-
-                    <h2 className="text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-gray-200 p-6 pb-3">
-                        <FaHouseDamage size={20} /> Dashboard
-                    </h2>
-                    <ul className="space-y-6 p-6">
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaSearch size={15} /> Search
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaHistory size={15} /> History
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <MdCastForEducation size={15} /> Blogs
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <FaSearch size={15} /> Events
-                        </li>
-
-                        <li className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
-                            <AiOutlineMessage size={15} /> Messages
-                        </li>
-
-                        
-                    </ul>
-
-                </div>
-
-                <div className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-[#934d4d] py-2 rounded-md'>
-                    <IoIosLogOut size={20} /> Logout
-                </div>
-                
-            </aside> */}
-
             {/* Main Content - Scrollable */}
             <main className="ml-[17.3%] w-[83%] ">
 
                 <D_profile />
-                <Blood_Request_on_Donor />
                 <Donor_Process />
+                <Blood_Request_on_Donor />
+                <Blog_Slider />
                 <Event_Section />
 
                 {/* <Hero2 /> */}

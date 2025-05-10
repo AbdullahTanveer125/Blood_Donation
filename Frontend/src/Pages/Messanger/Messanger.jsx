@@ -226,16 +226,20 @@ function Messanger() {
     return (
         <div className="ml-[17%] messenger w-[82%] min-h-[100vh]">
 
-            
+
             <div className="chatMenu bg-gray-0">
                 <div className="chatMenuWrapper">
                     <input placeholder="Search for friends" className="chatMenuInput" />
 
-                    {conversations.map((c) => (
-                        <div onClick={() => setCurrentChat(c)}>
-                            <Conversation conversation={c} currentUser={user} />
-                        </div>
-                    ))}
+                    <div className="mt-5 min-h-[85vh] border-l-2 border-t-2 border-r-2 rounded-xl">
+                        {conversations.map((c) => (
+                            <div onClick={() => setCurrentChat(c)}
+                                className="">
+                                <Conversation conversation={c} currentUser={user} />
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
             </div>
 

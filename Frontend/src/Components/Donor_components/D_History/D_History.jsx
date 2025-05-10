@@ -58,16 +58,16 @@ function D_History() {
                 <div className='ml-[17.3%] w-[83%] pt-16 text-center'>
 
                     <h1 className="text-4xl font-extrabold text-center mb-8">
-                        <span className="text-[#820000]">Your Donated</span> Blood Requests
+                        <span className="text-our_red">Your Donated</span> Blood Requests
                     </h1>
 
                     <p>You donate blood requests = <span>{array_length}</span></p>
 
                     {loading ? (
                         <div className="flex justify-center items-center mt-32 gap-2">
-                            <div className="w-4 h-4 bg-[#820000] rounded-full animate-[ping_1s_infinite]"></div>
-                            <div className="w-4 h-4 bg-[#820000] rounded-full animate-[ping_1s_infinite_200ms]"></div>
-                            <div className="w-4 h-4 bg-[#820000] rounded-full animate-[ping_1s_infinite_400ms]"></div>
+                            <div className="w-4 h-4 bg-our_red rounded-full animate-[ping_1s_infinite]"></div>
+                            <div className="w-4 h-4 bg-our_red rounded-full animate-[ping_1s_infinite_200ms]"></div>
+                            <div className="w-4 h-4 bg-our_red rounded-full animate-[ping_1s_infinite_400ms]"></div>
                         </div>
                     ) : (
                         <>
@@ -77,7 +77,7 @@ function D_History() {
                                 <div className="mt-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 px-6">
                                     {allRequests.map((request, index) => (
                                         <div key={index} className="relative bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow">
-                                            <span className={`absolute top-3 right-3 badge badge-secondary px-3 py-1 text-white rounded-full text-xs ${request.urgency === "high" ? "bg-[#820000] border border-[#820000]" : request.urgency === "low" ? "bg-green-600" : "bg-yellow-500"}`}>
+                                            <span className={`absolute top-3 right-3 badge badge-secondary px-3 py-1 text-white rounded-full text-xs ${request.urgency === "high" ? "bg-our_red border border-our_red" : request.urgency === "low" ? "bg-green-600" : "bg-yellow-500"}`}>
                                                 {request.urgency}
                                             </span>
 

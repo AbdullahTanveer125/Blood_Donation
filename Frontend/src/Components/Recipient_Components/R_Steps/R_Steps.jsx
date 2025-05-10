@@ -5,7 +5,7 @@ function R_Steps() {
         <div className=' pt-28 px-32'>
 
             <h1 className='text-4xl font-bold text-center'>
-                <span className='text-[#B01030]'>Process</span> to generate Blood Request
+                <span className='text-our_red'>Process</span> to generate Blood Request
             </h1>
 
             <ul className="pt-20 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
@@ -23,7 +23,7 @@ function R_Steps() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-[#B01030]">Step-1</time>
+                        <time className="text-lg font-black text-our_red">Step-1</time>
                         <div className="text-lg font-black">First Macintosh computer</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300 font-nunito'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
@@ -46,7 +46,7 @@ function R_Steps() {
                         </svg>
                     </div>
                     <div className="timeline-end md:mb-10">
-                        <time className="text-lg font-black text-[#B01030]">Step-2</time>
+                        <time className="text-lg font-black text-our_red">Step-2</time>
                         <div className="text-lg font-black">iMac</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
@@ -69,7 +69,7 @@ function R_Steps() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-[#B01030]">Step-3</time>
+                        <time className="text-lg font-black text-our_red">Step-3</time>
                         <div className="text-lg font-black">iPod</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
@@ -92,7 +92,7 @@ function R_Steps() {
                         </svg>
                     </div>
                     <div className="timeline-end md:mb-10">
-                        <time className="text-lg font-black text-[#B01030]">Step-4</time>
+                        <time className="text-lg font-black text-our_red">Step-4</time>
                         <div className="text-lg font-black">iPhone</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.
@@ -115,7 +115,7 @@ function R_Steps() {
                         </svg>
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
-                        <time className="text-lg font-black text-[#B01030]">Step-5</time>
+                        <time className="text-lg font-black text-our_red">Step-5</time>
                         <div className="text-lg font-black">Apple Watch</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae illum ipsam ipsum modi, quasi, delectus et, assumenda magni laborum voluptatem inventore qui.

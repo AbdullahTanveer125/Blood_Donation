@@ -450,6 +450,7 @@ import { Link } from "react-router-dom";
 import D_Sidebar from '../Donor_components/D_Sidebar/D_Sidebar';
 import { useNavigate } from 'react-router-dom';
 
+import { FaSearch } from "react-icons/fa";
 
 
 function All_Blood_Request() {
@@ -548,12 +549,12 @@ function All_Blood_Request() {
             {showSearchForm && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white p-8 rounded-lg w-[400px]">
-                        <h2 className="text-xl font-bold text-center mb-6 text-[#820000]">Search Blood Request</h2>
+                        <h2 className="text-xl font-bold text-center mb-6 text-our_red">Search Blood Request</h2>
                         <div className="flex flex-col gap-4">
                             <div className="flex flex-col gap-2">
                                 <label className="text-sm font-semibold">Blood Group</label>
                                 <select
-                                    className="w-full px-4 py-2 rounded border-2 border-[#820000] text-[#820000] focus:outline-none"
+                                    className="w-full px-4 py-2 rounded border-2 border-our_red text-our_red focus:outline-none"
                                     value={blood_group}
                                     onChange={(e) => setBlood_group(e.target.value)}
                                 >
@@ -571,7 +572,7 @@ function All_Blood_Request() {
                             <div className="flex flex-col gap-2">
                                 <label className="text-sm font-semibold">Location</label>
                                 <select
-                                    className="w-full px-4 py-2 rounded border-2 border-[#820000] text-[#820000] focus:outline-none"
+                                    className="w-full px-4 py-2 rounded border-2 border-our_red text-our_red focus:outline-none"
                                     value={location}
                                     onChange={(e) => setLocation(e.target.value)}
                                 >
@@ -584,7 +585,7 @@ function All_Blood_Request() {
                             </div>
                             <div className="flex justify-between mt-4">
                                 <button
-                                    className="px-4 py-2 bg-[#820000] text-white rounded hover:bg-red-700"
+                                    className="px-4 py-2 bg-our_red text-white rounded hover:bg-red-700"
                                     onClick={handleSearch}
                                 >
                                     Search
@@ -603,63 +604,80 @@ function All_Blood_Request() {
 
             <div className='ml-[17.3%] w-[83%] pt-16'>
                 <div className="mb-20">
-                    <button
-                        className="px-6 py-2 font-semibold bg-[#820000] text-white rounded hover:bg-white hover:text-[#820000] border border-[#820000] transition"
+                    <h1 className='text-2xl font-extrabold'><span className='text-our_red'>Search</span> Blood Request</h1>
+
+                    <div className='flex flex-row justify-center my-4'>
+
+                        <div
+                            onClick={() => setShowSearchForm(true)}
+                            className=' w-80 border-2 border-our_red rounded-full h-10 flex flex-row justify-end items-center px-5 hover:cursor-text'><FaSearch color='#820000'/></div>
+
+                    </div>
+
+                    {/* <button
+                        className="px-6 py-2 font-semibold bg-our_red text-white rounded hover:bg-white hover:text-our_red border border-our_red transition"
                         onClick={() => setShowSearchForm(true)}
                     >
                         Search Request
-                    </button>
+                    </button> */}
+
+
                 </div>
 
-                <h1 className="text-4xl font-extrabold text-center mb-8">
-                    <span className="text-[#820000]">All </span> Blood Requests
-                </h1>
-
+               
                 {loading ? (
                     <div className="flex justify-center items-center mt-32 gap-2">
-                        <div className="w-4 h-4 bg-[#820000] rounded-full animate-[ping_1s_infinite]"></div>
-                        <div className="w-4 h-4 bg-[#820000] rounded-full animate-[ping_1s_infinite_200ms]"></div>
-                        <div className="w-4 h-4 bg-[#820000] rounded-full animate-[ping_1s_infinite_400ms]"></div>
+                        <div className="w-4 h-4 bg-our_red rounded-full animate-[ping_1s_infinite]"></div>
+                        <div className="w-4 h-4 bg-our_red rounded-full animate-[ping_1s_infinite_200ms]"></div>
+                        <div className="w-4 h-4 bg-our_red rounded-full animate-[ping_1s_infinite_400ms]"></div>
                     </div>
                 ) : (
                     <>
-                        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 px-6">
-                            {requestsToShow.map((request, index) => (
-                                <div key={index} className="relative bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow">
-                                    <span className={`absolute top-3 right-3 badge badge-secondary px-3 py-1 text-white rounded-full text-xs ${request.urgency === "high" ? "bg-[#820000] border border-[#820000]" : request.urgency === "low" ? "bg-green-600" : "bg-yellow-500"}`}>
-                                        {request.urgency}
-                                    </span>
+                        <div className='flex justify-center px-16'>
 
-                                    <div className='flex flex-row gap-4 items-center mb-5'>
-                                        <img src={request.profile_photo || "/user.jpg"} alt="" className='w-12 rounded-full' />
-                                        <div className='text-start'>
-                                            <p className='font-bold'>{request.patient_name} </p>
-                                            <p className='text-xs text-gray-500'>some text</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-[70%] justify-items-center gap-16">
+                                {requestsToShow.map((request, index) => (
+                                    <div key={index} className="w-[80%] relative bg-gray-200 shadow-xl rounded-lg px-6 pt-6 pb-3 border border-gray-200 hover:shadow-2xl transition-shadow">
+                                        <span className={`absolute top-3 right-3 badge badge-secondary px-3 py-1 text-white rounded-full text-xs ${request.urgency === "high" ? "bg-our_red border border-our_red" : request.urgency === "low" ? "bg-green-600" : "bg-yellow-500"}`}>
+                                            {request.urgency}
+                                        </span>
+
+                                        <div className='flex flex-row gap-4 items-center mb-5'>
+                                            <img src={request.profile_photo || "/user.jpg"} alt="" className='w-12 rounded-full' />
+                                            <div className='text-start'>
+                                                <p className='font-bold'>{request.patient_name} </p>
+                                                <p className='text-xs text-gray-500'>some text</p>
+                                            </div>
+                                        </div>
+
+                                        <div className='flex flex-col gap-2 text-left'>
+                                            <div className='flex items-center gap-2 text-sm text-gray-500'><FaLocationDot size={13} /> {request.location}</div>
+                                            <div className='flex items-center gap-2 text-sm text-gray-500'><FaPhone size={13} /> {request.phone}</div>
+                                        </div>
+
+                                        <div className='my-2 flex flex-wrap gap-6 text-gray-500 text-sm'>
+                                            <div className='flex items-center gap-2'><MdDateRange /> {new Date(request.blood_need_date).toLocaleDateString()}</div>
+                                            <div className='flex items-center gap-2 '><MdBloodtype /> {request.blood_group}</div>
+                                        </div>
+
+                                        <div className='text-justify text-sm font-nunito mb-6'>
+                                            {request.comment}
+                                        </div>
+
+                                        <div className='flex flex-row justify-end'>
+                                            <Link
+                                                onClick={(e) => handleDonateClick(e, request)} // or whatever the recipient_id is
+                                                className="flex justify-center items-center gap-3 bg-our_red text-white py-1 px-4 rounded-full hover:bg-red-800 transition"
+                                            >
+                                                Donate
+                                            </Link>
                                         </div>
                                     </div>
+                                ))}
+                            </div>
 
-                                    <div className='flex flex-col gap-2 text-left'>
-                                        <div className='flex items-center gap-2 text-sm text-gray-500'><FaLocationDot size={13} /> {request.location}</div>
-                                        <div className='flex items-center gap-2 text-sm text-gray-500'><FaPhone size={13} /> {request.phone}</div>
-                                    </div>
 
-                                    <div className='my-2 flex flex-wrap gap-6 text-gray-500 text-sm'>
-                                        <div className='flex items-center gap-2'><MdDateRange /> {new Date(request.blood_need_date).toLocaleDateString()}</div>
-                                        <div className='flex items-center gap-2 '><MdBloodtype /> {request.blood_group}</div>
-                                    </div>
 
-                                    <div className='text-justify text-sm font-nunito mb-6'>
-                                        {request.comment}
-                                    </div>
-
-                                    <Link
-                                        onClick={(e) => handleDonateClick(e, request)} // or whatever the recipient_id is
-                                        className="flex justify-center items-center gap-3 bg-[#820000] text-white py-2 rounded-md hover:bg-red-800 transition"
-                                    >
-                                        Donate
-                                    </Link>
-                                </div>
-                            ))}
                         </div>
 
                         {filteredRequests !== null && requestsToShow.length === 0 && !loading && (
@@ -672,7 +690,7 @@ function All_Blood_Request() {
                                 disabled={isAllVisible}
                                 className={`mt-10 px-6 py-2 font-semibold rounded transition duration-200 ${isAllVisible
                                     ? "bg-gray-400 text-white cursor-not-allowed"
-                                    : "bg-[#820000] text-white hover:bg-white hover:text-[#820000] border border-[#820000]"
+                                    : "bg-our_red text-white hover:bg-white hover:text-our_red border border-our_red"
                                     }`}
                             >
                                 {isAllVisible ? "No More Requests" : "See More"}

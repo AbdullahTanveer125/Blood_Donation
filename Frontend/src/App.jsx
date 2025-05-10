@@ -83,6 +83,7 @@ import R_Specific_Organization from "./Components/Recipient_Components/R_Specifi
 import Landing_Page11 from "./Pages/Landing_Page11.jsx";
 import D_Messanger from "./Components/Donor_components/D_Messanger.jsx";
 import R_Messanger from "./Components/Recipient_Components/R_Messanger.jsx";
+import O_Specific_Donor from "./Components/Organization_component/O_Specific_Donor/O_Specific_Donor.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -253,6 +254,8 @@ function App() {
             <Route path="/generate_event" element={<Generate_Event />} />
 
             <Route path="/organization_all_donors" element={<O_All_Donors />} />
+            
+            <Route path="/specific_donor" element={<O_Specific_Donor />} />
 
             <Route path="/organization_blog" element={<O_Blog />} />
 

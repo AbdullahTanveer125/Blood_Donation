@@ -4,17 +4,18 @@ import { MdEmail } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { MdBloodtype } from "react-icons/md";
 import { FaPersonWalkingLuggage } from "react-icons/fa6";
-import { FaWeightScale } from "react-icons/fa6";
-import { PiHospitalDuotone } from "react-icons/pi";
+// import { FaWeightScale } from "react-icons/fa6";
+// import { PiHospitalDuotone } from "react-icons/pi";
 import { FaAddressBook } from "react-icons/fa6";
 
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import axios from "axios";
-import R_Sidebar from '../Recipient_Components/R_Sidebar/R_Sidebar';
+// import axios from "axios";
+// import R_Sidebar from '../Recipient_Components/R_Sidebar/R_Sidebar';
+import O_Sidebar from '../O_Sidebar/O_Sidebar';
 
 
-function Specific_Donor() {
+function O_Specific_Donor() {
 
     const [user, setUser] = useState(null);
     const [recipient, setRecipient] = useState(null);
@@ -62,15 +63,12 @@ function Specific_Donor() {
         <div>
 
             <div>
-                <R_Sidebar />
+                <O_Sidebar />
             </div>
 
             <div className='font-nunito ml-[17.3%] w-[82%] pt-16 px-4 bg-gray-100 min-h-screen'>
 
 
-                <div className='text-center text-lg'>
-                    Contact or Chat this donor to donate blood
-                </div>
 
 
                 <div className="p-6 font-nunito">
@@ -120,10 +118,18 @@ function Specific_Donor() {
 
                             <div className='flex flex-row justify-between min-w-[40%]'>
                                 <div className='flex flex-row justify-center items-center gap-2 font-bold'>
+                                    <FaPersonWalkingLuggage /> Weight
+                                </div>
+                                <div>{donor.donorDetails?.weight} kgs</div>
+                            </div>
+
+                            <div className='flex flex-row justify-between min-w-[40%]'>
+                                <div className='flex flex-row justify-center items-center gap-2 font-bold'>
                                     <FaPersonWalkingLuggage /> Age
                                 </div>
-                                <div>{donor.donorDetails?.age}</div>
+                                <div>{donor.donorDetails?.age} years</div>
                             </div>
+
 
                             <div className='flex flex-row justify-between min-w-[40%]'>
                                 <div className='flex flex-row justify-center items-center gap-2 font-bold'>
@@ -132,90 +138,9 @@ function Specific_Donor() {
                                 <div>{donor.donorDetails?.address}</div>
                             </div>
 
-
-                            {/* left side */}
-                            {/* <div className='space-y-3 flex flex-col justify-center'>
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaRegUser /> Full Name
-                                </span>
-
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <MdBloodtype /> Gender
-                                </span>
-
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaPersonWalkingLuggage /> Age
-                                </span>
-
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaAddressBook /> Address
-                                </span>
-                            </div> */}
-
-                            {/* right side */}
-                            {/* <div className='space-y-2 mt-2 flex flex-col justify-center'>
-                                <div>{donor?.name}</div>
-                                <div>{donor.donorDetails?.gender}</div>
-                                <div>{donor.donorDetails?.age}</div>
-                                <div className="text-justify italic w-3/4">
-                                    {donor.donorDetails?.address}
-                                </div>
-                            </div> */}
-
-
-                            {/* <div className="flex flex-row bg-slate-400 justify-around">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaRegUser /> Full Name
-                                </span>
-                                <span>{user.name}</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <MdBloodtype /> Gender
-                                </span>
-                                <span>{recipient.gender}</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaPersonWalkingLuggage /> Age
-                                </span>
-                                <span>{recipient.age}</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaWeightScale /> Weight
-                                </span>
-                                <span>65 kg</span>
-                            </div>
-
-                            <div className="flex justify-between">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <PiHospitalDuotone /> Hospital
-                                </span>
-                                <span>City Care Hospital</span>
-                            </div>
-                            <div className="flex items-start justify-between gap-4">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaAddressBook /> Address
-                                </span>
-                                <span className="text-justify italic w-3/4">
-                                    {recipient.address}
-                                </span>
-                            </div> */}
-                            {/* <div className="space-y-4 text-sm text-gray-800">
-                                
-                            </div> */}
                         </div>
                     </div>
 
-                    <div className="mt-6 flex justify-center">
-                        <button
-                            className="border-2 border-our_red bg-our_red hover:bg-white hover:text-our_red text-white font-bold px-6 py-2 rounded-lg shadow-md transition"
-                            onClick={() => alert('Opening chat...')}
-                        >
-                            Chat
-                        </button>
-                    </div>
 
 
                 </div>
@@ -227,4 +152,6 @@ function Specific_Donor() {
     )
 }
 
-export default Specific_Donor
+export default O_Specific_Donor
+
+

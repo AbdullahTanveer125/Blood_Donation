@@ -12,13 +12,13 @@ import { IoIosMan } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
 
 import { useAuth } from "../../../context/auth";
-import user_image from "../../../../public/abdullah.png"
 
 function D_profile() {
 
     const [auth] = useAuth();
     // console.log("**** ss Auth ****",auth)
 
+    
 
     const [isChecked, setIsChecked] = useState(false);
     const [counter, setCounter] = useState(59);

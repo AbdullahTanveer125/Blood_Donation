@@ -29,7 +29,7 @@ const Blog_All = () => {
 					<p className="text mb-6 max-w-2xl">
 						Discover powerful stories, expert advice, and updates about the world of blood donation.
 					</p>
-					<button className="bg-[#b02525] border-2 border-[#b02525] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition flex flex-row justify-center items-center gap-3">
+					<button className="bg-[#b02525] border-2 border-[#b02525] text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3">
 						Explore Now
 					</button>
 				</div>
@@ -37,7 +37,7 @@ const Blog_All = () => {
 
 			{/* Section Heading */}
 			<h2 className="text-4xl font-extrabold text-center my-14">
-				<span className="text-[#820000]"> All </span> Blogs
+				<span className="text-our_red"> All </span> Blogs
 			</h2>
 
 			{/* Blog Grid */}
@@ -70,7 +70,7 @@ const Blog_All = () => {
 
 								<button
 									onClick={() => handleReadMore(blog)}
-									className="bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition flex flex-row justify-center items-center gap-3 absolute bottom-0 right-0">
+									className="bg-our_red border-2 border-our_red text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3 absolute bottom-0 right-0">
 									Read More
 								</button>
 							</div>
