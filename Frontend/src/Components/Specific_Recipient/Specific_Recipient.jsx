@@ -14,23 +14,27 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Specific_blood_request_on_donor from '../Donor_components/D_Specific_blood_request/Specific_blood_request_on_donor';
 
+import { useNavigate } from 'react-router-dom';
+
 
 function Specific_Recipient() {
+
+    const navigate = useNavigate();
 
     const [user, setUser] = useState(null);
     const [recipient, setRecipient] = useState(null);
     const location = useLocation();
 
-    console.log("Full location.state >>>", location.state);
+    // console.log("Full location.state >>>", location.state);
 
     const { blood_request } = location.state || {};
-    const recipient_id=blood_request.recipient_id;
+    const recipient_id = blood_request.recipient_id;
 
     const [loading, setLoading] = useState(true); // <-- loading state
 
 
-    console.log("Recipient ID:", blood_request.recipient_id);
-    console.log("**** blood_request **** >>>>", blood_request)
+    // console.log("Recipient ID:", blood_request.recipient_id);
+    // console.log("**** blood_request **** >>>>", blood_request)
 
 
     if (!recipient_id) {
@@ -72,7 +76,7 @@ function Specific_Recipient() {
         setLoading(true); // start loading
 
         try {
-            console.log("When hit API",recipient_id)
+            // console.log("When hit API", recipient_id)
             const res = await axios.get(`http://localhost:5000/recipient/get-recipient/${blood_request.recipient_id}`);
 
             if (res.data.success) {
@@ -173,85 +177,14 @@ function Specific_Recipient() {
                                 </div>
 
                             </div>
-                            {/* left side */}
-                            {/* <div className='space-y-3 flex flex-col justify-center'>
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaRegUser /> Full Name
-                                </span>
 
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <MdBloodtype /> Gender
-                                </span>
-
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaPersonWalkingLuggage /> Age
-                                </span>
-
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaAddressBook /> Address
-                                </span>
-                            </div> */}
-
-                            {/* right side */}
-                            {/* <div className='space-y-3 flex flex-col justify-center'>
-                                <div>{user?.name}</div>
-                                <div>{recipient?.gender}</div>
-                                <div>{recipient?.age}</div>
-                                <div className="text-justify italic w-3/4">
-                                    {recipient?.address}
-                                </div>
-                            </div> */}
-
-
-                            {/* <div className="flex flex-row bg-slate-400 justify-around">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaRegUser /> Full Name
-                                </span>
-                                <span>{user.name}</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <MdBloodtype /> Gender
-                                </span>
-                                <span>{recipient.gender}</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaPersonWalkingLuggage /> Age
-                                </span>
-                                <span>{recipient.age}</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaWeightScale /> Weight
-                                </span>
-                                <span>65 kg</span>
-                            </div>
-
-                            <div className="flex justify-between">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <PiHospitalDuotone /> Hospital
-                                </span>
-                                <span>City Care Hospital</span>
-                            </div>
-                            <div className="flex items-start justify-between gap-4">
-                                <span className="flex items-center gap-2 font-extrabold">
-                                    <FaAddressBook /> Address
-                                </span>
-                                <span className="text-justify italic w-3/4">
-                                    {recipient.address}
-                                </span>
-                            </div> */}
-                            {/* <div className="space-y-4 text-sm text-gray-800">
-                                
-                            </div> */}
                         </div>
                     </div>
 
                     <div className="mt-6 flex justify-center">
                         <button
                             className="border-2 border-our_red bg-our_red hover:bg-white hover:text-our_red text-white font-bold px-6 py-2 rounded-lg shadow-md transition"
-                            onClick={() => alert('Opening chat...')}
+                            onClick={() => navigate('/new_chat_messanger', { state: { recipient_id } })}
                         >
                             Chat
                         </button>

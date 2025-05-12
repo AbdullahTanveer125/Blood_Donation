@@ -46,7 +46,7 @@ function D_profile() {
                         <img
                             src={image || "/abdullah.png"}
                             alt=""
-                            className='h-48 border-8 border-white rounded-full'
+                            className='h-48 w-48 border-8 border-white rounded-full'
                         />
                     </div>
                     <div className=' mt-4'>

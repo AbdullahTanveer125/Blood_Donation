@@ -84,6 +84,7 @@ import Landing_Page11 from "./Pages/Landing_Page11.jsx";
 import D_Messanger from "./Components/Donor_components/D_Messanger.jsx";
 import R_Messanger from "./Components/Recipient_Components/R_Messanger.jsx";
 import O_Specific_Donor from "./Components/Organization_component/O_Specific_Donor/O_Specific_Donor.jsx";
+import D_New_Chat_Messanger from "./Components/Donor_components/D_New_Chat_Messanger/D_New_Chat_Messanger.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -212,6 +213,7 @@ function App() {
             
             <Route path="/donor_history" element={<D_History />} />
 
+            <Route path="/new_chat_messanger" element={<D_New_Chat_Messanger />} />
             <Route path="/messanger" element={<D_Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}

@@ -39,14 +39,9 @@ function Messanger() {
 
     const scrollRef = useRef();// messages scrolling k liye
 
-    const navigate = useNavigate();
-
-
 
     // const [socket, setSocket] = useState("");
     const socket = useRef();
-
-
 
 
 
@@ -93,39 +88,17 @@ function Messanger() {
     console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
     useEffect(() => {
 
-        if (!auth || !auth.user) {
-            console.error("Auth or user is not available");
-            // return <div>Please log in to access this page.</div>;
-        }
+        // if (!auth || !auth.user) {
+        //     console.error("Auth or user is not available");
+        //     // return <div>Please log in to access this page.</div>;
+        // }
 
-        if (auth.person == "organization") {
-            console.log("You are not recipient, donor and admin Please login as Recipient, donor and admin to access this page.");
+        // if (auth.person == "organization") {
+        //     console.log("You are not recipient, donor and admin Please login as Recipient, donor and admin to access this page.");
 
-            // return <div>You are not recipient! Please login as "Recipient" to access this page.</div>;
-        }
+        //     // return <div>You are not recipient! Please login as "Recipient" to access this page.</div>;
+        // }
 
-        if (auth.person == "recipient") {
-            const { user, recipient } = auth;
-            console.log("Recipient detected");
-            setLoginPerson({
-                user,
-                recipient
-            })
-        }
-        if (auth.person == "donor") {
-            const { user, donor } = auth;
-            setLoginPerson({
-                user,
-                donor
-            })
-        }
-        if (auth.person == "admin") {
-            const { user, admin } = auth;
-            setLoginPerson({
-                user,
-                admin
-            })
-        }
 
         console.log("************AAAAAAAAAAAAAAAAA******************************")
         console.log(auth)
@@ -219,6 +192,50 @@ function Messanger() {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
+
+
+    useEffect(() => {
+        if (!auth || !auth.user) return;
+
+        if (auth.person === "recipient") {
+            const { user, recipient } = auth;
+            console.log("Recipient detected");
+            setLoginPerson({ user, recipient });
+        } else if (auth.person === "donor") {
+            const { user, donor } = auth;
+            setLoginPerson({ user, donor });
+            console.log("<<<<<<< HHHHHHHHHHHHHH >>>>>>>>>>");
+        } else if (auth.person === "admin") {
+            const { user, admin } = auth;
+            setLoginPerson({ user, admin });
+        }
+    }, [auth]);
+
+    // if (auth.person == "recipient") {
+    //     const { user, recipient } = auth;
+    //     console.log("Recipient detected");
+    //     setLoginPerson({
+    //         user,
+    //         recipient
+    //     })
+    // }
+    // if (auth.person == "donor") {
+    //     const { user, donor } = auth;
+
+
+    //     setLoginPerson({
+    //         user,
+    //         donor
+    //     })
+    //     console.log("<<<<<<< HHHHHHHHHHHHHH >>>>>>>>>>")
+    // }
+    // if (auth.person == "admin") {
+    //     const { user, admin } = auth;
+    //     setLoginPerson({
+    //         user,
+    //         admin
+    //     })
+    // }
 
 
 

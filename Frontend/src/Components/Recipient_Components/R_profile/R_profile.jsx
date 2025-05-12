@@ -37,7 +37,7 @@ function R_Profile() {
                         <img
                             src={image || "/abdullah.png"}
                             alt=""
-                            className='h-48 border-8 border-white rounded-full  w-full object-cover object-center'
+                            className='h-48 w-48 border-8 border-white rounded-full object-cover object-center'
                         />
                     </div>
                     <div>

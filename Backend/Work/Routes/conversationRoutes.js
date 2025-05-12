@@ -1,6 +1,8 @@
 const conversation_router = require("express").Router();
 const conversation_model = require("../Models-Schema/conversation_Schema");
 
+const recipient_model = require("../Models-Schema/recipient_schema");
+
 // //new conversation
 // conversation_router.post("/conversation", async (req, res) => {
 //     const newConversation = new conversation_model({
@@ -16,9 +18,31 @@ const conversation_model = require("../Models-Schema/conversation_Schema");
 //     }
 // });
 
-conversation_router.post("/conversation", async (req, res) => {
+conversation_router.post("/add_donor_conversation", async (req, res) => {
 	try {
-		const { senderId, receiverId } = req.body;
+
+		console.log("DDDDDDDDDDDDDDDDDDDD")
+		console.log("DDDDDDDDDDDDDDDDDDDD")
+		console.log("DDDDDDDDDDDDDDDDDDDD")
+		console.log("DDDDDDDDDDDDDDDDDDDD")
+		console.log("DDDDDDDDDDDDDDDDDDDD")
+		const { senderId, recipientId } = req.body;
+		// const senderId = req.params.senderId;
+		// const recipientId = req.params.recipientId;
+
+		const get = await recipient_model.findById(recipientId).select('userId');
+		// const receiverId = get.userId //in object form
+		const receiverId = String(get.userId);
+
+
+		console.log("sender User id=====", senderId) //this is in string form
+		console.log("Receive User id=====", receiverId) //this is in object form
+
+		if (!receiverId) {
+			return res.status(404).json({ success: false, message: "Recipient not found" });
+		}
+
+		// const userId = recipient.userId;
 
 		// Check if a conversation already exists between these users
 		const existingConversation = await conversation_model.findOne({
@@ -42,10 +66,10 @@ conversation_router.post("/conversation", async (req, res) => {
 		// res.status(201).json(savedConversation); // 201 means "Created"
 		console.log("New conversation created");
 		res.status(200).send({
-            success: true,
-            message: "New conversation created",
-            savedConversation
-        });
+			success: true,
+			message: "New conversation created",
+			savedConversation
+		});
 
 	} catch (err) {
 		console.error("Error creating conversation:", err);
