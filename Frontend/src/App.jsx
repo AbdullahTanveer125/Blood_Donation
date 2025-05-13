@@ -85,6 +85,7 @@ import D_Messanger from "./Components/Donor_components/D_Messanger.jsx";
 import R_Messanger from "./Components/Recipient_Components/R_Messanger.jsx";
 import O_Specific_Donor from "./Components/Organization_component/O_Specific_Donor/O_Specific_Donor.jsx";
 import D_New_Chat_Messanger from "./Components/Donor_components/D_New_Chat_Messanger/D_New_Chat_Messanger.jsx";
+import R_new_chat_messanger from "./Components/Recipient_Components/R_new_chat_messanger/R_new_chat_messanger.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -241,6 +242,7 @@ function App() {
 
             <Route path="/recipient_about_us" element={<R_About_us />} />
 
+            <Route path="/new_chat_messanger_with_donor" element={<R_new_chat_messanger />} />
             <Route path="/messanger" element={<R_Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}

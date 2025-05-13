@@ -2,6 +2,7 @@ const conversation_router = require("express").Router();
 const conversation_model = require("../Models-Schema/conversation_Schema");
 
 const recipient_model = require("../Models-Schema/recipient_schema");
+const user_model = require("../Models-Schema/user_schema");
 
 // //new conversation
 // conversation_router.post("/conversation", async (req, res) => {
@@ -18,7 +19,7 @@ const recipient_model = require("../Models-Schema/recipient_schema");
 //     }
 // });
 
-conversation_router.post("/add_donor_conversation", async (req, res) => {
+conversation_router.post("/add_new_conversation", async (req, res) => {
 	try {
 
 		console.log("DDDDDDDDDDDDDDDDDDDD")
@@ -26,17 +27,22 @@ conversation_router.post("/add_donor_conversation", async (req, res) => {
 		console.log("DDDDDDDDDDDDDDDDDDDD")
 		console.log("DDDDDDDDDDDDDDDDDDDD")
 		console.log("DDDDDDDDDDDDDDDDDDDD")
+
+
 		const { senderId, recipientId } = req.body;
 		// const senderId = req.params.senderId;
 		// const recipientId = req.params.recipientId;
 
 		const get = await recipient_model.findById(recipientId).select('userId');
 		// const receiverId = get.userId //in object form
+		console.log("cccccccccc=====", get)
 		const receiverId = String(get.userId);
 
-
+		// "senderId" mey donor ki user id ho gi
+		// "receiverId" mey recipient ki user id ho gi
 		console.log("sender User id=====", senderId) //this is in string form
 		console.log("Receive User id=====", receiverId) //this is in object form
+
 
 		if (!receiverId) {
 			return res.status(404).json({ success: false, message: "Recipient not found" });
@@ -65,6 +71,43 @@ conversation_router.post("/add_donor_conversation", async (req, res) => {
 		const savedConversation = await newConversation.save();
 		// res.status(201).json(savedConversation); // 201 means "Created"
 		console.log("New conversation created");
+
+
+
+		// Convert to ObjectId if needed
+		// const senderObjectId = mongoose.Types.ObjectId(senderId);
+		// const receiverObjectId = mongoose.Types.ObjectId(receiverId);
+
+
+		await user_model.findByIdAndUpdate(
+			senderId, // can be a string as long as it's a valid ObjectId string
+			{ $addToSet: { friends: receiverId } }, // newMemberValue can be a string or ObjectId
+			{ new: true } // optional, returns the updated document
+		);
+
+		await user_model.findByIdAndUpdate(
+			receiverId, // can be a string as long as it's a valid ObjectId string
+			{ $addToSet: { friends: senderId } }, // newMemberValue can be a string or ObjectId
+			{ new: true } // optional, returns the updated document
+		);
+
+		console.log("<<<<<<< sssssssssss >>>>>>>>>>")
+
+		// Add senderId to receiver's friends array
+		// await user_model.findByIdAndUpdate(
+		// 	receiverId,
+		// 	{ $addToSet: { friends: senderId } }
+		// );
+
+		// Add receiverId to sender's friends array
+		// await user_model.findByIdAndUpdate(
+		// 	senderId,
+		// 	{ $addToSet: { friends: receiverId } }
+		// );
+
+		console.log("Friends updated successfully.");
+
+
 		res.status(200).send({
 			success: true,
 			message: "New conversation created",

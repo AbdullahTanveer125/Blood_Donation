@@ -1,6 +1,13 @@
 import React from "react";
 
+import { useNavigate } from 'react-router-dom';
+
+
 const Hero_Section11 = () => {
+
+    const navigate = useNavigate();
+
+
     return (
         <div className="font-nunito">
             {/* Hero Section with Background */}
@@ -10,7 +17,7 @@ const Hero_Section11 = () => {
             >
                 {/* black layer */}
                 <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-                
+
                 {/* Transparent Navbar */}
                 <nav className="flex justify-between items-center mt-6 mx-8 pr-4 bg-white/30 backdrop-blur-md shadow-md rounded-full ">
                     <div className="text-xl font-bold text-white flex items-center gap-2">
@@ -30,8 +37,12 @@ const Hero_Section11 = () => {
                         <a href="#faqs">FAQs</a>
                     </div>
                     <div className="flex space-x-4">
-                        <button className="text-white border-2 border-red-500 px-4 py-1 rounded-full hover:bg-red-50 transition">Log In</button>
-                        <button className="bg-red-500 text-white px-4 py-1 rounded-full hover:bg-red-600 transition">Sign Up</button>
+                        <button
+                            onClick={() => navigate('/login_as_a')}
+                            className="text-white border-2 border-red-500 px-4 py-1 rounded-full hover:bg-red-50 hover:text-red-500 transition">Log In</button>
+                        <button
+                            onClick={() => navigate('/signup_as_a')}
+                            className="bg-red-500 text-white px-4 py-1 rounded-full hover:bg-red-600 transition">Sign Up</button>
                     </div>
                 </nav>
 

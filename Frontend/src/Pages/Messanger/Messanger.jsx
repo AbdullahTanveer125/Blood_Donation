@@ -171,7 +171,9 @@ function Messanger() {
         const receiverId = currentChat.members.find(
             (member) => member !== user._id
         );
-
+console.log("Now")
+console.log("receiverId= ",receiverId)
+console.log("Now")
         socket.current.emit("sendMessage", {
             senderId: user._id,
             receiverId,
@@ -237,6 +239,18 @@ function Messanger() {
     //     })
     // }
 
+    
+        console.log("ooooooooo currentChat ooooooooooo ......... ")
+        console.log("ooooooooo currentChat ooooooooooo ......... ")
+        console.log("ooooooooo currentChat ooooooooooo ......... ")
+        console.log("ooooooooo currentChat ooooooooooo ......... ")
+        console.log(currentChat)
+        console.log("login user id= ",user._id)
+        console.log("ooooooooo currentChat ooooooooooo ......... ")
+        console.log("ooooooooo currentChat ooooooooooo ......... ")
+        console.log("ooooooooo currentChat ooooooooooo ......... ")
+        console.log("ooooooooo currentChat ooooooooooo ......... ")
+       
 
 
 

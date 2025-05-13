@@ -17,18 +17,19 @@ import Chat_Online from "../../../Components/Chat_Online/Chat_Online";
 
 import axios from "axios";
 import { io } from "socket.io-client";
-import D_Sidebar from '../D_Sidebar/D_Sidebar';
+
 
 import { useLocation } from 'react-router-dom';
+import R_Sidebar from '../R_Sidebar/R_Sidebar';
 
-function D_New_Chat_Messanger() {
+function R_new_chat_messanger() {
 
     const [auth] = useAuth(); // Access the auth state
 
     const location = useLocation();
-    const { recipient_id } = location.state || {};
+    const { donor_user_id } = location.state || {};
 
-    console.log("Received recipient_id:", recipient_id);
+    console.log("Received Donor user id:", donor_user_id);
 
     // console.log("************AAAAAAAAAAAAAAAAA******************************")
     // console.log(auth)
@@ -55,8 +56,9 @@ function D_New_Chat_Messanger() {
     const navigate = useNavigate();
 
 
-    const senderId = auth.user._id//is mey donor ki user id hai
-    const recipientId = recipient_id//is mey recipient ki user id hai
+    const senderId = donor_user_id//is mey donor ki user id hai
+    const recipientId = auth.recipient._id//is mey recipient ki id hai
+    console.log("FFFFFFFFFFFFFFFF=====", auth.recipient._id)
 
 
     // const [socket, setSocket] = useState("");
@@ -100,7 +102,7 @@ function D_New_Chat_Messanger() {
         arrivalMessage &&
             currentChat?.members.includes(arrivalMessage.sender) &&
             setMessages((prev) => [...prev, arrivalMessage]);
-    }, [arrivalMessage, currentChat,add_New_User]);
+    }, [arrivalMessage, currentChat, add_New_User]);
 
     useEffect(() => {
         socket.current.emit("addUser", user._id);
@@ -110,7 +112,7 @@ function D_New_Chat_Messanger() {
                 user.friends.filter((f) => users.some((u) => u.userId === f))
             );
         });
-    }, [user,add_New_User]);
+    }, [user, add_New_User]);
     // console.log("*******************************************")
     // console.log("*******************************************")
     // console.log("<<< outside get online users from socket >>>=", onlineUsers)
@@ -159,7 +161,7 @@ function D_New_Chat_Messanger() {
 
     useEffect(() => {
         console.log("Updated loginPerson:", loginPerson);
-    }, [loginPerson,add_New_User]);
+    }, [loginPerson, add_New_User]);
 
 
 
@@ -188,7 +190,7 @@ function D_New_Chat_Messanger() {
             }
         };
         getMessages();
-    }, [currentChat,add_New_User]);
+    }, [currentChat, add_New_User]);
 
     // console.log("Messages=", messages)
 
@@ -198,6 +200,17 @@ function D_New_Chat_Messanger() {
     // console.log("conversations=", conversations)
     // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
     // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
+
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ", currentChat)
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -240,7 +253,7 @@ function D_New_Chat_Messanger() {
         <div>
 
 
-            <D_Sidebar />
+            <R_Sidebar />
 
 
 
@@ -321,7 +334,11 @@ function D_New_Chat_Messanger() {
     )
 }
 
-export default D_New_Chat_Messanger
+export default R_new_chat_messanger
+
+
+
+
 
 
 

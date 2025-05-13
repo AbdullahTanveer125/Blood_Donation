@@ -13,18 +13,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import R_Sidebar from '../Recipient_Components/R_Sidebar/R_Sidebar';
 
+import { useNavigate } from 'react-router-dom';
+
 
 function Specific_Donor() {
+
+    const navigate = useNavigate();
 
     const [user, setUser] = useState(null);
     const [recipient, setRecipient] = useState(null);
     const location = useLocation();
     const donor = location.state || {};
+    const donor_user_id = donor._id;
 
     const [loading, setLoading] = useState(false); // <-- loading state
 
 
-    // console.log("****** ddddd **** >>>>>>:", donor);
+    console.log("****** ddddd **** >>>>>>:", donor_user_id);
 
 
     // useEffect(() => {
@@ -211,7 +216,7 @@ function Specific_Donor() {
                     <div className="mt-6 flex justify-center">
                         <button
                             className="border-2 border-our_red bg-our_red hover:bg-white hover:text-our_red text-white font-bold px-6 py-2 rounded-lg shadow-md transition"
-                            onClick={() => alert('Opening chat...')}
+                            onClick={() => navigate('/new_chat_messanger_with_donor', { state: { donor_user_id } })}
                         >
                             Chat
                         </button>

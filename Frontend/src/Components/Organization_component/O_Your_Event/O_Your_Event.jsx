@@ -50,12 +50,29 @@ function O_Your_Event() {
 
 
                 <div>
+                    {event === null ? (
+                        <p className="text-center text-our_red text-2xl mt-20 font-extrabold">
+                            Loading event details...
+                        </p>
+                    ) : event.length === 0 ? (
+                        <p className="text-center text-gray-500 text-2xl mt-20 font-extrabold">
+                            You have no event.
+                        </p>
+                    ) : (
+                        <Single_Event_Details event={event[0]} />
+                    )}
+                </div>
+
+
+
+
+                {/* <div>
                     {event ? (
                         <Single_Event_Details event={event[0]} />
                     ) : (
                         <p className="text-center text-our_red text-2xl mt-20 font-extrabold">Loading event details...</p>
                     )}
-                </div>
+                </div> */}
 
             </div>
         </div>
