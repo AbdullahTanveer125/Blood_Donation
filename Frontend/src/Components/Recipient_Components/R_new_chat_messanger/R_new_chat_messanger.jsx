@@ -171,7 +171,15 @@ function R_new_chat_messanger() {
             try {
                 const res = await axios.get("http://localhost:5000/specific_conversation/" + user._id);
                 setConversations(res.data);
-                // console.log("res=", res)
+                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
+                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
+                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
+                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
+                // console.log("conversation res=", res.data)
+                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
+                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
+                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
+                // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
             } catch (err) {
                 console.log(err);
             }
@@ -201,15 +209,15 @@ function R_new_chat_messanger() {
     // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
     // console.log(">>>>>>>>>>>>>>>>>>>>>>>>")
 
-    console.log("ooooooooo currentChat ooooooooooo ......... ")
-    console.log("ooooooooo currentChat ooooooooooo ......... ")
-    console.log("ooooooooo currentChat ooooooooooo ......... ")
-    console.log("ooooooooo currentChat ooooooooooo ......... ")
-    console.log("ooooooooo currentChat ooooooooooo ......... ", currentChat)
-    console.log("ooooooooo currentChat ooooooooooo ......... ")
-    console.log("ooooooooo currentChat ooooooooooo ......... ")
-    console.log("ooooooooo currentChat ooooooooooo ......... ")
-    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    // console.log("ooooooooo currentChat ooooooooooo ......... ")
+    // console.log("ooooooooo currentChat ooooooooooo ......... ")
+    // console.log("ooooooooo currentChat ooooooooooo ......... ")
+    // console.log("ooooooooo currentChat ooooooooooo ......... ")
+    // console.log("ooooooooo currentChat ooooooooooo ......... ", currentChat)
+    // console.log("ooooooooo currentChat ooooooooooo ......... ")
+    // console.log("ooooooooo currentChat ooooooooooo ......... ")
+    // console.log("ooooooooo currentChat ooooooooooo ......... ")
+    // console.log("ooooooooo currentChat ooooooooooo ......... ")
 
 
     const handleSubmit = async (e) => {

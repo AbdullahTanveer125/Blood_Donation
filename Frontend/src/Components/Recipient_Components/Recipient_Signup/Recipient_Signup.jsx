@@ -36,7 +36,7 @@ function Recipient_Signup() {
 
 
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -84,7 +84,7 @@ function Recipient_Signup() {
             if (res && res.data.success) {
                 toast.success(res.data && res.data.success);//  line:35
                 // toast.success(res.data.success && res.data);//  line:36
-                // navigate("/login");
+                navigate("/login");
             } else {
                 toast.error(res.data);
             }
@@ -103,14 +103,14 @@ function Recipient_Signup() {
 
     return (
         <div className='font-nunito'>
-            <div className='my-10 text-justify  flex flex-col items-center justify-center'>
+            <div className='my-10 text-justify  flex flex-col items-start justify-center'>
 
-                <p className='w-[70%]'>
+                {/* <p className='w-[70%]'>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, libero odio odit dolores expedita saepe magnam consequatur id nostrum labore a ipsum iste quasi at possimus, accusantium culpa mollitia! Placeat!
-                </p>
+                </p> */}
                 <button
-                    onClick={() => handleReadMore(blog)}
-                    className="mt-10 bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition flex flex-row justify-center items-center gap-3">
+                    onClick={() => navigate("/")}
+                    className="ml-10 bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition flex flex-row justify-center items-center gap-3">
                     <IoArrowUndo size={20} /> Back to Home
                 </button>
             </div>

@@ -15,6 +15,15 @@ const get_user = async (req, res) => {
     try {
         const user = await user_model.findById(req.params.user_id).select('-profile_photo -password');
 
+        
+        console.log(".......................")
+        console.log(".......................")
+        console.log(".......................")
+        console.log("We are in get_user")
+        console.log(".......................")
+        console.log(".......................")
+        console.log(".......................")
+
         res.status(200).send({
             success: true,
             message: "get User!",
