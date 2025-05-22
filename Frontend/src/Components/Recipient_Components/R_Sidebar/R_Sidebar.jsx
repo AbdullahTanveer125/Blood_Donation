@@ -13,6 +13,8 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/auth";
 
+import { useLocation } from 'react-router-dom';
+
 function R_Sidebar() {
 
     const navigate = useNavigate();
@@ -36,6 +38,15 @@ function R_Sidebar() {
 
 
     const [blood_request_id, setBlood_request_id] = useState("");
+
+
+
+    const location = useLocation();
+    const currentPath = location.pathname;
+
+    const handleItemClick = (path) => {
+        navigate(path);
+    };
 
 
     useEffect(() => {
@@ -200,43 +211,66 @@ function R_Sidebar() {
                         <FaHouseDamage size={20} /> Dashboard
                     </h2>
                     <ul className="space-y-2">
-                        <li
-                            onClick={() => navigate('/all_donors')} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
-                            <FaSearch size={15} /> Donors
-                        </li>
+
 
                         <li
-                            onClick={() => navigate('/generate_blood_request')}
-                            className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/generate_blood_request")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/generate_blood_request" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <FaHistory size={15} /> Generate Request
                         </li>
 
                         <li
-                            onClick={() => navigate("/recipient_blog")} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/all_donors")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/all_donors" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
+                            <FaSearch size={15} /> Donors
+                        </li>
+
+
+                        <li
+                            onClick={() => handleItemClick("/recipient_blog")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/recipient_blog" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <MdCastForEducation size={15} /> Blogs
                         </li>
 
                         <li
-                            onClick={() => navigate("/recipient_all_event")} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/recipient_all_event")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/recipient_all_event" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <FaSearch size={15} /> Events
                         </li>
 
                         <li
-                            onClick={() => navigate("/messanger")} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/messanger")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/messanger" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <AiOutlineMessage size={15} /> Messages
                         </li>
 
                         <li
-                            onClick={() => navigate("/recipient_about_us")} className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/recipient_about_us")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/recipient_about_us" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <AiOutlineMessage size={15} /> About Us
                         </li>
 
                         <li className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]"
                             onClick={toggleModal}
                         >
-                            <AiOutlineMessage size={15} /> Notification
-                            <span className="text-xs px-1 rounded-full bg-green-300"
-                            >{notifications.length}</span>
+                            <AiOutlineMessage size={15} />
+                            <div className="flex flex-row justify-between w-full">
+                                Notification
+                                <span className="px-1 rounded-full bg-white text-our_red font-extrabold"
+                                >{notifications.length}</span>
+                            </div>
                         </li>
 
 

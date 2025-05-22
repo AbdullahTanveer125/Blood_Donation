@@ -14,6 +14,7 @@ import { LuLogOut } from "react-icons/lu";
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
 
+import { useLocation } from 'react-router-dom';
 
 
 
@@ -21,6 +22,13 @@ function O_Sidebar() {
 
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
+
+    const location = useLocation();
+    const currentPath = location.pathname;
+
+    const handleItemClick = (path) => {
+        navigate(path);
+    };
 
     const handleLogout = () => {
         setAuth(null); // Clear auth state
@@ -42,37 +50,49 @@ function O_Sidebar() {
                         className="cursor-pointer text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-gray-200 p-6 pb-3">
                         <FaHouseDamage size={20} /> Dashboard
                     </h2>
-                    <ul className="space-y-6 p-6">
+                    <ul className="space-y-2">
                         <li
-                            onClick={() => navigate("/generate_event")}
-                            className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                            onClick={() => handleItemClick("/generate_event")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2
+    ${currentPath === "/generate_event" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}
+>
                             <FaSearch size={15} /> Generate Event
                         </li>
 
                         <li
-                            onClick={() => navigate("/organization_all_donors")} className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                        onClick={() => handleItemClick("/organization_all_donors")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/organization_all_donors" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <FaHistory size={15} /> Donors
                         </li>
 
                         <li
-                            onClick={() => navigate("/organization_blog ")}
-                            className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                        onClick={() => handleItemClick("/organization_blog")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/organization_blog" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <MdCastForEducation size={15} /> Blogs
                         </li>
 
                         <li
-                            onClick={() => navigate("/organization_your_event")}
-                            className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                        onClick={() => handleItemClick("/organization_your_event")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/organization_your_event" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <FaSearch size={15} /> Your Event
                         </li>
 
                         <li
-                            onClick={() => navigate("/organization_about_us")}
-                            className="hover:text-gray-300 cursor-pointer flex flex-row items-center gap-3 text-sm">
+                        onClick={() => handleItemClick("/organization_about_us")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/organization_about_us" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <FaSearch size={15} /> About Us
                         </li>
 
-                        
+
                     </ul>
 
                 </div>

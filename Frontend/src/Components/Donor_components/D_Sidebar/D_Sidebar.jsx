@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { useState } from 'react'
 
 import { FaHouseDamage } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
@@ -16,10 +15,21 @@ import { BiSolidMessageDots } from "react-icons/bi";
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
 
+import { useLocation } from 'react-router-dom';
+
+
 function D_Sidebar() {
 
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+    const currentPath = location.pathname;
+
+    const handleItemClick = (path) => {
+        navigate(path);
+    };
+
+
 
     const handleLogout = () => {
         setAuth(null); // Clear auth state
@@ -43,38 +53,45 @@ function D_Sidebar() {
                     </h2>
                     <ul className="space-y-2 ">
                         <li
-                            onClick={() => navigate("/all_blood_request")}
-                            className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/all_blood_request")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/all_blood_request" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}
+`}>
                             <FaSearch size={15} /> Blood Request
                         </li>
 
                         <li
-                            onClick={() => navigate("/donor_history")}
-                            className=" cursor-pointer flex flex-row items-center gap-3 text-sm  px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/donor_history")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/donor_history" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}`}>
                             <FaHistory size={15} /> History
                         </li>
 
                         <li
-                            onClick={() => navigate("/donor_blog")}
-                            className="cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/donor_blog")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/donor_blog" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}`}>
                             <MdCastForEducation size={15} /> Blogs
                         </li>
 
                         <li
-                            onClick={() => navigate("/donor_all_event")}
-                            className=" cursor-pointer flex flex-row items-center gap-3 text-sm  px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/donor_all_event")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/donor_all_event" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}`}>
                             <BiCalendarEvent size={15} /> Events
                         </li>
 
                         <li
-                            onClick={() => navigate("/messanger")}
-                            className=" cursor-pointer flex flex-row items-center gap-3 text-sm  px-6 py-2 hover:bg-white hover:text-[#820000]">
-                            <BiSolidMessageDots  size={15} /> Messages
+                            onClick={() => handleItemClick("/messanger")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/messanger" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}`}>
+                            <BiSolidMessageDots size={15} /> Messages
                         </li>
 
                         <li
-                            onClick={() => navigate("/donor_about_us")}
-                            className=" cursor-pointer flex flex-row items-center gap-3 text-sm  px-6 py-2 hover:bg-white hover:text-[#820000]">
+                            onClick={() => handleItemClick("/donor_about_us")}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
+    ${currentPath === "/donor_about_us" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}`}>
                             <RiTeamFill size={15} /> About Us
                         </li>
 

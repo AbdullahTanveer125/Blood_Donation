@@ -107,8 +107,10 @@ function Generate_Blood_Request() {
     return (
         <div className="min-h-screen font-nunito bg-[url('./bb.png')] bg-cover bg-center">
             {/* Top-left button */}
-            <button className="absolute top-6 left-6 bg-our_red text-white border-2 border-our_red py-2 px-4 rounded hover:bg-white hover:text-our_red transition flex flex-row justify-center items-center gap-2">
-                <HiMiniArrowLeftStartOnRectangle size={20} className='font-extrabold'/> Go Back
+            <button
+                onClick={() => navigate("/recipient")}
+                className="absolute top-6 left-6 bg-our_red text-white border-2 border-our_red py-2 px-4 rounded hover:bg-white hover:text-our_red transition flex flex-row justify-center items-center gap-2">
+                <HiMiniArrowLeftStartOnRectangle size={20} className='font-extrabold' /> Go Back
             </button>
 
             {/* Page Heading */}
