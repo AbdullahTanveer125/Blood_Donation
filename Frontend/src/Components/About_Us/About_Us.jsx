@@ -5,6 +5,10 @@ import Our_feedback from '../Landing_page_components/Our_feedback/Our_feedback';
 import Footer1 from '../Footer1';
 import Footer2 from '../Footer2';
 
+
+import { Link } from 'react-router-dom';
+import { useAuth } from "../../context/auth";
+
 const teamMembers = [
     {
         name: 'Fatima Almas',
@@ -36,14 +40,53 @@ const teamMembers = [
 ];
 
 function About_Us() {
+
+
+    const [auth] = useAuth();
+    // console.log("DDDDDDD=", auth)
+
     return (
 
         <div>
 
-            <div className="font-nunito pt-12 text-center bg-white ">
+            <div className="font-nunito text-center bg-white ">
 
-                <div className=' flex flex-row pl-52 mb-10'>
-                    <h1 className='text-2xl font-extrabold'>Heading of About Us</h1>
+
+                {!auth && (
+                    <nav className="flex justify-between items-center mt-3 mx-8 pr-4 bg-[#820000] backdrop-blur-md shadow-md rounded-full ">
+                        <div className="text-xl font-bold text-white flex items-center gap-2">
+                            <span className="text-2xl">
+                                <img
+                                    className="w-14"
+                                    src="./logo.png"
+                                    alt=""
+                                />
+                            </span> URGENT DROP
+                        </div>
+                        <div className="hidden md:flex space-x-6 text-white font-medium">
+                            <Link to="/">Home</Link>
+                            <Link to="/about_us">About Us</Link>
+                            <Link to="/all_blogs">Blogs</Link>
+                            <Link to="/events">Events</Link>
+                            <Link to="/faqs">FAQs</Link>
+                        </div>
+                        <div className="flex space-x-4">
+                            <button
+                                onClick={() => navigate('/login_as_a')}
+                                className="text-white border-2 border-white px-4 py-1 rounded-full hover:bg-red-50 hover:text-[#820000] transition">Log In</button>
+                            <button
+                                onClick={() => navigate('/signup_as_a')}
+                                className="bg-white text-[#820000] px-4 py-1 rounded-full hover:bg-gray-200 transition">Sign Up</button>
+                        </div>
+                    </nav>
+                )}
+
+
+
+
+
+                <div className=' flex flex-row pt-10 pl-52 mb-10'>
+                    <h1 className='text-2xl font-extrabold '>Heading of About Us</h1>
                 </div>
                 {/* Intro Paragraph */}
                 <p className="max-w-3xl mx-auto text-lg text-justify">
@@ -111,7 +154,7 @@ function About_Us() {
             </div>
 
 
-            <Our_feedback/>
+            <Our_feedback />
 
             <Footer1 />
             <Footer2 />

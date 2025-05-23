@@ -4,7 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import Footer1 from "../Footer1";
 import Footer2 from "../Footer2";
 
+
+import { Link } from 'react-router-dom';
+import { useAuth } from "../../context/auth";
+
 const Blog_All = () => {
+
+
+	const [auth] = useAuth();
+	// console.log("DDDDDDD=", auth)
 
 	const navigate = useNavigate();
 
@@ -15,23 +23,92 @@ const Blog_All = () => {
 
 	return (
 		<div className="flex flex-col font-nunito ">
+
+			{/* 
+			{!auth && (
+
+				<nav className="flex justify-between items-center mt- mx-8 pr-4 bg-white/30 backdrop-blur-md shadow-md rounded-full ">
+					<div className="text-xl font-bold text-white flex items-center gap-2">
+						<span className="text-2xl">
+							<img
+								className="w-14"
+								src="./logo.png"
+								alt=""
+							/>
+						</span> URGENT DROP
+					</div>
+					<div className="hidden md:flex space-x-6 text-white font-medium">
+						<Link to="/">Home</Link>
+						<Link to="/about_us">About Us</Link>
+						<Link to="/all_blogs">Blogs</Link>
+						<Link to="/events">Events</Link>
+						<Link to="/faqs">FAQs</Link>
+					</div>
+					<div className="flex space-x-4">
+						<button
+							onClick={() => navigate('/login_as_a')}
+							className="text-white border-2 border-red-500 px-4 py-1 rounded-full hover:bg-red-50 hover:text-red-500 transition">Log In</button>
+						<button
+							onClick={() => navigate('/signup_as_a')}
+							className="bg-red-500 text-white px-4 py-1 rounded-full hover:bg-red-600 transition">Sign Up</button>
+					</div>
+				</nav>
+			)} */}
+
+
 			{/* Hero Section */}
-			<div className="relative h-[550px] w-full">
+			<div className="relative h-[620px] w-full">
 				<img
 					src="/donation2.jpg"
 					alt="Hero"
 					className="w-full h-full object-cover"
 				/>
-				<div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center text-white px-4">
-					<h1 className="text-4xl md:text-5xl font-bold mb-4">
-						Welcome to Our Blogs
-					</h1>
-					<p className="text mb-6 max-w-2xl">
-						Discover powerful stories, expert advice, and updates about the world of blood donation.
-					</p>
-					<button className="bg-[#b02525] border-2 border-[#b02525] text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3">
-						Explore Now
-					</button>
+
+
+				<div className="absolute inset-0 bg-black bg-opacity-50 text-white px-4">
+
+
+					{!auth && (
+
+						<nav className="flex justify-between items-center mt-1 mx-8 pr-4 bg-white/30 backdrop-blur-md shadow-md rounded-full ">
+							<div className="text-xl font-bold text-white flex items-center gap-2">
+								<span className="text-2xl">
+									<img
+										className="w-14"
+										src="./logo.png"
+										alt=""
+									/>
+								</span> URGENT DROP
+							</div>
+							<div className="hidden md:flex space-x-6 text-white font-medium">
+								<Link to="/">Home</Link>
+								<Link to="/about_us">About Us</Link>
+								<Link to="/all_blogs">Blogs</Link>
+								<Link to="/events">Events</Link>
+								<Link to="/faqs">FAQs</Link>
+							</div>
+							<div className="flex space-x-4">
+								<button
+									onClick={() => navigate('/login_as_a')}
+									className="text-white border-2 border-white px-4 py-1 rounded-full hover:bg-red-50 hover:text-[#b02525] transition">Log In</button>
+								<button
+									onClick={() => navigate('/signup_as_a')}
+									className="bg-[#b02525] text-white px-4 py-1 rounded-full hover:bg-red-600 transition">Sign Up</button>
+							</div>
+						</nav>
+					)}
+
+					<div className=" h-full flex flex-col items-center justify-center  text-center">
+						<h1 className="text-4xl md:text-5xl font-bold mb-4">
+							Welcome to Our Blogs
+						</h1>
+						<p className="text mb-6 max-w-2xl">
+							Discover powerful stories, expert advice, and updates about the world of blood donation.
+						</p>
+						<button className="bg-[#b02525] border-2 border-[#b02525] text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3">
+							Explore Now
+						</button>
+					</div>
 				</div>
 			</div>
 

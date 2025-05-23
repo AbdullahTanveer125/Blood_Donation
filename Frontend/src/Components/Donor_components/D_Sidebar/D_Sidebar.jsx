@@ -42,7 +42,7 @@ function D_Sidebar() {
         <div>
 
             {/* Sidebar - Fixed on the Left */}
-            <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between font-nunito">
+            <aside className=" w-[17%] h-screen bg-[#962626] text-white fixed flex flex-col justify-between font-nunito">
 
                 <div>
 

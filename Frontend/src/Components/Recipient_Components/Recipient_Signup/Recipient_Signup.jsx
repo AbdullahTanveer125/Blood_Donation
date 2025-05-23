@@ -84,7 +84,7 @@ function Recipient_Signup() {
             if (res && res.data.success) {
                 toast.success(res.data && res.data.success);//  line:35
                 // toast.success(res.data.success && res.data);//  line:36
-                navigate("/login");
+                navigate("/recipient_login");
             } else {
                 toast.error(res.data);
             }
