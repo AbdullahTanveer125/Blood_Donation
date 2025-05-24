@@ -131,18 +131,29 @@ function Recipient_login() {
 
 
     return (
-        <div className="min-h-screen bg-[url('./Home1.jpg')] bg-cover bg-center bg-no-repeat flex flex-row justify-center items-center font-nunito">
+        <div className="min-h-screen flex flex-row justify-center items-center font-nunito">
 
             {/* Black overlay */}
-            <div className="absolute inset-0 bg-black opacity-10 z-0"></div>
+            <div className="absolute inset-0 bg-black opacity- z-0"></div>
 
-            <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl shadow-2xl shadow-white p-8 w-full max-w-md"
+            <img
+                src="/check4.png"
+                className="absolute inset-0 w-full h-full object-cover blur-m"
+                alt="Background"
+            />
+
+            <div className="bg-black bg-opacity-10 backdrop-blur-lg rounded-xl shadow-2xl shadow-gray-400 p-8 w-full max-w-md"
             >
                 <form onSubmit={handleSubmit} encType="multipart/form-data"
                     className=" ">
 
                     <div className='flex flex-row justify-center mb-5 text-2xl font-extrabold'>
-                        <h1 ><FaCircleUser size={40} color='#820000' /></h1>
+                        <h1 ><FaCircleUser size={30} color='' /></h1>
+                    </div>
+
+                    <div className='text-center space-y-1 mb-6'>
+                        <p className='text-2xl font-extrabold'>WELCOME</p>
+                        <p>Login to your account to continue</p>
                     </div>
 
                     <div className='space-y-7'>
@@ -159,7 +170,7 @@ function Recipient_login() {
                                     onChange={function (e) { setEmail(e.target.value) }}
                                     required
                                     id="email"
-                                    className=" bg-transparent font-bold placeholder:font-bold  text-[#820000] placeholder-[#820000] focus:outline-none"
+                                    className=" bg-transparent font-bold placeholder:font-bold focus:outline-none"
                                     placeholder="Email"
                                 />
                             </div>
@@ -175,15 +186,15 @@ function Recipient_login() {
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                                 id="password"
-                                className="bg-transparent font-bold placeholder:font-bold  text-[#820000] placeholder-[#820000] focus:outline-none w-full"
+                                className="bg-transparent font-bold placeholder:font-bold  focus:outline-none w-full"
                                 placeholder="Password"
                             />
                         </div>
 
                     </div>
 
-                    <div className="mt-6 ">
-                        <button type="submit" className="w-full bg-[#820000] border-2 border-[#820000] text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
+                    <div className="mt-6 text-center">
+                        <button type="submit" className="rounded-full bg-our_red border-2 border-our_red text-white  font-nunito font-bold py-2 px-14 hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition"
                         >Login</button>
                     </div>
                 </form>

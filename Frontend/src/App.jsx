@@ -86,6 +86,7 @@ import R_Messanger from "./Components/Recipient_Components/R_Messanger.jsx";
 import O_Specific_Donor from "./Components/Organization_component/O_Specific_Donor/O_Specific_Donor.jsx";
 import D_New_Chat_Messanger from "./Components/Donor_components/D_New_Chat_Messanger/D_New_Chat_Messanger.jsx";
 import R_new_chat_messanger from "./Components/Recipient_Components/R_new_chat_messanger/R_new_chat_messanger.jsx";
+import Landing_Events from "./Pages/Landing_Events.jsx";
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -186,6 +187,7 @@ function App() {
         <Route path="/single_blog" element={<Blog_Single />} />
         <Route path="/about_us" element={<About_Us />} />
         <Route path="/contact_us" element={<Contact_Us />} />
+        <Route path="/all_events" element={<Landing_Events />} />
 
         {/* Redirect if accessing unauthorized routes */}
         <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />

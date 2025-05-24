@@ -18,7 +18,7 @@ function Event_Section() {
             try {
                 const response = await axios.get("http://localhost:5000/event/get-all"); // Your API route
 
-                console.log("All Events=", response)
+                // console.log("All Events=", response)
                 setEvents(response.data.All_Events);
             } catch (error) {
                 console.error("Error fetching events:", error);

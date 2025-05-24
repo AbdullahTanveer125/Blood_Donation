@@ -20,27 +20,27 @@ const Hero_Section11 = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
                 {/* Transparent Navbar */}
-                <nav className="flex justify-between items-center mt-6 mx-8 pr-4 bg-white/50 backdrop-blur-md shadow-md rounded-full ">
-                    <div className="text-xl font-bold text-[#820000] flex items-center gap-2">
+                <nav className="flex justify-between items-center mt-3 mx-8 pr-4 bg-white/50 backdrop-blur-md shadow-md rounded-full ">
+                    <div className="text-xl font-bold text-white flex items-center gap-2">
                         <span className="text-2xl">
                             <img
                                 className="w-14"
                                 src="./logo.png"
                                 alt=""
                             />
-                        </span> URGENT DROP
+                        </span> <span className="tracking-wider">URGENT DROP</span> 
                     </div>
-                    <div className="hidden md:flex space-x-6 text-[#820000] font-medium">
+                    <div className="hidden md:flex space-x-6 text-white font-medium">
                         <Link to="/">Home</Link>
                         <Link to="/about_us">About Us</Link>
                         <Link to="/all_blogs">Blogs</Link>
-                        <Link to="/events">Events</Link>
-                        <Link to="/faqs">FAQs</Link>
+                        <Link to="/all_events">Events</Link>
+                        {/* <Link to="/faqs">FAQs</Link> */}
                     </div>
                     <div className="flex space-x-4">
                         <button
                             onClick={() => navigate('/login_as_a')}
-                            className="text-[#820000] font-bold border-2 border-[#820000] px-4 py-1 rounded-full hover:bg-red-50 hover:text-[#820000] transition">Log In</button>
+                            className="text-white font-bold border-2 border-white px-4 py-1 rounded-full hover:bg-red-50 hover:text-[#820000] transition">Log In</button>
                         <button
                             onClick={() => navigate('/signup_as_a')}
                             className="bg-[#820000] text-white px-4 py-1 rounded-full hover:bg-red-600 transition">Sign Up</button>

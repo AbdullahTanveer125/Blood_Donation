@@ -99,7 +99,7 @@ function D_All_Event() {
         <div className='text-center font-nunito'>
             <D_Sidebar />
 
-            <div className='ml-[17.3%] w-[83%] pt-16 px-4'>
+            <div className='ml-[17.3%] w-[83%] pt-16 px-4 '>
                 <h1 className='text-3xl font-bold mb-6'>Upcoming Events</h1>
                 <div className='flex flex-row justify-center mb-10'>
                     <p className='w-[40%]'>Stay informed and join hands with organizations hosting blood donation events in your area.</p>
@@ -112,9 +112,9 @@ function D_All_Event() {
                     </div>
                 ) : (
                     <>
-                        <div className='grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 px-28'>
+                        <div className=' grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 px-28'>
                             {visibleEvents.map(event => (
-                                <div key={event._id} className='bg-gray-200 rounded-2xl shadow-xl flex flex-row gap-5'>
+                                <div key={event._id} className='my-8 bg-gray-200 rounded-2xl shadow-xl flex flex-row gap-5'>
 
                                     <img
                                         src={event.organization_photo || './Home1.jpg'}

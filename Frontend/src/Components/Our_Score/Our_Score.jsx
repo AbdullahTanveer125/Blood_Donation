@@ -14,7 +14,7 @@ function Our_Score() {
 
             <div className='my-10 font-nunito mt-40'>
                 <h1 className='mb-9 text-4xl font-extrabold text-center'>
-                    <span className='text-our_red'>Real-Time</span> Score
+                    <span className='text-our_red'>Real-Time</span> Impact
                 </h1>
 
                 <div className=' flex justify-center gap-20'>

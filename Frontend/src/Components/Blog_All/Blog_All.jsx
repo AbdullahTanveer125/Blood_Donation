@@ -70,7 +70,7 @@ const Blog_All = () => {
 
 					{!auth && (
 
-						<nav className="flex justify-between items-center mt-1 mx-8 pr-4 bg-white/30 backdrop-blur-md shadow-md rounded-full ">
+						<nav className="flex justify-between items-center mt-3 mx-8 pr-4 bg-white/30 backdrop-blur-md shadow-md rounded-full ">
 							<div className="text-xl font-bold text-white flex items-center gap-2">
 								<span className="text-2xl">
 									<img
@@ -84,8 +84,8 @@ const Blog_All = () => {
 								<Link to="/">Home</Link>
 								<Link to="/about_us">About Us</Link>
 								<Link to="/all_blogs">Blogs</Link>
-								<Link to="/events">Events</Link>
-								<Link to="/faqs">FAQs</Link>
+								<Link to="/all_events">Events</Link>
+								{/* <Link to="/faqs">FAQs</Link> */}
 							</div>
 							<div className="flex space-x-4">
 								<button

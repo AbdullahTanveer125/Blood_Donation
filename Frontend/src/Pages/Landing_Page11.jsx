@@ -17,7 +17,7 @@ const Landing_Page11 = () => {
             <Our_Score />
             <D_why_donate_blood />
             <Blood_donation_steps_1 />
-            <Our_feedback />
+            {/* <Our_feedback /> */}
             <Frequently_Ask_Questions />
             <Event_Section />
             <Footer1 />
