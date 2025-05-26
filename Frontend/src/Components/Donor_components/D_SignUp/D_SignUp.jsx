@@ -128,10 +128,10 @@ function Donor_SignUp() {
 
                 <div className=" p-3 w-full flex flex-row justify-between items-center mx-[5%]">
 
-                    <img src="/signup.png" alt="" className='w-[30%] h-[10%]' />
+                    <img src="/signup2.png" alt="" className='w-[23%] h-[5%]' />
 
 
-                    <div className="bg-slate-50 card shadow-2xl flex items-center">
+                    <div className="bg-slate-100 card shadow- flex items-center">
                         <form onSubmit={handleSubmit} encType="multipart/form-data"
                             className=" card-body ">
 
@@ -140,7 +140,7 @@ function Donor_SignUp() {
                                     {/* <label htmlFor="name" className="text-sm font-medium text-gray-700">Name</label> */}
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaUserAlt />
+                                            <FaUserAlt size={15}/>
                                         </div>
                                         <input
                                             type="text"
@@ -196,7 +196,7 @@ function Donor_SignUp() {
                                     {/* <label htmlFor="age" className="text-sm font-medium text-gray-700">Age</label> */}
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaPerson size={20} />
+                                            <FaPerson size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -214,7 +214,7 @@ function Donor_SignUp() {
                                     {/* <label htmlFor="weight" className="text-sm font-medium text-gray-700">Weight</label> */}
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <GiWeight size={20} />
+                                            <GiWeight size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -261,7 +261,7 @@ function Donor_SignUp() {
                                     {/* <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone</label> */}
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaPhoneVolume />
+                                            <FaPhoneVolume size={10}/>
                                         </div>
                                         <input
                                             type="text"
@@ -279,7 +279,7 @@ function Donor_SignUp() {
                                     {/* <label htmlFor="address" className="text-sm font-medium text-gray-700">Address</label> */}
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaRegAddressBook size={20} />
+                                            <FaRegAddressBook size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -304,7 +304,7 @@ function Donor_SignUp() {
                                     {/* <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label> */}
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <MdEmail size={20} />
+                                            <MdEmail size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -322,7 +322,7 @@ function Donor_SignUp() {
                                     {/* <label htmlFor="username" className="text-sm font-medium text-gray-700">Username</label> */}
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaUserAlt size={20} />
+                                            <FaUserAlt size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -340,7 +340,7 @@ function Donor_SignUp() {
                                     {/* <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label> */}
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaKey size={20} />
+                                            <FaKey size={15} />
                                         </div>
                                         <input
                                             type="password"
@@ -414,7 +414,7 @@ function Donor_SignUp() {
 
 
                             <div className="mt-20 w-[90%]  text-center">
-                                <button type="submit" className="bg-red-600 border-2 border-red-600 text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
+                                <button type="submit" className="bg-our_red border-2 border-our_red text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
                                 >Register</button>
                             </div>
                         </form>
@@ -426,13 +426,6 @@ function Donor_SignUp() {
 
 
                 </div>
-
-            </div>
-
-            <hr />
-            <div>
-                AAAAAAAAAAA
-
 
             </div>
 

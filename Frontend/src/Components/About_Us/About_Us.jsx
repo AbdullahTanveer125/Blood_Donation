@@ -9,6 +9,8 @@ import Footer2 from '../Footer2';
 import { Link } from 'react-router-dom';
 import { useAuth } from "../../context/auth";
 
+import { useNavigate } from 'react-router-dom';
+
 const teamMembers = [
     {
         name: 'Fatima Almas',
@@ -44,12 +46,13 @@ function About_Us() {
 
     const [auth] = useAuth();
     // console.log("DDDDDDD=", auth)
+    const navigate = useNavigate();
 
     return (
 
         <div>
 
-            <div className="font-nunito text-center bg-white ">
+            <div className="font-nunito text-center bg-white mb-40">
 
 
                 {!auth && (
@@ -85,11 +88,13 @@ function About_Us() {
 
 
 
-                <div className=' flex flex-row justify-center pt-20 mb-10'>
-                    <h1 className='text-2xl font-extrabold '>Heading of About Us</h1>
+                <div className=' flex flex-row justify-center pt-20 mb-4'>
+                    <h1 className='text-2xl font-extrabold '>
+                        About Us
+                    </h1>
                 </div>
                 {/* Intro Paragraph */}
-                <p className="max-w-3xl mx-auto text-lg text-justify">
+                <p className="max-w-3xl mx-auto text-sm text-center mb-10">
                     Welcome to our platform! We are committed to making a difference by connecting donors and recipients in need. Discover our purpose, our passion, and the people behind the cause.
                 </p>
 
@@ -104,7 +109,7 @@ function About_Us() {
                 <div className='bg-green-00 flex flex-row justify-center it'>
                     <div className=' w-[50%] my-16 flex flex-row justify-center items-center gap-0'>
                         <h2 className="bg-orange-00 w-[70%] text-2xl font-extrabold mb-4">
-                            <span className='text-our_red'> Our Mission</span> 
+                            <span className='text-our_red'> Our Mission</span>
                         </h2>
                         <p className="w-[50%] mx-auto text-base text-justify">
                             To create a reliable, accessible, and secure platform that bridges the gap between blood donors and those in urgent need—empowering communities to save lives through voluntary blood donation.
@@ -113,18 +118,18 @@ function About_Us() {
                 </div>
 
 
-                
+
                 {/* Our Vision */}
                 <div className='bg-green-00 flex flex-row justify-center it'>
                     <div className=' w-[50%] my-1 flex flex-row justify-center items-center '>
-                        
+
                         <p className="w-[50%] mx-auto text-base text-justify">
                             A world where no life is lost due to lack of blood, where donation is a norm, and every individual has timely access to safe and compatible blood, regardless of location or background.
                         </p>
                         <h2 className="bg-orange-00 w-[70%] text-2xl font-extrabold mb-4">
-                            <span className='text-our_red'> Our Vision</span> 
+                            <span className='text-our_red'> Our Vision</span>
                         </h2>
-                        
+
                     </div>
                 </div>
 
@@ -135,25 +140,39 @@ function About_Us() {
                 {/* Meet Our Team */}
                 <div className='mt-28'>
                     <h2 className="text-3xl font-extrabold  mb-8">
-                        <span className='text-our_red'> Meet </span>  Our Team</h2>
+                        <span className='text-our_red'> Meet </span>  Our Team
+                    </h2>
+
+                    <div className='flex flex-row justify-center mb-5'>
+                        <p className='w-[50%] '>
+                            We are a passionate team committed to revolutionizing blood donation by simplifying the process of finding and connecting with donors.
+                        </p>
+
+                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
                         {teamMembers.map((member, index) => (
                             <div key={index} className="bg-white rounded-xl shadow-lg p-6 space-y-4 text-left">
                                 <img src={member.image} alt={member.name} className="w-full h-56 object-cover rounded-lg" />
-                                <h3 className="text-xl font-bold">{member.name}</h3>
-                                <p className="text-sm font-semibold text-our_red">{member.role}</p>
-                                <p className="text-gray-600 text-sm">{member.description}</p>
-                                <div className="flex gap-4 mt-2">
-                                    <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                                        <FaLinkedin size={20} className="text-our_red hover:text-black" />
-                                    </a>
-                                    <a href={`mailto:${member.email}`}>
-                                        <FaEnvelope size={20} className="text-our_red hover:text-black" />
-                                    </a>
-                                    <a href={member.github} target="_blank" rel="noopener noreferrer">
-                                        <FaGithub size={20} className="text-our_red hover:text-black" />
-                                    </a>
+
+                                <div className='text-center'>
+                                    <h3 className="text-xl font-bold">{member.name}</h3>
+                                    <p className="text-sm font-semibold text-our_red">{member.role}</p>
+                                    {/* <p className="text-gray-600 text-sm">{member.description}</p> */}
+
+                                    <div className="flex flex-row justify-center gap-4 mt-10">
+                                        <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                                            <FaLinkedin size={20} className="text-our_red hover:text-black" />
+                                        </a>
+                                        <a href={`mailto:${member.email}`}>
+                                            <FaEnvelope size={20} className="text-our_red hover:text-black" />
+                                        </a>
+                                        <a href={member.github} target="_blank" rel="noopener noreferrer">
+                                            <FaGithub size={20} className="text-our_red hover:text-black" />
+                                        </a>
+                                    </div>
+
                                 </div>
+
                             </div>
                         ))}
                     </div>
@@ -164,7 +183,7 @@ function About_Us() {
             </div>
 
 
-            <Our_feedback />
+            {/* <Our_feedback /> */}
 
             <Footer1 />
             <Footer2 />

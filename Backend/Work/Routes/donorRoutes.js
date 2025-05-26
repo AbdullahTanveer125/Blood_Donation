@@ -17,7 +17,8 @@ const {
     donor_signUp,
     donor_login,
     get_donor,
-    get_all_donor
+    get_all_donor,
+    delete_account
 }=require("../Controllers/donorController")
 
 
@@ -43,6 +44,9 @@ donor_router.get("/get-donor/:user_id",  get_donor);
 
 // // get all donor
 donor_router.get("/get-all-donor",  get_all_donor);
+
+// delete donor
+donor_router.delete("/delete-donor/:donor_id",  delete_account);
 
 
 

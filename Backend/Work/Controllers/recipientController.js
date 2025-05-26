@@ -1,5 +1,8 @@
 const recipient_model = require("../Models-Schema/recipient_schema")
 const user_model = require("../Models-Schema/user_schema")
+const blood_request_model = require("../Models-Schema/blood_Request_Schema")
+const notification_model = require("../Models-Schema/notification_Schema")
+
 const { hashPassword, comparePassword } = require("../Middleware/hash_password");
 
 
@@ -269,6 +272,56 @@ const get_recipient = async (req, res) => {
 
 
 
+
+// // delete recipient
+const delete_account = async (req, res) => {
+    try {
+
+        const { recipient_id } = req.params;
+
+        // Step 1: Find the recipient
+        const recipient = await recipient_model.findById(recipient_id);
+        if (!recipient) {
+            return res.status(404).json({ message: 'recipient not found' });
+        }
+
+        const user_id = recipient.userId;
+
+        // Step 2: Delete the user
+        await user_model.findByIdAndDelete(user_id);
+
+        // Step 3: Optionally delete the recipient as well
+        await recipient_model.findByIdAndDelete(recipient_id);
+
+        // Step 3: Find if any blood requests exist for this recipient
+        const existingRequests = await blood_request_model.find({ recipient_id });
+
+        // Step 4: Delete those requests
+        if (existingRequests.length >= 1) {
+            const result = await blood_request_model.deleteMany({ recipient_id });
+        }
+        await notification_model.deleteMany({ recipient_id });
+
+        // return res.status(200).json({ message: 'Account deleted successfully' });
+
+        res.status(200).send({
+            success: true,
+            message: "Account deleted successfully",
+        });
+
+    } catch (error) {
+        console.log('Delete recipient Account Error:', error);
+        res.status(500).send({
+            success: false,
+            message: "Delete recipient Account Error",
+            error: error,
+        });
+    }
+};
+
+
+
+
 // //follow a user
 // // mery khayal sy "req.params.id" mey friend ki id dy gy
 // // or "req.body.userId" mey currentUser (login user) ki id dy gy
@@ -380,6 +433,6 @@ const get_recipient = async (req, res) => {
 
 // //export All functions from "Controller"
 module.exports = {
-    testController, recipient_signUp, recipient_login, get_recipient,
+    testController, recipient_signUp, recipient_login, get_recipient, delete_account,
     //    follow_to_user, get_friends, unfollow_to_user
 }

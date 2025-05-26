@@ -1,5 +1,6 @@
 const donor_model = require("../Models-Schema/donor_schema")
 const user_model = require("../Models-Schema/user_schema")
+const blood_request_model = require("../Models-Schema/blood_Request_Schema")
 const { hashPassword, comparePassword } = require("../Middleware/hash_password");
 
 
@@ -281,7 +282,7 @@ async function donor_login(req, res) {
             send_donor,
             person,
             token,
-            send_user:updated_user,
+            send_user: updated_user,
         })
 
     } catch (error) {
@@ -382,6 +383,54 @@ const get_all_donor = async (req, res) => {
 
 
 
+// // delete donors
+const delete_account = async (req, res) => {
+    try {
+
+        const { donor_id } = req.params;
+
+        // Step 1: Find the donor
+        const donor = await donor_model.findById(donor_id);
+        if (!donor) {
+            return res.status(404).json({ message: 'Donor not found' });
+        }
+
+        const user_id = donor.userId;
+
+        // Step 2: Delete the user
+        await user_model.findByIdAndDelete(user_id);
+
+        // Step 3: Optionally delete the donor as well
+        await donor_model.findByIdAndDelete(donor_id);
+
+        // Step 3: Find if any blood requests exist for this donor
+        const existingRequests = await blood_request_model.find({ donor_id });
+
+        // Step 4: Delete those requests
+        if (existingRequests.length >= 1) {
+            const result = await blood_request_model.deleteMany({ donor_id });
+        }
+        
+
+        // return res.status(200).json({ message: 'Account deleted successfully' });
+
+        res.status(200).send({
+            success: true,
+            message: "Account deleted successfully",
+        });
+
+    } catch (error) {
+        console.log('Delete Donor Account Error:', error);
+        res.status(500).send({
+            success: false,
+            message: "Delete Donor Account Error",
+            error: error,
+        });
+    }
+};
+
+
+
 
 
 
@@ -409,5 +458,5 @@ const get_all_donor = async (req, res) => {
 
 // //export All functions from "Controller"
 module.exports = {
-    testController, donor_signUp, donor_login, get_donor, get_all_donor
+    testController, donor_signUp, donor_login, get_donor, get_all_donor, delete_account
 }

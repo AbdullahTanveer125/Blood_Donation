@@ -1,6 +1,7 @@
 // const organization_model = require("../Models-Schema/organizaionSchema")
 const organization_model = require("../Models-Schema/organization_schema")
 const user_model = require("../Models-Schema/user_schema")
+const event_model = require("../Models-Schema/event_Schema")
 
 const { hashPassword, comparePassword } = require("../Middleware/hash_password");
 
@@ -260,6 +261,50 @@ const get_organization = async (req, res) => {
 
 
 
+// // delete organization
+const delete_account = async (req, res) => {
+    try {
+
+        const { organization_id } = req.params;
+
+        // Step 1: Find the organization
+        const organization = await organization_model.findById(organization_id);
+        if (!organization) {
+            return res.status(404).json({ message: 'organization not found' });
+        }
+
+        const user_id = organization.userId;
+
+        // Step 2: Delete the user
+        await user_model.findByIdAndDelete(user_id);
+
+        // Step 3: Optionally delete the organization as well
+        await organization_model.findByIdAndDelete(organization_id);
+
+        // Step 3: Delete those event
+        await event_model.deleteMany({ organization_id });
+
+        // return res.status(200).json({ message: 'Account deleted successfully' });
+
+        res.status(200).send({
+            success: true,
+            message: "Account deleted successfully",
+        });
+
+    } catch (error) {
+        console.log('Delete organization Account Error:', error);
+        res.status(500).send({
+            success: false,
+            message: "Delete organization Account Error",
+            error: error,
+        });
+    }
+};
+
+
+
+
+
 
 
 // get photo
@@ -318,4 +363,4 @@ const get_photo = async (req, res) => {
 
 
 //export All functions from "Controller"
-module.exports = { testController, organization_signUp, organization_login, get_photo, get_organization }
+module.exports = { testController, organization_signUp, organization_login, get_photo, get_organization, delete_account }

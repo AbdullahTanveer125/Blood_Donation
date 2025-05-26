@@ -108,7 +108,7 @@ function Organization_Signup() {
                 </p> */}
                 <button
                     onClick={() => navigate("/")}
-                    className="ml-10 bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition flex flex-row justify-center items-center gap-3">
+                    className="ml-10 bg-our_red border-2 border-our_red text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3">
                     <IoArrowUndo size={20} /> Back to Home
                 </button>
             </div>
@@ -126,12 +126,12 @@ function Organization_Signup() {
                         >
 
                             {/* <h1 className="text-5xl font-bold text-center">Register Now!</h1> */}
-                            <img src="/signup.png" alt="" className='h-96 lg:h-96 mx-auto' />
+                            <img src="/signup2.png" alt="" className='h-96 lg:h-96 mx-auto' />
                         </div>
 
                     </div>
 
-                    <div className="bg-slate-100 w-[90%] md:w-[80%] lg:w-[60%] card shrink-0 shadow-xl flex items-center"
+                    <div className="bg-slate-100 w-[90%] md:w-[80%] lg:w-[60%] card shrink-0 flex items-center"
                     >
                         <form onSubmit={handleSubmit} encType="multipart/form-data"
                             className=" p-5 ">
@@ -307,7 +307,7 @@ function Organization_Signup() {
                             </div>
 
                             <div className="mt-20 w-full p-2 text-center">
-                                <button type="submit" className="bg-[#820000] border-2 border-[#820000] text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
+                                <button type="submit" className="bg-our_red border-2 border-our_red text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition"
                                 >Register</button>
                             </div>
                         </form>

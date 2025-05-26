@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 // import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+
 import axios from "axios";
 import { useAuth } from "../../../context/auth";
 
 
-
-import { FaKey } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 import { FaCircleUser } from "react-icons/fa6";
 
 import { useNavigate } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+
 
 function Organization_Login() {
 
@@ -102,6 +102,8 @@ function Organization_Login() {
                 //   user: res.data.send_donor,
                 //   token: res.data.token,
                 // });
+
+                toast.success('Login Successfuly!');
                 navigate("/organization");
                 // navigate(location.state || "/");//is sy agr login ni hai to pehly login krwa kr phir usi page pr byj dy ga jisy access krna ho ga
 

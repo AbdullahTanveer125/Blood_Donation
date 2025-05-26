@@ -9,17 +9,22 @@ import { IoIosLogOut } from "react-icons/io";
 // import { LuMessageCircleMore } from "react-icons/lu";
 // import { LuMessageSquareMore } from "react-icons/lu";  
 import { AiOutlineMessage } from "react-icons/ai";
+import { MdAutoDelete } from "react-icons/md";
 
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/auth";
 
 import { useLocation } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+
 function R_Sidebar() {
 
     const navigate = useNavigate();
     const [auth, setAuth] = useAuth();
     // console.log("**** Auth *****", auth.recipient._id)
+    const recipient_id=auth.recipient._id
+    console.log("DDDDDDDDDDDDDDDDDD====",recipient_id)
 
 
     const [donor_username, setDonor_username] = useState("");
@@ -72,6 +77,7 @@ function R_Sidebar() {
     const handleLogout = () => {
         setAuth(null); // Clear auth state
         localStorage.removeItem("auth"); // Remove auth from localStorage
+        toast.success('Logout Successfuly!');
         navigate("/"); // Redirect to home page
     };
 
@@ -189,6 +195,24 @@ function R_Sidebar() {
         // setFeedbackData({ id: '', username: '', description: '' });
     };
 
+    const handleDelete = async () => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/recipient/delete-recipient/${recipient_id}`);
+
+            if (response.data.success) {
+                // console.log("Deleted successfully:", response.data);
+
+                toast.success('Delete Account Successfully!');
+                // Navigate to /abc after successful deletion
+                navigate("/")
+            }
+            ;
+        } catch (error) {
+            console.error("Error deleting:", error.response?.data || error.message);
+            // Optional: Show toast or alert
+            toast.error('Error in Delete Account of recipient!');
+        }
+    };
 
 
 
@@ -271,6 +295,12 @@ function R_Sidebar() {
                                 <span className="px-1 rounded-full bg-white text-our_red font-extrabold"
                                 >{notifications.length}</span>
                             </div>
+                        </li>
+
+                        <li
+                            onClick={handleDelete}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-our_red`}>
+                            <MdAutoDelete size={17} /> Delete Account
                         </li>
 
 

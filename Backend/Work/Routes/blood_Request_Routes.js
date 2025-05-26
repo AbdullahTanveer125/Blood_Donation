@@ -15,9 +15,9 @@ const {
     get_all_blood_request,
     get_specific_blood_request,
     delete_blood_request,
-    delete_all_blood_requests,
     search_blood_requests,
-    get_donor_blood_request
+    get_donor_blood_request,
+    delete_all_blood_requests,
 }=require("../Controllers/blood_Request_Controller")
 
 

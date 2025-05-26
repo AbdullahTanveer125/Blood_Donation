@@ -1,17 +1,16 @@
 import React from 'react'
 
-function R_Steps() {
+function O_Steps() {
     return (
         <div className=' pt-28 px-32 font-nunito'>
 
             <h1 className='text-4xl font-bold text-center'>
-                <span className='text-our_red'>Process</span> to generate Blood Request
+                <span className='text-our_red'>Process</span> to generate Event
             </h1>
-            <p className='mt-2 text-sm text-center '>
-                {/* Follow this simple process to generate blood request for your loved ones and help people in need.  */}
-                If you are in need of blood, our platform is here to help you connect with available donors.
-                To ensure a fast and accurate response, please follow the steps below carefully.
-                Your request will be reviewed and forwarded to potential donors in your area.
+            <p className='mt-2 text-center '>
+                Contributing to the lifesaving mission of blood donation.
+                To host a successful blood donation event, please follow the steps below.
+                These steps will guide you in setting up event details and reaching potential donors.
             </p>
 
             <ul className="pt-20 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
@@ -32,7 +31,7 @@ function R_Steps() {
                         <time className="text-lg font-black text-our_red">Step-1</time>
                         <div className="text-lg font-black">Sign Up</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300 font-nunito'>
-                            Create an account on our website to access donor profiles and request blood.
+                            Sign up your organization with valid credentials to access event creation and management features.
                         </p>
                     </div>
                     <hr />
@@ -53,9 +52,9 @@ function R_Steps() {
                     </div>
                     <div className="timeline-end md:mb-10">
                         <time className="text-lg font-black text-our_red">Step-2</time>
-                        <div className="text-lg font-black">Request Blood</div>
+                        <div className="text-lg font-black">Create Event</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
-                            Generate a request mentioning blood type, urgency level, and hospital location for delivery.
+                            Whenever hosting a blood drive, create an event with date, time, and venue details.
                         </p>
                     </div>
                     <hr />
@@ -76,9 +75,9 @@ function R_Steps() {
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
                         <time className="text-lg font-black text-our_red">Step-3</time>
-                        <div className="text-lg font-black">Search Donors</div>
+                        <div className="text-lg font-black">Public Visibility</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
-                            Browse donor profiles by blood type and location; get contact info to reach out.
+                            Your event will be visible to all users, donors and recipients for wider participation.
                         </p>
                     </div>
                     <hr />
@@ -99,9 +98,9 @@ function R_Steps() {
                     </div>
                     <div className="timeline-end md:mb-10">
                         <time className="text-lg font-black text-our_red">Step-4</time>
-                        <div className="text-lg font-black">Donor Contact</div>
+                        <div className="text-lg font-black">Gather Users</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
-                            If interested, a donor will contact you directly after viewing your blood request.
+                            Interested users can view your event and join the drive at the specified location.
                         </p>
                     </div>
                     <hr />
@@ -122,9 +121,9 @@ function R_Steps() {
                     </div>
                     <div className="timeline-start mb-10 md:text-end">
                         <time className="text-lg font-black text-our_red">Step-5</time>
-                        <div className="text-lg font-black">Confirm it</div>
+                        <div className="text-lg font-black">Delete Event</div>
                         <p className=' bg-gray-00 rounded-md p-3 shadow-md shadow-gray-300  font-nunito'>
-                            After receiving blood, confirm it on the site to update donor's donation history.
+                            You can delete the event from your dashboard easily and delete event automatically after passed event's date and time.
                         </p>
                     </div>
                 </li>
@@ -136,4 +135,4 @@ function R_Steps() {
     )
 }
 
-export default R_Steps
+export default O_Steps

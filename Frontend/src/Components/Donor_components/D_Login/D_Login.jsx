@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 // import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import axios from "axios";
 import { useAuth } from "../../../context/auth";
 
+import { toast } from 'react-toastify';
 
 
 import { FaKey } from "react-icons/fa";
@@ -102,6 +103,8 @@ function Donor_Login() {
                 //   user: res.data.send_donor,
                 //   token: res.data.token,
                 // });
+
+                toast.success('Login Successfuly!');
                 navigate("/donor");
                 // navigate(location.state || "/");//is sy agr login ni hai to pehly login krwa kr phir usi page pr byj dy ga jisy access krna ho ga
 
@@ -123,7 +126,7 @@ function Donor_Login() {
         } catch (error) {
             console.log("********error*******", error, "***********");
             // toast.error("Something went wrong");
-            // toast.error(error.response.data.message);
+            toast.error(error.response.data.message);
         }
     };
 

@@ -17,6 +17,7 @@ const {
     recipient_signUp,
     recipient_login,
     get_recipient,
+    delete_account,
     // follow_to_user,
     // get_friends,
     // unfollow_to_user
@@ -43,6 +44,8 @@ recipient_router.post("/login", recipient_login);
 // // get recipient
 recipient_router.get("/get-recipient/:recipient_id", get_recipient);
 
+// delete recipient
+recipient_router.delete("/delete-recipient/:recipient_id",  delete_account);
 
 // //follow a other user
 // recipient_router.put("/:id/follow", follow_to_user);

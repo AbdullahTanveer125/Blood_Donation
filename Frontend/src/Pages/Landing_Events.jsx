@@ -8,10 +8,14 @@ import { FaPhoneAlt } from "react-icons/fa";
 import Footer1 from '../Components/Footer1';
 import Footer2 from '../Components/Footer2';
 
+import { useNavigate } from 'react-router-dom';
+
 function Landing_Events() {
     const [events, setEvents] = useState([]);
     const [visibleCount, setVisibleCount] = useState(6);
     const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchEvents();
@@ -105,7 +109,7 @@ function Landing_Events() {
 
 
 
-            <div className='pl-28'>
+            <div className='min-h-[200px] pl-28 mb-10'>
 
                 <h2 className="text-center text-2xl font-bold mt-16">Upcoming Events</h2>
 
@@ -149,7 +153,7 @@ function Landing_Events() {
                     </button>
                 </div>
             )}
-            
+
             <Footer1 />
             <Footer2 />
 

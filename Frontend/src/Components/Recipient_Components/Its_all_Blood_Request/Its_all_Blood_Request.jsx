@@ -431,6 +431,29 @@ function Blood_Requests_of_recipient() {
         fetchBloodRequests();
     }, []);
 
+    
+    // Your date formatter
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+    }
+    
+
+    // Now apply to all events
+    const formatted_blood_request = bloodRequests.map(event => {
+        return {
+            ...event,
+            // display_time: formatTime(event.time),
+            display_date: formatDate(event.blood_need_date),
+        };
+    });
+
+    console.log("hhhhhhhhhhhhhhhhhhh===",formatted_blood_request);
+
     const deleteRequest = async (id) => {
         confirmAlert({
             title: 'Confirm Delete',
@@ -510,12 +533,12 @@ function Blood_Requests_of_recipient() {
 
             {error && <p className="text-center text-red-500">{error}</p>}
 
-            {bloodRequests.length === 0 && (
-                <p className="text-center text-gray-600">No blood requests found.</p>
+            {formatted_blood_request.length === 0 && (
+                <p className="text-center text-gray-600">No blood requests.</p>
             )}
 
             <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {(showAll ? bloodRequests : bloodRequests.slice(0, 3)).map((request) => (
+                {(showAll ? formatted_blood_request : formatted_blood_request.slice(0, 3)).map((request) => (
                     <div key={request._id} className="max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
                         <div className="p-5 font-nunito">
                             <div className="flex justify-between items-center mb-10 gap-10">
@@ -545,7 +568,7 @@ function Blood_Requests_of_recipient() {
                             </p>
 
                             <p className="text-gray-500 text-sm mb-3">
-                                <span className="font-semibold text-gray-800 mr-2">Blood need date: </span> {request.blood_need_date}
+                                <span className="font-semibold text-gray-800 mr-2">Blood need date: </span> {request.display_date}
                             </p>
 
                             <p className="text-gray-700 text-sm mt-6 mb-3 max-w-64 break-words">
@@ -570,7 +593,7 @@ function Blood_Requests_of_recipient() {
                 ))}
             </div>
 
-            {bloodRequests.length > 3 && (
+            {formatted_blood_request.length > 3 && (
                 <div className="text-center mt-16">
                     <button
                         onClick={() => setShowAll(!showAll)}

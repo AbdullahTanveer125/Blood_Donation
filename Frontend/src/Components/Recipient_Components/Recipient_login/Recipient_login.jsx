@@ -1,18 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 // import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+
 import axios from "axios";
 import { useAuth } from "../../../context/auth";
 
-
-
-import { FaKey } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 import { FaCircleUser } from "react-icons/fa6";
 
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 
 function Recipient_login() {
 
@@ -77,7 +73,7 @@ function Recipient_login() {
             console.log("*********************************************");
 
             if (res && res.data.success) {
-                toast.success(res.data && res.data.success);//  line:35
+                // toast.success(res.data && res.data.success);//  line:35
                 // toast.success(res.data.success && res.data);//  line:36
 
                 // const { send_recipient, token } = res.data;
@@ -109,7 +105,7 @@ function Recipient_login() {
                 //   token: res.data.token,
                 // });
 
-
+                toast.success('Login Successfuly!');
                 navigate("/recipient");
                 // navigate(location.state || "/");//is sy agr login ni hai to pehly login krwa kr phir usi page pr byj dy ga jisy access krna ho ga
                 // localStorage.setItem("auth", JSON.stringify(res.data))
@@ -121,6 +117,7 @@ function Recipient_login() {
             console.log("********error*******", error, "***********");
             // toast.error("Something went wrong");
             toast.error(error.response.data.message);
+            // toast.error('This is an error message!');
         }
     };
 

@@ -1,3 +1,5 @@
+import 'react-toastify/dist/ReactToastify.css';
+
 import { Routes, Route } from "react-router-dom";
 import { useState } from 'react'
 import './App.css'
@@ -57,7 +59,7 @@ import Unauthorized_user from "./Pages/Unuthorized_user.jsx";
 import Specific_blood_request_on_donor from "./Components/Donor_components/D_Specific_blood_request/Specific_blood_request_on_donor.jsx";
 import Recipient_landing_page from "./Pages/Recipient_landing_page.jsx";
 import Blog_All from "./Components/Blog_All/Blog_All.jsx";
-import Blog_Single from "./Components/Blog_Single/Blog_Single.jsx";
+// import Blog_Single from "./Components/Blog_Single/Blog_Single.jsx";
 import About_Us from "./Components/About_Us/About_Us.jsx";
 import Signup_as_a from "./Pages/Signup_as_a/Signup_as_a.jsx";
 import Contact_Us from "./Components/Contact_Us/Contact_Us.jsx";
@@ -87,6 +89,14 @@ import O_Specific_Donor from "./Components/Organization_component/O_Specific_Don
 import D_New_Chat_Messanger from "./Components/Donor_components/D_New_Chat_Messanger/D_New_Chat_Messanger.jsx";
 import R_new_chat_messanger from "./Components/Recipient_Components/R_new_chat_messanger/R_new_chat_messanger.jsx";
 import Landing_Events from "./Pages/Landing_Events.jsx";
+
+import { ToastContainer } from 'react-toastify';
+import Blog_1 from './Components/Blog_Single/Blog_1.jsx';
+import Blog_2 from './Components/Blog_Single/Blog_2.jsx';
+import Blog_3 from './Components/Blog_Single/Blog_3.jsx';
+import Blog_4 from './Components/Blog_Single/Blog_4.jsx';
+import Blog_5 from './Components/Blog_Single/Blog_5.jsx';
+// import Blog_5 from './Components/Blog_Single/Blog_5.jsx';
 
 //#EE8A9E  (light color)
 //#B01030  (dark color) #1
@@ -184,13 +194,17 @@ function App() {
         <Route path="/recipient_login" element={<Recipient_login />} />
         <Route path="/organization_login" element={<Organization_Login />} />
         <Route path="/all_blogs" element={<Blog_All />} />
-        <Route path="/single_blog" element={<Blog_Single />} />
+        <Route path="/blog_1" element={<Blog_1 />} />
+        <Route path="/blog_2" element={<Blog_2 />} />
+        <Route path="/blog_3" element={<Blog_3 />} />
+        <Route path="/blog_4" element={<Blog_4 />} />
+        <Route path="/blog_5" element={<Blog_5 />} />
         <Route path="/about_us" element={<About_Us />} />
         <Route path="/contact_us" element={<Contact_Us />} />
         <Route path="/all_events" element={<Landing_Events />} />
 
         {/* Redirect if accessing unauthorized routes */}
-        <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
+        <Route path="/*" element={<Unauthorized_user message="Page Not Found" url="" />} />
 
 
 
@@ -207,20 +221,20 @@ function App() {
             <Route path="/donor_all_event" element={<D_All_Event />} />
 
             <Route path="/specific_recipient" element={<Specific_Recipient />} />
-            
+
             <Route path="/specific_organization" element={<D_Specific_Organization />} />
 
             <Route path="/donor_blog" element={<D_Blog />} />
 
             <Route path="/donor_about_us" element={<D_About_us />} />
-            
+
             <Route path="/donor_history" element={<D_History />} />
 
             <Route path="/new_chat_messanger" element={<D_New_Chat_Messanger />} />
             <Route path="/messanger" element={<D_Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
-            <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
+            <Route path="/*" element={<Unauthorized_user message="Page Not Found" url="" />} />
 
           </>
         )}
@@ -236,7 +250,7 @@ function App() {
 
             <Route path="/all_donors" element={<All_Donors />} />
             <Route path="/specific_donor" element={<Specific_Donor />} />
-            
+
             <Route path="/recipient_specific_organization" element={<R_Specific_Organization />} />
 
             <Route path="/recipient_all_event" element={<R_All_Event />} />
@@ -248,7 +262,7 @@ function App() {
             <Route path="/messanger" element={<R_Messanger />} />
 
             {/* Redirect if accessing unauthorized routes */}
-            <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
+            <Route path="/*" element={<Unauthorized_user message="Page Not Found" url="" />} />
 
           </>
         )}
@@ -260,7 +274,7 @@ function App() {
             <Route path="/generate_event" element={<Generate_Event />} />
 
             <Route path="/organization_all_donors" element={<O_All_Donors />} />
-            
+
             <Route path="/specific_donor" element={<O_Specific_Donor />} />
 
             <Route path="/organization_blog" element={<O_Blog />} />
@@ -270,22 +284,22 @@ function App() {
             <Route path="/organization_your_event" element={<O_Your_Event />} />
 
             {/* Redirect if accessing unauthorized routes */}
-            <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
+            <Route path="/*" element={<Unauthorized_user message="Page Not Found" url="" />} />
 
           </>
         )}
 
-        {userRole === "admin" && (
+        {/* {userRole === "admin" && (
           <>
             <Route path="/view_all_requests" element={<View_All_Requests />} />
             <Route path="/view_all_events" element={<View_All_Events />} />
 
 
-            {/* Redirect if accessing unauthorized routes */}
+            Redirect if accessing unauthorized routes
             <Route path="/*" element={<Unauthorized_user message="ha g ki haal hai" url="" />} />
 
           </>
-        )}
+        )} */}
 
         {/* Unauthorized Route */}
         <Route path="/unauthorized" element={<Unauthorized_user />} />
@@ -296,7 +310,7 @@ function App() {
 
 
 
-
+      <ToastContainer />
 
 
 

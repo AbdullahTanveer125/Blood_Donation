@@ -17,6 +17,7 @@ const {
     organization_signUp,
     organization_login,
     get_organization,
+    delete_account,
     get_photo
 }=require("../Controllers/organizationController")
 
@@ -40,6 +41,10 @@ organization_router.post("/login",  organization_login);
 
 // get organization
 organization_router.get("/get-organization/:organization_id",  get_organization);
+
+
+// delete organization
+organization_router.delete("/delete-organization/:organization_id",  delete_account);
 
 
 // get organization

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
+import { toast } from 'react-toastify';
 function Login_as_a() {
 
     const navigate = useNavigate();
@@ -14,12 +15,15 @@ function Login_as_a() {
         // Execute corresponding function
         if (selectedOption === "option1") {
             console.log("Option 1 selected: Running Function 1");
+            toast.info('Login as a "Donor"');
             navigate("/donor_login");
         } else if (selectedOption === "option2") {
             console.log("Option 2 selected: Running Function 2");
+            toast.info('Login as a "Recipient"');
             navigate("/recipient_login");
         } else if (selectedOption === "option3") {
             console.log("Option 3 selected: Running Function 3");
+            toast.info('Login as a "Organization"');
             navigate("/organization_login");
         }
     };

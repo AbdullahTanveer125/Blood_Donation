@@ -4,6 +4,7 @@ import Footer1 from '../../Footer1'
 import Footer2 from '../../Footer2'
 import O_profile from '../O_profile/O_profile'
 import Blog_Slider from '../../Blog_Slider/Blog_Slider'
+import O_Steps from '../O_Steps/O_Steps'
 
 function O_Hero_Section() {
   return (
@@ -18,6 +19,7 @@ function O_Hero_Section() {
             <main className="ml-[17.3%] w-[82%]">
 
                 <O_profile />
+                <O_Steps />
                 <Blog_Slider />
                 
                 <Footer1 />

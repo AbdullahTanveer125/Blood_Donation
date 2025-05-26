@@ -5,22 +5,27 @@ import { FaSearch } from "react-icons/fa";
 import { FaHistory } from "react-icons/fa";
 import { MdCastForEducation } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
-// import { LuMessageCircleMore } from "react-icons/lu";
-// import { LuMessageSquareMore } from "react-icons/lu";  
-import { AiOutlineMessage } from "react-icons/ai";
+
+// import { AiOutlineMessage } from "react-icons/ai";
 import { BiCalendarEvent } from "react-icons/bi";
 import { RiTeamFill } from "react-icons/ri";
 import { BiSolidMessageDots } from "react-icons/bi";
+import { MdAutoDelete } from "react-icons/md";
 
 import { useAuth } from "../../../context/auth"; // Import the useAuth hook
 import { useNavigate } from "react-router-dom";
 
 import { useLocation } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 function D_Sidebar() {
 
     const [auth, setAuth] = useAuth();
+    const donor_id = auth.donor._id
+
+    // console.log("bbbbbbbbbbbbbbbbb",donor_id)
     const navigate = useNavigate();
     const location = useLocation();
     const currentPath = location.pathname;
@@ -34,7 +39,27 @@ function D_Sidebar() {
     const handleLogout = () => {
         setAuth(null); // Clear auth state
         localStorage.removeItem("auth"); // Remove auth from localStorage
+        toast.success('Logout Successfully!');
         navigate("/"); // Redirect to home page
+    };
+
+    const handleDelete = async () => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/donor/delete-donor/${donor_id}`);
+
+            if (response.data.success) {
+                // console.log("Deleted successfully:", response.data);
+
+                toast.success('Delete Account Successfully!');
+                // Navigate to /abc after successful deletion
+                navigate("/")
+            }
+            ;
+        } catch (error) {
+            console.error("Error deleting:", error.response?.data || error.message);
+            // Optional: Show toast or alert
+            toast.error('Error in Delete Account of donor!');
+        }
     };
 
 
@@ -93,6 +118,12 @@ function D_Sidebar() {
                             className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 
     ${currentPath === "/donor_about_us" ? "bg-white text-[#820000]" : "hover:bg-white hover:text-[#820000]"}`}>
                             <RiTeamFill size={15} /> About Us
+                        </li>
+
+                        <li
+                            onClick={handleDelete}
+                            className={`cursor-pointer flex flex-row items-center gap-3 text-sm px-6 py-2 hover:bg-white hover:text-our_red`}>
+                            <MdAutoDelete size={17} /> Delete Account
                         </li>
 
 

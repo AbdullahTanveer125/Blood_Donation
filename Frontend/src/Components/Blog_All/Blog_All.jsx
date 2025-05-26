@@ -17,7 +17,7 @@ const Blog_All = () => {
 	const navigate = useNavigate();
 
 	const handleReadMore = (blog) => {
-		navigate('/single_blog', { state: { blog } });
+		navigate(`/${blog.url}`, { state: { blog } });
 	};
 
 
@@ -140,22 +140,27 @@ const Blog_All = () => {
 							</div>
 						</div>
 
-						<div className="p-4 flex flex-col md:flex-row justify-between items-center gap-4">
-							<div className="flex-1 text-left relative pb-14">
-								<h3 className="text-xl font-extrabold">{blog.title}</h3>
-								<p className="text-gray-600 mt-2">{blog.description}</p>
+						<div className=" min-h-[250px] p-4 flex flex-col gap-4">
+							<div className=" flex-1 text-left relative pb-14">
+								<div>
+									<h3 className="text-xl font-extrabold">{blog.title}</h3>
+									<p className="text-gray-500 mt-2">{blog.description}</p>
+								</div>
 
-								<button
-									onClick={() => handleReadMore(blog)}
-									className="bg-our_red border-2 border-our_red text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3 absolute bottom-0 right-0">
-									Read More
-								</button>
+								<div className="">
+									<button
+										onClick={() => handleReadMore(blog)}
+										className=" bg-our_red border-2 border-our_red text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3 absolute bottom-0 right-0">
+										Read More
+									</button>
+								</div>
 							</div>
 
 						</div>
 					</div>
 				))}
 			</div>
+
 
 			<Footer1 />
 			<Footer2 />

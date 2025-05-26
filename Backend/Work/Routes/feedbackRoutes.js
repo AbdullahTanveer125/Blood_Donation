@@ -14,9 +14,9 @@ const {
     add_feedback,
     get_all_feedbacks_of_donor,
     get_all_feedbacks_of_recipient,
-    get_single_feedback,
     delete_feedback,
-    delete_all_feedbacks
+    delete_all_feedbacks,
+    get_single_feedback,
 }=require("../Controllers/feedbackController")
 
 

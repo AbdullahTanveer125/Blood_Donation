@@ -110,7 +110,7 @@ function Recipient_Signup() {
                 </p> */}
                 <button
                     onClick={() => navigate("/")}
-                    className="ml-10 bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition flex flex-row justify-center items-center gap-3">
+                    className="ml-10 bg-our_red border-2 border-our_red text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3">
                     <IoArrowUndo size={20} /> Back to Home
                 </button>
             </div>
@@ -119,7 +119,7 @@ function Recipient_Signup() {
 
                 <div className='flex flex-row justify-center'>
                     <h1 className='text-4xl font-extrabold my-4'>
-                        <span className='text-[#820000]'> Sign-Up </span> Now!
+                        <span className='text-our_red'> Sign-Up </span> Now!
                     </h1>
                 </div>
 
@@ -130,12 +130,12 @@ function Recipient_Signup() {
 
                         <div className='text-center'
                         >
-                            <img src="/signup.png" alt="" className='h-96 lg:h-[10%] mx-auto' />
+                            <img src="/signup2.png" alt="" className='h-96 lg:h-[10%] mx-auto' />
                         </div>
 
                     </div>
 
-                    <div className="bg-slate-100 w-[90%] md:w-[80%] lg:w-[50%] card shrink-0 shadow-xl flex items-center"
+                    <div className="bg-slate-100 w-[90%] md:w-[80%] lg:w-[50%] card shrink-0 flex items-center"
                     >
                         <form onSubmit={handleSubmit} encType="multipart/form-data"
                             className="p-5 ">
@@ -146,7 +146,7 @@ function Recipient_Signup() {
                                     <label htmlFor="name" className="text-sm font-medium text-gray-700">Name</label>
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaUserAlt />
+                                            <FaUserAlt size={10}/>
                                         </div>
                                         <input
                                             type="text"
@@ -199,7 +199,7 @@ function Recipient_Signup() {
                                     <label htmlFor="age" className="text-sm font-medium text-gray-700">Age</label>
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaPerson size={20} />
+                                            <FaPerson size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -219,7 +219,7 @@ function Recipient_Signup() {
                                     <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone</label>
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaPhoneVolume />
+                                            <FaPhoneVolume size={10}/>
                                         </div>
                                         <input
                                             type="text"
@@ -237,7 +237,7 @@ function Recipient_Signup() {
                                     <label htmlFor="address" className="text-sm font-medium text-gray-700">Address</label>
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaRegAddressBook size={20} />
+                                            <FaRegAddressBook size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -274,7 +274,7 @@ function Recipient_Signup() {
                                     <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <MdEmail size={20} />
+                                            <MdEmail size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -292,7 +292,7 @@ function Recipient_Signup() {
                                     <label htmlFor="username" className="text-sm font-medium text-gray-700">Username</label>
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaUserAlt size={20} />
+                                            <FaUserAlt size={15} />
                                         </div>
                                         <input
                                             type="text"
@@ -310,7 +310,7 @@ function Recipient_Signup() {
                                     <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
                                     <div className="input input-bordered flex items-center gap-2">
                                         <div className="">
-                                            <FaKey size={20} />
+                                            <FaKey size={15} />
                                         </div>
                                         <input
                                             type="password"
@@ -326,7 +326,7 @@ function Recipient_Signup() {
                             </div>
 
                             <div className="mt-6 w-[90%]  text-center">
-                                <button type="submit" className="bg-[#820000] border-2 border-[#820000] text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition"
+                                <button type="submit" className="bg-our_red border-2 border-our_red text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition"
                                 >Register</button>
                             </div>
                         </form>

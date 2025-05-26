@@ -2,124 +2,64 @@
 
 export const Blog_Data = [
     {
+        url: "blog_1",
+
         date: '11 May 2025',
 
-        title: 'New movie is released!',
+        title: 'Donating Platelets',
 
-        heading_2: "Why Regular Donations Matter",
-
-        description: 'Click the button to watch on Jetflix app. Click the button to watch on Jetflix app.',
+        description: 'Blood consists of several components, each with a distinct and potentially lifesaving role.',
 
         image_on_slider: './blog1.jpg',
 
-        paragraph_1: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_2: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_3: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-        line_1: "Regular blood donations ensure that hospitals are always stocked for emergencies. Whether it's a trauma case, surgery, or a patient battling cancer — your donation becomes a lifeline.",
-        line_2: "“A single donation can save up to three lives.”",
-        line_3: "“Be the reason someone smiles today.”",
-        line_4: "Join our community of heroes. Donate blood, share your story, and inspire others to be part of this life-changing mission. Every drop counts — and so do you.",
-        image_on_card: './blog1.jpg',
-        image_on_page_1: './blog1.jpg',
-        image_on_page_2: './blog1.jpg',
     },
     {
+        url: "blog_2",
+        
         date: '12 May 2025',
 
-        title: 'New movie is released!',
+        title: 'Stories of Lives',
 
-        heading_2: "Why Regular Donations Matter",
+        description: 'Few people ever anticipate needing blood transfusions, yet it’s a reality that many face every day.',
 
-        description: 'Click the button to watch on Jetflix app. Click the button to watch on Jetflix app.',
+        image_on_slider: './blog2.jpg',
 
-        image_on_slider: './blog1.jpg',
-
-        paragraph_1: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_2: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_3: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-        line_1: "Regular blood donations ensure that hospitals are always stocked for emergencies. Whether it's a trauma case, surgery, or a patient battling cancer — your donation becomes a lifeline.",
-        line_2: "“A single donation can save up to three lives.”",
-        line_3: "“Be the reason someone smiles today.”",
-        line_4: "Join our community of heroes. Donate blood, share your story, and inspire others to be part of this life-changing mission. Every drop counts — and so do you.",
-        image_on_card: './blog1.jpg',
-        image_on_page_1: './blog1.jpg',
-        image_on_page_2: './blog1.jpg',
     },
     {
+        url: "blog_3",
+        
         date: '13 May 2025',
 
-        title: 'New movie is released!',
+        title: 'Blood Donation Myths Busted',
 
-        heading_2: "Why Regular Donations Matter",
+        description: 'Donating blood is a generous act that saves countless lives each day. But despite its life-saving impact, blood donation is surrounded by numerous myths that keep far too many potential donors from donating.',
 
-        description: 'Click the button to watch on Jetflix app. Click the button to watch on Jetflix app.',
+        image_on_slider: './blog3.jpg',
 
-        image_on_slider: './blog1.jpg',
-
-        paragraph_1: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_2: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_3: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-        line_1: "Regular blood donations ensure that hospitals are always stocked for emergencies. Whether it's a trauma case, surgery, or a patient battling cancer — your donation becomes a lifeline.",
-        line_2: "“A single donation can save up to three lives.”",
-        line_3: "“Be the reason someone smiles today.”",
-        line_4: "Join our community of heroes. Donate blood, share your story, and inspire others to be part of this life-changing mission. Every drop counts — and so do you.",
-        image_on_card: './blog1.jpg',
-        image_on_page_1: './blog1.jpg',
-        image_on_page_2: './blog1.jpg',
     },
     {
+        url: "blog_4",
+        
         date: '14 May 2025',
 
-        title: 'New movie is released!',
+        title: 'Maintaining Blood Donor Health',
 
-        heading_2: "Why Regular Donations Matter",
+        description: 'eing a blood donor is a selfless act that makes a lifelong difference.',
 
-        description: 'Click the button to watch on Jetflix app. Click the button to watch on Jetflix app.',
+        image_on_slider: './blog4.jpg',
 
-        image_on_slider: './blog1.jpg',
-
-        paragraph_1: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_2: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_3: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-        line_1: "Regular blood donations ensure that hospitals are always stocked for emergencies. Whether it's a trauma case, surgery, or a patient battling cancer — your donation becomes a lifeline.",
-        line_2: "“A single donation can save up to three lives.”",
-        line_3: "“Be the reason someone smiles today.”",
-        line_4: "Join our community of heroes. Donate blood, share your story, and inspire others to be part of this life-changing mission. Every drop counts — and so do you.",
-        image_on_card: './blog1.jpg',
-        image_on_page_1: './blog1.jpg',
-        image_on_page_2: './blog1.jpg',
     },
     {
+        url: "blog_5",
+        
         date: '15 May 2025',
 
-        title: 'New movie is released!',
+        title: 'Human Side of Blood Donation',
 
-        heading_2: "Why Regular Donations Matter",
 
-        description: 'Click the button to watch on Jetflix app. Click the button to watch on Jetflix app.',
+        description: 'Behind every pint of donated blood lies an incredible story, one of lives touched by the generosity of strangers. But every blood donation is more than a random act of kindness.',
 
-        image_on_slider: './blog1.jpg',
-
-        paragraph_1: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_2: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-
-        paragraph_3: "Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need. Donating blood is a noble act that has the power to save lives. From the moment you decide to donate, you're starting a chain of hope and healing for someone in critical need.",
-        line_1: "Regular blood donations ensure that hospitals are always stocked for emergencies. Whether it's a trauma case, surgery, or a patient battling cancer — your donation becomes a lifeline.",
-        line_2: "“A single donation can save up to three lives.”",
-        line_3: "“Be the reason someone smiles today.”",
-        line_4: "Join our community of heroes. Donate blood, share your story, and inspire others to be part of this life-changing mission. Every drop counts — and so do you.",
-        image_on_card: './blog1.jpg',
-        image_on_page_1: './blog1.jpg',
-        image_on_page_2: './blog1.jpg',
+        image_on_slider: './blog5.jpg',
     },
 ];
 

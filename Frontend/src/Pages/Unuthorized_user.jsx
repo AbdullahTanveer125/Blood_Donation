@@ -31,7 +31,7 @@ function Unauthorized_user({ message,url }) {
       >
         <Link
           to={`/${url}`}
-          className="px-6 py-3 border-2 border-[#820000] bg-[#820000] hover:bg-white hover:text-[#820000] text-white font-bold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+          className="px-6 py-3 border-2 border-[#820000] bg-[#820000] hover:bg-white hover:text-[#820000] text-white rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
         >
           Go Back to Home
         </Link>
