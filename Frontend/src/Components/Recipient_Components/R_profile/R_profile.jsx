@@ -6,6 +6,7 @@ import { MdBloodtype } from "react-icons/md";
 import { FaPersonWalkingLuggage } from "react-icons/fa6";
 import { FaWeightScale } from "react-icons/fa6";
 import { PiHospitalDuotone } from "react-icons/pi";
+import { FaPerson } from "react-icons/fa6";
 import { FaAddressBook } from "react-icons/fa6";
 // import Blood_Request_on_Donor from '../D_Blood_Request/D_Blood_Request';
 
@@ -21,7 +22,7 @@ function R_Profile() {
 
 
     return (
-        <div className=''>
+        <div className='font-nunito mb-6'>
 
 
             {/* image element */}
@@ -35,19 +36,27 @@ function R_Profile() {
 
                     <div>
                         <img
-                            src={image || "/abdullah.png"}
+                            src={image || "/default_user.jpg"}
                             alt=""
                             className='h-48 w-48 border-8 border-white rounded-full object-cover object-center'
                         />
+                        <div className=' mt-2 text-center font-bold'>{auth.user.name}</div>
                     </div>
                     <div>
                         <div className='h-20'></div>
-                        <div>
-                            <p className='text-xl font-bold'>{auth.user.username}</p>
-                            <p className='font-nunito  text-sm text-gray-600 font-bold'>Recipient</p>
-                            <div className='flex flex-row items-center gap-6'>
+                        <div className=''>
+                            <div className='mt-2 flex flex-row justify-center items-center gap-20'>
+                                <p className='text-xl font-bold'>{auth.user.username}</p>
+                                <div className='flex flex-row justify-center items-center gap-7'>
+                                    <p className='flex flex-row justify-center items-center gap-1'><FaPerson size={15}/> {auth.recipient.gender}</p>
+                                    <p className='flex flex-row justify-center items-center gap-1 text-sm'> <span className='font-bold'>Age:</span> {auth.recipient.age} years</p>
+                                </div>
+                            </div>
+                            <p className='font-nunito  text-xs text-gray-500 font-bold'>Recipient</p>
+                            <div className='flex flex-col gap-2 mt-4'>
                                 <p className='flex flex-row items-center gap-2 font-nunito text-xs text-gray-900'> <FaPhone size={10} />+92 {auth.user.phone}</p>
                                 <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-900'><MdEmail /> {auth.user.email}</p>
+                                <p className='flex flex-row items-center gap-2 font-nunito  text-xs text-gray-900'><FaAddressBook /> {auth.recipient.address}</p>
 
                             </div>
                         </div>
@@ -57,58 +66,6 @@ function R_Profile() {
 
 
             </div>
-
-
-
-            {/* information section */}
-            <div className='h-[320px] bg-gray-00 flex flex-row justify-around items-center pt-6'>
-
-
-                <div className='bg-slate-00 flex flex-col justify-center space-y-3  ml-36 w-[500px] font-nunito text-sm '
-                >
-                    <div className='flex flex-row justify-between items-center'>
-                        <p className='flex flex-row gap-3 items-center'>
-                            <FaRegUser /> Full Name
-                        </p>
-                        <p className=' '>Abdullah Tanveer</p>
-                    </div>
-
-                    <div className='flex flex-row justify-between items-center'>
-                        <p className='flex flex-row gap-3 items-center'>
-                            <MdBloodtype /> Gender
-                        </p>
-                        <p className=' '>Male</p>
-                    </div>
-
-                    <div className='flex flex-row justify-between items-center'>
-                        <p className='flex flex-row gap-3 items-center'>
-                            <FaPersonWalkingLuggage /> Age
-                        </p>
-                        <p className='  '>52</p>
-                    </div>
-
-
-                    <div className=' flex flex-row justify-between items-start gap-4'>
-                        <p className='flex flex-row gap-3 items-center'>
-                            <FaAddressBook /> Address
-                        </p>
-                        <p className='pt- italic text-right w-80'>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, aperiam. Temporibus reiciendis repellat quaerat quos voluptas.
-                        </p>
-                    </div>
-
-
-                </div>
-
-                <div>
-                    {/* aaaaa */}
-                </div>
-
-
-            </div>
-
-            {/* image element */}
-            {/* image element */}
 
             {/* <Blood_Request_on_Donor /> */}
 

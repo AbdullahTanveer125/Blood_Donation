@@ -39,13 +39,13 @@ function Login_as_a() {
         >
             {/* bg-[url('./login_as_a3.jpg')] bg-cover bg-center */}
             {/* bg-gradient-to-br from-red-100 to-red-300 */}
-            <div className="relative w-[100vw] h-[100vh] bg-[url('./check4.png')] bg-cover bg-center inset-0 flex flex-row justify-center items-center">
+            <div className="relative w-[100vw] h-[100vh] bg-[url('./LogIn.png')] bg-cover bg-center inset-0 flex flex-row justify-center items-center">
 
                 {/* Content on top (fully visible) */}
                 <div className="">
 
-                    <div className="bg-gray-500 bg-opacity-10 backdrop-blur-lg border border-black border-opacity-20 p-8 rounded-lg shadow-lg w-96">
-                        <h2 className="text-2xl font-semibold text-bg-[url('./login_as_a3.jpg')] bg-cover bg-center text-center mb-6">Login as a</h2>
+                    <div className="bg-gray-600 bg-opacity-10 backdrop-blur-lg  border-opacity-20 p-8 rounded-lg shadow-lg w-80 ">
+                        <h2 className="text-2xl text-our_red font-semibold text-bg-[url('./login_as_a3.jpg')] bg-cover bg-center text-center mb-6">Login as a</h2>
 
                         {/* Radio Buttons */}
                         <div className="flex flex-col space-y-3">
@@ -55,9 +55,9 @@ function Login_as_a() {
                                     name="selection"
                                     value="option1"
                                     onChange={() => setSelectedOption("option1")}
-                                    className="w-5 h-5 text-blue-600 focus:ring-blue-500"
+                                    className="w-5 h-5 text-our_red focus:ring-our_red"
                                 />
-                                <span className="text-black">Donor</span>
+                                <span className="text-our_red">Donor</span>
                             </label>
 
                             <label className="flex items-center space-x-2 cursor-pointer">
@@ -66,9 +66,9 @@ function Login_as_a() {
                                     name="selection"
                                     value="option2"
                                     onChange={() => setSelectedOption("option2")}
-                                    className="w-5 h-5 text-green-600 focus:ring-green-500"
+                                    className="w-5 h-5 text-our_red focus:ring-our_red"
                                 />
-                                <span className="text-black">Recipient</span>
+                                <span className="text-our_red">Recipient</span>
                             </label>
 
                             <label className="flex items-center space-x-2 cursor-pointer">
@@ -77,21 +77,24 @@ function Login_as_a() {
                                     name="selection"
                                     value="option3"
                                     onChange={() => setSelectedOption("option3")}
-                                    className="w-5 h-5 text-red-600 focus:ring-red-500"
+                                    className="w-5 h-5 text-our_red focus:ring-our_red"
                                 />
-                                <span className="text-black">Organization</span>
+                                <span className="text-our_red">Organization</span>
                             </label>
                         </div>
 
                         {/* Submit Button */}
-                        <button
-                            onClick={handleSelection}
-                            className={`mt-6 w-full py-2 text-black font-semibold rounded-lg transition-colors duration-300 ${selectedOption ? "bg-[#820000] border-2 border-[#820000] text-white py-2 px-4 rounded hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition " : "bg-gray-400 cursor-not-allowed"
-                                }`}
-                            disabled={!selectedOption}
-                        >
-                            Submit
-                        </button>
+                        <div className="flex flex-row justify-center items-center mt-6">
+                            <button
+                                onClick={handleSelection}
+                                className={`px-5 py-1 text-gray-500 transition-colors duration-300 rounded-full ${selectedOption ? "bg-[#820000] border-2 border-[#820000] text-white rounded-full hover:bg-white hover:text-[#820000] hover:border-2 hover:border-[#820000] hover:font-bold transition " : "bg-gray-300 cursor-not-allowed"
+                                    }`}
+                                disabled={!selectedOption}
+                            >
+                                Submit
+                            </button>
+                        </div>
+
                     </div>
 
                 </div>
@@ -103,3 +106,5 @@ function Login_as_a() {
 }
 
 export default Login_as_a
+
+

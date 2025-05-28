@@ -13,6 +13,7 @@ import { MdEmail } from "react-icons/md";
 import { GiWeight } from "react-icons/gi";
 import { FaPerson } from "react-icons/fa6";
 import { HiMiniArrowLeftStartOnRectangle } from "react-icons/hi2";
+import { IoArrowUndo } from "react-icons/io5";
 
 
 import { useAuth } from "../../../context/auth";
@@ -105,17 +106,16 @@ function Generate_Blood_Request() {
     return (
         <div className="min-h-screen font-nunito bg-[url('./bb.png')] bg-cover bg-center">
             {/* Top-left button */}
-            <button
-                onClick={() => navigate("/recipient")}
-                className="absolute top-6 left-6 bg-our_red text-white border-2 border-our_red py-2 px-4 rounded hover:bg-white hover:text-our_red transition flex flex-row justify-center items-center gap-2">
-                <HiMiniArrowLeftStartOnRectangle size={20} className='font-extrabold' /> Go Back
-            </button>
-
-            {/* Page Heading */}
-            <h2 className="text-4xl font-bold text-white text-center mb-12">Generate Blood Request</h2>
+            <div className=' text-justify  flex flex-col items-start justify-center relative top-5 z-30'>
+                <button
+                    onClick={() => navigate("/recipient")}
+                    className="ml-10 bg-our_red  text-white  rounded-full w-8 h-8 hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3">
+                    <IoArrowUndo size={20} />
+                </button>
+            </div>
 
             {/* Two-Column Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-10 rounded-lg ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-10 rounded-lg mt-10 ">
                 {/* Left child - Empty */}
                 <div></div>
 
@@ -235,10 +235,10 @@ function Generate_Blood_Request() {
                     </div>
 
                     {/* Submit Button */}
-                    <div className="col-span-1 md:col-span-2">
+                    <div className="col-span-1 md:col-span-2 text-center">
                         <button
                             type="submit"
-                            className="w-full text-white bg-our_red hover:bg-white hover:text-our_red border border-our_red py-2 px-4 rounded font-bold transition"
+                            className=" text-white bg-our_red hover:bg-white hover:text-our_red border-2 border-our_red py-2 px-4 rounded-full font-bold transition"
                         >
                             Create Blood Request
                         </button>

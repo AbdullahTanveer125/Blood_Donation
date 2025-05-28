@@ -8,6 +8,8 @@ import { FaPhoneAlt } from "react-icons/fa";
 import Footer1 from '../Components/Footer1';
 import Footer2 from '../Components/Footer2';
 
+import { motion, AnimatePresence } from "framer-motion";
+
 import { useNavigate } from 'react-router-dom';
 
 function Landing_Events() {
@@ -74,6 +76,89 @@ function Landing_Events() {
     const eventsToShow = formattedEvents.slice(0, visibleCount);
 
 
+
+
+
+    const [showLoginForm, setShowLoginForm] = useState(false);
+    const [showSignupForm, setShowSignupForm] = useState(false);
+    const [selectedOption, setSelectedOption] = useState("");
+
+    const handleLoginSubmit = () => {
+        if (selectedOption === "option1") navigate("/donor_login");
+        else if (selectedOption === "option2") navigate("/recipient_login");
+        else if (selectedOption === "option3") navigate("/organization_login");
+    };
+
+    const handleSignupSubmit = () => {
+        if (selectedOption === "option1") navigate("/donor_signup");
+        else if (selectedOption === "option2") navigate("/recipient_signup");
+        else if (selectedOption === "option3") navigate("/organization_signup");
+    };
+
+    const renderForm = (type) => (
+        <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-10 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
+            <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="bg-white backdrop-blur-lg border border-white/20 p-8 rounded-lg shadow-lg w-80 relative"
+            >
+                <button
+                    className="absolute top-2 right-3 text-xl font-bold"
+                    onClick={() => {
+                        setShowLoginForm(false);
+                        setShowSignupForm(false);
+                        setSelectedOption("");
+                    }}
+                >
+                    ×
+                </button>
+
+                <h2 className="text-2xl text-our_red font-bold text-center mb-6">
+                    {type === "login" ? "Login as a" : "Sig Up as a"}
+                </h2>
+
+                <div className="flex flex-col space-y-3">
+                    {["Donor", "Recipient", "Organization"].map((role, idx) => {
+                        const value = `option${idx + 1}`;
+                        return (
+                            <label key={value} className="flex items-center space-x-2 cursor-pointer">
+                                <input
+                                    type="radio"
+                                    name={`${type}_selection`}
+                                    value={value}
+                                    onChange={() => setSelectedOption(value)}
+                                    checked={selectedOption === value}
+                                    className="w-5 h-5 text-our_red focus:ring-our_red"
+                                />
+                                <span className="text-our_red">{role}</span>
+                            </label>
+                        );
+                    })}
+                </div>
+
+                <div className="flex justify-center mt-6">
+                    <button
+                        onClick={type === "login" ? handleLoginSubmit : handleSignupSubmit}
+                        disabled={!selectedOption}
+                        className={`px-5 py-1 text-sm rounded-full transition duration-300 ${selectedOption
+                            ? "bg-[#820000] border border-[#820000] text-white hover:bg-white hover:text-[#820000] hover:font-bold"
+                            : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            }`}
+                    >
+                        Submit
+                    </button>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+
     return (
         <div className="bg-slate-50 font-nunito">
 
@@ -99,10 +184,10 @@ function Landing_Events() {
                 </div>
                 <div className="flex space-x-4">
                     <button
-                        onClick={() => navigate('/login_as_a')}
+                        onClick={() => setShowLoginForm(true)}
                         className="text-white border-2 border-white px-4 py-1 rounded-full hover:bg-red-50 hover:text-[#820000] transition">Log In</button>
                     <button
-                        onClick={() => navigate('/signup_as_a')}
+                        onClick={() => setShowSignupForm(true)}
                         className="bg-white text-[#820000] px-4 py-1 rounded-full hover:bg-gray-200 transition">Sign Up</button>
                 </div>
             </nav>
@@ -153,6 +238,11 @@ function Landing_Events() {
                     </button>
                 </div>
             )}
+
+
+            {/* Forms */}
+            <AnimatePresence>{showLoginForm && renderForm("login")}</AnimatePresence>
+            <AnimatePresence>{showSignupForm && renderForm("signup")}</AnimatePresence>
 
             <Footer1 />
             <Footer2 />

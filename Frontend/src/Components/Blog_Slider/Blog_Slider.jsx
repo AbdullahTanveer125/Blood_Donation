@@ -52,7 +52,7 @@ function Blog_Slider() {
                                 <div className="card-actions justify-end">
                                     <button
                                         onClick={() => handleReadMore(blog)}
-                                        className="bg-our_red border-2 border-our_red text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3"
+                                        className="bg-our_red border-2 border-our_red text-white py-2 px-4 rounded-full hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3"
                                     >
                                         Read More <MdArrowOutward size={20} />
                                     </button>

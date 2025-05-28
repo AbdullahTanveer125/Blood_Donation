@@ -2,8 +2,9 @@ import React from 'react'
 
 import { FaPhoneFlip } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-
+import { FaLink } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
+import { FaUserAlt } from "react-icons/fa";
 import { FaHouseDamage } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaHistory } from "react-icons/fa";
@@ -14,44 +15,67 @@ import { AiOutlineMessage } from "react-icons/ai";
 import Blood_donation_steps_1 from '../../Landing_page_components/Blood_donation_steps_1/Blood_donation_steps_1';
 import O_Sidebar from '../O_Sidebar/O_Sidebar';
 
+import { useAuth } from "../../../context/auth";
 
 function O_profile() {
+
+    const [auth] = useAuth();
+    console.log("**** ooooooooooooo Auth ****", auth)
+    const image = auth.user.profile_photo;
+
     return (
-        <div className='font-nunito mb-40'>
+        <div className='font-nunito mb-5'>
 
 
             <div className=''>
 
-                <div class=" bg-[url('./organization1.png')] bg-cover bg-center h-60 flex flex-col justify-center items-center text-white pt-">
-                    <p>Organization Name</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                <div class=" bg-cover bg-center h-60 flex flex-col justify-center items-center text-white pt-"
+                    style={{ backgroundImage: `url(${image})` }}
+                >
+                    {/* <p>{auth.user.name}</p>
+                    <p>The Edhi Foundation is a non-profit social welfare organization based in Pakistan.</p> */}
                 </div>
 
-                <div className=' p-2 flex flex-row justify-between items-center pl-5'>
+
+                <div className='mt-3 flex flex-row justify-center items-center bg-slate-00'>
+                    <div className='flex flex-col justify-center items-center bg-blue-00'>
+                        <p className='font-bold text-3xl'>{auth.user.name}</p>
+                        <p className='flex flex-row justify-center items-center text-gray-600 gap-1 text-center font-nunito text-sm w-80'> {auth.organization.location}</p>
+
+                        <div className='mt-2 text-sm flex flex-row justify-center items-center gap-16 bg-orange-00'>
+                            <p className='flex flex-row justify-center items-center gap-1 text-gray-700'> <FaPhoneFlip size={10} />+92 {auth.user.phone}</p>
+                            <p className='flex flex-row justify-center items-center gap-1 text-gray-600'><FaLink size={13}/>{auth.organization.website_url}</p>
+                            {/* <p className='flex flex-row justify-center items-center gap-1 text-gray-700'><FaUserAlt /> {auth.user.username}</p> */}
+                            <p className='flex flex-row justify-center items-center gap-1 text-gray-600'> <MdEmail size={15} /> {auth.user.email}</p>
+                        </div>
+
+                    </div>
+                </div>
+                {/* <div className=' p-2 flex flex-row justify-between items-cente pl-5'>
                     <div className=''>
 
                         <div className='flex flex-col gap-2'>
-                            <p className='font-bold'>Organization Name</p>
-                            <p className='flex flex-row items-center text-gray-800 gap-1 font-nunito text-sm'> <FaLocationDot size={10} /> College Road, Township Block C Phase 1 Johar Town, Lahore, 54770</p>
+                            <p className='font-bold text-2xl'>{auth.user.name}</p>
+                            <p className='flex flex-row items-center text-gray-800 gap-1 font-nunito text-sm'> <FaLocationDot size={10} /> {auth.organization.location}</p>
 
                             <div className='flex flex-row'>
                                 <div className='flex flex-row items-center gap-2 border-2 pr-2 text-sm mt-2'>
                                     <span className='bg-[#820000] text-white px-3 py-1 rounded-l-md'>URL</span>
-                                    <p className='text-gray-500 font-nunito'>www.facebook.com</p>
+                                    <p className='text-gray-500 font-nunito'>{auth.organization.website_url}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className=' flex flex-col justify-center items-center gap-7 pr-6 '>
-                        <div className='font-bold'>User Name</div>
-                        <div className='flex flex-row justify-center items-center gap-6 text-sm'>
-                            <p className='flex flex-row justify-center items-center gap-3 text-gray-700'> <FaPhoneFlip size={15}/> 0309-9014620</p>
-                            <p className='flex flex-row items-center gap-3'> <MdEmail size={15} /> abbhai125420@gmail.com</p>
+                    <div className='bg-orange-00 flex flex-col justify-cente items-start gap- pr-52 '>
+                        <div className='font-bold'>{auth.user.username}</div>
+                        <div className='flex flex-row justify-center items-center gap-8 text-xs text-gray-600'>
+                            <p className='flex flex-row justify-center items-center gap-1 text-gray-700'> <FaPhoneFlip size={10} />+92 {auth.user.phone}</p>
+                            <p className='flex flex-row items-center gap-1'> <MdEmail size={15} /> {auth.user.email}</p>
                         </div>
 
                     </div>
-                </div>
+                </div> */}
 
 
             </div>

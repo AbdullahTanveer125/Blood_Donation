@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { FaLinkedin, FaEnvelope, FaGithub } from 'react-icons/fa';
 import Our_Score from '../Our_Score/Our_Score';
 import Our_feedback from '../Landing_page_components/Our_feedback/Our_feedback';
@@ -8,7 +8,7 @@ import Footer2 from '../Footer2';
 
 import { Link } from 'react-router-dom';
 import { useAuth } from "../../context/auth";
-
+import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from 'react-router-dom';
 
 const teamMembers = [
@@ -34,7 +34,7 @@ const teamMembers = [
         name: 'Amna Aqeel',
         role: 'Full-Stack Developer',
         description: 'Focuses on user-centric and accessible designs.',
-        image: './fatima.png',
+        image: './amna.jpeg',
         linkedin: '#',
         email: '#',
         github: '#',
@@ -47,6 +47,87 @@ function About_Us() {
     const [auth] = useAuth();
     // console.log("DDDDDDD=", auth)
     const navigate = useNavigate();
+
+    const [showLoginForm, setShowLoginForm] = useState(false);
+    const [showSignupForm, setShowSignupForm] = useState(false);
+    const [selectedOption, setSelectedOption] = useState("");
+
+    const handleLoginSubmit = () => {
+        if (selectedOption === "option1") navigate("/donor_login");
+        else if (selectedOption === "option2") navigate("/recipient_login");
+        else if (selectedOption === "option3") navigate("/organization_login");
+    };
+
+    const handleSignupSubmit = () => {
+        if (selectedOption === "option1") navigate("/donor_signup");
+        else if (selectedOption === "option2") navigate("/recipient_signup");
+        else if (selectedOption === "option3") navigate("/organization_signup");
+    };
+
+    const renderForm = (type) => (
+        <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-10 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+        >
+            <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="bg-white backdrop-blur-lg border border-white/20 p-8 rounded-lg shadow-lg w-80 relative"
+            >
+                <button
+                    className="absolute top-2 right-3 text-xl font-bold"
+                    onClick={() => {
+                        setShowLoginForm(false);
+                        setShowSignupForm(false);
+                        setSelectedOption("");
+                    }}
+                >
+                    ×
+                </button>
+
+                <h2 className="text-2xl text-our_red font-bold text-center mb-6">
+                    {type === "login" ? "Login as a" : "Sig Up as a"}
+                </h2>
+
+                <div className="flex flex-col space-y-3">
+                    {["Donor", "Recipient", "Organization"].map((role, idx) => {
+                        const value = `option${idx + 1}`;
+                        return (
+                            <label key={value} className="flex items-center space-x-2 cursor-pointer">
+                                <input
+                                    type="radio"
+                                    name={`${type}_selection`}
+                                    value={value}
+                                    onChange={() => setSelectedOption(value)}
+                                    checked={selectedOption === value}
+                                    className="w-5 h-5 text-our_red focus:ring-our_red"
+                                />
+                                <span className="text-our_red">{role}</span>
+                            </label>
+                        );
+                    })}
+                </div>
+
+                <div className="flex justify-center mt-6">
+                    <button
+                        onClick={type === "login" ? handleLoginSubmit : handleSignupSubmit}
+                        disabled={!selectedOption}
+                        className={`px-5 py-1 text-sm rounded-full transition duration-300 ${selectedOption
+                            ? "bg-[#820000] border border-[#820000] text-white hover:bg-white hover:text-[#820000] hover:font-bold"
+                            : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            }`}
+                    >
+                        Submit
+                    </button>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+
 
     return (
 
@@ -75,10 +156,10 @@ function About_Us() {
                         </div>
                         <div className="flex space-x-4">
                             <button
-                                onClick={() => navigate('/login_as_a')}
+                                onClick={() => setShowLoginForm(true)}
                                 className="text-white border-2 border-white px-4 py-1 rounded-full hover:bg-red-50 hover:text-[#820000] transition">Log In</button>
                             <button
-                                onClick={() => navigate('/signup_as_a')}
+                                onClick={() => setShowSignupForm(true)}
                                 className="bg-white text-[#820000] px-4 py-1 rounded-full hover:bg-gray-200 transition">Sign Up</button>
                         </div>
                     </nav>
@@ -156,18 +237,18 @@ function About_Us() {
 
                                 <div className='text-center'>
                                     <h3 className="text-xl font-bold">{member.name}</h3>
-                                    <p className="text-sm font-semibold text-our_red">{member.role}</p>
+                                    <p className="text-sm font-semibold text-gray-400">{member.role}</p>
                                     {/* <p className="text-gray-600 text-sm">{member.description}</p> */}
 
                                     <div className="flex flex-row justify-center gap-4 mt-10">
                                         <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                                            <FaLinkedin size={20} className="text-our_red hover:text-black" />
+                                            <FaLinkedin size={20} className="text-gray-600 hover:text-black" />
                                         </a>
                                         <a href={`mailto:${member.email}`}>
-                                            <FaEnvelope size={20} className="text-our_red hover:text-black" />
+                                            <FaEnvelope size={20} className="text-gray-600 hover:text-black" />
                                         </a>
                                         <a href={member.github} target="_blank" rel="noopener noreferrer">
-                                            <FaGithub size={20} className="text-our_red hover:text-black" />
+                                            <FaGithub size={20} className="text-gray-600 hover:text-black" />
                                         </a>
                                     </div>
 
@@ -181,7 +262,9 @@ function About_Us() {
 
 
             </div>
-
+            {/* Forms */}
+            <AnimatePresence>{showLoginForm && renderForm("login")}</AnimatePresence>
+            <AnimatePresence>{showSignupForm && renderForm("signup")}</AnimatePresence>
 
             {/* <Our_feedback /> */}
 

@@ -189,7 +189,18 @@ async function organization_login(req, res) {
         // const token = await JWT.sign({ _id: organization._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
         const token = await JWT.sign({ _id: organization._id }, "abdullah", { expiresIn: "7d" });
 
-        const send_user = await user_model.findOne({ email }, { profile_photo: 0, password: 0 });
+        const send_user = await user_model.findOne({ email }, { password: 0 });
+
+        let updated_user;
+
+        if (send_user && send_user.profile_photo?.data) {
+            updated_user = {
+                ...send_user._doc,
+                profile_photo: `data:${send_user.profile_photo.contentType};base64,${send_user.profile_photo.data.toString("base64")}`
+            };
+        } else {
+            updated_user = send_user; // fallback if there's no photo
+        }
 
         const userId = send_user._id;
 
@@ -199,10 +210,10 @@ async function organization_login(req, res) {
         res.status(200).send({
             success: true,
             message: "Login Successfully!!",
-            send_user,
             send_organization,
             person,
             token,
+            send_user: updated_user,
         })
 
     } catch (error) {

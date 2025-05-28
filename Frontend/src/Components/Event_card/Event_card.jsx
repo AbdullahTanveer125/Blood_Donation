@@ -40,7 +40,7 @@ function Event_Card({event}) {
                         
                         <button 
                         onClick={() => navigate("/donor_all_event")}
-                        className="mt-6 bg-our_red text-gray-50 px-6 py-2 absolute bottom-5 right-5 rounded-md shadow-md flex flex-row justify-center items-center gap-2">View More <RiArrowRightUpLine size={20}/></button>
+                        className="mt-6 bg-our_red text-gray-50 px-6 py-2 absolute bottom-5 right-5 rounded-full shadow-md flex flex-row justify-center items-center gap-2">View More <RiArrowRightUpLine size={20}/></button>
                         
                     </div>
 

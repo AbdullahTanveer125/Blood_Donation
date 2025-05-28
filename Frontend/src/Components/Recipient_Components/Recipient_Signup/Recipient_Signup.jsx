@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import { FaKey } from "react-icons/fa";
@@ -82,11 +82,10 @@ function Recipient_Signup() {
             console.log("*********************************************");
 
             if (res && res.data.success) {
-                toast.success(res.data && res.data.success);//  line:35
-                // toast.success(res.data.success && res.data);//  line:36
+                toast.success('Register Successfuly!');
                 navigate("/recipient_login");
             } else {
-                toast.error(res.data);
+                toast.error(res.data.message);
             }
         } catch (error) {
             console.log(error);

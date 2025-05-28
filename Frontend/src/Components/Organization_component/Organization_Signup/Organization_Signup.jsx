@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-import toast from 'react-hot-toast';
+import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 import { FaKey } from "react-icons/fa";
@@ -13,7 +14,7 @@ import { MdEmail } from "react-icons/md";
 import { GiWeight } from "react-icons/gi";
 import { FaPerson } from "react-icons/fa6";
 import { IoArrowUndo } from "react-icons/io5";
-
+import { FaLink } from "react-icons/fa";
 
 
 function Organization_Signup() {
@@ -81,11 +82,11 @@ function Organization_Signup() {
             console.log("*********************************************");
 
             if (res && res.data.success) {
-                toast.success(res.data && res.data.success);//  line:35
+                toast.success('Register Successfully!');//  line:35
                 // toast.success(res.data.success && res.data);//  line:36
                 navigate("/organization_login");
             } else {
-                toast.error(res.data);
+                toast.error(res.data.message);
             }
         } catch (error) {
             console.log(error);
@@ -102,36 +103,29 @@ function Organization_Signup() {
 
     return (
         <div className='font-nunito'>
-            <div className='my-10 text-justify  flex flex-col items-start justify-center'>
-                {/* <p className='w-[70%]'>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, libero odio odit dolores expedita saepe magnam consequatur id nostrum labore a ipsum iste quasi at possimus, accusantium culpa mollitia! Placeat!
-                </p> */}
+            <div className='my-10 text-justify  flex flex-col items-start justify-center relative z-30'>
                 <button
                     onClick={() => navigate("/")}
-                    className="ml-10 bg-our_red border-2 border-our_red text-white py-2 px-4 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3">
-                    <IoArrowUndo size={20} /> Back to Home
+                    className="ml-10 bg-white  text-our_red  rounded-full w-8 h-8 hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition flex flex-row justify-center items-center gap-3">
+                    <IoArrowUndo size={20} />
                 </button>
             </div>
 
-            <div className=" hero min-h-screen">
+            <div className="hero min-h-screen absolute inset-0 bg-[url('/LogIn.png')] bg-cover bg-center z-0">
 
 
 
                 <div className=" hero-content flex-col lg:flex-row gap-10 justify-center items-center w-[100vw]">
 
-                    <div className="w-[90%] md:w-[80%] lg:w-[35%] text-center lg:text-left">
-
-                        <div className='text-center'
-                        // className='bg-teal-200' style={{ borderRadius: "25% 25% 0% 71% / 0% 0% 25% 68%", border: "5px solid #1a73e8" }}
-                        >
-
-                            {/* <h1 className="text-5xl font-bold text-center">Register Now!</h1> */}
-                            <img src="/signup2.png" alt="" className='h-96 lg:h-96 mx-auto' />
+                    <div className="pl-8 w-[90%] md:w-[80%] lg:w-[35%] text-center lg:text-left">
+                        <div className='bg-blue-00 min-w-[50%] position z-40 relative'>
+                            <h1 className='text-2xl font-extrabold'><span className='text-our_red'>Every Drop</span>  Counts!</h1>
+                            <p>Your small act of kindness can save a life today.</p>
                         </div>
 
                     </div>
 
-                    <div className="bg-slate-100 w-[90%] md:w-[80%] lg:w-[60%] card shrink-0 flex items-center"
+                    <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl shadow-2xl shadow-gray-400 w-[90%] md:w-[80%] lg:w-[60%] card shrink-0 flex items-center"
                     >
                         <form onSubmit={handleSubmit} encType="multipart/form-data"
                             className=" p-5 ">
@@ -140,7 +134,7 @@ function Organization_Signup() {
                             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                                 <div className="flex flex-col gap-1">
                                     <label htmlFor="name" className="text-sm font-medium text-gray-700">Name</label>
-                                    <div className="input input-bordered flex items-center gap-2">
+                                    <div className="input input-bordered flex items-center gap-2 rounded-full">
                                         <div className="">
                                             <FaUserAlt />
                                         </div>
@@ -150,7 +144,7 @@ function Organization_Signup() {
                                             onChange={function (e) { setName(e.target.value) }}
                                             required
                                             id="name"
-                                            className="grow"
+                                            className="grow border-none"
                                             placeholder=""
                                         />
                                     </div>
@@ -176,10 +170,10 @@ function Organization_Signup() {
                             </div> */}
 
                                 <div className="flex flex-col gap-1">
-                                    <label htmlFor="website_url" className="text-sm font-medium text-gray-700">website_url</label>
-                                    <div className="input input-bordered flex items-center gap-2">
+                                    <label htmlFor="website_url" className="text-sm font-medium text-gray-700">website url</label>
+                                    <div className="input input-bordered flex items-center gap-2 rounded-full">
                                         <div className="">
-                                            <FaPerson size={20} />
+                                            <FaLink />
                                         </div>
                                         <input
                                             type="text"
@@ -187,7 +181,7 @@ function Organization_Signup() {
                                             onChange={function (e) { setWebsite_url(e.target.value) }}
                                             required
                                             id="website_url"
-                                            className="grow"
+                                            className="grow border-none"
                                             placeholder=""
                                         />
                                     </div>
@@ -197,7 +191,7 @@ function Organization_Signup() {
 
                                 <div className="flex flex-col gap-1">
                                     <label htmlFor="phone" className="text-sm font-medium text-gray-700">Phone</label>
-                                    <div className="input input-bordered flex items-center gap-2">
+                                    <div className="input input-bordered flex items-center gap-2 rounded-full">
                                         <div className="">
                                             <FaPhoneVolume />
                                         </div>
@@ -207,7 +201,7 @@ function Organization_Signup() {
                                             onChange={function (e) { setPhone(e.target.value) }}
                                             required
                                             id="phone"
-                                            className="grow"
+                                            className="grow border-none"
                                             placeholder=""
                                         />
                                     </div>
@@ -215,7 +209,7 @@ function Organization_Signup() {
 
                                 <div className="flex flex-col gap-1">
                                     <label htmlFor="location" className="text-sm font-medium text-gray-700">Location</label>
-                                    <div className="input input-bordered flex items-center gap-2">
+                                    <div className="input input-bordered flex items-center gap-2 rounded-full">
                                         <div className="">
                                             <FaRegAddressBook size={20} />
                                         </div>
@@ -225,7 +219,7 @@ function Organization_Signup() {
                                             onChange={function (e) { setLocation(e.target.value) }}
                                             required
                                             id="location"
-                                            className="grow"
+                                            className="grow border-none"
                                             placeholder=""
                                         />
                                     </div>
@@ -234,7 +228,7 @@ function Organization_Signup() {
 
 
                                 <div className="flex flex-col gap-1">
-                                    <label htmlFor="profile_photo" className="text-sm font-medium text-gray-700">Profile photo</label>
+                                    <label htmlFor="profile_photo" className="text-sm font-medium text-gray-700 rounded-full">Profile photo</label>
                                     <input
                                         type="file"
                                         // value={profile_photo}
@@ -252,7 +246,7 @@ function Organization_Signup() {
 
                                 <div className="flex flex-col gap-1">
                                     <label htmlFor="email" className="text-sm font-medium text-gray-700">Email</label>
-                                    <div className="input input-bordered flex items-center gap-2">
+                                    <div className="input input-bordered flex items-center gap-2 rounded-full">
                                         <div className="">
                                             <MdEmail size={20} />
                                         </div>
@@ -262,7 +256,7 @@ function Organization_Signup() {
                                             onChange={function (e) { setEmail(e.target.value) }}
                                             required
                                             id="email"
-                                            className="grow"
+                                            className="grow border-none"
                                             placeholder=""
                                         />
                                     </div>
@@ -270,7 +264,7 @@ function Organization_Signup() {
 
                                 <div className="flex flex-col gap-1">
                                     <label htmlFor="username" className="text-sm font-medium text-gray-700">Username</label>
-                                    <div className="input input-bordered flex items-center gap-2">
+                                    <div className="input input-bordered flex items-center gap-2 rounded-full">
                                         <div className="">
                                             <FaUserAlt size={20} />
                                         </div>
@@ -280,7 +274,7 @@ function Organization_Signup() {
                                             onChange={function (e) { setUsername(e.target.value) }}
                                             required
                                             id="username"
-                                            className="grow"
+                                            className="grow border-none"
                                             placeholder=""
                                         />
                                     </div>
@@ -288,7 +282,7 @@ function Organization_Signup() {
 
                                 <div className="flex flex-col gap-1">
                                     <label htmlFor="password" className="text-sm font-medium text-gray-700">Password</label>
-                                    <div className="input input-bordered flex items-center gap-2">
+                                    <div className="input input-bordered flex items-center gap-2 rounded-full">
                                         <div className="">
                                             <FaKey size={20} />
                                         </div>
@@ -298,7 +292,7 @@ function Organization_Signup() {
                                             onChange={function (e) { setPassword(e.target.value) }}
                                             required
                                             id="password"
-                                            className="grow"
+                                            className="grow border-none"
                                             placeholder=""
                                         />
                                     </div>
@@ -307,8 +301,14 @@ function Organization_Signup() {
                             </div>
 
                             <div className="mt-20 w-full p-2 text-center">
-                                <button type="submit" className="bg-our_red border-2 border-our_red text-white  font-nunito font-bold py-2 px-14 rounded hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition"
+                                <button type="submit" className="bg-our_red border-2 border-our_red text-white  font-nunito font-bold py-2 px-8 rounded-full hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-bold transition"
                                 >Register</button>
+                                <p className="text-xs mt-2">
+                                    Are you already register?{" "}
+                                    <Link to="/recipient_signup" className="text-our_red font-bold hover:underline">
+                                        Login
+                                    </Link>
+                                </p>
                             </div>
                         </form>
 

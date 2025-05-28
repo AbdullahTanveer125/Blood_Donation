@@ -602,7 +602,7 @@ function All_Blood_Request() {
                 </div>
             )}
 
-            <div className='ml-[17.3%] w-[83%] pt-16'>
+            <div className='ml-[17%] w-[83%] pt-16'>
                 <div className="mb-20">
                     <h1 className='text-2xl font-extrabold'><span className='text-our_red'>Search</span> Blood Request</h1>
 
@@ -638,7 +638,7 @@ function All_Blood_Request() {
                             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-[70%] justify-items-center gap-16">
                                 {requestsToShow.map((request, index) => (
                                     <div key={index} className="w-[80%] relative bg-gray-200 shadow-xl rounded-lg px-6 pt-6 pb-3 border border-gray-200 hover:shadow-2xl transition-shadow">
-                                        <span className={`absolute top-3 right-3 badge badge-secondary px-3 py-1 text-white rounded-full text-xs ${request.urgency === "high" ? "bg-our_red border border-our_red" : request.urgency === "low" ? "bg-green-600" : "bg-yellow-500"}`}>
+                                        <span className={`absolute top-3 right-3 badge badge-secondary px-3 py-1 text-white rounded-full text-xs ${request.urgency === "high" ? "bg-our_red border border-our_red" : request.urgency === "low" ? "bg-green-600 border border-green-600" : "bg-yellow-500"}`}>
                                             {request.urgency}
                                         </span>
 
