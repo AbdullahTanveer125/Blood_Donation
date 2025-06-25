@@ -6,7 +6,7 @@ import default_user_image from "../../../public/user.jpg"
 
 
 
-function Conversation({ conversation, currentUser }) {
+function Conversation({ conversation, currentUser, currentChat }) {
 
     const [user, setUser] = useState(null);
     // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -42,7 +42,9 @@ function Conversation({ conversation, currentUser }) {
     }, [currentUser, conversation]);
 
 
-
+    
+        console.log("<<<< USER >>>>=", user)
+    const isActive = currentChat?._id === conversation._id;
     return (
         <div className="conversation">
             {/* <img
@@ -57,13 +59,15 @@ function Conversation({ conversation, currentUser }) {
             <span className="conversationName">{user?.username}</span> */}
 
 
+            <div className={`w-full pl-6 my-2 conversation ${isActive ? "active-conversation" : ""}`}>
+                <img
+                    className="conversationImg"
+                    src={user?.profile_photo ? user.profile_photo : default_user_image}
+                    alt=""
+                />
+                <span className="conversationName">{user?.username}</span>
+            </div>
 
-            <img
-                className="conversationImg"
-                src={default_user_image}
-                alt=""
-            />
-            <span className="conversationName">{user?.username}</span>
         </div>
     )
 }

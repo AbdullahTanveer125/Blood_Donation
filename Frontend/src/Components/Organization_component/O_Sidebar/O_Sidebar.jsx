@@ -75,7 +75,7 @@ function O_Sidebar() {
                     <h2
                         onClick={() => navigate("/organization")}
                         className="cursor-pointer text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-gray-200 p-6 pb-3">
-                        <FaHouseDamage size={20} /> Dashboard
+                        <FaHouseDamage size={20} /> URGENT DROP
                     </h2>
                     <ul className="space-y-2">
                         <li
@@ -133,8 +133,8 @@ function O_Sidebar() {
 
                 <div
                     onClick={handleLogout}
-                    className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-white text-[#820000] hover:bg-slate-300 font-bold py-2 rounded-md cursor-pointer'>
-                    <LuLogOut size={20} /> Logout
+                    className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-white text-[#820000] hover:bg-slate-300 font-bold py-2 rounded-full cursor-pointer'>
+                     Logout
                 </div>
                 {/* <div className='flex flex-col items-center pb-8'>
                                     <img src="./lifeline.png" alt="" className='w-20' />

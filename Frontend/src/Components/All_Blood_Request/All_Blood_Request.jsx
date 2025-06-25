@@ -577,21 +577,38 @@ function All_Blood_Request() {
                                     onChange={(e) => setLocation(e.target.value)}
                                 >
                                     <option value="">Select</option>
-                                    <option>Jinnah</option>
-                                    <option>Service</option>
-                                    <option>Childern</option>
-                                    <option>Other</option>
+                                    <option>Mayo Hospital</option>
+                                        <option>Services Hospital</option>
+                                        <option>Jinnah Hospital</option>
+                                        <option>Lahore General Hospital</option>
+                                        <option>Sir Ganga Ram Hospital</option>
+                                        <option>Punjab Institute of Cardiology</option>
+                                        <option>Children’s Hospital & Institute of Child Health</option>
+                                        <option>Lady Willingdon Hospital</option>
+                                        <option>Lady Aitchison Hospital
+                                        </option>
+                                        <option>Gulab Devi Chest Hospital</option>
+                                        <option>Doctors Hospital & Medical Centre</option>
+                                        <option>Shaukat Khanum Memorial Cancer Hospital</option>
+                                        <option>Hameed Latif Hospital</option>
+                                        <option>National Hospital & Medical Centre (DHA)</option>
+                                        <option>Omar Hospital & Cardiac Centre</option>
+                                        <option>Ittefaq Hospital (Trust)
+                                        </option>
+                                        <option>Bahria International Hospita</option>
+                                        <option>Fatima Memorial Hospital (FMH)</option>
+
                                 </select>
                             </div>
                             <div className="flex justify-between mt-4">
                                 <button
-                                    className="px-4 py-2 bg-our_red text-white rounded hover:bg-red-700"
+                                    className="px-4 py-2 bg-our_red text-white rounded-full hover:bg-red-700"
                                     onClick={handleSearch}
                                 >
                                     Search
                                 </button>
                                 <button
-                                    className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                                    className="px-4 py-2 bg-gray-300  hover:bg-gray-400 rounded-full"
                                     onClick={() => setShowSearchForm(false)}
                                 >
                                     Cancel
@@ -637,7 +654,7 @@ function All_Blood_Request() {
 
                             <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 w-[70%] justify-items-center gap-16">
                                 {requestsToShow.map((request, index) => (
-                                    <div key={index} className="w-[80%] relative bg-gray-200 shadow-xl rounded-lg px-6 pt-6 pb-3 border border-gray-200 hover:shadow-2xl transition-shadow">
+                                    <div key={index} className="w-[80%] relative bg-slate-50 shadow-xl rounded-lg px-6 pt-6 pb-3 border border-gray-200 hover:shadow-2xl transition-shadow">
                                         <span className={`absolute top-3 right-3 badge badge-secondary px-3 py-1 text-white rounded-full text-xs ${request.urgency === "high" ? "bg-our_red border border-our_red" : request.urgency === "low" ? "bg-green-600 border border-green-600" : "bg-yellow-500"}`}>
                                             {request.urgency}
                                         </span>
@@ -646,7 +663,7 @@ function All_Blood_Request() {
                                             <img src={request.profile_photo || "/user.jpg"} alt="" className='w-12 rounded-full' />
                                             <div className='text-start'>
                                                 <p className='font-bold'>{request.patient_name} </p>
-                                                <p className='text-xs text-gray-500'>some text</p>
+                                                <p className='text-xs text-gray-500'>Recipient</p>
                                             </div>
                                         </div>
 

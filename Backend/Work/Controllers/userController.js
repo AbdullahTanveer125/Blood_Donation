@@ -13,9 +13,20 @@ async function testController(req, res) {
 // // get user
 const get_user = async (req, res) => {
     try {
-        const user = await user_model.findById(req.params.user_id).select('-profile_photo -password');
+        const user = await user_model.findById(req.params.user_id).select(' -password');
 
-        
+        let updated_user;
+
+        if (user && user.profile_photo?.data) {
+            updated_user = {
+                ...user._doc,
+                profile_photo: `data:${user.profile_photo.contentType};base64,${user.profile_photo.data.toString("base64")}`
+            };
+        } else {
+            updated_user = user; // fallback if there's no photo
+        }
+
+
         console.log(".......................")
         console.log(".......................")
         console.log(".......................")
@@ -27,7 +38,7 @@ const get_user = async (req, res) => {
         res.status(200).send({
             success: true,
             message: "get User!",
-            user
+            user:updated_user
         });
     } catch (error) {
         console.log(error);

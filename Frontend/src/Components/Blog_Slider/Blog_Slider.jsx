@@ -25,7 +25,7 @@ function Blog_Slider() {
         <div className='mt-20 w-[100%] mb-28 ml-40 overflow-hidden relative font-nunito'>
 
             <h1 className='ml-80 text-4xl font-extrabold mb-10'>
-                <span className='text-our_red'>Bolg</span> Slider
+                <span className='text-our_red'>The LifeSaver</span> Blogs
             </h1>
 
             <div

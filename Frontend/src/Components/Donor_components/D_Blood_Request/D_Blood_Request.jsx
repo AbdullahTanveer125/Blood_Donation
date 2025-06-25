@@ -80,7 +80,7 @@ function Blood_Request_on_Donor() {
                 <Marquee speed={40} gradient={false} pauseOnHover={true} className="w-fit">
                     {array_of_all_blood_requests.map((request, index) => (
 
-                        <div className="w-[300px] indicator mx-10 p-1 gap-10 mt-10">
+                        <div className="bg-slate-100 h-[400px] w-[300px] indicator mx-10 p-1 gap-10 mt-10 rounded shadow-lg relative flex flex-col">
 
                             <span className={`py-2 indicator-item badge badge-secondary ${request.urgency == "high" ? "bg-red-600 border-red-600" :
                                 request.urgency == "low" ? "bg-green-600 border-green-600" :
@@ -88,7 +88,7 @@ function Blood_Request_on_Donor() {
                             {/* <div className="bg-base-300 grid h-32 w-32 place-items-center">content</div> */}
                             <div
                                 key={index}
-                                className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow gap-5 text-left"
+                                className=" w-full p-6  gap-5 text-left"
                             >
 
 
@@ -109,7 +109,7 @@ function Blood_Request_on_Donor() {
                                     </div>
                                     <div>
                                         <p>{request.patient_name}</p>
-                                        <p className='text-xs text-gray-500'>some text</p>
+                                        <p className='text-xs text-gray-500'>Recipient</p>
                                     </div>
 
                                 </div>
@@ -154,7 +154,7 @@ Props are only passed between parent and child components, not through routing (
                                     onClick={(e) => handleDonateClick(e, request)}
                                     className="flex flex-row justify-end items-center gap-3 rounded-md cursor-pointer"
                                 >
-                                    <div className='border-2 border-our_red bg-our_red text-white  hover:text-our_red hover:bg-white transition duration-200 px-6 py-2 rounded-full'>Donate</div>
+                                    <div className='border-2 border-our_red bg-our_red text-white  hover:text-our_red hover:bg-white transition duration-200 px-6 py-2 rounded-full absolute bottom-4 right-4'>Donate</div>
                                 </Link>
 
                                 {/* ********************************************

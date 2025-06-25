@@ -4,14 +4,14 @@ function R_Steps() {
     return (
         <div className=' pt-28 px-32 font-nunito'>
 
-            <h1 className='text-4xl font-bold text-center'>
-                <span className='text-our_red'>Process</span> to generate Blood Request
+            <h1 className='text-3xl font-bold text-center'>
+                <span className='text-our_red'>Process to</span> Generate Blood Request
             </h1>
-            <p className='mt-2 text-sm text-center '>
-                {/* Follow this simple process to generate blood request for your loved ones and help people in need.  */}
-                If you are in need of blood, our platform is here to help you connect with available donors.
-                To ensure a fast and accurate response, please follow the steps below carefully.
-                Your request will be reviewed and forwarded to potential donors in your area.
+            <p className='mt-2 flex flex-row justify-center'>
+                <div className='w-[80%] text-center'>
+                    Every few seconds, someone needs a blood transfusion, Follow this simple process to generate blood request for your loved ones and help people in need. 
+                </div>
+
             </p>
 
             <ul className="pt-20 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">

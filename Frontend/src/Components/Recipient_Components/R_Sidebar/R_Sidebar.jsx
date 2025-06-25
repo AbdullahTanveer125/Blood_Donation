@@ -225,14 +225,14 @@ function R_Sidebar() {
         <div>
 
             {/* Sidebar - Fixed on the Left */}
-            <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between">
+            <aside className=" w-[17%] h-screen bg-[#820000] text-white fixed flex flex-col justify-between font-nunito">
 
                 <div>
 
                     <h2
                         onClick={() => navigate("/recipient")}
                         className="cursor-pointer text-xl font-bold mb-4 flex flex-row gap-3 border-b-2 border-b-gray-200 p-6 pb-3  hover:bg-gray-100 hover:text-[#820000]">
-                        <FaHouseDamage size={20} /> Dashboard
+                        <FaHouseDamage size={20} /> URGENT DROP
                     </h2>
                     <ul className="space-y-2">
 
@@ -310,8 +310,8 @@ function R_Sidebar() {
 
                 <div
                     onClick={handleLogout}
-                    className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-white text-[#820000] hover:bg-slate-300 font-bold py-2 rounded-md cursor-pointer'>
-                    <IoIosLogOut size={20} /> Logout
+                    className='mb-4 mx-4 flex flex-row justify-center items-center gap-3 bg-white text-[#820000] hover:bg-slate-300 font-bold py-2 rounded-full cursor-pointer'>
+                     Logout
                 </div>
                 {/* <div className='flex flex-col items-center pb-8'>
     <img src="./lifeline.png" alt="" className='w-20' />

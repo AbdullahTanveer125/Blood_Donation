@@ -273,10 +273,26 @@ function All_Donors() {
                                     onChange={(e) => setNearest_hospital(e.target.value)}
                                 >
                                     <option value="">Select</option>
-                                    <option>Jinnah</option>
-                                    <option>Service</option>
-                                    <option>Childern</option>
-                                    <option>Other</option>
+                                    <option>Mayo Hospital</option>
+                                    <option>Services Hospital</option>
+                                    <option>Jinnah Hospital</option>
+                                    <option>Lahore General Hospital</option>
+                                    <option>Sir Ganga Ram Hospital</option>
+                                    <option>Punjab Institute of Cardiology</option>
+                                    <option>Children’s Hospital & Institute of Child Health</option>
+                                    <option>Lady Willingdon Hospital</option>
+                                    <option>Lady Aitchison Hospital
+                                    </option>
+                                    <option>Gulab Devi Chest Hospital</option>
+                                    <option>Doctors Hospital & Medical Centre</option>
+                                    <option>Shaukat Khanum Memorial Cancer Hospital</option>
+                                    <option>Hameed Latif Hospital</option>
+                                    <option>National Hospital & Medical Centre (DHA)</option>
+                                    <option>Omar Hospital & Cardiac Centre</option>
+                                    <option>Ittefaq Hospital (Trust)
+                                    </option>
+                                    <option>Bahria International Hospita</option>
+                                    <option>Fatima Memorial Hospital (FMH)</option>
                                 </select>
                             </div>
                             <div className="flex justify-between mt-4">

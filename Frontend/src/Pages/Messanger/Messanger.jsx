@@ -171,9 +171,9 @@ function Messanger() {
         const receiverId = currentChat.members.find(
             (member) => member !== user._id
         );
-console.log("Now")
-console.log("receiverId= ",receiverId)
-console.log("Now")
+        console.log("Now")
+        console.log("receiverId= ", receiverId)
+        console.log("Now")
         socket.current.emit("sendMessage", {
             senderId: user._id,
             receiverId,
@@ -239,34 +239,37 @@ console.log("Now")
     //     })
     // }
 
-    
-        console.log("ooooooooo currentChat ooooooooooo ......... ")
-        console.log("ooooooooo currentChat ooooooooooo ......... ")
-        console.log("ooooooooo currentChat ooooooooooo ......... ")
-        console.log("ooooooooo currentChat ooooooooooo ......... ")
-        console.log(currentChat)
-        console.log("login user id= ",user._id)
-        console.log("ooooooooo currentChat ooooooooooo ......... ")
-        console.log("ooooooooo currentChat ooooooooooo ......... ")
-        console.log("ooooooooo currentChat ooooooooooo ......... ")
-        console.log("ooooooooo currentChat ooooooooooo ......... ")
-       
+
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log(currentChat)
+    console.log("login user id= ", user._id)
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+    console.log("ooooooooo currentChat ooooooooooo ......... ")
+
 
 
 
     return (
-        <div className="ml-[17%] messenger w-[82%] min-h-[100vh]">
+        <div className="ml-[17%] messenger w-[82%] min-h-[100vh] font-nunito">
 
 
             <div className="chatMenu bg-gray-0">
                 <div className="chatMenuWrapper">
-                    <input placeholder="Search for friends" className="chatMenuInput" />
+                    {/* <input placeholder="Search for friends" className="chatMenuInput" /> */}
 
-                    <div className="mt-5 min-h-[85vh] border-l-2 border-t-2 border-r-2 rounded-xl">
+                    <div className="mt- min-h-[98vh] border-l-2 border-t-2 border-r-2 rounded-xl">
+                        <div className="font-bold px-3 py-2 text-lg">Messages</div>
                         {conversations.map((c) => (
-                            <div onClick={() => setCurrentChat(c)}
+                            <div
+                                key={c._id}
+                                onClick={() => setCurrentChat(c)}
                                 className="">
-                                <Conversation conversation={c} currentUser={user} />
+                                <Conversation conversation={c} currentUser={user} currentChat={currentChat}/>
                             </div>
                         ))}
                     </div>

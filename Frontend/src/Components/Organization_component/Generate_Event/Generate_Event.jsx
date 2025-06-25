@@ -201,7 +201,7 @@ function Generate_Event() {
                         </button>
                     </div>
 
-                    
+
 
                     {/* Two-Column Layout */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-10 rounded-lg">
@@ -220,7 +220,16 @@ function Generate_Event() {
                                 <input
                                     type="text"
                                     value={name}
-                                    onChange={(e) => setName(e.target.value)}
+                                    // onChange={(e) => setName(e.target.value)}
+                                    onChange={(e) => {
+                                        const input = e.target.value;
+                                        // Allow only letters and spaces
+                                        const onlyLettersAndSpaces = input.replace(/[^a-zA-Z\s]/g, '');
+                                        // Limit to 25 characters
+                                        if (onlyLettersAndSpaces.length <= 25) {
+                                            setName(onlyLettersAndSpaces);
+                                        }
+                                    }}
                                     required
                                     id="name"
                                     placeholder="Donate Blood"
@@ -234,7 +243,14 @@ function Generate_Event() {
                                 <input
                                     type="text"
                                     value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
+                                    // onChange={(e) => setPhone(e.target.value)}
+                                    onChange={(e) => {
+                                        const input = e.target.value;
+                                        const numbersOnly = input.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+                                        if (numbersOnly.length <= 11) {
+                                            setPhone(numbersOnly); // Only allow up to 11 digits
+                                        }
+                                    }}
                                     required
                                     id="phone"
                                     placeholder="03099014620"

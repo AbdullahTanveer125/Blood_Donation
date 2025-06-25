@@ -3,13 +3,13 @@ import React from 'react'
 function Donor_Process() {
     return (
 
-        <div className=' pt-28 px-32 font-nunito'>
+        <div className=' pt-20 px-32 font-nunito'>
 
             <h1 className='text-4xl font-bold text-center '>
                 Your <span className='text-our_red'>Blood Donation</span>  Process
             </h1>
 
-            <p className='text-center mt-4'>Follow this simple process to donate blood safely and make a real difference</p>
+            <p className='text-center mt-'>Follow this simple process to donate blood safely and make a real difference</p>
 
             <ul className="pt-20 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
                 <li>

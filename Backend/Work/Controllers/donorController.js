@@ -382,6 +382,39 @@ const get_all_donor = async (req, res) => {
 
 
 
+const change_availability = async (req, res) => {
+    try {
+        console.log("in change.....")
+        const donor_id = req.params.donor_id;
+        const { availability } = req.body;
+
+        console.log("in change.....", donor_id)
+        console.log("in change.....", availability)
+
+        // Step 1: Get the donor by donor_id
+        const donor = await donor_model.findById(donor_id);
+        if (!donor) {
+            return res.status(404).json({ error: 'Donor not found' });
+        }
+
+        // Step 2: Toggle the availability
+        const updatedDonor = await donor_model.findByIdAndUpdate(
+            donor_id,
+            { availability: !donor.availability },
+            { new: true } // Return the updated document
+        );
+
+
+
+
+        res.status(200).json({ success: true, message: 'Availability updated', donor: updatedDonor });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server error' });
+    }
+};
+
+
 
 // // delete donors
 const delete_account = async (req, res) => {
@@ -410,7 +443,7 @@ const delete_account = async (req, res) => {
         if (existingRequests.length >= 1) {
             const result = await blood_request_model.deleteMany({ donor_id });
         }
-        
+
 
         // return res.status(200).json({ message: 'Account deleted successfully' });
 
@@ -458,5 +491,5 @@ const delete_account = async (req, res) => {
 
 // //export All functions from "Controller"
 module.exports = {
-    testController, donor_signUp, donor_login, get_donor, get_all_donor, delete_account
+    testController, donor_signUp, donor_login, get_donor, get_all_donor, change_availability, delete_account
 }

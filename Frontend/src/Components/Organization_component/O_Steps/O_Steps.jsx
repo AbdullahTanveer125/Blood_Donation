@@ -7,11 +7,14 @@ function O_Steps() {
             <h1 className='text-4xl font-bold text-center'>
                 <span className='text-our_red'>Process</span> to generate Event
             </h1>
-            <p className='mt-2 text-center '>
+            <div className='flex flex-row justify-center'>
+                <p className='mt- text-center w-[80%]'>
                 Contributing to the lifesaving mission of blood donation.
-                To host a successful blood donation event, please follow the steps below.
-                These steps will guide you in setting up event details and reaching potential donors.
+                {/* To host a successful blood donation event, please follow the steps below.
+                These steps will guide you in setting up event details and reaching potential donors. */}
+                Follow this simple process to generate event and make a real difference.
             </p>
+            </div>
 
             <ul className="pt-20 timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
                 <li>

@@ -14,6 +14,8 @@ function O_Your_Event() {
     const [auth, setAuth] = useAuth();
     console.log("==== Auth ====", auth.organization._id)
     const organization_id = auth.organization._id
+    // const image=
+    const image = auth.user.profile_photo ? auth.user.profile_photo : "organization2.jpg";
 
     const [event, setEvent] = useState(null);
 
@@ -41,7 +43,10 @@ function O_Your_Event() {
 
             <div className='ml-[17.3%] w-[82%] '>
 
-                <div class=" bg-[url('./organization1.png')] bg-cover bg-center h-60 flex flex-col justify-center items-center text-white pt-">
+                <div class=" bg-cover bg-center h-60 flex flex-col justify-center items-center text-white pt-"
+                    style={{
+                        backgroundImage: `url(${image})`,
+                    }}>
                     {/* <p>Organization Name</p>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p> */}
 

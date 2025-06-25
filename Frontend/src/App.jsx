@@ -96,6 +96,7 @@ import Blog_2 from './Components/Blog_Single/Blog_2.jsx';
 import Blog_3 from './Components/Blog_Single/Blog_3.jsx';
 import Blog_4 from './Components/Blog_Single/Blog_4.jsx';
 import Blog_5 from './Components/Blog_Single/Blog_5.jsx';
+import Hooks_Practice from './Pages/Hooks_Practice.jsx';
 // import Blog_5 from './Components/Blog_Single/Blog_5.jsx';
 
 //#EE8A9E  (light color)
@@ -183,7 +184,6 @@ function App() {
 
       <Routes>
         {/* Public Routes (Available to Everyone) */}
-        {/* <Route path="/" element={<Landing />} /> */}
         <Route path="/" element={<Landing_Page11 />} />
         <Route path="/signup_as_a" element={<Signup_as_a />} />
         <Route path="/login_as_a" element={<Login_as_a />} />
@@ -202,6 +202,7 @@ function App() {
         <Route path="/about_us" element={<About_Us />} />
         <Route path="/contact_us" element={<Contact_Us />} />
         <Route path="/all_events" element={<Landing_Events />} />
+        <Route path="/hooks" element={<Hooks_Practice />} />
 
         {/* Redirect if accessing unauthorized routes */}
         <Route path="/*" element={<Unauthorized_user message="Page Not Found" url="" />} />

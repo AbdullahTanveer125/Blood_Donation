@@ -131,12 +131,39 @@ function Generate_Blood_Request() {
                         <input
                             type="text"
                             value={patient_name}
-                            onChange={(e) => setPatient_name(e.target.value)}
+                            onChange={(e) => {
+                                const input = e.target.value;
+                                // Allow only letters and spaces
+                                const onlyLettersAndSpaces = input.replace(/[^a-zA-Z\s]/g, '');
+                                // Limit to 25 characters
+                                if (onlyLettersAndSpaces.length <= 25) {
+                                    setPatient_name(onlyLettersAndSpaces);
+                                }
+                            }}
                             required
                             id="patient_name"
                             placeholder="Ali ahmad"
                             className="w-full px-4 py-2 rounded bg-transparent border-2 border-our_red placeholder-gray-300 focus:outline-none"
                         />
+
+                        {/* <input
+                            type="text"
+                            value={patient_name}
+                            onChange={(e) => {
+                                const input = e.target.value;
+                                // Allow only letters and spaces
+                                const onlyLettersAndSpaces = input.replace(/[^a-zA-Z\s]/g, '');
+                                // Limit to 25 characters
+                                if (onlyLettersAndSpaces.length <= 25) {
+                                    setPatient_name(onlyLettersAndSpaces);
+                                }
+                            }}
+
+                            required
+                            id="name"
+                            className="border-none"
+                            placeholder="Name"
+                        /> */}
                     </div>
 
                     {/* Blood Group */}
@@ -171,10 +198,26 @@ function Generate_Blood_Request() {
                             required
                         >
                             <option disabled value=""></option>
-                            <option>Jinnah</option>
-                            <option>Service</option>
-                            <option>Childern</option>
-                            <option>Other</option>
+                            <option>Mayo Hospital</option>
+                            <option>Services Hospital</option>
+                            <option>Jinnah Hospital</option>
+                            <option>Lahore General Hospital</option>
+                            <option>Sir Ganga Ram Hospital</option>
+                            <option>Punjab Institute of Cardiology</option>
+                            <option>Children’s Hospital & Institute of Child Health</option>
+                            <option>Lady Willingdon Hospital</option>
+                            <option>Lady Aitchison Hospital
+                            </option>
+                            <option>Gulab Devi Chest Hospital</option>
+                            <option>Doctors Hospital & Medical Centre</option>
+                            <option>Shaukat Khanum Memorial Cancer Hospital</option>
+                            <option>Hameed Latif Hospital</option>
+                            <option>National Hospital & Medical Centre (DHA)</option>
+                            <option>Omar Hospital & Cardiac Centre</option>
+                            <option>Ittefaq Hospital (Trust)
+                            </option>
+                            <option>Bahria International Hospita</option>
+                            <option>Fatima Memorial Hospital (FMH)</option>
                         </select>
                     </div>
 
@@ -199,7 +242,14 @@ function Generate_Blood_Request() {
                         <input
                             type="text"
                             value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            // onChange={(e) => setPhone(e.target.value)}
+                            onChange={(e) => {
+                                const input = e.target.value;
+                                const numbersOnly = input.replace(/[^0-9]/g, ''); // Remove non-numeric characters
+                                if (numbersOnly.length <= 11) {
+                                    setPhone(numbersOnly); // Only allow up to 11 digits
+                                }
+                            }}
                             required
                             id="phone"
                             placeholder="03099014620"

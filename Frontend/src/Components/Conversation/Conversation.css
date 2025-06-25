@@ -1,9 +1,9 @@
 .conversation {
     display: flex;
     align-items: center;
-    padding: 10px;
+     padding: 0px 0px 0px 0px; /* top right bottom left */
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 2px;
 }
 
 .conversation:hover {
@@ -20,6 +20,12 @@
 
 .conversationName {
     font-weight: 500;
+}
+
+.active-conversation {
+    background-color: #c8c8c8;
+    /* Light blue */
+    padding: 6px 0px 6px 0px; /* top right bottom left */
 }
 
 @media screen and (max-width: 768px) {

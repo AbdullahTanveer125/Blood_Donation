@@ -58,10 +58,10 @@ function D_History() {
                 <div className='ml-[17.3%] w-[83%] pt-16 text-center'>
 
                     <h1 className="text-4xl font-extrabold text-center mb-8">
-                        <span className="text-our_red">Your Donated</span> Blood Requests
+                        <span className="text-our_red">Your Blood</span> Donation History
                     </h1>
 
-                    <p>You donate blood requests = <span>{array_length}</span></p>
+                    <p>Total Donations = <span>{array_length}</span></p>
 
                     {loading ? (
                         <div className="flex justify-center items-center mt-32 gap-2">
@@ -81,11 +81,11 @@ function D_History() {
                                                 {request.urgency}
                                             </span>
 
-                                            <div className='flex flex-row gap-4 items-center mb-5'>
+                                            <div className='flex flex-row gap-4 items-center mb-5 mt-4'>
                                                 <img src={request.profile_photo || "/user.jpg"} alt="" className='w-12 rounded-full' />
                                                 <div className='text-start'>
                                                     <p className='font-bold'>{request.patient_name} </p>
-                                                    <p className='text-xs text-gray-500'>some text</p>
+                                                    <p className='text-xs text-gray-500'>Recipient</p>
                                                 </div>
                                             </div>
 

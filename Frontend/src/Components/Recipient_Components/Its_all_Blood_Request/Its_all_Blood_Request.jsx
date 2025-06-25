@@ -583,7 +583,7 @@ function Blood_Requests_of_recipient() {
                             </button> */}
 
                             <button
-                                className="w-full py-2 rounded-md bg-our_red text-white font-extrabold text-[16px] mt-4 border-2 border-our_red hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-extrabold"
+                                className="rounded-full w-full py-2 bg-our_red text-white font-extrabold text-[16px] mt-4 border-2 border-our_red hover:bg-white hover:text-our_red hover:border-2 hover:border-our_red hover:font-extrabold"
                                 onClick={() => deleteRequest(request._id)}
                             >
                                 Delete Request
